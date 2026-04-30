@@ -1,0 +1,14 @@
+{
+  "query": "Based on emissivity altitude behavior, what is the composition of the tallest Venus volcanoes?",
+  "row": {
+    "rank": 4,
+    "paper_short": "Brossier 2020",
+    "rationale": "Volcanology \u2014 Venus volcanoes & coronae",
+    "paper": "Brossier, J.F., et al., 2020. Low radar emissivity signatures on Venus volcanoes and coronae. Icarus, 343, 113693. DOI:10.1016/j.icarus.2020.113693",
+    "query": "Based on emissivity altitude behavior, what is the composition of the tallest Venus volcanoes?",
+    "expected_ids": "urn:nasa:pds:magellan_gxdr:data",
+    "node": "geo"
+  },
+  "live_trace": [],
+  "catalog_trace": []
+}

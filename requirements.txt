@@ -1,0 +1,22 @@
+# Standalone requirements for pydantic_code/.
+#
+# Install with:
+#     pip install -r pydantic_code/requirements.txt
+#
+# Or, with uv:
+#     uv pip install -r pydantic_code/requirements.txt
+
+# Agent framework (MCP client support is built in).
+pydantic-ai>=0.0.13
+
+# MCP server framework.
+fastmcp>=2.0.0
+
+# Async HTTP client used by tools/client.py for live GEO directory listings.
+httpx>=0.27
+
+# Used by holdings.py for fuzzy-matching dataset IDs.
+rapidfuzz>=3.0
+
+# Logging.
+loguru>=0.7

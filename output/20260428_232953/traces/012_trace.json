@@ -1,0 +1,14 @@
+{
+  "query": "At a broad regional scale, are the carbonate detections in Jezero associated with the blue end of the olivine 1 micron band range or the redshifted olivine unit?",
+  "row": {
+    "rank": 5,
+    "paper_short": "Brown 2020",
+    "rationale": "Mineralogy/petrology \u2014 olivine-carbonate",
+    "paper": "Brown, A.J., et al., 2020. Olivine-carbonate mineralogy of the Jezero crater region. JGR Planets, 125(3), e2019JE006011. DOI:10.1029/2019JE006011",
+    "query": "At a broad regional scale, are the carbonate detections in Jezero associated with the blue end of the olivine 1 micron band range or the redshifted olivine unit?",
+    "expected_ids": "MRO-M-CRISM-5-RDR-MULTISPECTRAL-V1.0",
+    "node": "geo"
+  },
+  "live_trace": [],
+  "catalog_trace": []
+}

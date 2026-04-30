@@ -1,0 +1,2850 @@
+{
+  "query": "Do the Arabia Terra deposits record only one fluvial style or a diverse range of depositional systems?",
+  "row": {
+    "rank": 1,
+    "paper_short": "Davis 2019",
+    "rationale": "Fluvial sedimentology \u2014 direct Earth-analog sedimentary geology",
+    "paper": "Davis, J.M., et al., 2019. A diverse array of fluvial depositional systems in Arabia Terra. JGR Planets, 124(7), pp.1913-1934. DOI:10.1029/2019JE005976",
+    "query": "Do the Arabia Terra deposits record only one fluvial style or a diverse range of depositional systems?",
+    "expected_ids": "MEX-M-HRSC-5-REFDR-DTM-V1.0",
+    "node": "geo"
+  },
+  "tool_calls": [
+    {
+      "tool_name": "pds_geo_search_holdings",
+      "tool_input": {
+        "query": "MRO CTX",
+        "limit": 10
+      },
+      "tool_output": "{'status': 'success', 'total_in_index': 573, 'count': 10, 'items': [{'dataset_id': 'urn:nasa:pds:lcross_mro_photdoc', 'pds_version': 'PDS4', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/lcross/default.htm', 'mission_hint': None, 'score': 60.0}, {'dataset_id': 'urn:nasa:pds:lcross_mro_photgjon', 'pds_version': 'PDS4', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/lcross/default.htm', 'mission_hint': None, 'score': 60.0}, {'dataset_id': 'MRO-M-CRISM-2-EDR-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mro/crism.htm', 'mission_hint': 'mro', 'score': 60.0}, {'dataset_id': 'MRO-M-CRISM-3-RDR-TARGETED-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mro/crism.htm', 'mission_hint': 'mro', 'score': 60.0}, {'dataset_id': 'urn:nasa:pds:mro_crism_trdr_2101', 'pds_version': 'PDS4', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mro/crism.htm', 'mission_hint': 'mro', 'score': 60.0}, {'dataset_id': 'urn:nasa:pds:mro_crism_trdr_2102', 'pds_version': 'PDS4', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mro/crism.htm', 'mission_hint': 'mro', 'score': 60.0}, {'dataset_id': 'urn:nasa:pds:mro_crism_trdr_2103', 'pds_version': 'PDS4', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mro/crism.htm', 'mission_hint': 'mro', 'score': 60.0}, {'dataset_id': 'urn:nasa:pds:mro_crism_trdr_2104', 'pds_version': 'PDS4', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mro/crism.htm', 'mission_hint': 'mro', 'score': 60.0}, {'dataset_id': 'urn:nasa:pds:mro_crism_trdr_2105', 'pds_version': 'PDS4', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mro/crism.htm', 'mission_hint': 'mro', 'score': 60.0}, {'dataset_id': 'urn:nasa:pds:mro_crism_trdr_2106', 'pds_version': 'PDS4', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mro/crism.htm', 'mission_hint': 'mro', 'score': 60.0}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_search_holdings",
+      "tool_input": {
+        "query": "MRO HIRISE",
+        "limit": 10
+      },
+      "tool_output": "{'status': 'success', 'total_in_index': 573, 'count': 1, 'items': [{'dataset_id': 'MRO-M-CRISM-2-EDR-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mro/crism.htm', 'mission_hint': 'mro', 'score': 50.0}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_search_holdings",
+      "tool_input": {
+        "query": "MGS MOLA",
+        "limit": 10
+      },
+      "tool_output": "{'status': 'success', 'total_in_index': 573, 'count': 10, 'items': [{'dataset_id': 'MGS-M-MOLA-1-AEDR-L0-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/aedr.html', 'mission_hint': 'mgs', 'score': 100.0}, {'dataset_id': 'MGS-M-MOLA-3-PEDR-ASCII-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/pedr.html', 'mission_hint': 'mgs', 'score': 100.0}, {'dataset_id': 'MGS-M-MOLA-3-PEDR-L1A-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/pedr.html', 'mission_hint': 'mgs', 'score': 100.0}, {'dataset_id': 'MGS-M-MOLA-3-PRDR-L1A-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/mola.html', 'mission_hint': 'mgs', 'score': 100.0}, {'dataset_id': 'MGS-M-MOLA-5-IEGDR-L3-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/iegdr.html', 'mission_hint': 'mgs', 'score': 100.0}, {'dataset_id': 'MGS-M-MOLA-5-IEGDR-L3-V2.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/iegdr.html', 'mission_hint': 'mgs', 'score': 100.0}, {'dataset_id': 'MGS-M-MOLA-5-MEGDR-L3-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/megdr.html', 'mission_hint': 'mgs', 'score': 100.0}, {'dataset_id': 'MGS-M-MOLA-5-PEDR-SAMPLER-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/sampler.html', 'mission_hint': 'mgs', 'score': 100.0}, {'dataset_id': 'MGS-M-MOLA-5-SHADR-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/shadr.html', 'mission_hint': 'mgs', 'score': 100.0}, {'dataset_id': 'MGS-M-MAG/ER-5-SAMPLER-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mgs/sampler.html', 'mission_hint': 'mgs', 'score': 54.54545454545455}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_search_holdings",
+      "tool_input": {
+        "query": "ODY THEMIS",
+        "limit": 10
+      },
+      "tool_output": "{'status': 'success', 'total_in_index': 573, 'count': 0, 'items': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_browse",
+      "tool_input": {
+        "path": "mro/"
+      },
+      "tool_output": "{'status': 'success', 'url': 'https://pds-geosciences.wustl.edu/mro/', 'directory_count': 18, 'file_count': 0, 'entries': [{'name': 'crism-workshop-2009', 'url': 'https://pds-geosciences.wustl.edu/mro/crism-workshop-2009/', 'is_dir': True}, {'name': 'mro-m-crism-2-edr-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-crism-2-edr-v1/', 'is_dir': True}, {'name': 'mro-m-crism-3-rdr-targeted-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-crism-3-rdr-targeted-v1/', 'is_dir': True}, {'name': 'mro-m-crism-4-rdr-targeted-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-crism-4-rdr-targeted-v1/', 'is_dir': True}, {'name': 'mro-m-crism-4-typespec-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-crism-4-typespec-v1/', 'is_dir': True}, {'name': 'mro-m-crism-5-rdr-mptargeted-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-crism-5-rdr-mptargeted-v1/', 'is_dir': True}, {'name': 'mro-m-crism-5-rdr-multispectral-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-crism-5-rdr-multispectral-v1/', 'is_dir': True}, {'name': 'mro-m-crism-5-rdr-vnirhyperspectral-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-crism-5-rdr-vnirhyperspectral-v1/', 'is_dir': True}, {'name': 'mro-m-crism-6-ddr-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-crism-6-ddr-v1/', 'is_dir': True}, {'name': 'mro-m-crism-6-ldr-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-crism-6-ldr-v1/', 'is_dir': True}, {'name': 'mro-m-rss-1-magr-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-rss-1-magr-v1/', 'is_dir': True}, {'name': 'mro-m-rss-5-sdp-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-rss-5-sdp-v1/', 'is_dir': True}, {'name': 'mro-m-sharad-3-edr-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-sharad-3-edr-v1/', 'is_dir': True}, {'name': 'mro-m-sharad-4-rdr-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-sharad-4-rdr-v1/', 'is_dir': True}, {'name': 'mro-m-sharad-5-3d-v1', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-sharad-5-3d-v1/', 'is_dir': True}, {'name': 'mro-m-sharad-5-radargram-v2', 'url': 'https://pds-geosciences.wustl.edu/mro/mro-m-sharad-5-radargram-v2/', 'is_dir': True}, {'name': 'urn-nasa-pds-crism_ato_s_iof_lml', 'url': 'https://pds-geosciences.wustl.edu/mro/urn-nasa-pds-crism_ato_s_iof_lml/', 'is_dir': True}, {'name': 'urn-nasa-pds-mro_sharad_simulations', 'url': 'https://pds-geosciences.wustl.edu/mro/urn-nasa-pds-mro_sharad_simulations/', 'is_dir': True}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_search_holdings",
+      "tool_input": {
+        "query": "MEX HRSC DTM",
+        "limit": 10
+      },
+      "tool_output": "{'status': 'success', 'total_in_index': 573, 'count': 9, 'items': [{'dataset_id': 'MEX-M-HRSC-5-REFDR-DTM-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm', 'mission_hint': 'mex', 'score': 100.0}, {'dataset_id': 'MEX-M-HRSC-3-RDR-V4.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm', 'mission_hint': 'mex', 'score': 80.0}, {'dataset_id': 'MEX-M-HRSC-5-REFDR-MAPPROJECTED-V3.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm', 'mission_hint': 'mex', 'score': 80.0}, {'dataset_id': 'MEX-M-HRSC-4-DDR-CLOUDS-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm', 'mission_hint': 'mex', 'score': 80.0}, {'dataset_id': 'MEX-M-MRS-5-OCC-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mars_express/mars.htm', 'mission_hint': 'mex', 'score': 56.25}, {'dataset_id': 'MEX-M-MARSIS-2-EDR-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mars_express/marsis.htm', 'mission_hint': 'mex', 'score': 51.42857142857143}, {'dataset_id': 'MEX-M-MRS-1/2/3-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mars_express/mars.htm', 'mission_hint': 'mex', 'score': 50.0}, {'dataset_id': 'MEX-M-VMC-2-EDR-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mars_express/vmc.htm', 'mission_hint': 'mex', 'score': 50.0}, {'dataset_id': 'MEX-M-VMC-3-RDR-V1.0', 'pds_version': 'PDS3', 'landing_url': 'https://pds-geosciences.wustl.edu/missions/mars_express/vmc.htm', 'mission_hint': 'mex', 'score': 50.0}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_browse",
+      "tool_input": {
+        "path": "mgs/"
+      },
+      "tool_output": "{'status': 'success', 'url': 'https://pds-geosciences.wustl.edu/mgs/', 'directory_count': 16, 'file_count': 0, 'entries': [{'name': 'mgs-m-mola-1-aedr-l0-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-1-aedr-l0-v1/', 'is_dir': True}, {'name': 'mgs-m-mola-3-pedr-l1a-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-3-pedr-l1a-v1/', 'is_dir': True}, {'name': 'mgs-m-mola-3-prdr-l1a-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-3-prdr-l1a-v1/', 'is_dir': True}, {'name': 'mgs-m-mola-5-iegdr-l3-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-iegdr-l3-v1/', 'is_dir': True}, {'name': 'mgs-m-mola-5-iegdr-l3-v2', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-iegdr-l3-v2/', 'is_dir': True}, {'name': 'mgs-m-mola-5-megdr-l3-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/', 'is_dir': True}, {'name': 'mgs-m-mola-5-shadr-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-shadr-v1/', 'is_dir': True}, {'name': 'mgs-m-rss-1-cru-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-1-cru-v1/', 'is_dir': True}, {'name': 'mgs-m-rss-1-ext-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-1-ext-v1/', 'is_dir': True}, {'name': 'mgs-m-rss-1-map-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-1-map-v1/', 'is_dir': True}, {'name': 'mgs-m-rss-1-moi-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-1-moi-v1/', 'is_dir': True}, {'name': 'mgs-m-rss-5-sdp-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-5-sdp-v1/', 'is_dir': True}, {'name': 'mgs-m-tes-3-tsdr-v2', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-3-tsdr-v2/', 'is_dir': True}, {'name': 'mgs-m-tes-5-timap-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-5-timap-v1/', 'is_dir': True}, {'name': 'mgs-m-tes-special-v1', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-special-v1/', 'is_dir': True}, {'name': 'mgs-sampler', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-sampler/', 'is_dir': True}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_browse",
+      "tool_input": {
+        "path": "mex/"
+      },
+      "tool_output": "{'status': 'success', 'url': 'https://pds-geosciences.wustl.edu/mex/', 'directory_count': 185, 'file_count': 0, 'entries': [{'name': 'mex-m-aspera3-2-3-edr-rdr-npi-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-3-edr-rdr-npi-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-3-edr-rdr-npi-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-3-edr-rdr-npi-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-3-edr-rdr-npi-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-3-edr-rdr-npi-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-3-edr-rdr-npi-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-3-edr-rdr-npi-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-els-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-els-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-els-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-els-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-els-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-els-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-els-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-els-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-ima-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-ima-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-ima-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-ima-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-ima-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-ima-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-ima-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-2-edr-ima-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-3-rdr-els-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-3-rdr-els-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-3-rdr-els-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-3-rdr-els-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-3-rdr-els-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-3-rdr-els-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-3-rdr-els-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-3-rdr-els-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-4-ddr-ima-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-4-ddr-ima-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-4-ddr-ima-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-4-ddr-ima-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-4-ddr-ima-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-4-ddr-ima-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-4-ddr-ima-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-4-ddr-ima-ext8-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext8-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-5-ddr-ima-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-5-ddr-ima-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-5-ddr-ima-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-5-ddr-ima-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-5-ddr-ima-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-5-ddr-ima-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-5-ddr-ima-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-aspera3-5-ddr-ima-ext8-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext8-v1/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-ext1-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext1-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-ext2-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext2-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-ext3-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext3-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-ext4-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext4-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-ext5-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext5-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-ext6-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext6-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-ext7-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext7-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-ext8-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext8-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-ext9-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext9-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-v3', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-v3/', 'is_dir': True}, {'name': 'mex-m-hrsc-3-rdr-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-ddr-clouds-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-ddr-clouds-v1/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-refdr-mapproject-ext1-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext1-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-refdr-mapproject-ext2-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext2-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-refdr-mapproject-ext3-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext3-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-refdr-mapproject-ext4-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext4-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-refdr-mapproject-ext5-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext5-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-refdr-mapproject-ext6-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext6-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-refdr-mapproject-ext7-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext7-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-refdr-mapproject-ext8-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext8-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-4-refdr-mapproject-ext9-v4', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext9-v4/', 'is_dir': True}, {'name': 'mex-m-hrsc-5-refdr-dtm-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-5-refdr-dtm-v1/', 'is_dir': True}, {'name': 'mex-m-hrsc-5-refdr-mapprojected-v3', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-5-refdr-mapprojected-v3/', 'is_dir': True}, {'name': 'mex-m-marsis-2-edr-ext1-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext1-v2/', 'is_dir': True}, {'name': 'mex-m-marsis-2-edr-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-2-edr-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-2-edr-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-2-edr-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-2-edr-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-2-edr-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-2-edr-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-v2/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ais-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ais-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ais-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ais-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ais-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ais-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ais-ext8-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext8-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ais-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ss-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ss-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ss-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ss-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ss-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ss-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ss-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-3-rdr-ss-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-v2/', 'is_dir': True}, {'name': 'mex-m-marsis-5-ddr-eledens-bmag-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-eledens-bmag-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-5-ddr-eledens-bmag-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-eledens-bmag-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-5-ddr-eledens-bmag-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-eledens-bmag-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-5-ddr-ss-tec-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-ss-tec-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-marsis-5-ddr-ss-tec-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-ss-tec-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-ext8-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext8-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-ext9-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext9-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-1_2_3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-v1/', 'is_dir': True}, {'name': 'mex-m-mrs-5-occ-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-mrs-5-occ-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-ext-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-ext8-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext8-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-ext9-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext9-v1/', 'is_dir': True}, {'name': 'mex-m-omega-2-edr-flight-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-v1/', 'is_dir': True}, {'name': 'mex-m-omega-4-ddr-prof-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-4-ddr-prof-v1/', 'is_dir': True}, {'name': 'mex-m-omega-5-ddr-global-maps-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-5-ddr-global-maps-v1/', 'is_dir': True}, {'name': 'mex-m-omega-5-ddr-h2oclouds-maps-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-omega-5-ddr-h2oclouds-maps-v1/', 'is_dir': True}, {'name': 'mex-m-pfs-2-edr-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-pfs-2-edr-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-pfs-2-edr-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-pfs-2-edr-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-pfs-2-edr-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-pfs-2-edr-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-pfs-2-edr-nominal-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-nominal-v1/', 'is_dir': True}, {'name': 'mex-m-pfs-5-ddr-maps-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-pfs-5-ddr-maps-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-iredr-rawxmars-ext1-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext1-v2/', 'is_dir': True}, {'name': 'mex-m-spi-2-iredr-rawxmars-ext2-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext2-v2/', 'is_dir': True}, {'name': 'mex-m-spi-2-iredr-rawxmars-ext3-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext3-v2/', 'is_dir': True}, {'name': 'mex-m-spi-2-iredr-rawxmars-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-iredr-rawxmars-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-iredr-rawxmars-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-iredr-rawxmars-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-iredr-rawxmars-ext8-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext8-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-irrdr-cleaned-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-irrdr-cleaned-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-irrdr-cleaned-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-irrdr-cleaned-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-irrdr-cleaned-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-irrdr-cleaned-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-irrdr-cleaned-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-irrdr-cleaned-ext8-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext8-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-irrdr-cleaned-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-uvedr-rawxmars-ext1-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvedr-rawxmars-ext1-v2/', 'is_dir': True}, {'name': 'mex-m-spi-2-uvedr-rawxmars-ext2-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvedr-rawxmars-ext2-v2/', 'is_dir': True}, {'name': 'mex-m-spi-2-uvedr-rawxmars-ext3-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvedr-rawxmars-ext3-v2/', 'is_dir': True}, {'name': 'mex-m-spi-2-uvedr-rawxmars-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvedr-rawxmars-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-uvrdr-cleaned-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-uvrdr-cleaned-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-uvrdr-cleaned-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-uvrdr-cleaned-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-spi-2-uvrdr-cleaned-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-v1/', 'is_dir': True}, {'name': 'mex-m-spi-4-irddr-prof-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-4-irddr-prof-v1/', 'is_dir': True}, {'name': 'mex-m-spi-4-uvddr-prof-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-spi-4-uvddr-prof-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-ext8-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext8-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-ext9-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext9-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-2-edr-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-ext1-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext1-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-ext2-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext2-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-ext3-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext3-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-ext4-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext4-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-ext5-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext5-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-ext6-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext6-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-ext7-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext7-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-ext8-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext8-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-ext9-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext9-v1/', 'is_dir': True}, {'name': 'mex-m-vmc-3-rdr-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-v1/', 'is_dir': True}, {'name': 'mex-msa-hrsc-5-refdr-phobos-maps-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-msa-hrsc-5-refdr-phobos-maps-v1/', 'is_dir': True}, {'name': 'mex-sun-aspera3-4-swm-v1', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-sun-aspera3-4-swm-v1/', 'is_dir': True}, {'name': 'mex-y-m-spi-2-iredr-rawxcru-mars-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-y-m-spi-2-iredr-rawxcru-mars-v2/', 'is_dir': True}, {'name': 'mex-y-m-spi-2-uvedr-rawxcru-mars-v2', 'url': 'https://pds-geosciences.wustl.edu/mex/mex-y-m-spi-2-uvedr-rawxcru-mars-v2/', 'is_dir': True}, {'name': 'urn-nasa-pds-mex_marsis_optim', 'url': 'https://pds-geosciences.wustl.edu/mex/urn-nasa-pds-mex_marsis_optim/', 'is_dir': True}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_browse",
+      "tool_input": {
+        "path": "ody/"
+      },
+      "tool_output": "{'status': 'success', 'url': 'https://pds-geosciences.wustl.edu/ody/', 'directory_count': 11, 'file_count': 0, 'entries': [{'name': 'ody-m-grs-2-edr-v1', 'url': 'https://pds-geosciences.wustl.edu/ody/ody-m-grs-2-edr-v1/', 'is_dir': True}, {'name': 'ody-m-grs-4-cgs-v1', 'url': 'https://pds-geosciences.wustl.edu/ody/ody-m-grs-4-cgs-v1/', 'is_dir': True}, {'name': 'ody-m-grs-4-dhd-v1', 'url': 'https://pds-geosciences.wustl.edu/ody/ody-m-grs-4-dhd-v1/', 'is_dir': True}, {'name': 'ody-m-grs-4-dnd-v2', 'url': 'https://pds-geosciences.wustl.edu/ody/ody-m-grs-4-dnd-v2/', 'is_dir': True}, {'name': 'ody-m-grs-5-ahd-v1', 'url': 'https://pds-geosciences.wustl.edu/ody/ody-m-grs-5-ahd-v1/', 'is_dir': True}, {'name': 'ody-m-grs-5-and-v2', 'url': 'https://pds-geosciences.wustl.edu/ody/ody-m-grs-5-and-v2/', 'is_dir': True}, {'name': 'ody-m-grs-5-elements-v1', 'url': 'https://pds-geosciences.wustl.edu/ody/ody-m-grs-5-elements-v1/', 'is_dir': True}, {'name': 'ody-m-grs-5-sgs-v1', 'url': 'https://pds-geosciences.wustl.edu/ody/ody-m-grs-5-sgs-v1/', 'is_dir': True}, {'name': 'ody-m-rss-1-raw-v1', 'url': 'https://pds-geosciences.wustl.edu/ody/ody-m-rss-1-raw-v1/', 'is_dir': True}, {'name': 'urn-nasa-pds-mesick_pdart19_odyssey_idnd', 'url': 'https://pds-geosciences.wustl.edu/ody/urn-nasa-pds-mesick_pdart19_odyssey_idnd/', 'is_dir': True}, {'name': 'urn-nasa-pds-odyssey_grs_special', 'url': 'https://pds-geosciences.wustl.edu/ody/urn-nasa-pds-odyssey_grs_special/', 'is_dir': True}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_browse",
+      "tool_input": {
+        "path": "missions/mars_express/"
+      },
+      "tool_output": "{'status': 'success', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/', 'directory_count': 0, 'file_count': 10, 'entries': [{'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/default.htm', 'is_dir': False}, {'name': 'aspera.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/aspera.htm', 'is_dir': False}, {'name': 'hrsc.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm', 'is_dir': False}, {'name': 'mars.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/mars.htm', 'is_dir': False}, {'name': 'marsis.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/marsis.htm', 'is_dir': False}, {'name': 'omega.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/omega.htm', 'is_dir': False}, {'name': 'pfs.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/pfs.htm', 'is_dir': False}, {'name': 'spicam.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/spicam.htm', 'is_dir': False}, {'name': 'spice.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/spice.htm', 'is_dir': False}, {'name': 'vmc.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/vmc.htm', 'is_dir': False}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_with_collections",
+      "tool_input": {
+        "path": "mgs/mgs-m-mola-5-megdr-l3-v1/"
+      },
+      "tool_output": "{'status': 'not_found', 'volume_dir': None, 'labels': [], 'collections': [], 'error': 'No voldesc.cat/voldesc.sfd, bundle_*.xml/.lblx, or collection_*.xml/.lblx found at https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/'}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_with_collections",
+      "tool_input": {
+        "path": "mgs/mgs-m-mola-5-iegdr-l3-v2/"
+      },
+      "tool_output": "{'status': 'not_found', 'volume_dir': None, 'labels': [], 'collections': [], 'error': 'No voldesc.cat/voldesc.sfd, bundle_*.xml/.lblx, or collection_*.xml/.lblx found at https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-iegdr-l3-v2/'}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_with_collections",
+      "tool_input": {
+        "path": "mex/mex-m-hrsc-5-refdr-dtm-v1/"
+      },
+      "tool_output": "{'status': 'not_found', 'volume_dir': None, 'labels': [], 'collections': [], 'error': 'No voldesc.cat/voldesc.sfd, bundle_*.xml/.lblx, or collection_*.xml/.lblx found at https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-5-refdr-dtm-v1/'}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_with_collections",
+      "tool_input": {
+        "path": "mex/mex-m-hrsc-3-rdr-v4/"
+      },
+      "tool_output": "{'status': 'not_found', 'volume_dir': None, 'labels': [], 'collections': [], 'error': 'No voldesc.cat/voldesc.sfd, bundle_*.xml/.lblx, or collection_*.xml/.lblx found at https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-v4/'}"
+    },
+    {
+      "tool_name": "pds_geo_search_holdings",
+      "tool_input": {
+        "query": "Arabia Terra",
+        "limit": 10
+      },
+      "tool_output": "{'status': 'success', 'total_in_index': 573, 'count': 0, 'items': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_browse",
+      "tool_input": {
+        "path": ""
+      },
+      "tool_output": "{'status': 'success', 'url': 'https://pds-geosciences.wustl.edu/', 'directory_count': 0, 'file_count': 37, 'entries': [{'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/default.htm', 'is_dir': False}, {'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/dataserv/default.htm', 'is_dir': False}, {'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/tools/default.htm', 'is_dir': False}, {'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/about/default.htm', 'is_dir': False}, {'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/contact/default.htm', 'is_dir': False}, {'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/sitemap/default.htm', 'is_dir': False}, {'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/spectrallibrary/default.htm', 'is_dir': False}, {'name': 'anonftp.html', 'url': 'https://pds-geosciences.wustl.edu/dataserv/anonftp.html', 'is_dir': False}, {'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/workshops/default.htm', 'is_dir': False}, {'name': 'index.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mep/index.htm', 'is_dir': False}, {'name': 'index.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/magellan/index.htm', 'is_dir': False}, {'name': 'index.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/messenger/index.htm', 'is_dir': False}, {'name': 'moon.html', 'url': 'https://pds-geosciences.wustl.edu/dataserv/moon.html', 'is_dir': False}, {'name': 'earth.html', 'url': 'https://pds-geosciences.wustl.edu/dataserv/earth.html', 'is_dir': False}, {'name': 'index.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/near/index.htm', 'is_dir': False}, {'name': 'radio_science.htm', 'url': 'https://pds-geosciences.wustl.edu/dataserv/radio_science.htm', 'is_dir': False}, {'name': 'gravity_models.htm', 'url': 'https://pds-geosciences.wustl.edu/dataserv/gravity_models.htm', 'is_dir': False}, {'name': 'doi.htm', 'url': 'https://pds-geosciences.wustl.edu/dataserv/doi.htm', 'is_dir': False}, {'name': 'holdings.html', 'url': 'https://pds-geosciences.wustl.edu/dataserv/holdings.html', 'is_dir': False}, {'name': 'faq.html', 'url': 'https://pds-geosciences.wustl.edu/faq.html', 'is_dir': False}, {'name': 'userhelp.html', 'url': 'https://pds-geosciences.wustl.edu/dataserv/userhelp.html', 'is_dir': False}, {'name': 'reviewhelp.html', 'url': 'https://pds-geosciences.wustl.edu/peerreview/reviewhelp.html', 'is_dir': False}, {'name': 'proposerhelp.html', 'url': 'https://pds-geosciences.wustl.edu/dataserv/proposerhelp.html', 'is_dir': False}, {'name': 'pds4.html', 'url': 'https://pds-geosciences.wustl.edu/dataserv/pds4.html', 'is_dir': False}, {'name': 'checksums.html', 'url': 'https://pds-geosciences.wustl.edu/dataserv/checksums.html', 'is_dir': False}, {'name': 'pdsonposter.html', 'url': 'https://pds-geosciences.wustl.edu/dataserv/pdsonposter.html', 'is_dir': False}, {'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mro/default.htm', 'is_dir': False}, {'name': 'default.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/lro/default.htm', 'is_dir': False}, {'name': 'index.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/odyssey/index.htm', 'is_dir': False}, {'name': 'index.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/msl/index.htm', 'is_dir': False}, {'name': 'index.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars2020/index.htm', 'is_dir': False}, {'name': 'vmc.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/vmc.htm', 'is_dir': False}, {'name': 'rss.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/lro/rss.htm', 'is_dir': False}, {'name': 'mars.htm', 'url': 'https://pds-geosciences.wustl.edu/missions/mars_express/mars.htm', 'is_dir': False}, {'name': 'rsvolumes_2026.html', 'url': 'https://pds-geosciences.wustl.edu/missions/odyssey/rsvolumes_2026.html', 'is_dir': False}, {'name': 'grs.html', 'url': 'https://pds-geosciences.wustl.edu/missions/odyssey/grs.html', 'is_dir': False}, {'name': 'whatsold.html', 'url': 'https://pds-geosciences.wustl.edu/whatsold.html', 'is_dir': False}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_browse",
+      "tool_input": {
+        "path": "mgs/mgs-m-mola-5-megdr-l3-v1/"
+      },
+      "tool_output": "{'status': 'success', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/', 'directory_count': 1, 'file_count': 1, 'entries': [{'name': 'mgsl_300x', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/', 'is_dir': True}, {'name': 'mgsl_300x_201204.md5', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x_201204.md5', 'is_dir': False}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_browse",
+      "tool_input": {
+        "path": "mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/"
+      },
+      "tool_output": "{'status': 'success', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/', 'directory_count': 10, 'file_count': 3, 'entries': [{'name': 'catalog', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/catalog/', 'is_dir': True}, {'name': 'document', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/document/', 'is_dir': True}, {'name': 'extras', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/extras/', 'is_dir': True}, {'name': 'index', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/index/', 'is_dir': True}, {'name': 'meg004', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg004/', 'is_dir': True}, {'name': 'meg016', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg016/', 'is_dir': True}, {'name': 'meg032', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg032/', 'is_dir': True}, {'name': 'meg064', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg064/', 'is_dir': True}, {'name': 'meg128', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg128/', 'is_dir': True}, {'name': 'polar', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/polar/', 'is_dir': True}, {'name': 'aareadme.txt', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/aareadme.txt', 'is_dir': False}, {'name': 'errata.txt', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/errata.txt', 'is_dir': False}, {'name': 'voldesc.cat', 'url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/voldesc.cat', 'is_dir': False}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_with_collections",
+      "tool_input": {
+        "path": "mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/"
+      },
+      "tool_output": "{'status': 'success', 'volume_dir': 'mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x', 'labels': [{'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'source_url': 'https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/voldesc.cat', 'title': 'MGS MARS ORBITER LASER ALTIMETER PEDR AND EGDR ARCHIVES', 'fields': {'PDS_VERSION_ID': 'PDS3', 'RECORD_TYPE': 'STREAM', 'VOLUME': {'VOLUME_SERIES_NAME': 'MISSION TO MARS', 'VOLUME_SET_NAME': 'MGS MARS ORBITER LASER ALTIMETER PEDR AND EGDR ARCHIVES', 'VOLUME_SET_ID': 'USA_NASA_JPL_MGSL_XXXX', 'VOLUME_NAME': 'MGS MOLA MEGDR ARCHIVES', 'VOLUME_ID': 'MGSL_300X', 'VOLUMES': 'UNK', 'MEDIUM_TYPE': 'ONLINE', 'VOLUME_FORMAT': 'N/A', 'VOLUME_VERSION_ID': 'VERSION 1', 'PUBLICATION_DATE': '2004-11-24', 'DESCRIPTION': 'This volume contains the MOLA Mission Experiment Gridded Data Record (MEGDR).', 'DATA_SET_ID': 'MGS-M-MOLA-5-MEGDR-L3-V1.0', 'DATA_PRODUCER': {'INSTITUTION_NAME': 'NASA/GODDARD SPACE FLIGHT CENTER', 'FACILITY_NAME': 'LABORATORY FOR TERRESTRIAL PHYSICS', 'FULL_NAME': 'DAVID E. SMITH', 'ADDRESS_TEXT': 'CODE 920, NASA-GSFC, GREENBELT, MD 20771', 'ELECTRONIC_MAIL_ID': 'DAVID.E.SMITH@GSFC.NASA.GOV', 'TELEPHONE_NUMBER': '301-286-8671'}, 'CATALOG': {'^MISSION_CATALOG': 'MISSION.CAT', '^DATA_SET_CATALOG': 'MEGDRDS.CAT', '^INSTRUMENT_CATALOG': 'INST.CAT', '^INSTRUMENT_HOST_CATALOG': 'INSTHOST.CAT', '^PERSONNEL_CATALOG': 'PERSON.CAT', '^REFERENCE_CATALOG': 'REF.CAT', '^DATA_SET_MAP_PROJECTION_CATALOG': 'DSMAP.CAT'}}}}], 'collections': [], 'error': None}"
+    },
+    {
+      "tool_name": "final_result",
+      "tool_input": {
+        "candidates": [
+          {
+            "dataset_id": "MGS-M-MOLA-5-MEGDR-L3-V1.0",
+            "path": "mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/",
+            "title": "MGS MARS ORBITER LASER ALTIMETER PEDR AND EGDR ARCHIVES (MEGDR volume)",
+            "mission": "mgs",
+            "node": null,
+            "pds_version": "PDS3",
+            "reasoning": "Regional topography (MOLA MEGDR) is commonly used to analyze drainage patterns, basin geometry, and paleoslopes in Arabia Terra when interpreting fluvial/depositional systems."
+          }
+        ],
+        "summary": "Holdings search for an 'Arabia Terra' named dataset returned none (the GEO holdings index is keyed to dataset IDs, not places). I inspected one core Mars topography volume (MOLA MEGDR) that is relevant for geomorphic/fluvial analyses in Arabia Terra."
+      },
+      "tool_output": "Final result processed."
+    }
+  ],
+  "full_trace": [
+    {
+      "parts": [
+        {
+          "content": "You are a dataset-discovery assistant for the NASA PDS Geosciences node at https://pds-geosciences.wustl.edu/.\n\nDirectory layout:\n  mission/ \u2192 dataset_or_bundle/ \u2192 volume/ (PDS3) or sub-collections (PDS4)\n\nTop-level mission directories: m2020, insight, msl, mro, mer, mex, ody, phx, mgs, mpf, viking, mariner, mars, mgn, premgn, venus, messenger, grail, clps, lunar, lro, earth, lab, near.\n\nCommon mission/instrument abbreviations:\n  Mars Express = MEX (instruments: HRSC, OMEGA, MARSIS, PFS, SPICAM, MaRS)\n  Mars Reconnaissance Orbiter = MRO (instruments: HiRISE, CTX, CRISM, SHARAD, MCS)\n  Mars Science Laboratory / Curiosity = MSL (instruments: ChemCam, APXS, CheMin, SAM, Mastcam, MAHLI, DAN)\n  Mars 2020 / Perseverance = M2020 (instruments: PIXL, SHERLOC, Mastcam-Z, SuperCam, RIMFAX)\n  Mars Exploration Rovers (Spirit=MER2, Opportunity=MER1) (instruments: Pancam, Mini-TES/MTES, APXS, MB, MI)\n  Mars Global Surveyor = MGS (instruments: MOC, MOLA, TES, MAG)\n  Mars Odyssey = ODY (instruments: THEMIS, GRS, NS)\n  Phoenix = PHX (instruments: TEGA, MECA, SSI, OM, RAC)\n  Viking = VL1/VL2/VO1/VO2 (instruments: camera, IRTM, MAWD)\n  MESSENGER = MESS (instruments: MDIS, GRNS, XRS, MLA, MASCS)\n  Magellan = MGN (instruments: SAR, altimetry, radiometry)\n  LRO (instruments: LOLA, Diviner, LROC, Mini-RF, LAMP)\n  GRAIL (instruments: LGRS)\n  NEAR (instruments: NLR, MSI, XGRS, MAG)\n\nPDS3 vs PDS4: both formats co-exist on the same node. PDS3 directory names are ALL-CAPS-style identifiers; PDS4 bundle directories begin with `urn-nasa-pds-`.\n\nBundle vs collection (PDS4): a bundle directory holds the bundle label plus sub-directories containing collection labels. `inspect_with_collections` returns both levels.\n\nExtracting dataset_id from labels:\n  - PDS3: VOLUME.DATA_SET_ID\n  - PDS4 bundle: Identification_Area.logical_identifier (in `labels`)\n  - PDS4 collection: Identification_Area.logical_identifier (in `collections`)\n\nApproach:\n  - Queries are often science-level questions from published papers. Before searching, infer which mission(s) and instrument(s) are relevant using the abbreviation table above, then search holdings with those terms.\n  - If holdings search returns nothing useful, browse the relevant mission directory (e.g. `mro/`) and inspect promising datasets from there.\n\nConstraints:\n  - Stay under ~15 tool calls per query.\n  - Only return paths you've actually inspected \u2014 never guess.\n  - If nothing matches, return an empty candidate list with a clear summary.\n",
+          "timestamp": "2026-04-29 01:49:10.527925+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "Do the Arabia Terra deposits record only one fluvial style or a diverse range of depositional systems?",
+          "timestamp": "2026-04-29 01:49:10.527964+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:10.528168+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "args": "{\"query\": \"MRO CTX\", \"limit\": 10}",
+          "tool_call_id": "call_PObBXeGfzGQ1tF8XEiyb8Y6N",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "args": "{\"query\": \"MRO HIRISE\", \"limit\": 10}",
+          "tool_call_id": "call_tVArM99FZMgQ1eTRKucmgDtY",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "args": "{\"query\": \"MGS MOLA\", \"limit\": 10}",
+          "tool_call_id": "call_CkpqcrxgvwiPUzXg6PwQxxFv",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "args": "{\"query\": \"ODY THEMIS\", \"limit\": 10}",
+          "tool_call_id": "call_XLhXMF3RFGFRnlsiZlQWeuPR",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1546,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 188,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 59,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:13.617734+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:11+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoL1QmyoH0yYh46G1Jsb9sXZ3h0f",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "content": {
+            "status": "success",
+            "total_in_index": 573,
+            "count": 10,
+            "items": [
+              {
+                "dataset_id": "urn:nasa:pds:lcross_mro_photdoc",
+                "pds_version": "PDS4",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/lcross/default.htm",
+                "mission_hint": null,
+                "score": 60.0
+              },
+              {
+                "dataset_id": "urn:nasa:pds:lcross_mro_photgjon",
+                "pds_version": "PDS4",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/lcross/default.htm",
+                "mission_hint": null,
+                "score": 60.0
+              },
+              {
+                "dataset_id": "MRO-M-CRISM-2-EDR-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+                "mission_hint": "mro",
+                "score": 60.0
+              },
+              {
+                "dataset_id": "MRO-M-CRISM-3-RDR-TARGETED-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+                "mission_hint": "mro",
+                "score": 60.0
+              },
+              {
+                "dataset_id": "urn:nasa:pds:mro_crism_trdr_2101",
+                "pds_version": "PDS4",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+                "mission_hint": "mro",
+                "score": 60.0
+              },
+              {
+                "dataset_id": "urn:nasa:pds:mro_crism_trdr_2102",
+                "pds_version": "PDS4",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+                "mission_hint": "mro",
+                "score": 60.0
+              },
+              {
+                "dataset_id": "urn:nasa:pds:mro_crism_trdr_2103",
+                "pds_version": "PDS4",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+                "mission_hint": "mro",
+                "score": 60.0
+              },
+              {
+                "dataset_id": "urn:nasa:pds:mro_crism_trdr_2104",
+                "pds_version": "PDS4",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+                "mission_hint": "mro",
+                "score": 60.0
+              },
+              {
+                "dataset_id": "urn:nasa:pds:mro_crism_trdr_2105",
+                "pds_version": "PDS4",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+                "mission_hint": "mro",
+                "score": 60.0
+              },
+              {
+                "dataset_id": "urn:nasa:pds:mro_crism_trdr_2106",
+                "pds_version": "PDS4",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+                "mission_hint": "mro",
+                "score": 60.0
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_PObBXeGfzGQ1tF8XEiyb8Y6N",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:14.440845+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "content": {
+            "status": "success",
+            "total_in_index": 573,
+            "count": 1,
+            "items": [
+              {
+                "dataset_id": "MRO-M-CRISM-2-EDR-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mro/crism.htm",
+                "mission_hint": "mro",
+                "score": 50.0
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_tVArM99FZMgQ1eTRKucmgDtY",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:14.440965+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "content": {
+            "status": "success",
+            "total_in_index": 573,
+            "count": 10,
+            "items": [
+              {
+                "dataset_id": "MGS-M-MOLA-1-AEDR-L0-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/aedr.html",
+                "mission_hint": "mgs",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MGS-M-MOLA-3-PEDR-ASCII-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/pedr.html",
+                "mission_hint": "mgs",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MGS-M-MOLA-3-PEDR-L1A-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/pedr.html",
+                "mission_hint": "mgs",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MGS-M-MOLA-3-PRDR-L1A-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/mola.html",
+                "mission_hint": "mgs",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MGS-M-MOLA-5-IEGDR-L3-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/iegdr.html",
+                "mission_hint": "mgs",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MGS-M-MOLA-5-IEGDR-L3-V2.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/iegdr.html",
+                "mission_hint": "mgs",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MGS-M-MOLA-5-MEGDR-L3-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/megdr.html",
+                "mission_hint": "mgs",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MGS-M-MOLA-5-PEDR-SAMPLER-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/sampler.html",
+                "mission_hint": "mgs",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MGS-M-MOLA-5-SHADR-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/shadr.html",
+                "mission_hint": "mgs",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MGS-M-MAG/ER-5-SAMPLER-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mgs/sampler.html",
+                "mission_hint": "mgs",
+                "score": 54.54545454545455
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_CkpqcrxgvwiPUzXg6PwQxxFv",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:14.441127+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "content": {
+            "status": "success",
+            "total_in_index": 573,
+            "count": 0,
+            "items": [],
+            "error": null
+          },
+          "tool_call_id": "call_XLhXMF3RFGFRnlsiZlQWeuPR",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:14.440501+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:14.441389+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "args": "{\"path\":\"mro/\"}",
+          "tool_call_id": "call_NKDlvu3qPklidcE4yFWdqu2J",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3293,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 145,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 117,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:18.834571+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:14+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoL4xM3SUF8HPBbVQE8QTzEdGC0V",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "content": {
+            "status": "success",
+            "url": "https://pds-geosciences.wustl.edu/mro/",
+            "directory_count": 18,
+            "file_count": 0,
+            "entries": [
+              {
+                "name": "crism-workshop-2009",
+                "url": "https://pds-geosciences.wustl.edu/mro/crism-workshop-2009/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-crism-2-edr-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-crism-2-edr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-crism-3-rdr-targeted-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-crism-3-rdr-targeted-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-crism-4-rdr-targeted-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-crism-4-rdr-targeted-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-crism-4-typespec-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-crism-4-typespec-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-crism-5-rdr-mptargeted-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-crism-5-rdr-mptargeted-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-crism-5-rdr-multispectral-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-crism-5-rdr-multispectral-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-crism-5-rdr-vnirhyperspectral-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-crism-5-rdr-vnirhyperspectral-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-crism-6-ddr-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-crism-6-ddr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-crism-6-ldr-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-crism-6-ldr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-rss-1-magr-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-rss-1-magr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-rss-5-sdp-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-rss-5-sdp-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-sharad-3-edr-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-sharad-3-edr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-sharad-4-rdr-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-sharad-4-rdr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-sharad-5-3d-v1",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-sharad-5-3d-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mro-m-sharad-5-radargram-v2",
+                "url": "https://pds-geosciences.wustl.edu/mro/mro-m-sharad-5-radargram-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "urn-nasa-pds-crism_ato_s_iof_lml",
+                "url": "https://pds-geosciences.wustl.edu/mro/urn-nasa-pds-crism_ato_s_iof_lml/",
+                "is_dir": true
+              },
+              {
+                "name": "urn-nasa-pds-mro_sharad_simulations",
+                "url": "https://pds-geosciences.wustl.edu/mro/urn-nasa-pds-mro_sharad_simulations/",
+                "is_dir": true
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_NKDlvu3qPklidcE4yFWdqu2J",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:19.230303+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:19.230820+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "args": "{\"query\":\"MEX HRSC DTM\",\"limit\":10}",
+          "tool_call_id": "call_tw6EEqUxovE57no5Xdic0DoR",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4253,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2432,
+        "output_tokens": 156,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 120,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:22.541569+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:19+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoL9qqrQah9gxOifenRtSnqT98DX",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "content": {
+            "status": "success",
+            "total_in_index": 573,
+            "count": 9,
+            "items": [
+              {
+                "dataset_id": "MEX-M-HRSC-5-REFDR-DTM-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm",
+                "mission_hint": "mex",
+                "score": 100.0
+              },
+              {
+                "dataset_id": "MEX-M-HRSC-3-RDR-V4.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm",
+                "mission_hint": "mex",
+                "score": 80.0
+              },
+              {
+                "dataset_id": "MEX-M-HRSC-5-REFDR-MAPPROJECTED-V3.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm",
+                "mission_hint": "mex",
+                "score": 80.0
+              },
+              {
+                "dataset_id": "MEX-M-HRSC-4-DDR-CLOUDS-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm",
+                "mission_hint": "mex",
+                "score": 80.0
+              },
+              {
+                "dataset_id": "MEX-M-MRS-5-OCC-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mars_express/mars.htm",
+                "mission_hint": "mex",
+                "score": 56.25
+              },
+              {
+                "dataset_id": "MEX-M-MARSIS-2-EDR-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mars_express/marsis.htm",
+                "mission_hint": "mex",
+                "score": 51.42857142857143
+              },
+              {
+                "dataset_id": "MEX-M-MRS-1/2/3-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mars_express/mars.htm",
+                "mission_hint": "mex",
+                "score": 50.0
+              },
+              {
+                "dataset_id": "MEX-M-VMC-2-EDR-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mars_express/vmc.htm",
+                "mission_hint": "mex",
+                "score": 50.0
+              },
+              {
+                "dataset_id": "MEX-M-VMC-3-RDR-V1.0",
+                "pds_version": "PDS3",
+                "landing_url": "https://pds-geosciences.wustl.edu/missions/mars_express/vmc.htm",
+                "mission_hint": "mex",
+                "score": 50.0
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_tw6EEqUxovE57no5Xdic0DoR",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:22.569198+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:22.569536+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "args": "{\"path\": \"mgs/\"}",
+          "tool_call_id": "call_wQQYLal3G8vqhSVLLSBNsGjs",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_browse",
+          "args": "{\"path\": \"mex/\"}",
+          "tool_call_id": "call_8RbwXflKlraAKaYhPc7jCuXt",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_browse",
+          "args": "{\"path\": \"ody/\"}",
+          "tool_call_id": "call_TVuvHAmVylGNZKmEIU7KscmC",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_browse",
+          "args": "{\"path\": \"missions/mars_express/\"}",
+          "tool_call_id": "call_SNhiTZCqXuhdAw0B0iDfw2S7",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4887,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 3456,
+        "output_tokens": 245,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 142,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:26.257597+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:22+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoLCnCB8LRiqiN6qTrpadIdHBmp7",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "content": {
+            "status": "success",
+            "url": "https://pds-geosciences.wustl.edu/mgs/",
+            "directory_count": 16,
+            "file_count": 0,
+            "entries": [
+              {
+                "name": "mgs-m-mola-1-aedr-l0-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-1-aedr-l0-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-mola-3-pedr-l1a-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-3-pedr-l1a-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-mola-3-prdr-l1a-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-3-prdr-l1a-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-mola-5-iegdr-l3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-iegdr-l3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-mola-5-iegdr-l3-v2",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-iegdr-l3-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-mola-5-megdr-l3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-mola-5-shadr-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-shadr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-rss-1-cru-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-1-cru-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-rss-1-ext-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-1-ext-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-rss-1-map-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-1-map-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-rss-1-moi-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-1-moi-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-rss-5-sdp-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-rss-5-sdp-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-tes-3-tsdr-v2",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-3-tsdr-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-tes-5-timap-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-5-timap-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-m-tes-special-v1",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-tes-special-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mgs-sampler",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-sampler/",
+                "is_dir": true
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_wQQYLal3G8vqhSVLLSBNsGjs",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:26.572879+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_browse",
+          "content": {
+            "status": "success",
+            "url": "https://pds-geosciences.wustl.edu/mex/",
+            "directory_count": 185,
+            "file_count": 0,
+            "entries": [
+              {
+                "name": "mex-m-aspera3-2-3-edr-rdr-npi-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-3-edr-rdr-npi-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-3-edr-rdr-npi-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-3-edr-rdr-npi-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-3-edr-rdr-npi-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-3-edr-rdr-npi-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-3-edr-rdr-npi-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-3-edr-rdr-npi-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-3-edr-rdr-npi-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-els-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-els-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-els-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-els-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-els-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-els-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-els-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-els-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-els-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-ima-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-ima-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-ima-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-ima-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-ima-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-ima-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-ima-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-2-edr-ima-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-2-edr-ima-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-3-rdr-els-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-3-rdr-els-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-3-rdr-els-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-3-rdr-els-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-3-rdr-els-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-3-rdr-els-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-3-rdr-els-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-3-rdr-els-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-3-rdr-els-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-4-ddr-ima-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-4-ddr-ima-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-4-ddr-ima-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-4-ddr-ima-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-4-ddr-ima-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-4-ddr-ima-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-4-ddr-ima-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-4-ddr-ima-ext8-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-4-ddr-ima-ext8-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-5-ddr-ima-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-5-ddr-ima-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-5-ddr-ima-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-5-ddr-ima-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-5-ddr-ima-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-5-ddr-ima-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-5-ddr-ima-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-aspera3-5-ddr-ima-ext8-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-aspera3-5-ddr-ima-ext8-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-ext1-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext1-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-ext2-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext2-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-ext3-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext3-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-ext4-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext4-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-ext5-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext5-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-ext6-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext6-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-ext7-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext7-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-ext8-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext8-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-ext9-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-ext9-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-v3",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-v3/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-3-rdr-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-ddr-clouds-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-ddr-clouds-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-refdr-mapproject-ext1-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext1-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-refdr-mapproject-ext2-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext2-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-refdr-mapproject-ext3-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext3-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-refdr-mapproject-ext4-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext4-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-refdr-mapproject-ext5-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext5-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-refdr-mapproject-ext6-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext6-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-refdr-mapproject-ext7-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext7-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-refdr-mapproject-ext8-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext8-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-4-refdr-mapproject-ext9-v4",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-4-refdr-mapproject-ext9-v4/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-5-refdr-dtm-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-5-refdr-dtm-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-hrsc-5-refdr-mapprojected-v3",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-5-refdr-mapprojected-v3/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-2-edr-ext1-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext1-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-2-edr-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-2-edr-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-2-edr-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-2-edr-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-2-edr-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-2-edr-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-2-edr-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-2-edr-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ais-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ais-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ais-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ais-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ais-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ais-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ais-ext8-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-ext8-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ais-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ais-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ss-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ss-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ss-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ss-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ss-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ss-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ss-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-3-rdr-ss-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-3-rdr-ss-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-5-ddr-eledens-bmag-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-eledens-bmag-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-5-ddr-eledens-bmag-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-eledens-bmag-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-5-ddr-eledens-bmag-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-eledens-bmag-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-5-ddr-ss-tec-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-ss-tec-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-marsis-5-ddr-ss-tec-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-marsis-5-ddr-ss-tec-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-ext8-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext8-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-ext9-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-ext9-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-1_2_3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-1_2_3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-mrs-5-occ-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-mrs-5-occ-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-ext-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-ext8-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext8-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-ext9-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-ext9-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-2-edr-flight-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-2-edr-flight-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-4-ddr-prof-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-4-ddr-prof-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-5-ddr-global-maps-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-5-ddr-global-maps-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-omega-5-ddr-h2oclouds-maps-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-omega-5-ddr-h2oclouds-maps-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-pfs-2-edr-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-pfs-2-edr-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-pfs-2-edr-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-pfs-2-edr-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-pfs-2-edr-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-pfs-2-edr-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-pfs-2-edr-nominal-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-pfs-2-edr-nominal-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-pfs-5-ddr-maps-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-pfs-5-ddr-maps-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-iredr-rawxmars-ext1-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext1-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-iredr-rawxmars-ext2-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext2-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-iredr-rawxmars-ext3-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext3-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-iredr-rawxmars-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-iredr-rawxmars-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-iredr-rawxmars-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-iredr-rawxmars-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-iredr-rawxmars-ext8-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-iredr-rawxmars-ext8-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-irrdr-cleaned-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-irrdr-cleaned-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-irrdr-cleaned-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-irrdr-cleaned-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-irrdr-cleaned-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-irrdr-cleaned-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-irrdr-cleaned-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-irrdr-cleaned-ext8-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-ext8-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-irrdr-cleaned-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-irrdr-cleaned-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-uvedr-rawxmars-ext1-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvedr-rawxmars-ext1-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-uvedr-rawxmars-ext2-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvedr-rawxmars-ext2-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-uvedr-rawxmars-ext3-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvedr-rawxmars-ext3-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-uvedr-rawxmars-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvedr-rawxmars-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-uvrdr-cleaned-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-uvrdr-cleaned-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-uvrdr-cleaned-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-uvrdr-cleaned-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-2-uvrdr-cleaned-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-2-uvrdr-cleaned-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-4-irddr-prof-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-4-irddr-prof-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-spi-4-uvddr-prof-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-spi-4-uvddr-prof-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-ext8-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext8-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-ext9-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-ext9-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-2-edr-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-2-edr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-ext1-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext1-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-ext2-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext2-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-ext3-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext3-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-ext4-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext4-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-ext5-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext5-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-ext6-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext6-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-ext7-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext7-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-ext8-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext8-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-ext9-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-ext9-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-m-vmc-3-rdr-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-m-vmc-3-rdr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-msa-hrsc-5-refdr-phobos-maps-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-msa-hrsc-5-refdr-phobos-maps-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-sun-aspera3-4-swm-v1",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-sun-aspera3-4-swm-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-y-m-spi-2-iredr-rawxcru-mars-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-y-m-spi-2-iredr-rawxcru-mars-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "mex-y-m-spi-2-uvedr-rawxcru-mars-v2",
+                "url": "https://pds-geosciences.wustl.edu/mex/mex-y-m-spi-2-uvedr-rawxcru-mars-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "urn-nasa-pds-mex_marsis_optim",
+                "url": "https://pds-geosciences.wustl.edu/mex/urn-nasa-pds-mex_marsis_optim/",
+                "is_dir": true
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_8RbwXflKlraAKaYhPc7jCuXt",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:26.700483+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_browse",
+          "content": {
+            "status": "success",
+            "url": "https://pds-geosciences.wustl.edu/ody/",
+            "directory_count": 11,
+            "file_count": 0,
+            "entries": [
+              {
+                "name": "ody-m-grs-2-edr-v1",
+                "url": "https://pds-geosciences.wustl.edu/ody/ody-m-grs-2-edr-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "ody-m-grs-4-cgs-v1",
+                "url": "https://pds-geosciences.wustl.edu/ody/ody-m-grs-4-cgs-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "ody-m-grs-4-dhd-v1",
+                "url": "https://pds-geosciences.wustl.edu/ody/ody-m-grs-4-dhd-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "ody-m-grs-4-dnd-v2",
+                "url": "https://pds-geosciences.wustl.edu/ody/ody-m-grs-4-dnd-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "ody-m-grs-5-ahd-v1",
+                "url": "https://pds-geosciences.wustl.edu/ody/ody-m-grs-5-ahd-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "ody-m-grs-5-and-v2",
+                "url": "https://pds-geosciences.wustl.edu/ody/ody-m-grs-5-and-v2/",
+                "is_dir": true
+              },
+              {
+                "name": "ody-m-grs-5-elements-v1",
+                "url": "https://pds-geosciences.wustl.edu/ody/ody-m-grs-5-elements-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "ody-m-grs-5-sgs-v1",
+                "url": "https://pds-geosciences.wustl.edu/ody/ody-m-grs-5-sgs-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "ody-m-rss-1-raw-v1",
+                "url": "https://pds-geosciences.wustl.edu/ody/ody-m-rss-1-raw-v1/",
+                "is_dir": true
+              },
+              {
+                "name": "urn-nasa-pds-mesick_pdart19_odyssey_idnd",
+                "url": "https://pds-geosciences.wustl.edu/ody/urn-nasa-pds-mesick_pdart19_odyssey_idnd/",
+                "is_dir": true
+              },
+              {
+                "name": "urn-nasa-pds-odyssey_grs_special",
+                "url": "https://pds-geosciences.wustl.edu/ody/urn-nasa-pds-odyssey_grs_special/",
+                "is_dir": true
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_TVuvHAmVylGNZKmEIU7KscmC",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:26.699332+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_browse",
+          "content": {
+            "status": "success",
+            "url": "https://pds-geosciences.wustl.edu/missions/mars_express/",
+            "directory_count": 0,
+            "file_count": 10,
+            "entries": [
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "aspera.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/aspera.htm",
+                "is_dir": false
+              },
+              {
+                "name": "hrsc.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/hrsc.htm",
+                "is_dir": false
+              },
+              {
+                "name": "mars.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/mars.htm",
+                "is_dir": false
+              },
+              {
+                "name": "marsis.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/marsis.htm",
+                "is_dir": false
+              },
+              {
+                "name": "omega.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/omega.htm",
+                "is_dir": false
+              },
+              {
+                "name": "pfs.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/pfs.htm",
+                "is_dir": false
+              },
+              {
+                "name": "spicam.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/spicam.htm",
+                "is_dir": false
+              },
+              {
+                "name": "spice.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/spice.htm",
+                "is_dir": false
+              },
+              {
+                "name": "vmc.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/vmc.htm",
+                "is_dir": false
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_SNhiTZCqXuhdAw0B0iDfw2S7",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:26.699644+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:26.700850+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "args": "{\"path\": \"mgs/mgs-m-mola-5-megdr-l3-v1/\"}",
+          "tool_call_id": "call_Yjd4drKHCymLorE4xz4MvlPd",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "args": "{\"path\": \"mgs/mgs-m-mola-5-iegdr-l3-v2/\"}",
+          "tool_call_id": "call_BALqV9aJR7NY0BU6Wjs3vovc",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "args": "{\"path\": \"mex/mex-m-hrsc-5-refdr-dtm-v1/\"}",
+          "tool_call_id": "call_ITdReq1Pj2gmCnxx4siHSg4C",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "args": "{\"path\": \"mex/mex-m-hrsc-3-rdr-v4/\"}",
+          "tool_call_id": "call_UEH9GyViGiPbiBGRUHfMJsxP",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 17801,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 4480,
+        "output_tokens": 296,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 130,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:31.807889+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:27+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoLHGsnwj7hE1mtDwJfLVWHcnLSf",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "content": {
+            "status": "not_found",
+            "volume_dir": null,
+            "labels": [],
+            "collections": [],
+            "error": "No voldesc.cat/voldesc.sfd, bundle_*.xml/.lblx, or collection_*.xml/.lblx found at https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/"
+          },
+          "tool_call_id": "call_Yjd4drKHCymLorE4xz4MvlPd",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:32.203250+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "content": {
+            "status": "not_found",
+            "volume_dir": null,
+            "labels": [],
+            "collections": [],
+            "error": "No voldesc.cat/voldesc.sfd, bundle_*.xml/.lblx, or collection_*.xml/.lblx found at https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-iegdr-l3-v2/"
+          },
+          "tool_call_id": "call_BALqV9aJR7NY0BU6Wjs3vovc",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:32.211465+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "content": {
+            "status": "not_found",
+            "volume_dir": null,
+            "labels": [],
+            "collections": [],
+            "error": "No voldesc.cat/voldesc.sfd, bundle_*.xml/.lblx, or collection_*.xml/.lblx found at https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-5-refdr-dtm-v1/"
+          },
+          "tool_call_id": "call_ITdReq1Pj2gmCnxx4siHSg4C",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:32.168472+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "content": {
+            "status": "not_found",
+            "volume_dir": null,
+            "labels": [],
+            "collections": [],
+            "error": "No voldesc.cat/voldesc.sfd, bundle_*.xml/.lblx, or collection_*.xml/.lblx found at https://pds-geosciences.wustl.edu/mex/mex-m-hrsc-3-rdr-v4/"
+          },
+          "tool_call_id": "call_UEH9GyViGiPbiBGRUHfMJsxP",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:32.211154+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:32.211911+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "args": "{\"query\":\"Arabia Terra\",\"limit\":10}",
+          "tool_call_id": "call_NC9SdZ5fuIEb3xRNUomFZ3uB",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 18301,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 16768,
+        "output_tokens": 125,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 92,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:35.248123+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:32+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoLMvsq2xVjuum7gJFmc3Lf60Wy9",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_search_holdings",
+          "content": {
+            "status": "success",
+            "total_in_index": 573,
+            "count": 0,
+            "items": [],
+            "error": null
+          },
+          "tool_call_id": "call_NC9SdZ5fuIEb3xRNUomFZ3uB",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:35.277596+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:35.277900+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "args": "{\"path\":\"\"}",
+          "tool_call_id": "call_DIUC173m8EvpsJY9tcgyK2UQ",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 18365,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 17792,
+        "output_tokens": 20,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:36.238607+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:35+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoLPKqtzO2rKikVkLLPhqc1mG7CX",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "content": {
+            "status": "success",
+            "url": "https://pds-geosciences.wustl.edu/",
+            "directory_count": 0,
+            "file_count": 37,
+            "entries": [
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/tools/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/about/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/contact/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/sitemap/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/spectrallibrary/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "anonftp.html",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/anonftp.html",
+                "is_dir": false
+              },
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/workshops/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "index.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mep/index.htm",
+                "is_dir": false
+              },
+              {
+                "name": "index.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/magellan/index.htm",
+                "is_dir": false
+              },
+              {
+                "name": "index.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/messenger/index.htm",
+                "is_dir": false
+              },
+              {
+                "name": "moon.html",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/moon.html",
+                "is_dir": false
+              },
+              {
+                "name": "earth.html",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/earth.html",
+                "is_dir": false
+              },
+              {
+                "name": "index.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/near/index.htm",
+                "is_dir": false
+              },
+              {
+                "name": "radio_science.htm",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/radio_science.htm",
+                "is_dir": false
+              },
+              {
+                "name": "gravity_models.htm",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/gravity_models.htm",
+                "is_dir": false
+              },
+              {
+                "name": "doi.htm",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/doi.htm",
+                "is_dir": false
+              },
+              {
+                "name": "holdings.html",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/holdings.html",
+                "is_dir": false
+              },
+              {
+                "name": "faq.html",
+                "url": "https://pds-geosciences.wustl.edu/faq.html",
+                "is_dir": false
+              },
+              {
+                "name": "userhelp.html",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/userhelp.html",
+                "is_dir": false
+              },
+              {
+                "name": "reviewhelp.html",
+                "url": "https://pds-geosciences.wustl.edu/peerreview/reviewhelp.html",
+                "is_dir": false
+              },
+              {
+                "name": "proposerhelp.html",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/proposerhelp.html",
+                "is_dir": false
+              },
+              {
+                "name": "pds4.html",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/pds4.html",
+                "is_dir": false
+              },
+              {
+                "name": "checksums.html",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/checksums.html",
+                "is_dir": false
+              },
+              {
+                "name": "pdsonposter.html",
+                "url": "https://pds-geosciences.wustl.edu/dataserv/pdsonposter.html",
+                "is_dir": false
+              },
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mro/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "default.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/lro/default.htm",
+                "is_dir": false
+              },
+              {
+                "name": "index.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/odyssey/index.htm",
+                "is_dir": false
+              },
+              {
+                "name": "index.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/msl/index.htm",
+                "is_dir": false
+              },
+              {
+                "name": "index.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars2020/index.htm",
+                "is_dir": false
+              },
+              {
+                "name": "vmc.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/vmc.htm",
+                "is_dir": false
+              },
+              {
+                "name": "rss.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/lro/rss.htm",
+                "is_dir": false
+              },
+              {
+                "name": "mars.htm",
+                "url": "https://pds-geosciences.wustl.edu/missions/mars_express/mars.htm",
+                "is_dir": false
+              },
+              {
+                "name": "rsvolumes_2026.html",
+                "url": "https://pds-geosciences.wustl.edu/missions/odyssey/rsvolumes_2026.html",
+                "is_dir": false
+              },
+              {
+                "name": "grs.html",
+                "url": "https://pds-geosciences.wustl.edu/missions/odyssey/grs.html",
+                "is_dir": false
+              },
+              {
+                "name": "whatsold.html",
+                "url": "https://pds-geosciences.wustl.edu/whatsold.html",
+                "is_dir": false
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_DIUC173m8EvpsJY9tcgyK2UQ",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:36.651859+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:36.652145+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "args": "{\"path\":\"mgs/mgs-m-mola-5-megdr-l3-v1/\"}",
+          "tool_call_id": "call_WxgzCrjtgz8qK3l9L446r8z6",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 19579,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 18176,
+        "output_tokens": 210,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 168,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:40.561861+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:36+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoLQfNQwNgJSCg2Y3eYso2FosjLU",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "content": {
+            "status": "success",
+            "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/",
+            "directory_count": 1,
+            "file_count": 1,
+            "entries": [
+              {
+                "name": "mgsl_300x",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/",
+                "is_dir": true
+              },
+              {
+                "name": "mgsl_300x_201204.md5",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x_201204.md5",
+                "is_dir": false
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_WxgzCrjtgz8qK3l9L446r8z6",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:40.913168+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:40.913501+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "args": "{\"path\":\"mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/\"}",
+          "tool_call_id": "call_ZEWuowPAoWrn8kBUp1ICymg2",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 19792,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 18816,
+        "output_tokens": 42,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:42.017719+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:41+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoLVeYL7BeprjgJeBjuQHjxmMbFo",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_browse",
+          "content": {
+            "status": "success",
+            "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/",
+            "directory_count": 10,
+            "file_count": 3,
+            "entries": [
+              {
+                "name": "catalog",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/catalog/",
+                "is_dir": true
+              },
+              {
+                "name": "document",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/document/",
+                "is_dir": true
+              },
+              {
+                "name": "extras",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/extras/",
+                "is_dir": true
+              },
+              {
+                "name": "index",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/index/",
+                "is_dir": true
+              },
+              {
+                "name": "meg004",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg004/",
+                "is_dir": true
+              },
+              {
+                "name": "meg016",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg016/",
+                "is_dir": true
+              },
+              {
+                "name": "meg032",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg032/",
+                "is_dir": true
+              },
+              {
+                "name": "meg064",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg064/",
+                "is_dir": true
+              },
+              {
+                "name": "meg128",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/meg128/",
+                "is_dir": true
+              },
+              {
+                "name": "polar",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/polar/",
+                "is_dir": true
+              },
+              {
+                "name": "aareadme.txt",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/aareadme.txt",
+                "is_dir": false
+              },
+              {
+                "name": "errata.txt",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/errata.txt",
+                "is_dir": false
+              },
+              {
+                "name": "voldesc.cat",
+                "url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/voldesc.cat",
+                "is_dir": false
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_ZEWuowPAoWrn8kBUp1ICymg2",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:42.321083+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:42.321600+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "args": "{\"path\":\"mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/\"}",
+          "tool_call_id": "call_WszwCjk7rGdBn6H2SRkEc12L",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 20552,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 18816,
+        "output_tokens": 45,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:43.471238+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:42+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoLWiHK4ENNZ37QQwT1i8IttXLQ4",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_with_collections",
+          "content": {
+            "status": "success",
+            "volume_dir": "mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x",
+            "labels": [
+              {
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "source_url": "https://pds-geosciences.wustl.edu/mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/voldesc.cat",
+                "title": "MGS MARS ORBITER LASER ALTIMETER PEDR AND EGDR ARCHIVES",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "RECORD_TYPE": "STREAM",
+                  "VOLUME": {
+                    "VOLUME_SERIES_NAME": "MISSION TO MARS",
+                    "VOLUME_SET_NAME": "MGS MARS ORBITER LASER ALTIMETER PEDR AND EGDR ARCHIVES",
+                    "VOLUME_SET_ID": "USA_NASA_JPL_MGSL_XXXX",
+                    "VOLUME_NAME": "MGS MOLA MEGDR ARCHIVES",
+                    "VOLUME_ID": "MGSL_300X",
+                    "VOLUMES": "UNK",
+                    "MEDIUM_TYPE": "ONLINE",
+                    "VOLUME_FORMAT": "N/A",
+                    "VOLUME_VERSION_ID": "VERSION 1",
+                    "PUBLICATION_DATE": "2004-11-24",
+                    "DESCRIPTION": "This volume contains the MOLA Mission Experiment Gridded Data Record (MEGDR).",
+                    "DATA_SET_ID": "MGS-M-MOLA-5-MEGDR-L3-V1.0",
+                    "DATA_PRODUCER": {
+                      "INSTITUTION_NAME": "NASA/GODDARD SPACE FLIGHT CENTER",
+                      "FACILITY_NAME": "LABORATORY FOR TERRESTRIAL PHYSICS",
+                      "FULL_NAME": "DAVID E. SMITH",
+                      "ADDRESS_TEXT": "CODE 920, NASA-GSFC, GREENBELT, MD 20771",
+                      "ELECTRONIC_MAIL_ID": "DAVID.E.SMITH@GSFC.NASA.GOV",
+                      "TELEPHONE_NUMBER": "301-286-8671"
+                    },
+                    "CATALOG": {
+                      "^MISSION_CATALOG": "MISSION.CAT",
+                      "^DATA_SET_CATALOG": "MEGDRDS.CAT",
+                      "^INSTRUMENT_CATALOG": "INST.CAT",
+                      "^INSTRUMENT_HOST_CATALOG": "INSTHOST.CAT",
+                      "^PERSONNEL_CATALOG": "PERSON.CAT",
+                      "^REFERENCE_CATALOG": "REF.CAT",
+                      "^DATA_SET_MAP_PROJECTION_CATALOG": "DSMAP.CAT"
+                    }
+                  }
+                }
+              }
+            ],
+            "collections": [],
+            "error": null
+          },
+          "tool_call_id": "call_WszwCjk7rGdBn6H2SRkEc12L",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:43.839918+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:43.840392+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "args": "{\"candidates\":[{\"dataset_id\":\"MGS-M-MOLA-5-MEGDR-L3-V1.0\",\"path\":\"mgs/mgs-m-mola-5-megdr-l3-v1/mgsl_300x/\",\"title\":\"MGS MARS ORBITER LASER ALTIMETER PEDR AND EGDR ARCHIVES (MEGDR volume)\",\"mission\":\"mgs\",\"node\":null,\"pds_version\":\"PDS3\",\"reasoning\":\"Regional topography (MOLA MEGDR) is commonly used to analyze drainage patterns, basin geometry, and paleoslopes in Arabia Terra when interpreting fluvial/depositional systems.\"}],\"summary\":\"Holdings search for an 'Arabia Terra' named dataset returned none (the GEO holdings index is keyed to dataset IDs, not places). I inspected one core Mars topography volume (MOLA MEGDR) that is relevant for geomorphic/fluvial analyses in Arabia Terra.\"}",
+          "tool_call_id": "call_EvNPLmWRh5d4CoNwGLVnSE6I",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 21096,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 19840,
+        "output_tokens": 328,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 113,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-29 01:49:48.854969+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-29 01:49:44+00:00"
+      },
+      "provider_response_id": "chatcmpl-DZoLYhrBncm1dsnFH7mpZcrZO4hnD",
+      "finish_reason": "tool_call",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "content": "Final result processed.",
+          "tool_call_id": "call_EvNPLmWRh5d4CoNwGLVnSE6I",
+          "metadata": null,
+          "timestamp": "2026-04-29 01:49:48.855533+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-29 01:49:48.855550+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dd6ed-03fe-75fa-b5bc-8cf7d65bd033",
+      "metadata": null
+    }
+  ]
+}

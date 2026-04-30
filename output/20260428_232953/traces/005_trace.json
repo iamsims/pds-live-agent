@@ -1,0 +1,14 @@
+{
+  "query": "How do the Spirit observations support the idea that fumarolic activity and hot spring activity both occurred in the same volcanic hydrothermal system?",
+  "row": {
+    "rank": 3,
+    "paper_short": "Ruff 2020",
+    "rationale": "Hydrothermal geology \u2014 sinter/hot-spring deposits",
+    "paper": "Ruff, S.W., et al., 2020. The case for ancient hot springs in Gusev crater, Mars. Astrobiology, 20(4), pp.475-499. DOI:10.1089/ast.2019.2044",
+    "query": "How do the Spirit observations support the idea that fumarolic activity and hot spring activity both occurred in the same volcanic hydrothermal system?",
+    "expected_ids": "urn:nasa:pds:mer2_mtes_calibrated_radiance\nMER2-M-APXS-2-EDR-OPS-V1.0\nurn:nasa:pds:mer2_pancam_sci_calibrated2:data::1.0",
+    "node": "geo"
+  },
+  "live_trace": [],
+  "catalog_trace": []
+}
