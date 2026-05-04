@@ -1,0 +1,1396 @@
+{
+  "query": "Based on emissivity altitude behavior, what is the composition of the tallest Venus volcanoes?",
+  "row": {
+    "rank": 4,
+    "paper_short": "Brossier 2020",
+    "rationale": "Volcanology \u2014 Venus volcanoes & coronae",
+    "paper": "Brossier, J.F., et al., 2020. Low radar emissivity signatures on Venus volcanoes and coronae. Icarus, 343, 113693. DOI:10.1016/j.icarus.2020.113693",
+    "query": "Based on emissivity altitude behavior, what is the composition of the tallest Venus volcanoes?",
+    "expected_ids": "urn:nasa:pds:magellan_gxdr:data",
+    "node": "geo"
+  },
+  "tool_calls": [
+    {
+      "tool_name": "pds_geo_list_dataset_dirs",
+      "tool_input": {
+        "path": "mgn/"
+      },
+      "tool_output": "{'status': 'success', 'path': 'mgn/', 'total': 24, 'dirs': [{'name': 'mgn-v-gxdr-v1', 'path': 'mgn/mgn-v-gxdr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-2-alt-edr-v1', 'path': 'mgn/mgn-v-rdrs-2-alt-edr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-5-bidr-full-res-v1', 'path': 'mgn/mgn-v-rdrs-5-bidr-full-res-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-5-c-bidr-v1', 'path': 'mgn/mgn-v-rdrs-5-c-bidr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-5-cdr-alt-rad-v1', 'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-5-gvdr-v1', 'path': 'mgn/mgn-v-rdrs-5-gvdr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-5-midr-c1-v1', 'path': 'mgn/mgn-v-rdrs-5-midr-c1-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-5-midr-c2-v1', 'path': 'mgn/mgn-v-rdrs-5-midr-c2-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-5-midr-c3-v1', 'path': 'mgn/mgn-v-rdrs-5-midr-c3-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-5-midr-full-res-v1', 'path': 'mgn/mgn-v-rdrs-5-midr-full-res-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rdrs-5-scvdr-v1', 'path': 'mgn/mgn-v-rdrs-5-scvdr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rss-1-bsr-v1', 'path': 'mgn/mgn-v-rss-1-bsr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rss-1-tracking-v1', 'path': 'mgn/mgn-v-rss-1-tracking-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rss-1-tracking-v1-old', 'path': 'mgn/mgn-v-rss-1-tracking-v1-old/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rss-4-bsr-v1', 'path': 'mgn/mgn-v-rss-4-bsr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rss-5-gravity-l2-v1', 'path': 'mgn/mgn-v-rss-5-gravity-l2-v1/', 'pds_hint': 'PDS3'}, {'name': 'mgn-v-rss-5-losapdr-l2-v113', 'path': 'mgn/mgn-v-rss-5-losapdr-l2-v113/', 'pds_hint': 'PDS3'}, {'name': 'urn-nasa-pds-magellan_arcdr', 'path': 'mgn/urn-nasa-pds-magellan_arcdr/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-magellan_bsr_calibrated', 'path': 'mgn/urn-nasa-pds-magellan_bsr_calibrated/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-magellan_gxdr', 'path': 'mgn/urn-nasa-pds-magellan_gxdr/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-magellan_losapdr', 'path': 'mgn/urn-nasa-pds-magellan_losapdr/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-magellan_midr', 'path': 'mgn/urn-nasa-pds-magellan_midr/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-magellan_scvdr', 'path': 'mgn/urn-nasa-pds-magellan_scvdr/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-magellan_stereo_topography', 'path': 'mgn/urn-nasa-pds-magellan_stereo_topography/', 'pds_hint': 'PDS4'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/",
+          "mgn/urn-nasa-pds-magellan_arcdr/",
+          "mgn/urn-nasa-pds-magellan_stereo_topography/",
+          "mgn/urn-nasa-pds-magellan_gxdr/",
+          "mgn/mgn-v-gxdr-v1/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2001', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2001', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2002', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2002', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2003', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2003', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2004', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2004', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2005', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2005', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2006', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2006', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2007', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2007', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2008', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2008', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2009', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2009', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2010', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2010', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2011', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2011', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2012', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2012', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2013', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2013', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2014', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2014', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2015', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2015', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2016', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2016', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2017', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2017', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2018', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2018', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2019', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA', 'VOLUME_ID': 'MG_2019', 'PUBLICATION_DATE': '1992'}}}, {'path': 'mgn/urn-nasa-pds-magellan_arcdr', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:magellan_arcdr', 'title': 'Magellan ARCDR Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_arcdr', 'version_id': '1.0', 'title': 'Magellan ARCDR Bundle', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Saunders, R. S.; Pettengill, G.; Ford P.G.', 'editor_list': 'Guinness, E.', 'publication_year': '2024', 'doi': '10.17189/t6z7-kt45', 'description': 'PDS4 Bundle of Magellan Altimetry and Radiometry Composite \\n        (ARCDR) Data Products'}}}}, {'path': 'mgn/urn-nasa-pds-magellan_stereo_topography', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:magellan_stereo_topography', 'title': 'Magellan Venus Stereo-Derived Topography Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_stereo_topography', 'version_id': '1.0', 'title': 'Magellan Venus Stereo-Derived Topography Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Herrick, Robert R.', 'editor_list': 'Ward, Jennifer', 'publication_year': '2020', 'doi': '10.17189/1519332', 'description': 'Stereo-derived topography produced from the Magellan stereo data.'}}}}, {'path': 'mgn/urn-nasa-pds-magellan_gxdr', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:magellan_gxdr', 'title': 'Magellan GXDR Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_gxdr', 'version_id': '1.0', 'title': 'Magellan GXDR Bundle', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Ford, Peter G.', 'editor_list': 'Guinness, E.', 'publication_year': '2023', 'doi': '10.17189/kv67-gt18', 'description': 'PDS4 Bundle of Magellan Global Map (GXDR) Data Products'}}}}, {'path': 'mgn/mgn-v-gxdr-v1/mg_3002', 'pds_version': 'PDS3', 'file_type': 'voldesc.sfd', 'dataset_id': None, 'title': 'MISSION TO VENUS', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'MISSION TO VENUS', 'VOLUME_NAME': 'MAGELLAN GLOBAL ALTIMETRY AND RADIOMETRY DATA RECORDS', 'VOLUME_ID': 'MG_3002', 'PUBLICATION_DATE': '1993'}}}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mgn/urn-nasa-pds-magellan_arcdr/"
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mgn/urn-nasa-pds-magellan_arcdr', 'collections': [{'path': 'mgn/urn-nasa-pds-magellan_arcdr', 'dataset_id': 'urn:nasa:pds:magellan_arcdr:data_altimetry', 'title': 'Magellen ARCDR Altimetry Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_arcdr:data_altimetry', 'version_id': '1.0', 'title': 'Magellen ARCDR Altimetry Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'Guinness, E', 'publication_year': '2024', 'description': 'PDS4 Collection of Magellan ARCDR Altimetry Data Products'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-02-01', 'version_id': '1.0', 'description': 'Initial Version'}}}}}, {'path': 'mgn/urn-nasa-pds-magellan_arcdr', 'dataset_id': 'urn:nasa:pds:magellan_arcdr:data_orbit_header', 'title': 'Magellen ARCDR Orbit Header File Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_arcdr:data_orbit_header', 'version_id': '1.0', 'title': 'Magellen ARCDR Orbit Header File Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'Guinness, E', 'publication_year': '2024', 'description': 'PDS4 Collection of Magellan ARCDR Orbit Header File Products'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-02-01', 'version_id': '1.0', 'description': 'Initial Version'}}}}}, {'path': 'mgn/urn-nasa-pds-magellan_arcdr', 'dataset_id': 'urn:nasa:pds:magellan_arcdr:data_radiometry', 'title': 'Magellen ARCDR Radiometry Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_arcdr:data_radiometry', 'version_id': '1.0', 'title': 'Magellen ARCDR Radiometry Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'Guinness, E', 'publication_year': '2024', 'description': 'PDS4 Collection of Magellan ARCDR Radiometry Data Products'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-02-01', 'version_id': '1.0', 'description': 'Initial Version'}}}}}, {'path': 'mgn/urn-nasa-pds-magellan_arcdr', 'dataset_id': 'urn:nasa:pds:magellan_arcdr:miscellaneous', 'title': 'Magellan ARCDR Miscellaneous Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_arcdr:miscellaneous', 'version_id': '1.0', 'title': 'Magellan ARCDR Miscellaneous Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'Guinness, E.', 'publication_year': '2024', 'description': 'Magellan ARCDR Miscellaneous Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-02-02', 'version_id': '1.0', 'description': 'Initial Version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mgn/urn-nasa-pds-magellan_gxdr/"
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mgn/urn-nasa-pds-magellan_gxdr', 'collections': [{'path': 'mgn/urn-nasa-pds-magellan_gxdr', 'dataset_id': 'urn:nasa:pds:magellan_gxdr:data', 'title': 'Magellen GXDR Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_gxdr:data', 'version_id': '1.0', 'title': 'Magellen GXDR Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'Guinness, E', 'publication_year': '2022', 'description': 'PDS4 Collection of Magellan Global Map (GXDR) Data Products'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2022-05-10', 'version_id': '1.0', 'description': 'Initial Version'}}}}}, {'path': 'mgn/urn-nasa-pds-magellan_gxdr', 'dataset_id': 'urn:nasa:pds:magellan_gxdr:miscellaneous', 'title': 'Magellan GXDR Miscellaneous Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_gxdr:miscellaneous', 'version_id': '1.0', 'title': 'Magellan GXDR Miscellaneous Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'Guinness, E.', 'publication_year': '2023', 'description': 'Magellan GXDR Miscellaneous Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-05-15', 'version_id': '1.0', 'description': 'Initial Version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mgn/urn-nasa-pds-magellan_stereo_topography/"
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mgn/urn-nasa-pds-magellan_stereo_topography', 'collections': [{'path': 'mgn/urn-nasa-pds-magellan_stereo_topography', 'dataset_id': 'urn:nasa:pds:magellan_stereo_topography:data', 'title': 'Magellan Venus Stereo-Derived Topography Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_stereo_topography:data', 'version_id': '1.0', 'title': 'Magellan Venus Stereo-Derived Topography Data Collection', 'information_model_version': '1.10.1.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Herrick, Robert R.', 'editor_list': 'Ward, Jennifer', 'publication_year': '2018', 'description': 'Stereo-derived topography produced from the Magellan stereo data.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2018-10-23', 'version_id': '1.0', 'description': 'Draft by R. Herrick and J. Ward.'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "mgn/urn-nasa-pds-magellan_midr/",
+          "mgn/mgn-v-rdrs-5-gvdr-v1/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'mgn/urn-nasa-pds-magellan_midr', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:magellan_midr', 'title': 'Magellan MIDR Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_midr', 'version_id': '1.0', 'title': 'Magellan MIDR Bundle', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Saunders, R. S.; Pettengill, G.', 'editor_list': 'Guinness, E.', 'publication_year': '2023', 'doi': '10.17189/5ktn-9j71', 'description': 'PDS4 Bundle of Magellan Mosaic Image (MIDR) Data Products'}}}}, {'path': 'mgn/mgn-v-rdrs-5-gvdr-v1/gvdr_0001', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MGN-V-RDRS-5-GVDR-V1.0', 'title': 'MAGELLAN RADAR DATA PRODUCTS', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MAGELLAN RADAR DATA PRODUCTS', 'VOLUME_NAME': 'MAGELLAN Global Vector Data Record', 'VOLUME_ID': 'GVDR_0001', 'PUBLICATION_DATE': '1994-05-13', 'DATA_SET_ID': 'MGN-V-RDRS-5-GVDR-V1.0', 'DESCRIPTION': 'This volume contains composite radar scattering functions derived from Magellan synthetic aperture radar, altimetry, and radiometry. Results are stored in ASCII and binary tables linked to pixels with 18.225 km resolution. Pixels are organized in sinusoidal equal area, Mercator, north polar stereographic, and south polar stereographic projections.'}}}, {'path': 'mgn/mgn-v-rdrs-5-gvdr-v1/gvdr_0001', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:magellan_gvdr', 'title': 'Magellan Global Vector Data Record (GVDR) Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:magellan_gvdr', 'version_id': '1.0', 'title': 'Magellan Global Vector Data Record (GVDR) Bundle', 'information_model_version': '1.23.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'publication_year': '2025', 'doi': '10.17189/b4v1-8n72', 'description': 'This bundle contains composite radar scattering functions derived from Magellan synthetic aperture radar, \\n        altimetry, and radiometry. Results are stored in ASCII and binary tables linked to pixels with 18.225  \\n        km resolution. Pixels are organized in sinusoidal equal area, Mercator, north polar stereographic, and south \\n        polar stereographic projections.', 'List_Author': [{'Person': {'given_name': 'Michael J.', 'family_name': 'Maurer', 'Affiliation': {'organization_name': 'Stanford University'}}}, {'Person': {'given_name': 'Richard A.', 'family_name': 'Simpson', 'Affiliation': {'organization_name': 'Stanford University'}}}, {'Person': {'given_name': 'G. Leonard', 'family_name': 'Tyler', 'Affiliation': {'organization_name': 'Stanford University'}}}, {'Person': {'given_name': 'Peter G.', 'family_name': 'Ford', 'Affiliation': {'organization_name': 'Massachusetts Institute of Technology'}}}, {'Person': {'given_name': 'Gordon H.', 'family_name': 'Pettengill', 'Affiliation': {'organization_name': 'Massachusetts Institute of Technology'}}}], 'List_Editor': {'Person': {'given_name': 'Jennifer G.', 'family_name': 'Ward', 'Affiliation': {'organization_name': 'Washington University in St. Louis'}}}}}}}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mgn/mgn-v-rdrs-5-gvdr-v1/"
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mgn/mgn-v-rdrs-5-gvdr-v1/gvdr_0001', 'collections': [], 'error': None}"
+    },
+    {
+      "tool_name": "final_result",
+      "tool_input": {
+        "summary": "To evaluate Venus volcano composition from emissivity\u2013altitude behavior, the most relevant PDS holdings are Magellan radiometry-derived emissivity and corresponding topography/altimetry products. On the PDS Geosciences node these are best accessed via the PDS4 Magellan ARCDR (altimetry+radiometry) and GXDR global map products, with optional higher-resolution stereo topography for volcano heights and contextual radar mosaics.",
+        "candidates": [
+          {
+            "dataset_id": "urn:nasa:pds:magellan_arcdr:data_radiometry",
+            "path": "mgn/urn-nasa-pds-magellan_arcdr/",
+            "title": "Magellen ARCDR Radiometry Data Collection",
+            "mission": "Magellan (Venus)",
+            "pds_version": "PDS4",
+            "reasoning": "Primary Magellan radiometry measurements used to derive microwave emissivity; needed to reproduce emissivity vs. elevation trends over volcano summits and flanks."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:magellan_arcdr:data_altimetry",
+            "path": "mgn/urn-nasa-pds-magellan_arcdr/",
+            "title": "Magellen ARCDR Altimetry Data Collection",
+            "mission": "Magellan (Venus)",
+            "pds_version": "PDS4",
+            "reasoning": "Companion Magellan altimetry needed to relate emissivity to altitude (the key diagnostic in the question)."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:magellan_gxdr:data",
+            "path": "mgn/urn-nasa-pds-magellan_gxdr/",
+            "title": "Magellen GXDR Data Collection",
+            "mission": "Magellan (Venus)",
+            "pds_version": "PDS4",
+            "reasoning": "Global gridded/map products derived from Magellan altimetry+radiometry; commonly used for spatial analysis of emissivity patterns across volcanic edifices."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:magellan_stereo_topography:data",
+            "path": "mgn/urn-nasa-pds-magellan_stereo_topography/",
+            "title": "Magellan Venus Stereo-Derived Topography Data Collection",
+            "mission": "Magellan (Venus)",
+            "pds_version": "PDS4",
+            "reasoning": "Independent higher-detail topography for some areas; useful to better quantify \u2018tallest\u2019 volcano elevations and compare emissivity behavior versus precise summit height."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:magellan_midr",
+            "path": "mgn/urn-nasa-pds-magellan_midr/",
+            "title": "Magellan MIDR Bundle",
+            "mission": "Magellan (Venus)",
+            "pds_version": "PDS4",
+            "reasoning": "Radar mosaic imagery for geologic context/edifice outlines when selecting volcano pixels/footprints for emissivity\u2013altitude analysis (not emissivity itself, but commonly paired)."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:magellan_gvdr",
+            "path": "mgn/mgn-v-rdrs-5-gvdr-v1/",
+            "title": "Magellan Global Vector Data Record (GVDR) Bundle",
+            "mission": "Magellan (Venus)",
+            "pds_version": "PDS4",
+            "reasoning": "Provides composite radar scattering-related functions derived from SAR/altimetry/radiometry that are sometimes used alongside emissivity to interpret surface physical properties."
+          },
+          {
+            "dataset_id": "MGN-V-RDRS-5-GVDR-V1.0",
+            "path": "mgn/mgn-v-rdrs-5-gvdr-v1/",
+            "title": "MAGELLAN RADAR DATA PRODUCTS (Global Vector Data Record)",
+            "mission": "Magellan (Venus)",
+            "pds_version": "PDS3",
+            "reasoning": "PDS3 legacy version of the GVDR if needed for older workflows/software or to match earlier literature citations."
+          },
+          {
+            "dataset_id": null,
+            "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/",
+            "title": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA (ARCDR) volumes MG_2001\u2013MG_2019",
+            "mission": "Magellan (Venus)",
+            "pds_version": "PDS3",
+            "reasoning": "PDS3 volume set containing the original Magellan altimetry+radiometry composite data; use if you need the historical volume structure referenced by older papers (the PDS4 ARCDR is preferred)."
+          }
+        ]
+      },
+      "tool_output": "Final result processed."
+    }
+  ],
+  "full_trace": [
+    {
+      "parts": [
+        {
+          "content": "You are a dataset-discovery assistant for the NASA PDS Geosciences node at https://pds-geosciences.wustl.edu/.\n\nDirectory layout:\n  mission/ \u2192 dataset_or_bundle/ \u2192 volume/ (PDS3) or sub-collections (PDS4)\n\nCommon mission/instrument abbreviations:\n  Mars Express = MEX \u2192 mex/ (instruments: HRSC, OMEGA, MARSIS, PFS, SPICAM, MaRS)\n  Mars Reconnaissance Orbiter = MRO \u2192 mro/ (instruments: HiRISE, CTX, CRISM, SHARAD, MCS)\n  Mars Science Laboratory / Curiosity = MSL \u2192 msl/ (instruments: ChemCam, APXS, CheMin, SAM, Mastcam, MAHLI, DAN)\n  Mars 2020 / Perseverance = M2020 \u2192 m2020/ (instruments: PIXL, SHERLOC, Mastcam-Z, SuperCam, RIMFAX)\n  Mars Exploration Rovers (Spirit=MER2, Opportunity=MER1) \u2192 mer/ (instruments: Pancam, Mini-TES/MTES, APXS, MB, MI)\n  Mars Global Surveyor = MGS \u2192 mgs/ (instruments: MOC, MOLA, TES, MAG)\n  Mars Odyssey = ODY \u2192 ody/ (instruments: THEMIS, GRS, NS)\n  Phoenix = PHX \u2192 phx/ (instruments: TEGA, MECA, SSI, OM, RAC)\n  Viking = VL1/VL2/VO1/VO2 \u2192 viking/ (instruments: camera, IRTM, MAWD)\n  MESSENGER = MESS \u2192 messenger/ (instruments: MDIS, GRNS, XRS, MLA, MASCS)\n  Magellan = MGN \u2192 mgn/ (instruments: SAR, altimetry, radiometry, emissivity)\n  LRO \u2192 lro/ (instruments: LOLA, Diviner, LROC, Mini-RF, LAMP)\n  GRAIL \u2192 grail/ (instruments: LGRS)\n  NEAR \u2192 near/ (instruments: NLR, MSI, XGRS, MAG)\n\nPDS3 vs PDS4:\n  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers (e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n  - PDS4 bundle directories begin with `urn-nasa-pds-`. Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\nExtracting dataset_id from labels:\n  - PDS3: fields.VOLUME.DATA_SET_ID (or top-level DATA_SET_ID)\n  - PDS4 bundle: fields.Identification_Area.logical_identifier\n  - PDS4 collection: fields.Identification_Area.logical_identifier\n\nYOUR TOOLS (4 tools):\n  1. pds_geo_list_missions() \u2014 returns all 24 mission directories with descriptions. No HTTP. Use this to identify which mission to explore.\n  2. pds_geo_list_dataset_dirs(path) \u2014 lists sub-directory names under a mission (e.g. path='mex/'). Cheap HTTP, no label parsing. Each dir gets a pds_hint ('PDS3'/'PDS4'/null) from its naming convention. Use this to see what datasets exist, then pick which to probe.\n  3. pds_geo_probe_datasets(paths) \u2014 probes specific directories for PDS labels. Recurses one level to find leaf nodes. Returns dataset_id, title, pds_version, and slimmed fields. Accepts a list of paths (max 20) so you can batch multiple probes in one call.\n  4. pds_geo_inspect_collections(path) \u2014 scans PDS4 bundle subdirs for collection*.xml labels. Returns collection-level logical_identifiers. Use ONLY after probe_datasets confirms a PDS4 bundle exists.\n\nCRITICAL RULES:\n  1. EVERY query requires you to return dataset candidates. Queries come from published scientific papers and always imply specific PDS datasets. NEVER dismiss a query as 'interpretation' or 'conceptual'. Always return at least one candidate.\n\n  2. Prefer CALIBRATED and REDUCED data products over raw/EDR when the query implies scientific analysis. Scientists use calibrated (RDR, CDR) or derived (DDR) products. Look for directory names containing 'calibrated', 'rdr', 'cdr', 'ddr'.\n\n  3. For PDS4 datasets, use inspect_collections ONLY for the top 2-3 most relevant bundles. Return the COLLECTION-level LID when a :data or :calibrated collection exists, not just the bundle LID.\n\n  4. When both PDS3 and PDS4 versions exist, prefer the PDS4 collection-level identifier.\n\nWORKFLOW (follow this order):\n  Step 1: Infer the mission(s) and instrument(s) from the query using the abbreviation table above.\n  Step 2: Call list_dataset_dirs for the relevant mission directory (e.g. 'mex/'). Scan the directory names and pds_hints to identify the most promising dataset directories.\n  Step 3: Call probe_datasets with the most relevant paths (batch them \u2014 up to 20 paths in one call). This returns dataset_id, title, and pds_version for each.\n  Step 4: If any probed datasets are PDS4 bundles and you need collection-level LIDs, call inspect_collections on the top 2-3.\n  Step 5: Return the candidates with dataset_id, title, and reasoning.\n\n  Skip list_missions if you already know the mission directory from the abbreviation table. Most queries can be answered in 3 tool calls: list_dataset_dirs \u2192 probe_datasets \u2192 inspect_collections.\n\nConstraints:\n  - Stay under 8 tool calls per query. This is a hard limit.\n  - Only return paths you've actually probed \u2014 never guess.\n  - You MUST return at least one candidate for every query.\n",
+          "timestamp": "2026-04-30 19:00:08.158104+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "Based on emissivity altitude behavior, what is the composition of the tallest Venus volcanoes?",
+          "timestamp": "2026-04-30 19:00:08.158108+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-04-30 19:00:08.158227+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_list_dataset_dirs",
+          "args": "{\"path\":\"mgn/\"}",
+          "tool_call_id": "call_MlNKCEaxo5ZBWMHaCVy9bn5x",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2309,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1408,
+        "output_tokens": 748,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 719,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 19:00:24.649847+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 19:00:08+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQuGazPS2WB0V053oopbcq9CiDNQ",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "mgn/",
+            "total": 24,
+            "dirs": [
+              {
+                "name": "mgn-v-gxdr-v1",
+                "path": "mgn/mgn-v-gxdr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-2-alt-edr-v1",
+                "path": "mgn/mgn-v-rdrs-2-alt-edr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-5-bidr-full-res-v1",
+                "path": "mgn/mgn-v-rdrs-5-bidr-full-res-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-5-c-bidr-v1",
+                "path": "mgn/mgn-v-rdrs-5-c-bidr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-5-cdr-alt-rad-v1",
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-5-gvdr-v1",
+                "path": "mgn/mgn-v-rdrs-5-gvdr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-5-midr-c1-v1",
+                "path": "mgn/mgn-v-rdrs-5-midr-c1-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-5-midr-c2-v1",
+                "path": "mgn/mgn-v-rdrs-5-midr-c2-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-5-midr-c3-v1",
+                "path": "mgn/mgn-v-rdrs-5-midr-c3-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-5-midr-full-res-v1",
+                "path": "mgn/mgn-v-rdrs-5-midr-full-res-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rdrs-5-scvdr-v1",
+                "path": "mgn/mgn-v-rdrs-5-scvdr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rss-1-bsr-v1",
+                "path": "mgn/mgn-v-rss-1-bsr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rss-1-tracking-v1",
+                "path": "mgn/mgn-v-rss-1-tracking-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rss-1-tracking-v1-old",
+                "path": "mgn/mgn-v-rss-1-tracking-v1-old/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rss-4-bsr-v1",
+                "path": "mgn/mgn-v-rss-4-bsr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rss-5-gravity-l2-v1",
+                "path": "mgn/mgn-v-rss-5-gravity-l2-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mgn-v-rss-5-losapdr-l2-v113",
+                "path": "mgn/mgn-v-rss-5-losapdr-l2-v113/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "urn-nasa-pds-magellan_arcdr",
+                "path": "mgn/urn-nasa-pds-magellan_arcdr/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-magellan_bsr_calibrated",
+                "path": "mgn/urn-nasa-pds-magellan_bsr_calibrated/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-magellan_gxdr",
+                "path": "mgn/urn-nasa-pds-magellan_gxdr/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-magellan_losapdr",
+                "path": "mgn/urn-nasa-pds-magellan_losapdr/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-magellan_midr",
+                "path": "mgn/urn-nasa-pds-magellan_midr/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-magellan_scvdr",
+                "path": "mgn/urn-nasa-pds-magellan_scvdr/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-magellan_stereo_topography",
+                "path": "mgn/urn-nasa-pds-magellan_stereo_topography/",
+                "pds_hint": "PDS4"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_MlNKCEaxo5ZBWMHaCVy9bn5x",
+          "metadata": null,
+          "timestamp": "2026-04-30 19:00:25.049112+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 19:00:25.049776+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "args": "{\"paths\":[\"mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/\",\"mgn/urn-nasa-pds-magellan_arcdr/\",\"mgn/urn-nasa-pds-magellan_stereo_topography/\",\"mgn/urn-nasa-pds-magellan_gxdr/\",\"mgn/mgn-v-gxdr-v1/\"]}",
+          "tool_call_id": "call_LXKo42jvW12e1OhDRQmixia1",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3363,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1408,
+        "output_tokens": 814,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 711,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 19:00:41.329720+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 19:00:25+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQuX553AHanH3hHmDRrGnQi797PV",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2001",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2001",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2002",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2002",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2003",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2003",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2004",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2004",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2005",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2005",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2006",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2006",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2007",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2007",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2008",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2008",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2009",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2009",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2010",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2010",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2011",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2011",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2012",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2012",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2013",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2013",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2014",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2014",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2015",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2015",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2016",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2016",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2017",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2017",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2018",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2018",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/mg_2019",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA",
+                    "VOLUME_ID": "MG_2019",
+                    "PUBLICATION_DATE": "1992"
+                  }
+                }
+              },
+              {
+                "path": "mgn/urn-nasa-pds-magellan_arcdr",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:magellan_arcdr",
+                "title": "Magellan ARCDR Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_arcdr",
+                    "version_id": "1.0",
+                    "title": "Magellan ARCDR Bundle",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Saunders, R. S.; Pettengill, G.; Ford P.G.",
+                      "editor_list": "Guinness, E.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/t6z7-kt45",
+                      "description": "PDS4 Bundle of Magellan Altimetry and Radiometry Composite \n        (ARCDR) Data Products"
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mgn/urn-nasa-pds-magellan_stereo_topography",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:magellan_stereo_topography",
+                "title": "Magellan Venus Stereo-Derived Topography Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_stereo_topography",
+                    "version_id": "1.0",
+                    "title": "Magellan Venus Stereo-Derived Topography Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Herrick, Robert R.",
+                      "editor_list": "Ward, Jennifer",
+                      "publication_year": "2020",
+                      "doi": "10.17189/1519332",
+                      "description": "Stereo-derived topography produced from the Magellan stereo data."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mgn/urn-nasa-pds-magellan_gxdr",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:magellan_gxdr",
+                "title": "Magellan GXDR Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_gxdr",
+                    "version_id": "1.0",
+                    "title": "Magellan GXDR Bundle",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Ford, Peter G.",
+                      "editor_list": "Guinness, E.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/kv67-gt18",
+                      "description": "PDS4 Bundle of Magellan Global Map (GXDR) Data Products"
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-gxdr-v1/mg_3002",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.sfd",
+                "dataset_id": null,
+                "title": "MISSION TO VENUS",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MISSION TO VENUS",
+                    "VOLUME_NAME": "MAGELLAN GLOBAL ALTIMETRY AND RADIOMETRY DATA RECORDS",
+                    "VOLUME_ID": "MG_3002",
+                    "PUBLICATION_DATE": "1993"
+                  }
+                }
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_LXKo42jvW12e1OhDRQmixia1",
+          "metadata": null,
+          "timestamp": "2026-04-30 19:00:45.877884+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 19:00:45.878500+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mgn/urn-nasa-pds-magellan_arcdr/\"}",
+          "tool_call_id": "call_QXdJX2eUUJHFZodQOIA0cV4v",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mgn/urn-nasa-pds-magellan_gxdr/\"}",
+          "tool_call_id": "call_YsioHkoqtYTWtYBmsfKnWooB",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mgn/urn-nasa-pds-magellan_stereo_topography/\"}",
+          "tool_call_id": "call_8ckTXFwUboEYU1thV9yf90dx",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 6155,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2432,
+        "output_tokens": 820,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 699,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 19:01:03.183648+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 19:00:46+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQusdNEd28YsdTyyJhGnBTuSue7T",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mgn/urn-nasa-pds-magellan_arcdr",
+            "collections": [
+              {
+                "path": "mgn/urn-nasa-pds-magellan_arcdr",
+                "dataset_id": "urn:nasa:pds:magellan_arcdr:data_altimetry",
+                "title": "Magellen ARCDR Altimetry Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_arcdr:data_altimetry",
+                    "version_id": "1.0",
+                    "title": "Magellen ARCDR Altimetry Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "Guinness, E",
+                      "publication_year": "2024",
+                      "description": "PDS4 Collection of Magellan ARCDR Altimetry Data Products"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-02-01",
+                        "version_id": "1.0",
+                        "description": "Initial Version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mgn/urn-nasa-pds-magellan_arcdr",
+                "dataset_id": "urn:nasa:pds:magellan_arcdr:data_orbit_header",
+                "title": "Magellen ARCDR Orbit Header File Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_arcdr:data_orbit_header",
+                    "version_id": "1.0",
+                    "title": "Magellen ARCDR Orbit Header File Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "Guinness, E",
+                      "publication_year": "2024",
+                      "description": "PDS4 Collection of Magellan ARCDR Orbit Header File Products"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-02-01",
+                        "version_id": "1.0",
+                        "description": "Initial Version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mgn/urn-nasa-pds-magellan_arcdr",
+                "dataset_id": "urn:nasa:pds:magellan_arcdr:data_radiometry",
+                "title": "Magellen ARCDR Radiometry Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_arcdr:data_radiometry",
+                    "version_id": "1.0",
+                    "title": "Magellen ARCDR Radiometry Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "Guinness, E",
+                      "publication_year": "2024",
+                      "description": "PDS4 Collection of Magellan ARCDR Radiometry Data Products"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-02-01",
+                        "version_id": "1.0",
+                        "description": "Initial Version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mgn/urn-nasa-pds-magellan_arcdr",
+                "dataset_id": "urn:nasa:pds:magellan_arcdr:miscellaneous",
+                "title": "Magellan ARCDR Miscellaneous Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_arcdr:miscellaneous",
+                    "version_id": "1.0",
+                    "title": "Magellan ARCDR Miscellaneous Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "Guinness, E.",
+                      "publication_year": "2024",
+                      "description": "Magellan ARCDR Miscellaneous Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-02-02",
+                        "version_id": "1.0",
+                        "description": "Initial Version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_QXdJX2eUUJHFZodQOIA0cV4v",
+          "metadata": null,
+          "timestamp": "2026-04-30 19:01:04.020198+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mgn/urn-nasa-pds-magellan_gxdr",
+            "collections": [
+              {
+                "path": "mgn/urn-nasa-pds-magellan_gxdr",
+                "dataset_id": "urn:nasa:pds:magellan_gxdr:data",
+                "title": "Magellen GXDR Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_gxdr:data",
+                    "version_id": "1.0",
+                    "title": "Magellen GXDR Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "Guinness, E",
+                      "publication_year": "2022",
+                      "description": "PDS4 Collection of Magellan Global Map (GXDR) Data Products"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2022-05-10",
+                        "version_id": "1.0",
+                        "description": "Initial Version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mgn/urn-nasa-pds-magellan_gxdr",
+                "dataset_id": "urn:nasa:pds:magellan_gxdr:miscellaneous",
+                "title": "Magellan GXDR Miscellaneous Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_gxdr:miscellaneous",
+                    "version_id": "1.0",
+                    "title": "Magellan GXDR Miscellaneous Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "Guinness, E.",
+                      "publication_year": "2023",
+                      "description": "Magellan GXDR Miscellaneous Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-05-15",
+                        "version_id": "1.0",
+                        "description": "Initial Version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_YsioHkoqtYTWtYBmsfKnWooB",
+          "metadata": null,
+          "timestamp": "2026-04-30 19:01:04.204587+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mgn/urn-nasa-pds-magellan_stereo_topography",
+            "collections": [
+              {
+                "path": "mgn/urn-nasa-pds-magellan_stereo_topography",
+                "dataset_id": "urn:nasa:pds:magellan_stereo_topography:data",
+                "title": "Magellan Venus Stereo-Derived Topography Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_stereo_topography:data",
+                    "version_id": "1.0",
+                    "title": "Magellan Venus Stereo-Derived Topography Data Collection",
+                    "information_model_version": "1.10.1.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Herrick, Robert R.",
+                      "editor_list": "Ward, Jennifer",
+                      "publication_year": "2018",
+                      "description": "Stereo-derived topography produced from the Magellan stereo data."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2018-10-23",
+                        "version_id": "1.0",
+                        "description": "Draft by R. Herrick and J. Ward."
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_8ckTXFwUboEYU1thV9yf90dx",
+          "metadata": null,
+          "timestamp": "2026-04-30 19:01:03.848398+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 19:01:04.204918+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "args": "{\"paths\":[\"mgn/urn-nasa-pds-magellan_midr/\",\"mgn/mgn-v-rdrs-5-gvdr-v1/\"]}",
+          "tool_call_id": "call_YGPNMWOoXu50ghB9MDNp0NNi",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 7897,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 5504,
+        "output_tokens": 775,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 718,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 19:01:20.391537+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 19:01:04+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQvAx5baJekSDwxdQHkDogQXGd8O",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "mgn/urn-nasa-pds-magellan_midr",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:magellan_midr",
+                "title": "Magellan MIDR Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_midr",
+                    "version_id": "1.0",
+                    "title": "Magellan MIDR Bundle",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Saunders, R. S.; Pettengill, G.",
+                      "editor_list": "Guinness, E.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/5ktn-9j71",
+                      "description": "PDS4 Bundle of Magellan Mosaic Image (MIDR) Data Products"
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-gvdr-v1/gvdr_0001",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MGN-V-RDRS-5-GVDR-V1.0",
+                "title": "MAGELLAN RADAR DATA PRODUCTS",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MAGELLAN RADAR DATA PRODUCTS",
+                    "VOLUME_NAME": "MAGELLAN Global Vector Data Record",
+                    "VOLUME_ID": "GVDR_0001",
+                    "PUBLICATION_DATE": "1994-05-13",
+                    "DATA_SET_ID": "MGN-V-RDRS-5-GVDR-V1.0",
+                    "DESCRIPTION": "This volume contains composite radar scattering functions derived from Magellan synthetic aperture radar, altimetry, and radiometry. Results are stored in ASCII and binary tables linked to pixels with 18.225 km resolution. Pixels are organized in sinusoidal equal area, Mercator, north polar stereographic, and south polar stereographic projections."
+                  }
+                }
+              },
+              {
+                "path": "mgn/mgn-v-rdrs-5-gvdr-v1/gvdr_0001",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:magellan_gvdr",
+                "title": "Magellan Global Vector Data Record (GVDR) Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:magellan_gvdr",
+                    "version_id": "1.0",
+                    "title": "Magellan Global Vector Data Record (GVDR) Bundle",
+                    "information_model_version": "1.23.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "publication_year": "2025",
+                      "doi": "10.17189/b4v1-8n72",
+                      "description": "This bundle contains composite radar scattering functions derived from Magellan synthetic aperture radar, \n        altimetry, and radiometry. Results are stored in ASCII and binary tables linked to pixels with 18.225  \n        km resolution. Pixels are organized in sinusoidal equal area, Mercator, north polar stereographic, and south \n        polar stereographic projections.",
+                      "List_Author": [
+                        {
+                          "Person": {
+                            "given_name": "Michael J.",
+                            "family_name": "Maurer",
+                            "Affiliation": {
+                              "organization_name": "Stanford University"
+                            }
+                          }
+                        },
+                        {
+                          "Person": {
+                            "given_name": "Richard A.",
+                            "family_name": "Simpson",
+                            "Affiliation": {
+                              "organization_name": "Stanford University"
+                            }
+                          }
+                        },
+                        {
+                          "Person": {
+                            "given_name": "G. Leonard",
+                            "family_name": "Tyler",
+                            "Affiliation": {
+                              "organization_name": "Stanford University"
+                            }
+                          }
+                        },
+                        {
+                          "Person": {
+                            "given_name": "Peter G.",
+                            "family_name": "Ford",
+                            "Affiliation": {
+                              "organization_name": "Massachusetts Institute of Technology"
+                            }
+                          }
+                        },
+                        {
+                          "Person": {
+                            "given_name": "Gordon H.",
+                            "family_name": "Pettengill",
+                            "Affiliation": {
+                              "organization_name": "Massachusetts Institute of Technology"
+                            }
+                          }
+                        }
+                      ],
+                      "List_Editor": {
+                        "Person": {
+                          "given_name": "Jennifer G.",
+                          "family_name": "Ward",
+                          "Affiliation": {
+                            "organization_name": "Washington University in St. Louis"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_YGPNMWOoXu50ghB9MDNp0NNi",
+          "metadata": null,
+          "timestamp": "2026-04-30 19:01:21.140073+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 19:01:21.141006+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\":\"mgn/mgn-v-rdrs-5-gvdr-v1/\"}",
+          "tool_call_id": "call_osDsaaJUHMhESr0TNwEqQ8eu",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8775,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 7552,
+        "output_tokens": 1417,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1374,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 19:01:51.654077+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 19:01:21+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQvRNSBsIiXz4NTqR4KLZbZYFT0t",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mgn/mgn-v-rdrs-5-gvdr-v1/gvdr_0001",
+            "collections": [],
+            "error": null
+          },
+          "tool_call_id": "call_osDsaaJUHMhESr0TNwEqQ8eu",
+          "metadata": null,
+          "timestamp": "2026-04-30 19:01:52.641915+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 19:01:52.642225+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "args": "{\"summary\":\"To evaluate Venus volcano composition from emissivity\u2013altitude behavior, the most relevant PDS holdings are Magellan radiometry-derived emissivity and corresponding topography/altimetry products. On the PDS Geosciences node these are best accessed via the PDS4 Magellan ARCDR (altimetry+radiometry) and GXDR global map products, with optional higher-resolution stereo topography for volcano heights and contextual radar mosaics.\",\"candidates\":[{\"dataset_id\":\"urn:nasa:pds:magellan_arcdr:data_radiometry\",\"path\":\"mgn/urn-nasa-pds-magellan_arcdr/\",\"title\":\"Magellen ARCDR Radiometry Data Collection\",\"mission\":\"Magellan (Venus)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Primary Magellan radiometry measurements used to derive microwave emissivity; needed to reproduce emissivity vs. elevation trends over volcano summits and flanks.\"},{\"dataset_id\":\"urn:nasa:pds:magellan_arcdr:data_altimetry\",\"path\":\"mgn/urn-nasa-pds-magellan_arcdr/\",\"title\":\"Magellen ARCDR Altimetry Data Collection\",\"mission\":\"Magellan (Venus)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Companion Magellan altimetry needed to relate emissivity to altitude (the key diagnostic in the question).\"},{\"dataset_id\":\"urn:nasa:pds:magellan_gxdr:data\",\"path\":\"mgn/urn-nasa-pds-magellan_gxdr/\",\"title\":\"Magellen GXDR Data Collection\",\"mission\":\"Magellan (Venus)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Global gridded/map products derived from Magellan altimetry+radiometry; commonly used for spatial analysis of emissivity patterns across volcanic edifices.\"},{\"dataset_id\":\"urn:nasa:pds:magellan_stereo_topography:data\",\"path\":\"mgn/urn-nasa-pds-magellan_stereo_topography/\",\"title\":\"Magellan Venus Stereo-Derived Topography Data Collection\",\"mission\":\"Magellan (Venus)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Independent higher-detail topography for some areas; useful to better quantify \u2018tallest\u2019 volcano elevations and compare emissivity behavior versus precise summit height.\"},{\"dataset_id\":\"urn:nasa:pds:magellan_midr\",\"path\":\"mgn/urn-nasa-pds-magellan_midr/\",\"title\":\"Magellan MIDR Bundle\",\"mission\":\"Magellan (Venus)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Radar mosaic imagery for geologic context/edifice outlines when selecting volcano pixels/footprints for emissivity\u2013altitude analysis (not emissivity itself, but commonly paired).\"},{\"dataset_id\":\"urn:nasa:pds:magellan_gvdr\",\"path\":\"mgn/mgn-v-rdrs-5-gvdr-v1/\",\"title\":\"Magellan Global Vector Data Record (GVDR) Bundle\",\"mission\":\"Magellan (Venus)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Provides composite radar scattering-related functions derived from SAR/altimetry/radiometry that are sometimes used alongside emissivity to interpret surface physical properties.\"},{\"dataset_id\":\"MGN-V-RDRS-5-GVDR-V1.0\",\"path\":\"mgn/mgn-v-rdrs-5-gvdr-v1/\",\"title\":\"MAGELLAN RADAR DATA PRODUCTS (Global Vector Data Record)\",\"mission\":\"Magellan (Venus)\",\"pds_version\":\"PDS3\",\"reasoning\":\"PDS3 legacy version of the GVDR if needed for older workflows/software or to match earlier literature citations.\"},{\"dataset_id\":null,\"path\":\"mgn/mgn-v-rdrs-5-cdr-alt-rad-v1/\",\"title\":\"MAGELLAN ALTIMETRY AND RADIOMETRY COMPOSITE DATA (ARCDR) volumes MG_2001\u2013MG_2019\",\"mission\":\"Magellan (Venus)\",\"pds_version\":\"PDS3\",\"reasoning\":\"PDS3 volume set containing the original Magellan altimetry+radiometry composite data; use if you need the historical volume structure referenced by older papers (the PDS4 ARCDR is preferred).\"}]}",
+          "tool_call_id": "call_IZPAIjmnHZcCHrmhHF5ZsvbP",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8865,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 8576,
+        "output_tokens": 2653,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1744,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 19:02:40.200827+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 19:01:52+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQvwrk9FlmZ6tmM5QGO2Xv4syIkc",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "content": "Final result processed.",
+          "tool_call_id": "call_IZPAIjmnHZcCHrmhHF5ZsvbP",
+          "metadata": null,
+          "timestamp": "2026-04-30 19:02:40.201786+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 19:02:40.201803+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfc3-3f5d-738f-8ac4-f13ef92ebbf4",
+      "metadata": null
+    }
+  ]
+}

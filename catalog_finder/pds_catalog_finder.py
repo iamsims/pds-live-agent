@@ -143,7 +143,7 @@ def build_pds_catalog_finder(
     url: str | None = None,
     *,
     model: str = "openai:gpt-5.2",
-    reasoning_effort: str = "low",
+    reasoning_effort: str = "high",
     headers: dict[str, str] | None = None,
 ) -> Agent[None, PDSCatalogFindDatasetOutput]:
     """Build a pydantic-ai Agent that talks to the FastMCP catalog server.

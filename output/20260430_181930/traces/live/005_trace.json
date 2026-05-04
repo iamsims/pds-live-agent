@@ -1,0 +1,3123 @@
+{
+  "query": "How do the Spirit observations support the idea that fumarolic activity and hot spring activity both occurred in the same volcanic hydrothermal system?",
+  "row": {
+    "rank": 3,
+    "paper_short": "Ruff 2020",
+    "rationale": "Hydrothermal geology \u2014 sinter/hot-spring deposits",
+    "paper": "Ruff, S.W., et al., 2020. The case for ancient hot springs in Gusev crater, Mars. Astrobiology, 20(4), pp.475-499. DOI:10.1089/ast.2019.2044",
+    "query": "How do the Spirit observations support the idea that fumarolic activity and hot spring activity both occurred in the same volcanic hydrothermal system?",
+    "expected_ids": "urn:nasa:pds:mer2_mtes_calibrated_radiance\nMER2-M-APXS-2-EDR-OPS-V1.0\nurn:nasa:pds:mer2_pancam_sci_calibrated2:data::1.0",
+    "node": "geo"
+  },
+  "tool_calls": [
+    {
+      "tool_name": "pds_geo_list_dataset_dirs",
+      "tool_input": {
+        "path": "mer/"
+      },
+      "tool_output": "{'status': 'success', 'path': 'mer/', 'total': 47, 'dirs': [{'name': 'mer1-m-apxs-2-edr-ops-v1', 'path': 'mer/mer1-m-apxs-2-edr-ops-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-apxs-2-xrayspec-sci-v1', 'path': 'mer/mer1-m-apxs-2-xrayspec-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-eng-6-rmc-ops-v1', 'path': 'mer/mer1-m-eng-6-rmc-ops-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-mb-2-edr-ops-v1', 'path': 'mer/mer1-m-mb-2-edr-ops-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-mb-4-sumspec-sci-v1', 'path': 'mer/mer1-m-mb-4-sumspec-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-mi-2-edr-sci-v1', 'path': 'mer/mer1-m-mi-2-edr-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-mi-3-rdr-sci-v1', 'path': 'mer/mer1-m-mi-3-rdr-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-mtes-2-edr-v1', 'path': 'mer/mer1-m-mtes-2-edr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-mtes-3-rdr-v1', 'path': 'mer/mer1-m-mtes-3-rdr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-mtes-4-btr-v1', 'path': 'mer/mer1-m-mtes-4-btr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-mtes-4-emr-v1', 'path': 'mer/mer1-m-mtes-4-emr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-navcam-3-radiometric-sci-v1', 'path': 'mer/mer1-m-navcam-3-radiometric-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-pancam-2-edr-sci-v1', 'path': 'mer/mer1-m-pancam-2-edr-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-pancam-3-iofcal-sci-v1', 'path': 'mer/mer1-m-pancam-3-iofcal-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-pancam-3-iofcal-sci-v2', 'path': 'mer/mer1-m-pancam-3-iofcal-sci-v2/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-pancam-3-radcal-sci-v2', 'path': 'mer/mer1-m-pancam-3-radcal-sci-v2/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-pancam-5-color-mosaics-sci-v1', 'path': 'mer/mer1-m-pancam-5-color-mosaics-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-rat-2-edr-ops-v1', 'path': 'mer/mer1-m-rat-2-edr-ops-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1-m-rss-1-edr-v1', 'path': 'mer/mer1-m-rss-1-edr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1_mer2-m-apxs-5-oxide-sci-v1', 'path': 'mer/mer1_mer2-m-apxs-5-oxide-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1_mer2-m-mb-5-fe-abundance-v1', 'path': 'mer/mer1_mer2-m-mb-5-fe-abundance-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer1_mer2-m-pancam-5-atmos-opacity-v1', 'path': 'mer/mer1_mer2-m-pancam-5-atmos-opacity-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-apxs-2-edr-ops-v1', 'path': 'mer/mer2-m-apxs-2-edr-ops-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-apxs-2-xrayspec-sci-v1', 'path': 'mer/mer2-m-apxs-2-xrayspec-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-eng-6-rmc-ops-v1', 'path': 'mer/mer2-m-eng-6-rmc-ops-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-mb-2-edr-ops-v1', 'path': 'mer/mer2-m-mb-2-edr-ops-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-mb-4-sumspec-sci-v1', 'path': 'mer/mer2-m-mb-4-sumspec-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-mi-2-edr-sci-v1', 'path': 'mer/mer2-m-mi-2-edr-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-mi-3-rdr-sci-v1', 'path': 'mer/mer2-m-mi-3-rdr-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-mtes-2-edr-v1', 'path': 'mer/mer2-m-mtes-2-edr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-mtes-3-rdr-v1', 'path': 'mer/mer2-m-mtes-3-rdr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-mtes-4-btr-v1', 'path': 'mer/mer2-m-mtes-4-btr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-mtes-4-emr-v1', 'path': 'mer/mer2-m-mtes-4-emr-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-navcam-3-radiometric-sci-v1', 'path': 'mer/mer2-m-navcam-3-radiometric-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-pancam-2-edr-sci-v1', 'path': 'mer/mer2-m-pancam-2-edr-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-pancam-3-iofcal-sci-v1', 'path': 'mer/mer2-m-pancam-3-iofcal-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-pancam-3-iofcal-sci-v2', 'path': 'mer/mer2-m-pancam-3-iofcal-sci-v2/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-pancam-3-radcal-sci-v2', 'path': 'mer/mer2-m-pancam-3-radcal-sci-v2/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-pancam-5-color-mosaics-sci-v1', 'path': 'mer/mer2-m-pancam-5-color-mosaics-sci-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-rat-2-edr-ops-v1', 'path': 'mer/mer2-m-rat-2-edr-ops-v1/', 'pds_hint': 'PDS3'}, {'name': 'mer2-m-rss-1-edr-v1', 'path': 'mer/mer2-m-rss-1-edr-v1/', 'pds_hint': 'PDS3'}, {'name': 'urn-nasa-pds-mer_apxs_composites_library', 'path': 'mer/urn-nasa-pds-mer_apxs_composites_library/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-mer_cs_target_list', 'path': 'mer/urn-nasa-pds-mer_cs_target_list/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-mer_documentation', 'path': 'mer/urn-nasa-pds-mer_documentation/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-mer_pancam_photometry', 'path': 'mer/urn-nasa-pds-mer_pancam_photometry/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-mer_pancam_photometry_v10', 'path': 'mer/urn-nasa-pds-mer_pancam_photometry_v10/', 'pds_hint': 'PDS4'}, {'name': 'urn-nasa-pds-ruff_pdart14_mtes', 'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes/', 'pds_hint': 'PDS4'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "mer/mer2-m-mi-3-rdr-sci-v1/",
+          "mer/mer2-m-pancam-3-iofcal-sci-v2/",
+          "mer/mer2-m-pancam-3-radcal-sci-v2/",
+          "mer/mer2-m-pancam-5-color-mosaics-sci-v1/",
+          "mer/mer2-m-mtes-3-rdr-v1/",
+          "mer/mer2-m-mtes-4-emr-v1/",
+          "mer/mer2-m-mtes-4-btr-v1/",
+          "mer/mer2-m-mb-4-sumspec-sci-v1/",
+          "mer/mer2-m-apxs-2-xrayspec-sci-v1/",
+          "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/",
+          "mer/mer1_mer2-m-mb-5-fe-abundance-v1/",
+          "mer/urn-nasa-pds-mer_apxs_composites_library/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-MI-3-RDR-SCI-V1.0', 'title': 'MER 2: MI SCIENCE RDR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: MI SCIENCE RDR ARCHIVE', 'VOLUME_NAME': 'MER 2: MI SCIENCE RDR ARCHIVE', 'VOLUME_ID': 'MER2MI_1XXX', 'PUBLICATION_DATE': '2004-07-15', 'DATA_SET_ID': 'MER2-M-MI-3-RDR-SCI-V1.0', 'DESCRIPTION': 'This volume contains MI Science RDRs and related ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_mi_sci_calibrated', 'title': 'MER2 Microscopic Imager Science Calibrated Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mi_sci_calibrated', 'version_id': '1.0', 'title': 'MER2 Microscopic Imager Science Calibrated Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Herkenhoff, K.', 'publication_year': '2004', 'doi': '10.17189/1519005', 'description': 'This bundle contains calibrated data from the Microscopic Imager (MI)\\n                on Mars Exploration Rover 2 (Spirit). These data were produced by the science\\n                team.'}}}}, {'path': 'mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-PANCAM-3-IOFCAL-SCI-V2.0', 'title': 'MER 2: PANCAM SCIENCE IOF ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: PANCAM SCIENCE IOF ARCHIVE', 'VOLUME_NAME': 'MER 2: PANCAM SCIENCE IOF ARCHIVE', 'VOLUME_ID': 'MER2PC_3002', 'PUBLICATION_DATE': '2015-01-15', 'DATA_SET_ID': 'MER2-M-PANCAM-3-IOFCAL-SCI-V2.0', 'DESCRIPTION': 'This volume contains Pancam Science IOF images and related ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_pancam_sci_derived_iof', 'title': 'MER2 Pancam Science Derived IOF Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_pancam_sci_derived_iof', 'version_id': '1.0', 'title': 'MER2 Pancam Science Derived IOF Data Bundle', 'information_model_version': '1.11.1.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Bell III, J.F.', 'publication_year': '2020', 'doi': '10.17189/1519406', 'description': 'This bundle contains derived IOF data from the Panoramic Cameras (Pancam)\\n                on Mars Exploration Rover 2 (Spirit). These data were produced by the science\\n                team.'}}}}, {'path': 'mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-PANCAM-3-RADCAL-SCI-V2.0', 'title': 'MER 2: PANCAM SCIENCE RDR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: PANCAM SCIENCE RDR ARCHIVE', 'VOLUME_NAME': 'MER 2: PANCAM SCIENCE RDR ARCHIVE', 'VOLUME_ID': 'MER2PC_1002', 'PUBLICATION_DATE': '2016-10-15', 'DATA_SET_ID': 'MER2-M-PANCAM-3-RADCAL-SCI-V2.0', 'DESCRIPTION': 'This volume contains Pancam version 2.0 Science RDRs and related ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_pancam_sci_calibrated2', 'title': 'MER2 Pancam Science Calibrated Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_pancam_sci_calibrated2', 'version_id': '1.0', 'title': 'MER2 Pancam Science Calibrated Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Bell III, J.F.', 'publication_year': '2004', 'doi': '10.17189/1518988', 'description': 'This bundle contains calibrated data from the Panoramic Cameras (Pancam)\\n                on Mars Exploration Rover 2 (Spirit). These data were produced by the science\\n                team.'}}}}, {'path': 'mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-PANCAM-5-COLOR-MOSAICS-SCI-V1.0', 'title': 'MER 2: PANCAM SCIENCE RDR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: PANCAM SCIENCE RDR ARCHIVE', 'VOLUME_NAME': 'MER 2: PANCAM SCIENCE RDR ARCHIVE', 'VOLUME_ID': 'MER2PC_2XXX', 'PUBLICATION_DATE': '2013-07-15', 'DATA_SET_ID': 'MER2-M-PANCAM-5-COLOR-MOSAICS-SCI-V1.0', 'DESCRIPTION': 'This volume contains Pancam color mosaics and related ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_pancam_sci_derived_color', 'title': 'MER2 Pancam Derived Color Mosaic Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_pancam_sci_derived_color', 'version_id': '1.0', 'title': 'MER2 Pancam Derived Color Mosaic Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Bell III, J.F.', 'publication_year': '2004', 'doi': '10.17189/1519002', 'description': 'This bundle contains color mosaics from the Panoramic Cameras (Pancam)\\n                on Mars Exploration Rover 2 (Spirit). These data were produced by the science\\n                team.'}}}}, {'path': 'mer/mer2-m-mtes-3-rdr-v1/mer2mt_1xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-MTES-3-RDR-V1.0', 'title': 'MER 2: MINI-TES RDR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: MINI-TES RDR ARCHIVE', 'VOLUME_NAME': 'MER 2: MINI-TES RDR ARCHIVE', 'VOLUME_ID': 'MER2MT_1XXX', 'PUBLICATION_DATE': '2004-07-15', 'DATA_SET_ID': 'MER2-M-MTES-3-RDR-V1.0', 'DESCRIPTION': 'This volume contains Mini-TES RDRs and related ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-mtes-3-rdr-v1/mer2mt_1xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_mtes_calibrated_radiance', 'title': 'MER2 Mini-TES Calibrated Radiance Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mtes_calibrated_radiance', 'version_id': '1.0', 'title': 'MER2 Mini-TES Calibrated Radiance Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Christensen, P.', 'publication_year': '2004', 'doi': '10.17189/1518998', 'description': 'This bundle contains calibrated data from the Mini-TES instrument\\n                on Mars Exploration Rover 2 (Spirit).'}}}}, {'path': 'mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-MTES-4-EMR-V1.0', 'title': 'MER 2: MINI-TES EMR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: MINI-TES EMR ARCHIVE', 'VOLUME_NAME': 'MER 2: MINI-TES EMR ARCHIVE', 'VOLUME_ID': 'MER2MT_3XXX', 'PUBLICATION_DATE': '2004-07-15', 'DATA_SET_ID': 'MER2-M-MTES-4-EMR-V1.0', 'DESCRIPTION': 'This volume contains Mini-TES EMRs and related ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_mtes_derived_emissivity', 'title': 'MER2 Mini-TES Derived Emissivity Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mtes_derived_emissivity', 'version_id': '1.0', 'title': 'MER2 Mini-TES Derived Emissivity Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Christensen, P.', 'publication_year': '2004', 'doi': '10.17189/1518982', 'description': 'This bundle contains emissivity data from the Mini-TES instrument\\n                on Mars Exploration Rover 2 (Spirit).'}}}}, {'path': 'mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-MTES-4-BTR-V1.0', 'title': 'MER 2: MINI-TES BTR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: MINI-TES BTR ARCHIVE', 'VOLUME_NAME': 'MER 2: MINI-TES BTR ARCHIVE', 'VOLUME_ID': 'MER2MT_2XXX', 'PUBLICATION_DATE': '2004-07-15', 'DATA_SET_ID': 'MER2-M-MTES-4-BTR-V1.0', 'DESCRIPTION': 'This volume contains Mini-TES BTRs and related ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_mtes_derived_temperature', 'title': 'MER2 Mini-TES Derived Brightness Temperature Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mtes_derived_temperature', 'version_id': '1.0', 'title': 'MER2 Mini-TES Derived Brightness Temperature Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Christensen, P.', 'publication_year': '2004', 'doi': '10.17189/1518974', 'description': 'This bundle contains brightness temperature data from the Mini-TES instrument\\n                on Mars Exploration Rover 2 (Spirit).'}}}}, {'path': 'mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-MB-4-SUMSPEC-SCI-V1.0', 'title': 'MER 2: MOESSBAUER SUMMED SPECTRA RDR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: MOESSBAUER SUMMED SPECTRA RDR ARCHIVE', 'VOLUME_NAME': 'MER 2: MOESSBAUER SUMMED SPECTRA RDR ARCHIVE', 'VOLUME_ID': 'MER2MB_1XXX', 'PUBLICATION_DATE': '2004-07-31', 'DATA_SET_ID': 'MER2-M-MB-4-SUMSPEC-SCI-V1.0', 'DESCRIPTION': 'This volume contains Moessbauer summed spectra and ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_mb_pp', 'title': 'MER2 MB Summed Spectra Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mb_pp', 'version_id': '1.0', 'title': 'MER2 MB Summed Spectra Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Klingelh\u00f6fer, G.', 'publication_year': '2004', 'doi': '10.17189/1518980', 'description': 'This bundle contains summed spectra (PDS4 partially processed) data from the \\n                Moessbauer Spectrometer (MB) on Mars Exploration Rover 2 (Spirit).'}}}}, {'path': 'mer/mer2-m-apxs-2-xrayspec-sci-v1/mer2ap_1xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-APXS-2-XRAYSPEC-SCI-V1.0', 'title': 'MER 2: APXS OPERATIONS X-RAY SPECTRA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: APXS OPERATIONS X-RAY SPECTRA', 'VOLUME_NAME': 'MER 2: APXS OPERATIONS X-RAY SPECTRA', 'VOLUME_ID': 'MER2AP_1XXX', 'DATA_SET_ID': 'MER2-M-APXS-2-XRAYSPEC-SCI-V1.0', 'PUBLICATION_DATE': '2004-10-04', 'DESCRIPTION': 'This volume contains x-ray spectra acquired by the APXS instrument onboard the MER2 rover. The volume also contains detailed documentation about the mission, spacecraft, instruments, data sets, as well as calibration information and index tables.'}}}, {'path': 'mer/mer2-m-apxs-2-xrayspec-sci-v1/mer2ap_1xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_apxs_pp', 'title': 'MER2 APXS Xray Spectra (Partially Processed) Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_apxs_pp', 'version_id': '1.0', 'title': 'MER2 APXS Xray Spectra (Partially Processed) Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Gellert, R.', 'publication_year': '2004', 'doi': '10.17189/1518981', 'description': 'This bundle contains Xray Spectra (Partially Processed) data from the \\n                Alpha Particle X-ray Spectrometer on Mars Exploration Rover 2 (Spirit). \\n                Raw APXS data have been converted to ASCII tables and spectra from previous\\n                integrations have been removed.'}}}}, {'path': 'mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER1/MER2-M-APXS-5-OXIDE-SCI-V1.0', 'title': 'MER APXS OXIDE ABUNDANCE ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER APXS OXIDE ABUNDANCE ARCHIVE', 'VOLUME_NAME': 'MER APXS OXIDE ABUNDANCE ARCHIVE', 'VOLUME_ID': 'MERAP_2XXX', 'DATA_SET_ID': 'MER1/MER2-M-APXS-5-OXIDE-SCI-V1.0', 'PUBLICATION_DATE': '2006-08-31', 'DESCRIPTION': 'This volume contains oxide abundance data derived from APXS measurements on both Mars Exploration Rovers.'}}}, {'path': 'mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer_apxs_derived', 'title': 'MER APXS Derived Oxide Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer_apxs_derived', 'version_id': '1.0', 'title': 'MER APXS Derived Oxide Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Gellert, R.', 'publication_year': '2004', 'doi': '10.17189/1518973', 'description': 'This bundle contains oxide abundances derived from the Alpha Particle X-ray Spectrometer\\n                data on both Mars Exploration Rovers (Spirit and Opportunity).'}}}}, {'path': 'mer/mer1_mer2-m-mb-5-fe-abundance-v1/mermb_2xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER1/MER2-M-MB-5-FE-ABUNDANCE-V1.0', 'title': 'MER MOESSBAUER ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER MOESSBAUER ARCHIVE', 'VOLUME_NAME': 'MER MOESSBAUER ARCHIVE', 'VOLUME_ID': 'MERMB_2XXX', 'PUBLICATION_DATE': '2009-12-01', 'DATA_SET_ID': 'MER1/MER2-M-MB-5-FE-ABUNDANCE-V1.0', 'DESCRIPTION': 'This volume contains Moessbauer Spectrometer relative Fe abundance data from both rovers on the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer1_mer2-m-mb-5-fe-abundance-v1/mermb_2xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer_mb_derived', 'title': 'MER MB Relative Iron Abundance Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer_mb_derived', 'version_id': '1.0', 'title': 'MER MB Relative Iron Abundance Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Klingelh\u00f6fer, G.', 'publication_year': '2004', 'doi': '10.17189/1518985', 'description': 'This bundle contains relative iron abundances derived from from the \\n                Moessbauer Spectrometer (MB) on both Mars Exploration Rovers (Spirit and Opportunity).'}}}}, {'path': 'mer/urn-nasa-pds-mer_apxs_composites_library', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer_apxs_composites_library', 'title': 'MER APXS Composite Spectra Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer_apxs_composites_library', 'version_id': '1.1', 'title': 'MER APXS Composite Spectra Bundle', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Knight, A. L.; VanBommel, S. J.; Gellert, R.', 'publication_year': '2024', 'doi': '10.17189/fmmx-db70', 'description': 'This bundle contains a library of target characteristics, metadata, composite spectra, and concentrations\\n                created from individual spectra acquired by the Alpha Particle X-ray Spectrometers on \\n                Mars Exploration Rovers 1 and 2 (Opportunity and Spirit).'}}}}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-pancam-3-radcal-sci-v2/",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002', 'collections': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-mtes-4-emr-v1/",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx', 'collections': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx', 'collections': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-mi-3-rdr-sci-v1/",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx', 'collections': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "mer/mer2-m-navcam-3-radiometric-sci-v1/",
+          "mer/mer2-m-rat-2-edr-ops-v1/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-NAVCAM-3-RADIOMETRIC-SCI-V1.0', 'title': 'MER 2: NAVCAM SCIENCE RDR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: NAVCAM SCIENCE RDR ARCHIVE', 'VOLUME_NAME': 'MER 2: NAVCAM SCIENCE RDR ARCHIVE', 'VOLUME_ID': 'MER2NC_1XXX', 'PUBLICATION_DATE': '2011-09-22', 'DATA_SET_ID': 'MER2-M-NAVCAM-3-RADIOMETRIC-SCI-V1.0', 'DESCRIPTION': 'This volume contains Navcam Science RDRs and related ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_navcam_sci_calibrated', 'title': 'MER2 Navcam Science Calibrated Radiance Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_navcam_sci_calibrated', 'version_id': '1.1', 'title': 'MER2 Navcam Science Calibrated Radiance Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Soderblom, J.M.; Bell III, J.F.; Johnson, J.R.; Joseph J.; Wolff, M.J.', 'publication_year': '2011', 'doi': '10.17189/1518996', 'description': 'This bundle contains calibrated radiance data from the Navigation Cameras (Navcam)\\n                on Mars Exploration Rover 2 (Spirit). These data were calibrated by the science\\n                team.'}}}}, {'path': 'mer/mer2-m-rat-2-edr-ops-v1/mer2ra_0xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-RAT-2-EDR-OPS-V1.0', 'title': 'MER 2: RAT OPERATIONS EDR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: RAT OPERATIONS EDR ARCHIVE', 'VOLUME_NAME': 'MER 2: ROCK ABRASION TOOL OPERATIONS EDR ARCHIVE', 'VOLUME_ID': 'MER2RA_0XXX', 'DATA_SET_ID': 'MER2-M-RAT-2-EDR-OPS-V1.0', 'PUBLICATION_DATE': '2004-07-08', 'DESCRIPTION': 'This volume contains data acquired by the Rock Abrasion Tool (RAT) onboard the MER 2 rover. The volume also contains detailed documentation about the mission, spacecraft, instruments, data sets, and index tables.'}}}, {'path': 'mer/mer2-m-rat-2-edr-ops-v1/mer2ra_0xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_rat_raw', 'title': 'MER2 RAT Raw Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_rat_raw', 'version_id': '1.0', 'title': 'MER2 RAT Raw Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Gorevan, S.', 'publication_year': '2004', 'doi': '10.17189/1518972', 'description': 'This bundle contains raw data from the Rock Abrasion Tool\\n                on Mars Exploration Rover 2 (Spirit).'}}}}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "mer/urn-nasa-pds-ruff_pdart14_mtes/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:ruff_pdart14_mtes', 'title': 'Ruff PDART 2014 Mini-TES Mirror-dust-corrected Emissivity Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:ruff_pdart14_mtes', 'version_id': '1.0', 'title': 'Ruff PDART 2014 Mini-TES Mirror-dust-corrected Emissivity Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Ruff, Steve', 'publication_year': '2017', 'doi': '10.17189/1518983', 'description': 'Mars Exploration Rover Mini-TES Mirror-dust-corrected Emissivity \\n                by Steve Ruff, PDART 2014'}}}}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002', 'collections': [{'path': 'mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002', 'dataset_id': 'urn:nasa:pds:mer2_pancam_sci_calibrated2:calibration', 'title': 'MER Calibration Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_pancam_sci_calibrated2:calibration', 'version_id': '1.0', 'title': 'MER Calibration Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'PDS Geosciences Node', 'publication_year': '2019', 'keyword': ['Opportunity', 'Spirit', 'MER', 'Mars'], 'description': 'Mars Exploration Rover 2 Pancam calibration collection. This collection contains documents about\\n            calibration of the MER Panoramic Cameras.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-11-18', 'version_id': '1.0', 'description': 'Initial version'}}}}}, {'path': 'mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002', 'dataset_id': 'urn:nasa:pds:mer2_pancam_sci_calibrated2:data', 'title': 'MER2 Pancam Calibrated Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_pancam_sci_calibrated2:data', 'version_id': '1.0', 'title': 'MER2 Pancam Calibrated Data Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Bell III, J.F.', 'publication_year': '2004', 'description': 'This collection contains calibrated images from the Panoramic Cameras (Pancam) on\\n                the Mars Exploration Rover 2 (Spirit). These products were produced by the Pancam\\n                Science Team.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-11-19', 'version_id': '1.0', 'description': 'Initial version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx', 'collections': [{'path': 'mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx', 'dataset_id': 'urn:nasa:pds:mer2_mtes_derived_emissivity:calibration', 'title': 'MER2 Mini-TES Calibration Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mtes_derived_emissivity:calibration', 'version_id': '1.0', 'title': 'MER2 Mini-TES Calibration Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'PDS Geosciences Node', 'publication_year': '2019', 'keyword': ['Spirit', 'MER', 'Mars'], 'description': 'Mars Exploration Rover 2 Mini-TES Calibration Collection.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-10-30', 'version_id': '1.0', 'description': 'Initial version'}}}}}, {'path': 'mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx', 'dataset_id': 'urn:nasa:pds:mer2_mtes_derived_emissivity:data', 'title': 'MER2 Mini-TES Derived Emissivity Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mtes_derived_emissivity:data', 'version_id': '1.0', 'title': 'MER2 Mini-TES Derived Emissivity Data Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Christensen, P.', 'publication_year': '2004', 'description': 'This collection contains derived emissivity spectra from the Mini-TES instrument on\\n                the Mars Exploration Rover 2 (Spirit).'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-11-01', 'version_id': '1.0', 'description': 'Initial version'}}}}}, {'path': 'mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx', 'dataset_id': 'urn:nasa:pds:mer1_mtes_raw:data_ancillary', 'title': 'Mini-TES Ancillary Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer1_mtes_raw:data_ancillary', 'version_id': '1.0', 'title': 'Mini-TES Ancillary Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Christensen, P.', 'publication_year': '2004', 'description': 'This collection contains the center wavenumber data for MER Mini-TES data products.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-10-29', 'version_id': '1.0', 'description': 'Initial version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx', 'collections': [{'path': 'mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx', 'dataset_id': 'urn:nasa:pds:mer_apxs_derived:data', 'title': 'MER APXS Oxide Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer_apxs_derived:data', 'version_id': '2.0', 'title': 'MER APXS Oxide Data Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Gellert, R.', 'publication_year': '2004', 'description': 'This collection contains oxide data from the Alpha Particle X-ray Spectrometer\\n                on the Mars Exploration Rovers.'}, 'Modification_History': {'Modification_Detail': [{'modification_date': '2019-05-22', 'version_id': '1.0', 'description': 'Initial version'}, {'modification_date': '2021-09-22', 'version_id': '2.0', 'description': 'Added oxide results beyond sol B4000.'}]}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_list_missions",
+      "tool_input": {},
+      "tool_output": "{'missions': [{'name': 'm2020', 'description': 'Mars 2020 / Perseverance (PIXL, SHERLOC, Mastcam-Z, SuperCam, RIMFAX)'}, {'name': 'insight', 'description': 'InSight lander (SEIS, HP3, RISE, IDA)'}, {'name': 'msl', 'description': 'Mars Science Laboratory / Curiosity (ChemCam, APXS, CheMin, SAM, Mastcam, MAHLI, DAN)'}, {'name': 'mro', 'description': 'Mars Reconnaissance Orbiter (HiRISE, CTX, CRISM, SHARAD, MCS)'}, {'name': 'mer', 'description': 'Mars Exploration Rovers \u2014 Spirit (MER2) and Opportunity (MER1) (Pancam, Mini-TES, APXS, MB, MI)'}, {'name': 'mex', 'description': 'Mars Express (HRSC, OMEGA, MARSIS, PFS, SPICAM, MaRS)'}, {'name': 'ody', 'description': 'Mars Odyssey (THEMIS, GRS, NS)'}, {'name': 'phx', 'description': 'Phoenix lander (TEGA, MECA, SSI, OM, RAC)'}, {'name': 'mgs', 'description': 'Mars Global Surveyor (MOC, MOLA, TES, MAG)'}, {'name': 'mpf', 'description': 'Mars Pathfinder (IMP, APXS)'}, {'name': 'viking', 'description': 'Viking (VL1, VL2, VO1, VO2 \u2014 camera, IRTM, MAWD)'}, {'name': 'mariner', 'description': 'Mariner missions'}, {'name': 'mars', 'description': 'Mars miscellaneous / Mars Express ancillary'}, {'name': 'mgn', 'description': 'Magellan (SAR, altimetry, radiometry, emissivity)'}, {'name': 'premgn', 'description': 'Pre-Magellan Venus data (Pioneer Venus Orbiter)'}, {'name': 'venus', 'description': 'Venus miscellaneous'}, {'name': 'messenger', 'description': 'MESSENGER at Mercury (MDIS, GRNS, XRS, MLA, MASCS)'}, {'name': 'grail', 'description': 'GRAIL lunar gravity (LGRS)'}, {'name': 'clps', 'description': 'Commercial Lunar Payload Services'}, {'name': 'lunar', 'description': 'Lunar missions (Clementine, Lunar Prospector, Chandrayaan, Kaguya, Apollo)'}, {'name': 'lro', 'description': 'Lunar Reconnaissance Orbiter (LOLA, Diviner, LROC, Mini-RF, LAMP)'}, {'name': 'earth', 'description': 'Earth-based observations'}, {'name': 'lab', 'description': 'Laboratory measurements'}, {'name': 'near', 'description': 'NEAR Shoemaker at Eros (NLR, MSI, XGRS, MAG)'}], 'count': 24}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx', 'collections': [{'path': 'mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx', 'dataset_id': 'urn:nasa:pds:mer2_mb_pp:calib', 'title': 'MER2 MB Calibration Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mb_pp:calib', 'version_id': '1.0', 'title': 'MER2 MB Calibration Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Klingelh\u00f6fer, G.', 'publication_year': '2004', 'description': 'This collection contains calibration data and information for use with\\n                Moessbauer Spectrometer (MB) on Mars Exploration Rover 2 (Spirit).'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-05-30', 'version_id': '1.0', 'description': 'Initial version'}}}}}, {'path': 'mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx', 'dataset_id': 'urn:nasa:pds:mer2_mb_pp:data', 'title': 'MER2 MB Summed Spectra Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mb_pp:data', 'version_id': '1.0', 'title': 'MER2 MB Summed Spectra Data Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Klingelh\u00f6fer, G.', 'publication_year': '2004', 'description': 'This collection contains raw data from the Moessbauer Spectrometer (MB)\\n                on Mars Exploration Rover 2 (Spirit).'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-06-10', 'version_id': '1.0', 'description': 'Initial version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx', 'collections': [{'path': 'mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx', 'dataset_id': 'urn:nasa:pds:mer2_mi_sci_calibrated:calibration', 'title': 'MER Microscopic Imager Calibration Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mi_sci_calibrated:calibration', 'version_id': '1.0', 'title': 'MER Microscopic Imager Calibration Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'PDS Geosciences Node', 'publication_year': '2019', 'keyword': ['Opportunity', 'Spirit', 'MER', 'Mars'], 'description': 'Mars Exploration Rover Microscopic Imager calibration collection.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-11-26', 'version_id': '1.0', 'description': 'Initial version'}}}}}, {'path': 'mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx', 'dataset_id': 'urn:nasa:pds:mer2_mi_sci_calibrated:data', 'title': 'MER2 Microscopic Imager Calibrated Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mi_sci_calibrated:data', 'version_id': '1.0', 'title': 'MER2 Microscopic Imager Calibrated Data Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Herkenhoff, K.', 'publication_year': '2004', 'description': 'This collection contains calibrated images from the Microscopic Imager (MI) on\\n                the Mars Exploration Rover 2 (Spirit). These products were produced by the MI\\n                Science Team.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-11-26', 'version_id': '1.0', 'description': 'Initial version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx', 'collections': [{'path': 'mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx', 'dataset_id': 'urn:nasa:pds:mer2_navcam_sci_calibrated:data', 'title': 'MER2 Navcam Calibrated Radiance Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_navcam_sci_calibrated:data', 'version_id': '1.1', 'title': 'MER2 Navcam Calibrated Radiance Data Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Soderblom, J.', 'publication_year': '2008', 'description': 'This collection contains calibrated radiance images from the Navigation Cameras (Navcam) on\\n                the Mars Exploration Rover 2 (Spirit).'}, 'Modification_History': {'Modification_Detail': [{'modification_date': '2025-12-01', 'version_id': '1.1', 'description': 'Added rover-frame instrument azimuth and elevation angles\\n                    and a coordinate system specification for site-frame angles.\\n                    Corrected a sign error in instrument and solar elevation angles.'}, {'modification_date': '2019-10-25', 'version_id': '1.0', 'description': 'Initial version'}]}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_list_missions",
+      "tool_input": {},
+      "tool_output": "{'missions': [{'name': 'm2020', 'description': 'Mars 2020 / Perseverance (PIXL, SHERLOC, Mastcam-Z, SuperCam, RIMFAX)'}, {'name': 'insight', 'description': 'InSight lander (SEIS, HP3, RISE, IDA)'}, {'name': 'msl', 'description': 'Mars Science Laboratory / Curiosity (ChemCam, APXS, CheMin, SAM, Mastcam, MAHLI, DAN)'}, {'name': 'mro', 'description': 'Mars Reconnaissance Orbiter (HiRISE, CTX, CRISM, SHARAD, MCS)'}, {'name': 'mer', 'description': 'Mars Exploration Rovers \u2014 Spirit (MER2) and Opportunity (MER1) (Pancam, Mini-TES, APXS, MB, MI)'}, {'name': 'mex', 'description': 'Mars Express (HRSC, OMEGA, MARSIS, PFS, SPICAM, MaRS)'}, {'name': 'ody', 'description': 'Mars Odyssey (THEMIS, GRS, NS)'}, {'name': 'phx', 'description': 'Phoenix lander (TEGA, MECA, SSI, OM, RAC)'}, {'name': 'mgs', 'description': 'Mars Global Surveyor (MOC, MOLA, TES, MAG)'}, {'name': 'mpf', 'description': 'Mars Pathfinder (IMP, APXS)'}, {'name': 'viking', 'description': 'Viking (VL1, VL2, VO1, VO2 \u2014 camera, IRTM, MAWD)'}, {'name': 'mariner', 'description': 'Mariner missions'}, {'name': 'mars', 'description': 'Mars miscellaneous / Mars Express ancillary'}, {'name': 'mgn', 'description': 'Magellan (SAR, altimetry, radiometry, emissivity)'}, {'name': 'premgn', 'description': 'Pre-Magellan Venus data (Pioneer Venus Orbiter)'}, {'name': 'venus', 'description': 'Venus miscellaneous'}, {'name': 'messenger', 'description': 'MESSENGER at Mercury (MDIS, GRNS, XRS, MLA, MASCS)'}, {'name': 'grail', 'description': 'GRAIL lunar gravity (LGRS)'}, {'name': 'clps', 'description': 'Commercial Lunar Payload Services'}, {'name': 'lunar', 'description': 'Lunar missions (Clementine, Lunar Prospector, Chandrayaan, Kaguya, Apollo)'}, {'name': 'lro', 'description': 'Lunar Reconnaissance Orbiter (LOLA, Diviner, LROC, Mini-RF, LAMP)'}, {'name': 'earth', 'description': 'Earth-based observations'}, {'name': 'lab', 'description': 'Laboratory measurements'}, {'name': 'near', 'description': 'NEAR Shoemaker at Eros (NLR, MSI, XGRS, MAG)'}], 'count': 24}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002', 'collections': [{'path': 'mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002', 'dataset_id': 'urn:nasa:pds:mer2_pancam_sci_derived_iof:data', 'title': 'MER2 Pancam Calibrated Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_pancam_sci_derived_iof:data', 'version_id': '1.0', 'title': 'MER2 Pancam Calibrated Data Collection', 'information_model_version': '1.11.1.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Bell III, J.F.', 'publication_year': '2020', 'description': 'This collection contains derived IOF images from the Panoramic Cameras (Pancam) on\\n                the Mars Exploration Rover 2 (Spirit). These products were produced by the Pancam\\n                Science Team.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2020-09-15', 'version_id': '1.0', 'description': 'Initial version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx', 'collections': [{'path': 'mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx', 'dataset_id': 'urn:nasa:pds:mer2_pancam_sci_derived_color:data', 'title': 'MER2 Pancam Derived Color Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_pancam_sci_derived_color:data', 'version_id': '1.0', 'title': 'MER2 Pancam Derived Color Data Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Bell III, J.F.', 'publication_year': '2004', 'description': 'This collection contains color mosaics from the Panoramic Cameras (Pancam) on\\n                the Mars Exploration Rover 2 (Opportunity). These products were produced by the Pancam\\n                Science Team.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-11-22', 'version_id': '1.0', 'description': 'Initial version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx', 'collections': [{'path': 'mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx', 'dataset_id': 'urn:nasa:pds:mer2_mtes_derived_temperature:calibration', 'title': 'MER2 Mini-TES Calibration Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mtes_derived_temperature:calibration', 'version_id': '1.0', 'title': 'MER2 Mini-TES Calibration Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'editor_list': 'PDS Geosciences Node', 'publication_year': '2019', 'keyword': ['Spirit', 'MER', 'Mars'], 'description': 'Mars Exploration Rover 2 Mini-TES Calibration Collection.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-10-30', 'version_id': '1.0', 'description': 'Initial version'}}}}}, {'path': 'mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx', 'dataset_id': 'urn:nasa:pds:mer2_mtes_derived_temperature:data', 'title': 'MER2 Mini-TES Derived Brightness Temperature Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mtes_derived_temperature:data', 'version_id': '1.0', 'title': 'MER2 Mini-TES Derived Brightness Temperature Data Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Christensen, P.', 'publication_year': '2004', 'description': 'This collection contains derived brightness temperature data from the Mini-TES instrument on\\n                the Mars Exploration Rover 2 (Spirit).'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-11-01', 'version_id': '1.0', 'description': 'Initial version'}}}}}, {'path': 'mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx', 'dataset_id': 'urn:nasa:pds:mer1_mtes_raw:data_ancillary', 'title': 'Mini-TES Ancillary Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer1_mtes_raw:data_ancillary', 'version_id': '1.0', 'title': 'Mini-TES Ancillary Collection', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Christensen, P.', 'publication_year': '2004', 'description': 'This collection contains the center wavenumber data for MER Mini-TES data products.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2019-10-29', 'version_id': '1.0', 'description': 'Initial version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_inspect_collections",
+      "tool_input": {
+        "path": "mer/urn-nasa-pds-ruff_pdart14_mtes/",
+        "max_subdirs": 40
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'collections': [{'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'dataset_id': 'urn:nasa:pds:ruff_pdart14_mtes:browse_mtes_edc', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Browse Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:ruff_pdart14_mtes:browse_mtes_edc', 'version_id': '1.0', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Browse Collection', 'information_model_version': '1.8.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'publication_year': '2017', 'description': 'Mini-TES EDC Averaged Mirror-Dust Corrected Browse Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2017-09-13', 'version_id': '1.0', 'description': 'Post-peer-review version'}}}}}, {'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'dataset_id': 'urn:nasa:pds:ruff_pdart14_mtes:browse_mtes_esd', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Browse Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:ruff_pdart14_mtes:browse_mtes_esd', 'version_id': '1.0', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Browse Collection', 'information_model_version': '1.8.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'publication_year': '2017', 'description': 'Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Browse Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2017-09-13', 'version_id': '1.0', 'description': 'Post-peer-review version'}}}}}, {'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'dataset_id': 'urn:nasa:pds:ruff_pdart14_mtes:context', 'title': 'Mini-TES Averaged Mirror-Dust Corrected Context Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:ruff_pdart14_mtes:context', 'version_id': '1.0', 'title': 'Mini-TES Averaged Mirror-Dust Corrected Context Collection', 'information_model_version': '1.8.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'publication_year': '2017', 'description': 'Mini-TES EDC Averaged Mirror-Dust Corrected Context Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2017-08-14', 'version_id': '1.0', 'description': 'Post-peer-review version'}}}}}, {'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'dataset_id': 'urn:nasa:pds:ruff_pdart14_mtes:data_ancillary', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Ancillary Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:ruff_pdart14_mtes:data_ancillary', 'version_id': '1.0', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Ancillary Data Collection', 'information_model_version': '1.8.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'publication_year': '2017', 'description': 'Mini-TES EDC Averaged Mirror-Dust Corrected Ancillary Data Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2017-09-13', 'version_id': '1.0', 'description': 'Post-peer-review version'}}}}}, {'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'dataset_id': 'urn:nasa:pds:ruff_pdart14_mtes:data_mtes_edc', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Image Cube Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:ruff_pdart14_mtes:data_mtes_edc', 'version_id': '1.0', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Image Cube Collection', 'information_model_version': '1.8.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'publication_year': '2017', 'description': 'Mini-TES EDC Averaged Mirror-Dust Corrected Image Cube Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2017-09-13', 'version_id': '1.0', 'description': 'Post-peer-review version'}}}}}, {'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'dataset_id': 'urn:nasa:pds:ruff_pdart14_mtes:data_mtes_esd', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Image Cube Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:ruff_pdart14_mtes:data_mtes_esd', 'version_id': '1.0', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Image Cube Collection', 'information_model_version': '1.8.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'publication_year': '2017', 'description': 'Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Image Cube Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2017-09-13', 'version_id': '1.0', 'description': 'Post-peer-review version'}}}}}, {'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'dataset_id': 'urn:nasa:pds:ruff_pdart14_mtes:data_mtes_ett', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Target Temperature Image Cube Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:ruff_pdart14_mtes:data_mtes_ett', 'version_id': '1.0', 'title': 'Mini-TES EDC Averaged Mirror-Dust Corrected Target Temperature Image Cube Collection', 'information_model_version': '1.8.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'publication_year': '2017', 'description': 'Mini-TES EDC Averaged Mirror-Dust Corrected Target Temperature Image Cube Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2017-09-13', 'version_id': '1.0', 'description': 'Post-peer-review version'}}}}}, {'path': 'mer/urn-nasa-pds-ruff_pdart14_mtes', 'dataset_id': 'urn:nasa:pds:ruff_pdart14_mtes:schema', 'title': 'Mini-TES Averaged Mirror-Dust Corrected Schema Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:ruff_pdart14_mtes:schema', 'version_id': '1.0', 'title': 'Mini-TES Averaged Mirror-Dust Corrected Schema Collection', 'information_model_version': '1.8.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'publication_year': '2017', 'description': 'Mini-TES EDC Averaged Mirror-Dust Corrected Schema Collection'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2017-08-14', 'version_id': '1.0', 'description': 'Post-peer-review version'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_geo_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "mer/mer2-m-mtes-4-emr-v1/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MER2-M-MTES-4-EMR-V1.0', 'title': 'MER 2: MINI-TES EMR ARCHIVE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MER 2: MINI-TES EMR ARCHIVE', 'VOLUME_NAME': 'MER 2: MINI-TES EMR ARCHIVE', 'VOLUME_ID': 'MER2MT_3XXX', 'PUBLICATION_DATE': '2004-07-15', 'DATA_SET_ID': 'MER2-M-MTES-4-EMR-V1.0', 'DESCRIPTION': 'This volume contains Mini-TES EMRs and related ancillary files from the Mars Exploration Rover mission.'}}}, {'path': 'mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:mer2_mtes_derived_emissivity', 'title': 'MER2 Mini-TES Derived Emissivity Data Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:mer2_mtes_derived_emissivity', 'version_id': '1.0', 'title': 'MER2 Mini-TES Derived Emissivity Data Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Christensen, P.', 'publication_year': '2004', 'doi': '10.17189/1518982', 'description': 'This bundle contains emissivity data from the Mini-TES instrument\\n                on Mars Exploration Rover 2 (Spirit).'}}}}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "final_result",
+      "tool_input": {
+        "summary": "Spirit (MER2) hydrothermal interpretations (fumaroles + hot springs) are supported by combining Spirit in-situ chemistry/mineralogy (APXS, Mini-TES, M\u00f6ssbauer) with texture and geomorphic context (Pancam, MI, Navcam) in Columbia Hills/Home Plate. Below are the most relevant calibrated/derived PDS4 collections on the PDS Geosciences Node that contain those observations.",
+        "candidates": [
+          {
+            "dataset_id": "urn:nasa:pds:mer_apxs_derived:data",
+            "path": "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx",
+            "title": "MER APXS Oxide Data Collection",
+            "mission": "MER (Spirit/MER2)",
+            "pds_version": "PDS4",
+            "reasoning": "Quantitative oxide abundances from APXS are key for documenting silica enrichment and sulfate/sulfur systematics used to distinguish acid-sulfate (fumarolic) alteration from silica precipitation in hot-spring settings."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:mer2_mtes_derived_emissivity:data",
+            "path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+            "title": "MER2 Mini-TES Derived Emissivity Data Collection",
+            "mission": "MER (Spirit/MER2)",
+            "pds_version": "PDS4",
+            "reasoning": "Mini-TES emissivity spectra are used to identify opaline silica vs sulfate-bearing materials and map their spatial association around Home Plate\u2014central to arguing for co-located fumarolic and hot-spring processes."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes:data_mtes_edc",
+            "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+            "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Image Cube Collection",
+            "mission": "MER (Spirit/MER2)",
+            "pds_version": "PDS4",
+            "reasoning": "Peer-reviewed, mirror-dust-corrected Mini-TES emissivity products improve mineral identifications (e.g., silica and sulfates) used in hydrothermal interpretations at Columbia Hills/Home Plate."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:mer2_pancam_sci_calibrated2:data",
+            "path": "mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002",
+            "title": "MER2 Pancam Calibrated Data Collection",
+            "mission": "MER (Spirit/MER2)",
+            "pds_version": "PDS4",
+            "reasoning": "Calibrated multispectral/geomorphic imaging provides the field context (layering, vents/fractures, deposit relationships) that supports interpreting both vapor-dominated (fumarolic) alteration zones and spring-related silica deposits in the same volcanic hydrothermal system."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:mer2_mi_sci_calibrated:data",
+            "path": "mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx",
+            "title": "MER2 Microscopic Imager Calibrated Data Collection",
+            "mission": "MER (Spirit/MER2)",
+            "pds_version": "PDS4",
+            "reasoning": "MI textures at mm\u2013sub-mm scale help evaluate whether silica-rich materials are precipitates (sinter-like) consistent with hot springs versus alteration rinds/coatings consistent with fumarolic acid-sulfate alteration."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:mer2_mb_pp:data",
+            "path": "mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx",
+            "title": "MER2 MB Summed Spectra Data Collection",
+            "mission": "MER (Spirit/MER2)",
+            "pds_version": "PDS4",
+            "reasoning": "M\u00f6ssbauer mineralogy (Fe2+/Fe3+ phases) constrains oxidation/alteration style and complements APXS+Mini-TES for distinguishing fumarolic acid alteration from aqueous hot-spring environments."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:mer2_navcam_sci_calibrated:data",
+            "path": "mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx",
+            "title": "MER2 Navcam Calibrated Radiance Data Collection",
+            "mission": "MER (Spirit/MER2)",
+            "pds_version": "PDS4",
+            "reasoning": "Navcam context imaging supports mapping the geomorphic setting and spatial co-occurrence of hydrothermal units (e.g., around Home Plate) invoked in the single-system model."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:mer2_pancam_sci_derived_iof:data",
+            "path": "mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002",
+            "title": "MER2 Pancam Calibrated Data Collection (Derived IOF)",
+            "mission": "MER (Spirit/MER2)",
+            "pds_version": "PDS4",
+            "reasoning": "Reflectance/IOF products are commonly used for spectral ratioing and color-based compositional mapping of altered materials associated with fumaroles and hot springs."
+          }
+        ]
+      },
+      "tool_output": "Final result processed."
+    }
+  ],
+  "full_trace": [
+    {
+      "parts": [
+        {
+          "content": "You are a dataset-discovery assistant for the NASA PDS Geosciences node at https://pds-geosciences.wustl.edu/.\n\nDirectory layout:\n  mission/ \u2192 dataset_or_bundle/ \u2192 volume/ (PDS3) or sub-collections (PDS4)\n\nCommon mission/instrument abbreviations:\n  Mars Express = MEX \u2192 mex/ (instruments: HRSC, OMEGA, MARSIS, PFS, SPICAM, MaRS)\n  Mars Reconnaissance Orbiter = MRO \u2192 mro/ (instruments: HiRISE, CTX, CRISM, SHARAD, MCS)\n  Mars Science Laboratory / Curiosity = MSL \u2192 msl/ (instruments: ChemCam, APXS, CheMin, SAM, Mastcam, MAHLI, DAN)\n  Mars 2020 / Perseverance = M2020 \u2192 m2020/ (instruments: PIXL, SHERLOC, Mastcam-Z, SuperCam, RIMFAX)\n  Mars Exploration Rovers (Spirit=MER2, Opportunity=MER1) \u2192 mer/ (instruments: Pancam, Mini-TES/MTES, APXS, MB, MI)\n  Mars Global Surveyor = MGS \u2192 mgs/ (instruments: MOC, MOLA, TES, MAG)\n  Mars Odyssey = ODY \u2192 ody/ (instruments: THEMIS, GRS, NS)\n  Phoenix = PHX \u2192 phx/ (instruments: TEGA, MECA, SSI, OM, RAC)\n  Viking = VL1/VL2/VO1/VO2 \u2192 viking/ (instruments: camera, IRTM, MAWD)\n  MESSENGER = MESS \u2192 messenger/ (instruments: MDIS, GRNS, XRS, MLA, MASCS)\n  Magellan = MGN \u2192 mgn/ (instruments: SAR, altimetry, radiometry, emissivity)\n  LRO \u2192 lro/ (instruments: LOLA, Diviner, LROC, Mini-RF, LAMP)\n  GRAIL \u2192 grail/ (instruments: LGRS)\n  NEAR \u2192 near/ (instruments: NLR, MSI, XGRS, MAG)\n\nPDS3 vs PDS4:\n  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers (e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n  - PDS4 bundle directories begin with `urn-nasa-pds-`. Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\nExtracting dataset_id from labels:\n  - PDS3: fields.VOLUME.DATA_SET_ID (or top-level DATA_SET_ID)\n  - PDS4 bundle: fields.Identification_Area.logical_identifier\n  - PDS4 collection: fields.Identification_Area.logical_identifier\n\nYOUR TOOLS (4 tools):\n  1. pds_geo_list_missions() \u2014 returns all 24 mission directories with descriptions. No HTTP. Use this to identify which mission to explore.\n  2. pds_geo_list_dataset_dirs(path) \u2014 lists sub-directory names under a mission (e.g. path='mex/'). Cheap HTTP, no label parsing. Each dir gets a pds_hint ('PDS3'/'PDS4'/null) from its naming convention. Use this to see what datasets exist, then pick which to probe.\n  3. pds_geo_probe_datasets(paths) \u2014 probes specific directories for PDS labels. Recurses one level to find leaf nodes. Returns dataset_id, title, pds_version, and slimmed fields. Accepts a list of paths (max 20) so you can batch multiple probes in one call.\n  4. pds_geo_inspect_collections(path) \u2014 scans PDS4 bundle subdirs for collection*.xml labels. Returns collection-level logical_identifiers. Use ONLY after probe_datasets confirms a PDS4 bundle exists.\n\nCRITICAL RULES:\n  1. EVERY query requires you to return dataset candidates. Queries come from published scientific papers and always imply specific PDS datasets. NEVER dismiss a query as 'interpretation' or 'conceptual'. Always return at least one candidate.\n\n  2. Prefer CALIBRATED and REDUCED data products over raw/EDR when the query implies scientific analysis. Scientists use calibrated (RDR, CDR) or derived (DDR) products. Look for directory names containing 'calibrated', 'rdr', 'cdr', 'ddr'.\n\n  3. For PDS4 datasets, use inspect_collections ONLY for the top 2-3 most relevant bundles. Return the COLLECTION-level LID when a :data or :calibrated collection exists, not just the bundle LID.\n\n  4. When both PDS3 and PDS4 versions exist, prefer the PDS4 collection-level identifier.\n\nWORKFLOW (follow this order):\n  Step 1: Infer the mission(s) and instrument(s) from the query using the abbreviation table above.\n  Step 2: Call list_dataset_dirs for the relevant mission directory (e.g. 'mex/'). Scan the directory names and pds_hints to identify the most promising dataset directories.\n  Step 3: Call probe_datasets with the most relevant paths (batch them \u2014 up to 20 paths in one call). This returns dataset_id, title, and pds_version for each.\n  Step 4: If any probed datasets are PDS4 bundles and you need collection-level LIDs, call inspect_collections on the top 2-3.\n  Step 5: Return the candidates with dataset_id, title, and reasoning.\n\n  Skip list_missions if you already know the mission directory from the abbreviation table. Most queries can be answered in 3 tool calls: list_dataset_dirs \u2192 probe_datasets \u2192 inspect_collections.\n\nConstraints:\n  - Stay under 8 tool calls per query. This is a hard limit.\n  - Only return paths you've actually probed \u2014 never guess.\n  - You MUST return at least one candidate for every query.\n",
+          "timestamp": "2026-04-30 18:37:03.555256+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "How do the Spirit observations support the idea that fumarolic activity and hot spring activity both occurred in the same volcanic hydrothermal system?",
+          "timestamp": "2026-04-30 18:37:03.555262+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-04-30 18:37:03.555418+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_list_dataset_dirs",
+          "args": "{\"path\":\"mer/\"}",
+          "tool_call_id": "call_J66A6Pk13cJ637YG5F8gwmRK",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2317,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1408,
+        "output_tokens": 137,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 109,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:37:06.593050+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:37:03+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQXv4RafcfpGIs3hKpHbvTaVYAWB",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "mer/",
+            "total": 47,
+            "dirs": [
+              {
+                "name": "mer1-m-apxs-2-edr-ops-v1",
+                "path": "mer/mer1-m-apxs-2-edr-ops-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-apxs-2-xrayspec-sci-v1",
+                "path": "mer/mer1-m-apxs-2-xrayspec-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-eng-6-rmc-ops-v1",
+                "path": "mer/mer1-m-eng-6-rmc-ops-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-mb-2-edr-ops-v1",
+                "path": "mer/mer1-m-mb-2-edr-ops-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-mb-4-sumspec-sci-v1",
+                "path": "mer/mer1-m-mb-4-sumspec-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-mi-2-edr-sci-v1",
+                "path": "mer/mer1-m-mi-2-edr-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-mi-3-rdr-sci-v1",
+                "path": "mer/mer1-m-mi-3-rdr-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-mtes-2-edr-v1",
+                "path": "mer/mer1-m-mtes-2-edr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-mtes-3-rdr-v1",
+                "path": "mer/mer1-m-mtes-3-rdr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-mtes-4-btr-v1",
+                "path": "mer/mer1-m-mtes-4-btr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-mtes-4-emr-v1",
+                "path": "mer/mer1-m-mtes-4-emr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-navcam-3-radiometric-sci-v1",
+                "path": "mer/mer1-m-navcam-3-radiometric-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-pancam-2-edr-sci-v1",
+                "path": "mer/mer1-m-pancam-2-edr-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-pancam-3-iofcal-sci-v1",
+                "path": "mer/mer1-m-pancam-3-iofcal-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-pancam-3-iofcal-sci-v2",
+                "path": "mer/mer1-m-pancam-3-iofcal-sci-v2/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-pancam-3-radcal-sci-v2",
+                "path": "mer/mer1-m-pancam-3-radcal-sci-v2/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-pancam-5-color-mosaics-sci-v1",
+                "path": "mer/mer1-m-pancam-5-color-mosaics-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-rat-2-edr-ops-v1",
+                "path": "mer/mer1-m-rat-2-edr-ops-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1-m-rss-1-edr-v1",
+                "path": "mer/mer1-m-rss-1-edr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1_mer2-m-apxs-5-oxide-sci-v1",
+                "path": "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1_mer2-m-mb-5-fe-abundance-v1",
+                "path": "mer/mer1_mer2-m-mb-5-fe-abundance-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer1_mer2-m-pancam-5-atmos-opacity-v1",
+                "path": "mer/mer1_mer2-m-pancam-5-atmos-opacity-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-apxs-2-edr-ops-v1",
+                "path": "mer/mer2-m-apxs-2-edr-ops-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-apxs-2-xrayspec-sci-v1",
+                "path": "mer/mer2-m-apxs-2-xrayspec-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-eng-6-rmc-ops-v1",
+                "path": "mer/mer2-m-eng-6-rmc-ops-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-mb-2-edr-ops-v1",
+                "path": "mer/mer2-m-mb-2-edr-ops-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-mb-4-sumspec-sci-v1",
+                "path": "mer/mer2-m-mb-4-sumspec-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-mi-2-edr-sci-v1",
+                "path": "mer/mer2-m-mi-2-edr-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-mi-3-rdr-sci-v1",
+                "path": "mer/mer2-m-mi-3-rdr-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-mtes-2-edr-v1",
+                "path": "mer/mer2-m-mtes-2-edr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-mtes-3-rdr-v1",
+                "path": "mer/mer2-m-mtes-3-rdr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-mtes-4-btr-v1",
+                "path": "mer/mer2-m-mtes-4-btr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-mtes-4-emr-v1",
+                "path": "mer/mer2-m-mtes-4-emr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-navcam-3-radiometric-sci-v1",
+                "path": "mer/mer2-m-navcam-3-radiometric-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-pancam-2-edr-sci-v1",
+                "path": "mer/mer2-m-pancam-2-edr-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-pancam-3-iofcal-sci-v1",
+                "path": "mer/mer2-m-pancam-3-iofcal-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-pancam-3-iofcal-sci-v2",
+                "path": "mer/mer2-m-pancam-3-iofcal-sci-v2/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-pancam-3-radcal-sci-v2",
+                "path": "mer/mer2-m-pancam-3-radcal-sci-v2/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-pancam-5-color-mosaics-sci-v1",
+                "path": "mer/mer2-m-pancam-5-color-mosaics-sci-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-rat-2-edr-ops-v1",
+                "path": "mer/mer2-m-rat-2-edr-ops-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mer2-m-rss-1-edr-v1",
+                "path": "mer/mer2-m-rss-1-edr-v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "urn-nasa-pds-mer_apxs_composites_library",
+                "path": "mer/urn-nasa-pds-mer_apxs_composites_library/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-mer_cs_target_list",
+                "path": "mer/urn-nasa-pds-mer_cs_target_list/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-mer_documentation",
+                "path": "mer/urn-nasa-pds-mer_documentation/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-mer_pancam_photometry",
+                "path": "mer/urn-nasa-pds-mer_pancam_photometry/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-mer_pancam_photometry_v10",
+                "path": "mer/urn-nasa-pds-mer_pancam_photometry_v10/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "urn-nasa-pds-ruff_pdart14_mtes",
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes/",
+                "pds_hint": "PDS4"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_J66A6Pk13cJ637YG5F8gwmRK",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:37:07.100179+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:37:07.100755+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "args": "{\"paths\":[\"mer/mer2-m-mi-3-rdr-sci-v1/\",\"mer/mer2-m-pancam-3-iofcal-sci-v2/\",\"mer/mer2-m-pancam-3-radcal-sci-v2/\",\"mer/mer2-m-pancam-5-color-mosaics-sci-v1/\",\"mer/mer2-m-mtes-3-rdr-v1/\",\"mer/mer2-m-mtes-4-emr-v1/\",\"mer/mer2-m-mtes-4-btr-v1/\",\"mer/mer2-m-mb-4-sumspec-sci-v1/\",\"mer/mer2-m-apxs-2-xrayspec-sci-v1/\",\"mer/mer1_mer2-m-apxs-5-oxide-sci-v1/\",\"mer/mer1_mer2-m-mb-5-fe-abundance-v1/\",\"mer/urn-nasa-pds-mer_apxs_composites_library/\"]}",
+          "tool_call_id": "call_XsUrdVw8hQRDTVtqJQdCC7pz",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 4397,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1408,
+        "output_tokens": 660,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 424,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:37:16.596787+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:37:07+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQXzZCiZmmWOxwcHHdAsGzBNo7SY",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-MI-3-RDR-SCI-V1.0",
+                "title": "MER 2: MI SCIENCE RDR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: MI SCIENCE RDR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: MI SCIENCE RDR ARCHIVE",
+                    "VOLUME_ID": "MER2MI_1XXX",
+                    "PUBLICATION_DATE": "2004-07-15",
+                    "DATA_SET_ID": "MER2-M-MI-3-RDR-SCI-V1.0",
+                    "DESCRIPTION": "This volume contains MI Science RDRs and related ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_mi_sci_calibrated",
+                "title": "MER2 Microscopic Imager Science Calibrated Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mi_sci_calibrated",
+                    "version_id": "1.0",
+                    "title": "MER2 Microscopic Imager Science Calibrated Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Herkenhoff, K.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1519005",
+                      "description": "This bundle contains calibrated data from the Microscopic Imager (MI)\n                on Mars Exploration Rover 2 (Spirit). These data were produced by the science\n                team."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-PANCAM-3-IOFCAL-SCI-V2.0",
+                "title": "MER 2: PANCAM SCIENCE IOF ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: PANCAM SCIENCE IOF ARCHIVE",
+                    "VOLUME_NAME": "MER 2: PANCAM SCIENCE IOF ARCHIVE",
+                    "VOLUME_ID": "MER2PC_3002",
+                    "PUBLICATION_DATE": "2015-01-15",
+                    "DATA_SET_ID": "MER2-M-PANCAM-3-IOFCAL-SCI-V2.0",
+                    "DESCRIPTION": "This volume contains Pancam Science IOF images and related ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_pancam_sci_derived_iof",
+                "title": "MER2 Pancam Science Derived IOF Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_pancam_sci_derived_iof",
+                    "version_id": "1.0",
+                    "title": "MER2 Pancam Science Derived IOF Data Bundle",
+                    "information_model_version": "1.11.1.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Bell III, J.F.",
+                      "publication_year": "2020",
+                      "doi": "10.17189/1519406",
+                      "description": "This bundle contains derived IOF data from the Panoramic Cameras (Pancam)\n                on Mars Exploration Rover 2 (Spirit). These data were produced by the science\n                team."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-PANCAM-3-RADCAL-SCI-V2.0",
+                "title": "MER 2: PANCAM SCIENCE RDR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: PANCAM SCIENCE RDR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: PANCAM SCIENCE RDR ARCHIVE",
+                    "VOLUME_ID": "MER2PC_1002",
+                    "PUBLICATION_DATE": "2016-10-15",
+                    "DATA_SET_ID": "MER2-M-PANCAM-3-RADCAL-SCI-V2.0",
+                    "DESCRIPTION": "This volume contains Pancam version 2.0 Science RDRs and related ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_pancam_sci_calibrated2",
+                "title": "MER2 Pancam Science Calibrated Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_pancam_sci_calibrated2",
+                    "version_id": "1.0",
+                    "title": "MER2 Pancam Science Calibrated Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Bell III, J.F.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518988",
+                      "description": "This bundle contains calibrated data from the Panoramic Cameras (Pancam)\n                on Mars Exploration Rover 2 (Spirit). These data were produced by the science\n                team."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-PANCAM-5-COLOR-MOSAICS-SCI-V1.0",
+                "title": "MER 2: PANCAM SCIENCE RDR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: PANCAM SCIENCE RDR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: PANCAM SCIENCE RDR ARCHIVE",
+                    "VOLUME_ID": "MER2PC_2XXX",
+                    "PUBLICATION_DATE": "2013-07-15",
+                    "DATA_SET_ID": "MER2-M-PANCAM-5-COLOR-MOSAICS-SCI-V1.0",
+                    "DESCRIPTION": "This volume contains Pancam color mosaics and related ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_pancam_sci_derived_color",
+                "title": "MER2 Pancam Derived Color Mosaic Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_pancam_sci_derived_color",
+                    "version_id": "1.0",
+                    "title": "MER2 Pancam Derived Color Mosaic Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Bell III, J.F.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1519002",
+                      "description": "This bundle contains color mosaics from the Panoramic Cameras (Pancam)\n                on Mars Exploration Rover 2 (Spirit). These data were produced by the science\n                team."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-3-rdr-v1/mer2mt_1xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-MTES-3-RDR-V1.0",
+                "title": "MER 2: MINI-TES RDR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: MINI-TES RDR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: MINI-TES RDR ARCHIVE",
+                    "VOLUME_ID": "MER2MT_1XXX",
+                    "PUBLICATION_DATE": "2004-07-15",
+                    "DATA_SET_ID": "MER2-M-MTES-3-RDR-V1.0",
+                    "DESCRIPTION": "This volume contains Mini-TES RDRs and related ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-3-rdr-v1/mer2mt_1xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_mtes_calibrated_radiance",
+                "title": "MER2 Mini-TES Calibrated Radiance Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mtes_calibrated_radiance",
+                    "version_id": "1.0",
+                    "title": "MER2 Mini-TES Calibrated Radiance Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Christensen, P.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518998",
+                      "description": "This bundle contains calibrated data from the Mini-TES instrument\n                on Mars Exploration Rover 2 (Spirit)."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-MTES-4-EMR-V1.0",
+                "title": "MER 2: MINI-TES EMR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: MINI-TES EMR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: MINI-TES EMR ARCHIVE",
+                    "VOLUME_ID": "MER2MT_3XXX",
+                    "PUBLICATION_DATE": "2004-07-15",
+                    "DATA_SET_ID": "MER2-M-MTES-4-EMR-V1.0",
+                    "DESCRIPTION": "This volume contains Mini-TES EMRs and related ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_mtes_derived_emissivity",
+                "title": "MER2 Mini-TES Derived Emissivity Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mtes_derived_emissivity",
+                    "version_id": "1.0",
+                    "title": "MER2 Mini-TES Derived Emissivity Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Christensen, P.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518982",
+                      "description": "This bundle contains emissivity data from the Mini-TES instrument\n                on Mars Exploration Rover 2 (Spirit)."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-MTES-4-BTR-V1.0",
+                "title": "MER 2: MINI-TES BTR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: MINI-TES BTR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: MINI-TES BTR ARCHIVE",
+                    "VOLUME_ID": "MER2MT_2XXX",
+                    "PUBLICATION_DATE": "2004-07-15",
+                    "DATA_SET_ID": "MER2-M-MTES-4-BTR-V1.0",
+                    "DESCRIPTION": "This volume contains Mini-TES BTRs and related ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_mtes_derived_temperature",
+                "title": "MER2 Mini-TES Derived Brightness Temperature Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mtes_derived_temperature",
+                    "version_id": "1.0",
+                    "title": "MER2 Mini-TES Derived Brightness Temperature Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Christensen, P.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518974",
+                      "description": "This bundle contains brightness temperature data from the Mini-TES instrument\n                on Mars Exploration Rover 2 (Spirit)."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-MB-4-SUMSPEC-SCI-V1.0",
+                "title": "MER 2: MOESSBAUER SUMMED SPECTRA RDR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: MOESSBAUER SUMMED SPECTRA RDR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: MOESSBAUER SUMMED SPECTRA RDR ARCHIVE",
+                    "VOLUME_ID": "MER2MB_1XXX",
+                    "PUBLICATION_DATE": "2004-07-31",
+                    "DATA_SET_ID": "MER2-M-MB-4-SUMSPEC-SCI-V1.0",
+                    "DESCRIPTION": "This volume contains Moessbauer summed spectra and ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_mb_pp",
+                "title": "MER2 MB Summed Spectra Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mb_pp",
+                    "version_id": "1.0",
+                    "title": "MER2 MB Summed Spectra Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Klingelh\u00f6fer, G.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518980",
+                      "description": "This bundle contains summed spectra (PDS4 partially processed) data from the \n                Moessbauer Spectrometer (MB) on Mars Exploration Rover 2 (Spirit)."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-apxs-2-xrayspec-sci-v1/mer2ap_1xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-APXS-2-XRAYSPEC-SCI-V1.0",
+                "title": "MER 2: APXS OPERATIONS X-RAY SPECTRA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: APXS OPERATIONS X-RAY SPECTRA",
+                    "VOLUME_NAME": "MER 2: APXS OPERATIONS X-RAY SPECTRA",
+                    "VOLUME_ID": "MER2AP_1XXX",
+                    "DATA_SET_ID": "MER2-M-APXS-2-XRAYSPEC-SCI-V1.0",
+                    "PUBLICATION_DATE": "2004-10-04",
+                    "DESCRIPTION": "This volume contains x-ray spectra acquired by the APXS instrument onboard the MER2 rover. The volume also contains detailed documentation about the mission, spacecraft, instruments, data sets, as well as calibration information and index tables."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-apxs-2-xrayspec-sci-v1/mer2ap_1xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_apxs_pp",
+                "title": "MER2 APXS Xray Spectra (Partially Processed) Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_apxs_pp",
+                    "version_id": "1.0",
+                    "title": "MER2 APXS Xray Spectra (Partially Processed) Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Gellert, R.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518981",
+                      "description": "This bundle contains Xray Spectra (Partially Processed) data from the \n                Alpha Particle X-ray Spectrometer on Mars Exploration Rover 2 (Spirit). \n                Raw APXS data have been converted to ASCII tables and spectra from previous\n                integrations have been removed."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER1/MER2-M-APXS-5-OXIDE-SCI-V1.0",
+                "title": "MER APXS OXIDE ABUNDANCE ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER APXS OXIDE ABUNDANCE ARCHIVE",
+                    "VOLUME_NAME": "MER APXS OXIDE ABUNDANCE ARCHIVE",
+                    "VOLUME_ID": "MERAP_2XXX",
+                    "DATA_SET_ID": "MER1/MER2-M-APXS-5-OXIDE-SCI-V1.0",
+                    "PUBLICATION_DATE": "2006-08-31",
+                    "DESCRIPTION": "This volume contains oxide abundance data derived from APXS measurements on both Mars Exploration Rovers."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer_apxs_derived",
+                "title": "MER APXS Derived Oxide Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer_apxs_derived",
+                    "version_id": "1.0",
+                    "title": "MER APXS Derived Oxide Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Gellert, R.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518973",
+                      "description": "This bundle contains oxide abundances derived from the Alpha Particle X-ray Spectrometer\n                data on both Mars Exploration Rovers (Spirit and Opportunity)."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer1_mer2-m-mb-5-fe-abundance-v1/mermb_2xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER1/MER2-M-MB-5-FE-ABUNDANCE-V1.0",
+                "title": "MER MOESSBAUER ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER MOESSBAUER ARCHIVE",
+                    "VOLUME_NAME": "MER MOESSBAUER ARCHIVE",
+                    "VOLUME_ID": "MERMB_2XXX",
+                    "PUBLICATION_DATE": "2009-12-01",
+                    "DATA_SET_ID": "MER1/MER2-M-MB-5-FE-ABUNDANCE-V1.0",
+                    "DESCRIPTION": "This volume contains Moessbauer Spectrometer relative Fe abundance data from both rovers on the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer1_mer2-m-mb-5-fe-abundance-v1/mermb_2xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer_mb_derived",
+                "title": "MER MB Relative Iron Abundance Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer_mb_derived",
+                    "version_id": "1.0",
+                    "title": "MER MB Relative Iron Abundance Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Klingelh\u00f6fer, G.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518985",
+                      "description": "This bundle contains relative iron abundances derived from from the \n                Moessbauer Spectrometer (MB) on both Mars Exploration Rovers (Spirit and Opportunity)."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/urn-nasa-pds-mer_apxs_composites_library",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer_apxs_composites_library",
+                "title": "MER APXS Composite Spectra Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer_apxs_composites_library",
+                    "version_id": "1.1",
+                    "title": "MER APXS Composite Spectra Bundle",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Knight, A. L.; VanBommel, S. J.; Gellert, R.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/fmmx-db70",
+                      "description": "This bundle contains a library of target characteristics, metadata, composite spectra, and concentrations\n                created from individual spectra acquired by the Alpha Particle X-ray Spectrometers on \n                Mars Exploration Rovers 1 and 2 (Opportunity and Spirit)."
+                    }
+                  }
+                }
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_XsUrdVw8hQRDTVtqJQdCC7pz",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:37:21.044664+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:37:21.045266+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer2-m-pancam-3-radcal-sci-v2/\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_hlnYl2yyxgCvZ6BPKblHBQZd",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer2-m-mtes-4-emr-v1/\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_O1vyg99jMPwNK7VGdetqTWM0",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer1_mer2-m-apxs-5-oxide-sci-v1/\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_MkCoiUI1tBlevnuCbvU2QqXp",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer2-m-mi-3-rdr-sci-v1/\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_BFfWsCmDLY2WrpFmicXDCCEx",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 9264,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 3456,
+        "output_tokens": 673,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 487,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:37:33.570783+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:37:21+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQYDSk6CJfyZqp2gWaI5sWvbTU7J",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002",
+            "collections": [],
+            "error": null
+          },
+          "tool_call_id": "call_hlnYl2yyxgCvZ6BPKblHBQZd",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:37:34.514397+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+            "collections": [],
+            "error": null
+          },
+          "tool_call_id": "call_O1vyg99jMPwNK7VGdetqTWM0",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:37:34.578252+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx",
+            "collections": [],
+            "error": null
+          },
+          "tool_call_id": "call_MkCoiUI1tBlevnuCbvU2QqXp",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:37:34.605939+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx",
+            "collections": [],
+            "error": null
+          },
+          "tool_call_id": "call_BFfWsCmDLY2WrpFmicXDCCEx",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:37:35.063121+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:37:35.064087+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "args": "{\"paths\":[\"mer/mer2-m-navcam-3-radiometric-sci-v1/\",\"mer/mer2-m-rat-2-edr-ops-v1/\"]}",
+          "tool_call_id": "call_qMvhl3shVesqWIFie0Rj5LAb",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 9630,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 8576,
+        "output_tokens": 1249,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1188,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:37:58.230087+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:37:35+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQYRU0JemF8B9UlOEKvY6oPltXQw",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-NAVCAM-3-RADIOMETRIC-SCI-V1.0",
+                "title": "MER 2: NAVCAM SCIENCE RDR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: NAVCAM SCIENCE RDR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: NAVCAM SCIENCE RDR ARCHIVE",
+                    "VOLUME_ID": "MER2NC_1XXX",
+                    "PUBLICATION_DATE": "2011-09-22",
+                    "DATA_SET_ID": "MER2-M-NAVCAM-3-RADIOMETRIC-SCI-V1.0",
+                    "DESCRIPTION": "This volume contains Navcam Science RDRs and related ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_navcam_sci_calibrated",
+                "title": "MER2 Navcam Science Calibrated Radiance Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_navcam_sci_calibrated",
+                    "version_id": "1.1",
+                    "title": "MER2 Navcam Science Calibrated Radiance Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Soderblom, J.M.; Bell III, J.F.; Johnson, J.R.; Joseph J.; Wolff, M.J.",
+                      "publication_year": "2011",
+                      "doi": "10.17189/1518996",
+                      "description": "This bundle contains calibrated radiance data from the Navigation Cameras (Navcam)\n                on Mars Exploration Rover 2 (Spirit). These data were calibrated by the science\n                team."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-rat-2-edr-ops-v1/mer2ra_0xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-RAT-2-EDR-OPS-V1.0",
+                "title": "MER 2: RAT OPERATIONS EDR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: RAT OPERATIONS EDR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: ROCK ABRASION TOOL OPERATIONS EDR ARCHIVE",
+                    "VOLUME_ID": "MER2RA_0XXX",
+                    "DATA_SET_ID": "MER2-M-RAT-2-EDR-OPS-V1.0",
+                    "PUBLICATION_DATE": "2004-07-08",
+                    "DESCRIPTION": "This volume contains data acquired by the Rock Abrasion Tool (RAT) onboard the MER 2 rover. The volume also contains detailed documentation about the mission, spacecraft, instruments, data sets, and index tables."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-rat-2-edr-ops-v1/mer2ra_0xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_rat_raw",
+                "title": "MER2 RAT Raw Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_rat_raw",
+                    "version_id": "1.0",
+                    "title": "MER2 RAT Raw Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Gorevan, S.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518972",
+                      "description": "This bundle contains raw data from the Rock Abrasion Tool\n                on Mars Exploration Rover 2 (Spirit)."
+                    }
+                  }
+                }
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_qMvhl3shVesqWIFie0Rj5LAb",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:37:59.246832+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:37:59.247208+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "args": "{\"paths\":[\"mer/urn-nasa-pds-ruff_pdart14_mtes/\"]}",
+          "tool_call_id": "call_tG5vwyxqMD67CZy9oDlWzFfI",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 10536,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 8576,
+        "output_tokens": 2013,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1971,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:38:32.030368+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:37:59+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQYpwqJplOOMiXNGsYn8LBO68c0r",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes",
+                "title": "Ruff PDART 2014 Mini-TES Mirror-dust-corrected Emissivity Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:ruff_pdart14_mtes",
+                    "version_id": "1.0",
+                    "title": "Ruff PDART 2014 Mini-TES Mirror-dust-corrected Emissivity Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Ruff, Steve",
+                      "publication_year": "2017",
+                      "doi": "10.17189/1518983",
+                      "description": "Mars Exploration Rover Mini-TES Mirror-dust-corrected Emissivity \n                by Steve Ruff, PDART 2014"
+                    }
+                  }
+                }
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_tG5vwyxqMD67CZy9oDlWzFfI",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:38:32.434887+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:38:32.435532+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\":\"mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002\",\"max_subdirs\":40}",
+          "tool_call_id": "call_k1u6Jz1FqgWdU9TNlosedWYK",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 10804,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 9600,
+        "output_tokens": 1455,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1398,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:38:57.333085+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:38:32+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQZMz9wNiUE8LundHdxP8o8b1Ooi",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002",
+            "collections": [
+              {
+                "path": "mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002",
+                "dataset_id": "urn:nasa:pds:mer2_pancam_sci_calibrated2:calibration",
+                "title": "MER Calibration Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_pancam_sci_calibrated2:calibration",
+                    "version_id": "1.0",
+                    "title": "MER Calibration Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "PDS Geosciences Node",
+                      "publication_year": "2019",
+                      "keyword": [
+                        "Opportunity",
+                        "Spirit",
+                        "MER",
+                        "Mars"
+                      ],
+                      "description": "Mars Exploration Rover 2 Pancam calibration collection. This collection contains documents about\n            calibration of the MER Panoramic Cameras."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-11-18",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002",
+                "dataset_id": "urn:nasa:pds:mer2_pancam_sci_calibrated2:data",
+                "title": "MER2 Pancam Calibrated Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_pancam_sci_calibrated2:data",
+                    "version_id": "1.0",
+                    "title": "MER2 Pancam Calibrated Data Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Bell III, J.F.",
+                      "publication_year": "2004",
+                      "description": "This collection contains calibrated images from the Panoramic Cameras (Pancam) on\n                the Mars Exploration Rover 2 (Spirit). These products were produced by the Pancam\n                Science Team."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-11-19",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_k1u6Jz1FqgWdU9TNlosedWYK",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:38:58.597853+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:38:58.598253+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\":\"mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx\",\"max_subdirs\":40}",
+          "tool_call_id": "call_XyNFpPElY0RK6OcuosR8IXAj",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 11359,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 10624,
+        "output_tokens": 260,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 207,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:39:03.750106+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:38:58+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQZmBvOtNEeNe2xpXCy5BlrEd63w",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+            "collections": [
+              {
+                "path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+                "dataset_id": "urn:nasa:pds:mer2_mtes_derived_emissivity:calibration",
+                "title": "MER2 Mini-TES Calibration Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mtes_derived_emissivity:calibration",
+                    "version_id": "1.0",
+                    "title": "MER2 Mini-TES Calibration Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "PDS Geosciences Node",
+                      "publication_year": "2019",
+                      "keyword": [
+                        "Spirit",
+                        "MER",
+                        "Mars"
+                      ],
+                      "description": "Mars Exploration Rover 2 Mini-TES Calibration Collection."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-10-30",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+                "dataset_id": "urn:nasa:pds:mer2_mtes_derived_emissivity:data",
+                "title": "MER2 Mini-TES Derived Emissivity Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mtes_derived_emissivity:data",
+                    "version_id": "1.0",
+                    "title": "MER2 Mini-TES Derived Emissivity Data Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Christensen, P.",
+                      "publication_year": "2004",
+                      "description": "This collection contains derived emissivity spectra from the Mini-TES instrument on\n                the Mars Exploration Rover 2 (Spirit)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-11-01",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+                "dataset_id": "urn:nasa:pds:mer1_mtes_raw:data_ancillary",
+                "title": "Mini-TES Ancillary Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer1_mtes_raw:data_ancillary",
+                    "version_id": "1.0",
+                    "title": "Mini-TES Ancillary Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Christensen, P.",
+                      "publication_year": "2004",
+                      "description": "This collection contains the center wavenumber data for MER Mini-TES data products."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-10-29",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_XyNFpPElY0RK6OcuosR8IXAj",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:39:05.059934+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:39:05.060594+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\":\"mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx\",\"max_subdirs\":40}",
+          "tool_call_id": "call_hhEr8mWFircR3njBVmVruZXG",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12057,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 10624,
+        "output_tokens": 1480,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1424,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:39:35.073442+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:39:09+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQZxoMWqfOeHNsNCGnlTZXXFzDdd",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx",
+            "collections": [
+              {
+                "path": "mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx",
+                "dataset_id": "urn:nasa:pds:mer_apxs_derived:data",
+                "title": "MER APXS Oxide Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer_apxs_derived:data",
+                    "version_id": "2.0",
+                    "title": "MER APXS Oxide Data Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Gellert, R.",
+                      "publication_year": "2004",
+                      "description": "This collection contains oxide data from the Alpha Particle X-ray Spectrometer\n                on the Mars Exploration Rovers."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": [
+                        {
+                          "modification_date": "2019-05-22",
+                          "version_id": "1.0",
+                          "description": "Initial version"
+                        },
+                        {
+                          "modification_date": "2021-09-22",
+                          "version_id": "2.0",
+                          "description": "Added oxide results beyond sol B4000."
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_hhEr8mWFircR3njBVmVruZXG",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:39:35.989035+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:39:35.989570+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_list_missions",
+          "args": "{}",
+          "tool_call_id": "call_TQ65w3jNz605WWrE9UxuqJmb",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12387,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 11648,
+        "output_tokens": 1387,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1364,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:40:00.491491+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:39:36+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQaOcavuBl4AFpsJKQr6V8errwri",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_list_missions",
+          "content": {
+            "missions": [
+              {
+                "name": "m2020",
+                "description": "Mars 2020 / Perseverance (PIXL, SHERLOC, Mastcam-Z, SuperCam, RIMFAX)"
+              },
+              {
+                "name": "insight",
+                "description": "InSight lander (SEIS, HP3, RISE, IDA)"
+              },
+              {
+                "name": "msl",
+                "description": "Mars Science Laboratory / Curiosity (ChemCam, APXS, CheMin, SAM, Mastcam, MAHLI, DAN)"
+              },
+              {
+                "name": "mro",
+                "description": "Mars Reconnaissance Orbiter (HiRISE, CTX, CRISM, SHARAD, MCS)"
+              },
+              {
+                "name": "mer",
+                "description": "Mars Exploration Rovers \u2014 Spirit (MER2) and Opportunity (MER1) (Pancam, Mini-TES, APXS, MB, MI)"
+              },
+              {
+                "name": "mex",
+                "description": "Mars Express (HRSC, OMEGA, MARSIS, PFS, SPICAM, MaRS)"
+              },
+              {
+                "name": "ody",
+                "description": "Mars Odyssey (THEMIS, GRS, NS)"
+              },
+              {
+                "name": "phx",
+                "description": "Phoenix lander (TEGA, MECA, SSI, OM, RAC)"
+              },
+              {
+                "name": "mgs",
+                "description": "Mars Global Surveyor (MOC, MOLA, TES, MAG)"
+              },
+              {
+                "name": "mpf",
+                "description": "Mars Pathfinder (IMP, APXS)"
+              },
+              {
+                "name": "viking",
+                "description": "Viking (VL1, VL2, VO1, VO2 \u2014 camera, IRTM, MAWD)"
+              },
+              {
+                "name": "mariner",
+                "description": "Mariner missions"
+              },
+              {
+                "name": "mars",
+                "description": "Mars miscellaneous / Mars Express ancillary"
+              },
+              {
+                "name": "mgn",
+                "description": "Magellan (SAR, altimetry, radiometry, emissivity)"
+              },
+              {
+                "name": "premgn",
+                "description": "Pre-Magellan Venus data (Pioneer Venus Orbiter)"
+              },
+              {
+                "name": "venus",
+                "description": "Venus miscellaneous"
+              },
+              {
+                "name": "messenger",
+                "description": "MESSENGER at Mercury (MDIS, GRNS, XRS, MLA, MASCS)"
+              },
+              {
+                "name": "grail",
+                "description": "GRAIL lunar gravity (LGRS)"
+              },
+              {
+                "name": "clps",
+                "description": "Commercial Lunar Payload Services"
+              },
+              {
+                "name": "lunar",
+                "description": "Lunar missions (Clementine, Lunar Prospector, Chandrayaan, Kaguya, Apollo)"
+              },
+              {
+                "name": "lro",
+                "description": "Lunar Reconnaissance Orbiter (LOLA, Diviner, LROC, Mini-RF, LAMP)"
+              },
+              {
+                "name": "earth",
+                "description": "Earth-based observations"
+              },
+              {
+                "name": "lab",
+                "description": "Laboratory measurements"
+              },
+              {
+                "name": "near",
+                "description": "NEAR Shoemaker at Eros (NLR, MSI, XGRS, MAG)"
+              }
+            ],
+            "count": 24
+          },
+          "tool_call_id": "call_TQ65w3jNz605WWrE9UxuqJmb",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:40:00.496972+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:40:00.497345+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx\", \"max_subdirs\": 40}",
+          "tool_call_id": "call_YzmKeWuEOOhaN0pclKJ6kGJr",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx\", \"max_subdirs\": 40}",
+          "tool_call_id": "call_XnXR2oiUVDbWNqRTW0OkRRPD",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx\", \"max_subdirs\": 40}",
+          "tool_call_id": "call_IfOsnJOCZvvjJSOgWfrXOZYI",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12983,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 11648,
+        "output_tokens": 1383,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1219,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:40:24.744480+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:40:00+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQamga9h06VjnnKuJH0QEGUm5Ba7",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx",
+            "collections": [
+              {
+                "path": "mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx",
+                "dataset_id": "urn:nasa:pds:mer2_mb_pp:calib",
+                "title": "MER2 MB Calibration Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mb_pp:calib",
+                    "version_id": "1.0",
+                    "title": "MER2 MB Calibration Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Klingelh\u00f6fer, G.",
+                      "publication_year": "2004",
+                      "description": "This collection contains calibration data and information for use with\n                Moessbauer Spectrometer (MB) on Mars Exploration Rover 2 (Spirit)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-05-30",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx",
+                "dataset_id": "urn:nasa:pds:mer2_mb_pp:data",
+                "title": "MER2 MB Summed Spectra Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mb_pp:data",
+                    "version_id": "1.0",
+                    "title": "MER2 MB Summed Spectra Data Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Klingelh\u00f6fer, G.",
+                      "publication_year": "2004",
+                      "description": "This collection contains raw data from the Moessbauer Spectrometer (MB)\n                on Mars Exploration Rover 2 (Spirit)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-06-10",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_YzmKeWuEOOhaN0pclKJ6kGJr",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:40:25.906101+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx",
+            "collections": [
+              {
+                "path": "mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx",
+                "dataset_id": "urn:nasa:pds:mer2_mi_sci_calibrated:calibration",
+                "title": "MER Microscopic Imager Calibration Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mi_sci_calibrated:calibration",
+                    "version_id": "1.0",
+                    "title": "MER Microscopic Imager Calibration Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "PDS Geosciences Node",
+                      "publication_year": "2019",
+                      "keyword": [
+                        "Opportunity",
+                        "Spirit",
+                        "MER",
+                        "Mars"
+                      ],
+                      "description": "Mars Exploration Rover Microscopic Imager calibration collection."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-11-26",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx",
+                "dataset_id": "urn:nasa:pds:mer2_mi_sci_calibrated:data",
+                "title": "MER2 Microscopic Imager Calibrated Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mi_sci_calibrated:data",
+                    "version_id": "1.0",
+                    "title": "MER2 Microscopic Imager Calibrated Data Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Herkenhoff, K.",
+                      "publication_year": "2004",
+                      "description": "This collection contains calibrated images from the Microscopic Imager (MI) on\n                the Mars Exploration Rover 2 (Spirit). These products were produced by the MI\n                Science Team."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-11-26",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_XnXR2oiUVDbWNqRTW0OkRRPD",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:40:40.217631+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx",
+            "collections": [
+              {
+                "path": "mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx",
+                "dataset_id": "urn:nasa:pds:mer2_navcam_sci_calibrated:data",
+                "title": "MER2 Navcam Calibrated Radiance Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_navcam_sci_calibrated:data",
+                    "version_id": "1.1",
+                    "title": "MER2 Navcam Calibrated Radiance Data Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Soderblom, J.",
+                      "publication_year": "2008",
+                      "description": "This collection contains calibrated radiance images from the Navigation Cameras (Navcam) on\n                the Mars Exploration Rover 2 (Spirit)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": [
+                        {
+                          "modification_date": "2025-12-01",
+                          "version_id": "1.1",
+                          "description": "Added rover-frame instrument azimuth and elevation angles\n                    and a coordinate system specification for site-frame angles.\n                    Corrected a sign error in instrument and solar elevation angles."
+                        },
+                        {
+                          "modification_date": "2019-10-25",
+                          "version_id": "1.0",
+                          "description": "Initial version"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_IfOsnJOCZvvjJSOgWfrXOZYI",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:40:26.078085+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:40:40.218007+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_list_missions",
+          "args": "{}",
+          "tool_call_id": "call_2uGn7qtZoU6Fe8dlEnHAHX0B",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 14567,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 12672,
+        "output_tokens": 1756,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1733,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:41:16.392385+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:40:40+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQbQs9IDHZB4VXYgJaL6j9EaOhRS",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_list_missions",
+          "content": {
+            "missions": [
+              {
+                "name": "m2020",
+                "description": "Mars 2020 / Perseverance (PIXL, SHERLOC, Mastcam-Z, SuperCam, RIMFAX)"
+              },
+              {
+                "name": "insight",
+                "description": "InSight lander (SEIS, HP3, RISE, IDA)"
+              },
+              {
+                "name": "msl",
+                "description": "Mars Science Laboratory / Curiosity (ChemCam, APXS, CheMin, SAM, Mastcam, MAHLI, DAN)"
+              },
+              {
+                "name": "mro",
+                "description": "Mars Reconnaissance Orbiter (HiRISE, CTX, CRISM, SHARAD, MCS)"
+              },
+              {
+                "name": "mer",
+                "description": "Mars Exploration Rovers \u2014 Spirit (MER2) and Opportunity (MER1) (Pancam, Mini-TES, APXS, MB, MI)"
+              },
+              {
+                "name": "mex",
+                "description": "Mars Express (HRSC, OMEGA, MARSIS, PFS, SPICAM, MaRS)"
+              },
+              {
+                "name": "ody",
+                "description": "Mars Odyssey (THEMIS, GRS, NS)"
+              },
+              {
+                "name": "phx",
+                "description": "Phoenix lander (TEGA, MECA, SSI, OM, RAC)"
+              },
+              {
+                "name": "mgs",
+                "description": "Mars Global Surveyor (MOC, MOLA, TES, MAG)"
+              },
+              {
+                "name": "mpf",
+                "description": "Mars Pathfinder (IMP, APXS)"
+              },
+              {
+                "name": "viking",
+                "description": "Viking (VL1, VL2, VO1, VO2 \u2014 camera, IRTM, MAWD)"
+              },
+              {
+                "name": "mariner",
+                "description": "Mariner missions"
+              },
+              {
+                "name": "mars",
+                "description": "Mars miscellaneous / Mars Express ancillary"
+              },
+              {
+                "name": "mgn",
+                "description": "Magellan (SAR, altimetry, radiometry, emissivity)"
+              },
+              {
+                "name": "premgn",
+                "description": "Pre-Magellan Venus data (Pioneer Venus Orbiter)"
+              },
+              {
+                "name": "venus",
+                "description": "Venus miscellaneous"
+              },
+              {
+                "name": "messenger",
+                "description": "MESSENGER at Mercury (MDIS, GRNS, XRS, MLA, MASCS)"
+              },
+              {
+                "name": "grail",
+                "description": "GRAIL lunar gravity (LGRS)"
+              },
+              {
+                "name": "clps",
+                "description": "Commercial Lunar Payload Services"
+              },
+              {
+                "name": "lunar",
+                "description": "Lunar missions (Clementine, Lunar Prospector, Chandrayaan, Kaguya, Apollo)"
+              },
+              {
+                "name": "lro",
+                "description": "Lunar Reconnaissance Orbiter (LOLA, Diviner, LROC, Mini-RF, LAMP)"
+              },
+              {
+                "name": "earth",
+                "description": "Earth-based observations"
+              },
+              {
+                "name": "lab",
+                "description": "Laboratory measurements"
+              },
+              {
+                "name": "near",
+                "description": "NEAR Shoemaker at Eros (NLR, MSI, XGRS, MAG)"
+              }
+            ],
+            "count": 24
+          },
+          "tool_call_id": "call_2uGn7qtZoU6Fe8dlEnHAHX0B",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:41:16.397847+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:41:16.398216+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002\", \"max_subdirs\": 40}",
+          "tool_call_id": "call_T8I1NdeXLlLhuRnmlaJ9tbPq",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx\", \"max_subdirs\": 40}",
+          "tool_call_id": "call_WB9n6j6u5cRAulCIK2VpVkev",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\": \"mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx\", \"max_subdirs\": 40}",
+          "tool_call_id": "call_HqlM7MKHgZ3tks87jLwKV4rI",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 15163,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 13696,
+        "output_tokens": 535,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 368,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:41:24.204837+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:41:16+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQc0pjmJVOCycAWh2v6LxpvTF1wF",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002",
+            "collections": [
+              {
+                "path": "mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002",
+                "dataset_id": "urn:nasa:pds:mer2_pancam_sci_derived_iof:data",
+                "title": "MER2 Pancam Calibrated Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_pancam_sci_derived_iof:data",
+                    "version_id": "1.0",
+                    "title": "MER2 Pancam Calibrated Data Collection",
+                    "information_model_version": "1.11.1.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Bell III, J.F.",
+                      "publication_year": "2020",
+                      "description": "This collection contains derived IOF images from the Panoramic Cameras (Pancam) on\n                the Mars Exploration Rover 2 (Spirit). These products were produced by the Pancam\n                Science Team."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2020-09-15",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_T8I1NdeXLlLhuRnmlaJ9tbPq",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:41:25.311278+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx",
+            "collections": [
+              {
+                "path": "mer/mer2-m-pancam-5-color-mosaics-sci-v1/mer2pc_2xxx",
+                "dataset_id": "urn:nasa:pds:mer2_pancam_sci_derived_color:data",
+                "title": "MER2 Pancam Derived Color Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_pancam_sci_derived_color:data",
+                    "version_id": "1.0",
+                    "title": "MER2 Pancam Derived Color Data Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Bell III, J.F.",
+                      "publication_year": "2004",
+                      "description": "This collection contains color mosaics from the Panoramic Cameras (Pancam) on\n                the Mars Exploration Rover 2 (Opportunity). These products were produced by the Pancam\n                Science Team."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-11-22",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_WB9n6j6u5cRAulCIK2VpVkev",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:41:25.117853+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx",
+            "collections": [
+              {
+                "path": "mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx",
+                "dataset_id": "urn:nasa:pds:mer2_mtes_derived_temperature:calibration",
+                "title": "MER2 Mini-TES Calibration Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mtes_derived_temperature:calibration",
+                    "version_id": "1.0",
+                    "title": "MER2 Mini-TES Calibration Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "editor_list": "PDS Geosciences Node",
+                      "publication_year": "2019",
+                      "keyword": [
+                        "Spirit",
+                        "MER",
+                        "Mars"
+                      ],
+                      "description": "Mars Exploration Rover 2 Mini-TES Calibration Collection."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-10-30",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx",
+                "dataset_id": "urn:nasa:pds:mer2_mtes_derived_temperature:data",
+                "title": "MER2 Mini-TES Derived Brightness Temperature Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mtes_derived_temperature:data",
+                    "version_id": "1.0",
+                    "title": "MER2 Mini-TES Derived Brightness Temperature Data Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Christensen, P.",
+                      "publication_year": "2004",
+                      "description": "This collection contains derived brightness temperature data from the Mini-TES instrument on\n                the Mars Exploration Rover 2 (Spirit)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-11-01",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-4-btr-v1/mer2mt_2xxx",
+                "dataset_id": "urn:nasa:pds:mer1_mtes_raw:data_ancillary",
+                "title": "Mini-TES Ancillary Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer1_mtes_raw:data_ancillary",
+                    "version_id": "1.0",
+                    "title": "Mini-TES Ancillary Collection",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Christensen, P.",
+                      "publication_year": "2004",
+                      "description": "This collection contains the center wavenumber data for MER Mini-TES data products."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2019-10-29",
+                        "version_id": "1.0",
+                        "description": "Initial version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_HqlM7MKHgZ3tks87jLwKV4rI",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:41:25.633040+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:41:25.633786+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "args": "{\"path\":\"mer/urn-nasa-pds-ruff_pdart14_mtes/\",\"max_subdirs\":40}",
+          "tool_call_id": "call_bYoFkpv2A6lD1jZk79T8QIgF",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 16694,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 14720,
+        "output_tokens": 402,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 354,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:41:32.372908+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:41:25+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQc9jjxpoUFqDBNSWn6oevULDjET",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+            "collections": [
+              {
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+                "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes:browse_mtes_edc",
+                "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Browse Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:ruff_pdart14_mtes:browse_mtes_edc",
+                    "version_id": "1.0",
+                    "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Browse Collection",
+                    "information_model_version": "1.8.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "publication_year": "2017",
+                      "description": "Mini-TES EDC Averaged Mirror-Dust Corrected Browse Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2017-09-13",
+                        "version_id": "1.0",
+                        "description": "Post-peer-review version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+                "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes:browse_mtes_esd",
+                "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Browse Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:ruff_pdart14_mtes:browse_mtes_esd",
+                    "version_id": "1.0",
+                    "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Browse Collection",
+                    "information_model_version": "1.8.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "publication_year": "2017",
+                      "description": "Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Browse Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2017-09-13",
+                        "version_id": "1.0",
+                        "description": "Post-peer-review version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+                "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes:context",
+                "title": "Mini-TES Averaged Mirror-Dust Corrected Context Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:ruff_pdart14_mtes:context",
+                    "version_id": "1.0",
+                    "title": "Mini-TES Averaged Mirror-Dust Corrected Context Collection",
+                    "information_model_version": "1.8.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "publication_year": "2017",
+                      "description": "Mini-TES EDC Averaged Mirror-Dust Corrected Context Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2017-08-14",
+                        "version_id": "1.0",
+                        "description": "Post-peer-review version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+                "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes:data_ancillary",
+                "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Ancillary Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:ruff_pdart14_mtes:data_ancillary",
+                    "version_id": "1.0",
+                    "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Ancillary Data Collection",
+                    "information_model_version": "1.8.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "publication_year": "2017",
+                      "description": "Mini-TES EDC Averaged Mirror-Dust Corrected Ancillary Data Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2017-09-13",
+                        "version_id": "1.0",
+                        "description": "Post-peer-review version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+                "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes:data_mtes_edc",
+                "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Image Cube Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:ruff_pdart14_mtes:data_mtes_edc",
+                    "version_id": "1.0",
+                    "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Image Cube Collection",
+                    "information_model_version": "1.8.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "publication_year": "2017",
+                      "description": "Mini-TES EDC Averaged Mirror-Dust Corrected Image Cube Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2017-09-13",
+                        "version_id": "1.0",
+                        "description": "Post-peer-review version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+                "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes:data_mtes_esd",
+                "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Image Cube Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:ruff_pdart14_mtes:data_mtes_esd",
+                    "version_id": "1.0",
+                    "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Image Cube Collection",
+                    "information_model_version": "1.8.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "publication_year": "2017",
+                      "description": "Mini-TES EDC Averaged Mirror-Dust Corrected Standard Deviation Image Cube Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2017-09-13",
+                        "version_id": "1.0",
+                        "description": "Post-peer-review version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+                "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes:data_mtes_ett",
+                "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Target Temperature Image Cube Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:ruff_pdart14_mtes:data_mtes_ett",
+                    "version_id": "1.0",
+                    "title": "Mini-TES EDC Averaged Mirror-Dust Corrected Target Temperature Image Cube Collection",
+                    "information_model_version": "1.8.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "publication_year": "2017",
+                      "description": "Mini-TES EDC Averaged Mirror-Dust Corrected Target Temperature Image Cube Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2017-09-13",
+                        "version_id": "1.0",
+                        "description": "Post-peer-review version"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "mer/urn-nasa-pds-ruff_pdart14_mtes",
+                "dataset_id": "urn:nasa:pds:ruff_pdart14_mtes:schema",
+                "title": "Mini-TES Averaged Mirror-Dust Corrected Schema Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:ruff_pdart14_mtes:schema",
+                    "version_id": "1.0",
+                    "title": "Mini-TES Averaged Mirror-Dust Corrected Schema Collection",
+                    "information_model_version": "1.8.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "publication_year": "2017",
+                      "description": "Mini-TES EDC Averaged Mirror-Dust Corrected Schema Collection"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2017-08-14",
+                        "version_id": "1.0",
+                        "description": "Post-peer-review version"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_bYoFkpv2A6lD1jZk79T8QIgF",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:41:33.425209+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:41:33.425553+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "args": "{\"paths\":[\"mer/mer2-m-mtes-4-emr-v1/\"]}",
+          "tool_call_id": "call_uL3lCdSCO5nLxMmB2T259KYt",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 18356,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 15744,
+        "output_tokens": 775,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 734,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:41:48.398949+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:41:34+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQcI76KD5yoD55Z0t9lQnp7gFs4D",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_geo_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MER2-M-MTES-4-EMR-V1.0",
+                "title": "MER 2: MINI-TES EMR ARCHIVE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MER 2: MINI-TES EMR ARCHIVE",
+                    "VOLUME_NAME": "MER 2: MINI-TES EMR ARCHIVE",
+                    "VOLUME_ID": "MER2MT_3XXX",
+                    "PUBLICATION_DATE": "2004-07-15",
+                    "DATA_SET_ID": "MER2-M-MTES-4-EMR-V1.0",
+                    "DESCRIPTION": "This volume contains Mini-TES EMRs and related ancillary files from the Mars Exploration Rover mission."
+                  }
+                }
+              },
+              {
+                "path": "mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:mer2_mtes_derived_emissivity",
+                "title": "MER2 Mini-TES Derived Emissivity Data Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:mer2_mtes_derived_emissivity",
+                    "version_id": "1.0",
+                    "title": "MER2 Mini-TES Derived Emissivity Data Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Christensen, P.",
+                      "publication_year": "2004",
+                      "doi": "10.17189/1518982",
+                      "description": "This bundle contains emissivity data from the Mini-TES instrument\n                on Mars Exploration Rover 2 (Spirit)."
+                    }
+                  }
+                }
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_uL3lCdSCO5nLxMmB2T259KYt",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:41:48.994670+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:41:48.995057+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "args": "{\"summary\":\"Spirit (MER2) hydrothermal interpretations (fumaroles + hot springs) are supported by combining Spirit in-situ chemistry/mineralogy (APXS, Mini-TES, M\u00f6ssbauer) with texture and geomorphic context (Pancam, MI, Navcam) in Columbia Hills/Home Plate. Below are the most relevant calibrated/derived PDS4 collections on the PDS Geosciences Node that contain those observations.\",\"candidates\":[{\"dataset_id\":\"urn:nasa:pds:mer_apxs_derived:data\",\"path\":\"mer/mer1_mer2-m-apxs-5-oxide-sci-v1/merap_2xxx\",\"title\":\"MER APXS Oxide Data Collection\",\"mission\":\"MER (Spirit/MER2)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Quantitative oxide abundances from APXS are key for documenting silica enrichment and sulfate/sulfur systematics used to distinguish acid-sulfate (fumarolic) alteration from silica precipitation in hot-spring settings.\"},{\"dataset_id\":\"urn:nasa:pds:mer2_mtes_derived_emissivity:data\",\"path\":\"mer/mer2-m-mtes-4-emr-v1/mer2mt_3xxx\",\"title\":\"MER2 Mini-TES Derived Emissivity Data Collection\",\"mission\":\"MER (Spirit/MER2)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Mini-TES emissivity spectra are used to identify opaline silica vs sulfate-bearing materials and map their spatial association around Home Plate\u2014central to arguing for co-located fumarolic and hot-spring processes.\"},{\"dataset_id\":\"urn:nasa:pds:ruff_pdart14_mtes:data_mtes_edc\",\"path\":\"mer/urn-nasa-pds-ruff_pdart14_mtes\",\"title\":\"Mini-TES EDC Averaged Mirror-Dust Corrected Image Cube Collection\",\"mission\":\"MER (Spirit/MER2)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Peer-reviewed, mirror-dust-corrected Mini-TES emissivity products improve mineral identifications (e.g., silica and sulfates) used in hydrothermal interpretations at Columbia Hills/Home Plate.\"},{\"dataset_id\":\"urn:nasa:pds:mer2_pancam_sci_calibrated2:data\",\"path\":\"mer/mer2-m-pancam-3-radcal-sci-v2/mer2pc_1002\",\"title\":\"MER2 Pancam Calibrated Data Collection\",\"mission\":\"MER (Spirit/MER2)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Calibrated multispectral/geomorphic imaging provides the field context (layering, vents/fractures, deposit relationships) that supports interpreting both vapor-dominated (fumarolic) alteration zones and spring-related silica deposits in the same volcanic hydrothermal system.\"},{\"dataset_id\":\"urn:nasa:pds:mer2_mi_sci_calibrated:data\",\"path\":\"mer/mer2-m-mi-3-rdr-sci-v1/mer2mi_1xxx\",\"title\":\"MER2 Microscopic Imager Calibrated Data Collection\",\"mission\":\"MER (Spirit/MER2)\",\"pds_version\":\"PDS4\",\"reasoning\":\"MI textures at mm\u2013sub-mm scale help evaluate whether silica-rich materials are precipitates (sinter-like) consistent with hot springs versus alteration rinds/coatings consistent with fumarolic acid-sulfate alteration.\"},{\"dataset_id\":\"urn:nasa:pds:mer2_mb_pp:data\",\"path\":\"mer/mer2-m-mb-4-sumspec-sci-v1/mer2mb_1xxx\",\"title\":\"MER2 MB Summed Spectra Data Collection\",\"mission\":\"MER (Spirit/MER2)\",\"pds_version\":\"PDS4\",\"reasoning\":\"M\u00f6ssbauer mineralogy (Fe2+/Fe3+ phases) constrains oxidation/alteration style and complements APXS+Mini-TES for distinguishing fumarolic acid alteration from aqueous hot-spring environments.\"},{\"dataset_id\":\"urn:nasa:pds:mer2_navcam_sci_calibrated:data\",\"path\":\"mer/mer2-m-navcam-3-radiometric-sci-v1/mer2nc_1xxx\",\"title\":\"MER2 Navcam Calibrated Radiance Data Collection\",\"mission\":\"MER (Spirit/MER2)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Navcam context imaging supports mapping the geomorphic setting and spatial co-occurrence of hydrothermal units (e.g., around Home Plate) invoked in the single-system model.\"},{\"dataset_id\":\"urn:nasa:pds:mer2_pancam_sci_derived_iof:data\",\"path\":\"mer/mer2-m-pancam-3-iofcal-sci-v2/mer2pc_3002\",\"title\":\"MER2 Pancam Calibrated Data Collection (Derived IOF)\",\"mission\":\"MER (Spirit/MER2)\",\"pds_version\":\"PDS4\",\"reasoning\":\"Reflectance/IOF products are commonly used for spectral ratioing and color-based compositional mapping of altered materials associated with fumaroles and hot springs.\"}]}",
+          "tool_call_id": "call_LihESukzo62suCwm4VGFtOuF",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 18795,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 17792,
+        "output_tokens": 3542,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 2466,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-04-30 18:42:47.345820+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-04-30 18:41:49+00:00"
+      },
+      "provider_response_id": "chatcmpl-DaQcXSATld44ye3Ko1NqTPuxdpHHk",
+      "finish_reason": "tool_call",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "content": "Final result processed.",
+          "tool_call_id": "call_LihESukzo62suCwm4VGFtOuF",
+          "metadata": null,
+          "timestamp": "2026-04-30 18:42:47.346974+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-04-30 18:42:47.346994+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019ddfae-1ec2-731e-8258-5be9e670fbdd",
+      "metadata": null
+    }
+  ]
+}

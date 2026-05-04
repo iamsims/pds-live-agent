@@ -1,66 +1,116 @@
 """FastMCP server exposing PDS Geosciences tools over MCP.
 
 Run standalone:
-    python -m pydantic_code.mcp_server                 # stdio (default)
-    python -m pydantic_code.mcp_server --transport sse  # SSE on :8001
+    python -m pydantic_code.tools.mcp_server                 # stdio (default)
+    python -m pydantic_code.tools.mcp_server --transport sse  # SSE on :8001
 
 The agent in ``pydantic_code.pds_geo_finder`` connects to this server via
 ``MCPServerStdio`` — it spawns this module as a subprocess automatically.
+
+Tools (4):
+    1. pds_geo_list_missions     — hardcoded mission list (no HTTP)
+    2. pds_geo_list_dataset_dirs — list sub-dirs under a mission path (cheap HTTP)
+    3. pds_geo_probe_datasets    — probe specific paths for PDS labels (recursive leaf-find)
+    4. pds_geo_inspect_collections — scan PDS4 bundle subdirs for collection labels
 """
 
 from __future__ import annotations
 
 from fastmcp import FastMCP
 
-from pydantic_code.tools.browse import pds_geo_browse_directory
-from pydantic_code.tools.holdings import pds_geo_search_holdings
-from pydantic_code.tools.inspect_with_collections import pds_geo_inspect_with_collections
+from pydantic_code.tools.inspect_collections import pds_geo_inspect_collections
+from pydantic_code.tools.list_dataset_dirs import pds_geo_list_dataset_dirs
+from pydantic_code.tools.list_missions import pds_geo_list_missions
+from pydantic_code.tools.probe_datasets import pds_geo_probe_datasets
 
 mcp = FastMCP("pds-geo-tools")
 
 
-@mcp.tool(name="pds_geo_search_holdings")
-async def pds_geo_search_holdings_tool(query: str, limit: int = 20) -> dict:
-    """Fuzzy-search the GEO node's holdings index. The index contains only
-    canonical dataset IDs (e.g. MEX-M-HRSC-5-REFDR-DTM-V1.0) — not science
-    topics or geographic names. Search with mission abbreviations and
-    instrument names. Returns dataset IDs with a mission_hint.
+# ------------------------------------------------------------------
+# Tool 1: list missions (hardcoded, instant)
+# ------------------------------------------------------------------
 
-    Args:
-        query: Mission/instrument terms to match against dataset IDs.
-        limit: Max results (default 20, max 50).
+@mcp.tool(name="pds_geo_list_missions")
+def pds_geo_list_missions_tool() -> dict:
+    """List all known mission directories on the GEO node with descriptions.
+
+    Returns mission names (e.g. m2020, msl, mro, mex) and their instruments.
+    No HTTP call needed — the list is hardcoded and stable.
+
+    Use this first to identify which mission directory to explore.
     """
-    result = await pds_geo_search_holdings(query=query, limit=limit)
+    result = pds_geo_list_missions()
     return result.model_dump()
 
 
-@mcp.tool(name="pds_geo_browse")
-async def pds_geo_browse_tool(path: str = "") -> dict:
-    """List sub-directories and files at a path on https://pds-geosciences.wustl.edu/.
+# ------------------------------------------------------------------
+# Tool 2: list dataset directories (cheap HTTP)
+# ------------------------------------------------------------------
+
+@mcp.tool(name="pds_geo_list_dataset_dirs")
+async def pds_geo_list_dataset_dirs_tool(path: str) -> dict:
+    """List sub-directory names under a mission path on the GEO node.
+
+    Cheap HTTP call — fetches the directory listing only, no label parsing.
+    Each directory gets a pds_hint ('PDS3', 'PDS4', or null) inferred from
+    its naming convention.
+
+    Use this after list_missions to see what datasets exist under a mission
+    (e.g. path="mex/"). Then pick specific directories to probe.
 
     Args:
-        path: Path relative to the GEO root. Empty string lists the top-level
-            mission directories. Use a trailing slash for sub-directories.
-            "../" segments are not allowed.
+        path: Mission directory path (e.g. "mex/", "mro/", "m2020/").
     """
-    result = await pds_geo_browse_directory(path=path)
+    result = await pds_geo_list_dataset_dirs(path=path)
     return result.model_dump()
 
 
-@mcp.tool(name="pds_geo_inspect_with_collections")
-async def pds_geo_inspect_with_collections_tool(path: str, max_subdirs: int = 20) -> dict:
-    """Inspect a path AND, when a PDS4 bundle is present, also fetch one level of collections.
+# ------------------------------------------------------------------
+# Tool 3: probe datasets (recursive leaf-finding)
+# ------------------------------------------------------------------
 
-    Returns the bundle/voldesc labels at the input path AND any
-    collection_*.xml/.lblx labels found one directory below — both in a
-    single tool call. For PDS3 volumes, returns voldesc labels and
-    collections is empty.
+@mcp.tool(name="pds_geo_probe_datasets")
+async def pds_geo_probe_datasets_tool(paths: list[str]) -> dict:
+    """Probe specific dataset directories for PDS labels.
+
+    For each path, finds the leaf node containing voldesc.cat/sfd (PDS3) or
+    bundle*.xml/lblx (PDS4) by recursing up to one level deep. Returns the
+    dataset_id, title, PDS version, and slimmed label fields for each.
+
+    Accepts multiple paths to batch probes in one call (max 20).
+    Hybrid directories (both PDS3 and PDS4) produce multiple entries.
+
+    Use this after list_dataset_dirs — pick the relevant directory names
+    and probe them here.
 
     Args:
-        path: Bundle (or volume) directory path on the GEO node.
-        max_subdirs: Cap on bundle sub-dirs to walk for collections (default 20).
+        paths: List of dataset directory paths to probe
+               (e.g. ["mex/mex-m-hrsc-5-refdr-dtm-v1/", "mex/mex-m-omega-4-srdr-v3/"]).
     """
-    result = await pds_geo_inspect_with_collections(path=path, max_subdirs=max_subdirs)
+    result = await pds_geo_probe_datasets(paths=paths)
+    return result.model_dump()
+
+
+# ------------------------------------------------------------------
+# Tool 4: inspect collections (PDS4 bundle drill-down)
+# ------------------------------------------------------------------
+
+@mcp.tool(name="pds_geo_inspect_collections")
+async def pds_geo_inspect_collections_tool(path: str, max_subdirs: int = 20) -> dict:
+    """Scan subdirs of a PDS4 bundle for collection labels.
+
+    Walks the immediate sub-directories of the given bundle path (skipping
+    document/, index/, catalog/, browse/, checksums/) and returns every
+    collection label found with its logical_identifier and title.
+
+    Use this after probe_datasets confirms a PDS4 bundle exists, and you
+    need collection-level identifiers.
+
+    Args:
+        path: PDS4 bundle directory path on the GEO node.
+        max_subdirs: Cap on sub-dirs to walk for collections (default 20).
+    """
+    result = await pds_geo_inspect_collections(path=path, max_subdirs=max_subdirs)
     return result.model_dump()
 
 

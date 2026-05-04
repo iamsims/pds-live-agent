@@ -155,15 +155,18 @@ class GEOLiveClient:
         - PDS4 bundles: ``bundle_*.xml``, ``bundle_*.lblx``
         - PDS4 collections: ``collection_*.xml``, ``collection_*.lblx``
 
-        When no labels are found at the given path, tries one level down into
-        subdirectories — PDS3 datasets on GEO typically nest the volume
-        (with ``voldesc.cat``) inside a subdirectory (e.g.
+        When no labels are found at the given path, recurses one level down
+        into **all** subdirectories — PDS3 datasets on GEO typically nest the
+        volume (with ``voldesc.cat``) inside a subdirectory (e.g.
         ``mex-m-hrsc-5-refdr-dtm-v1/mexhrs_2001/voldesc.cat``).
 
         Hybrid volumes that ship both PDS3 and PDS4 labels return one entry per label.
 
         Returns:
-            ``{"volume_dir": str, "labels": [{"pds_version", "file_type", "source_url", "fields"}, ...]}``.
+            ``{"volume_dir": str, "labels": [{"pds_version", "file_type", "source_url", "fields", "volume_dir"}, ...]}``.
+            Each label carries its own ``volume_dir`` so that results from
+            multiple subdirectories are correctly attributed. The top-level
+            ``volume_dir`` is from the first label.
 
         Raises:
             GEOPathNotFoundError: If no label file can be located in the directory
@@ -175,14 +178,20 @@ class GEOLiveClient:
 
         labels = await self._parse_labels_from_files(files)
 
-        # Fallback: if no labels at this level, try one level down.
-        # PDS3 datasets on GEO nest the volume inside a subdirectory.
+        # Tag each label with its volume_dir
+        if labels:
+            vdir = _volume_dir_from_url(labels[0]["source_url"], self.base_url)
+            for lbl in labels:
+                lbl["volume_dir"] = vdir
+
+        # Fallback: if no labels at this level, try one level down into
+        # ALL subdirectories to find every leaf node.
         if not labels and dirs:
             base_path = urlsplit(self.base_url).path
             if not base_path.endswith("/"):
                 base_path += "/"
 
-            for d_url in dirs[:3]:  # try first 3 subdirs at most
+            for d_url in dirs:
                 target_path = urlsplit(d_url).path
                 sub_relative = (
                     target_path[len(base_path):]
@@ -193,9 +202,12 @@ class GEOLiveClient:
                     sub_url = self._resolve(sub_relative, must_be_dir=True)
                     sub_html = await self._fetch_text(sub_url)
                     _, sub_files = parse_apache_directory(sub_html, sub_url)
-                    labels = await self._parse_labels_from_files(sub_files)
-                    if labels:
-                        break
+                    sub_labels = await self._parse_labels_from_files(sub_files)
+                    if sub_labels:
+                        vdir = _volume_dir_from_url(sub_labels[0]["source_url"], self.base_url)
+                        for lbl in sub_labels:
+                            lbl["volume_dir"] = vdir
+                        labels.extend(sub_labels)
                 except (GEOPathNotFoundError, GEOLiveClientError):
                     continue
 
@@ -205,7 +217,7 @@ class GEOLiveClient:
             )
 
         return {
-            "volume_dir": _volume_dir_from_url(labels[0]["source_url"], self.base_url),
+            "volume_dir": labels[0]["volume_dir"],
             "labels": labels,
         }
 

@@ -28,7 +28,11 @@ from openpyxl.styles import Alignment, Font
 
 load_dotenv()
 
-from pydantic_code.finder import FindDatasetOutput, build_finder  # noqa: E402
+try:
+    from pydantic_code.finder import FindDatasetOutput, build_finder  # noqa: E402
+except ImportError:
+    FindDatasetOutput = None  # type: ignore[assignment,misc]
+    build_finder = None  # type: ignore[assignment]
 
 # ---------------------------------------------------------------------------
 # Gold dataset loader
@@ -123,6 +127,11 @@ def _extract_tool_calls(messages) -> list[dict]:
     return calls
 
 
+def _is_error_trace(trace: list) -> bool:
+    """Return True if *trace* is an error sentinel (not real messages)."""
+    return len(trace) == 1 and isinstance(trace[0], dict) and "error" in trace[0]
+
+
 def _print_tool_calls(tool_calls: list[dict], label: str) -> None:
     """Print tool calls in a clean, readable format."""
     if not tool_calls:
@@ -197,6 +206,7 @@ async def run_eval(
     node_filter: str | None = "geo",
     limit: int | None = 1,
     mode: str = "both",
+    concurrency: int = 3,
 ) -> None:
     # Load queries
     queries = load_gold_queries(node_filter=node_filter, limit=limit)
@@ -206,7 +216,7 @@ async def run_eval(
 
     run_live = mode in ("both", "live")
     run_catalog = mode in ("both", "catalog")
-    print(f"Loaded {len(queries)} queries (node={node_filter}, limit={limit}, mode={mode})")
+    print(f"Loaded {len(queries)} queries (node={node_filter}, limit={limit}, mode={mode}, concurrency={concurrency})")
 
     # Create timestamped output directory with separate live/catalog trace dirs
     run_name = datetime.now(timezone.utc).strftime("%Y%m%d_%H%M%S")
@@ -219,88 +229,254 @@ async def run_eval(
         catalog_traces_dir.mkdir(parents=True, exist_ok=True)
     print(f"Output dir: {output_dir}")
 
-    # Results accumulator
-    results: list[dict] = []
+    sem = asyncio.Semaphore(concurrency)
 
-    for idx, row in enumerate(queries):
+    async def _process_query(idx: int, row: dict) -> dict:
         query = row["query"]
-        print(f"\n[{idx + 1}/{len(queries)}] {query[:80]}...")
 
-        live_output: FindDatasetOutput | None = None
-        live_trace: list = []
-        catalog_output: FindDatasetOutput | None = None
-        catalog_trace: list = []
+        async with sem:
+            print(f"\n[{idx + 1}/{len(queries)}] {query[:80]}...")
 
-        # Run live
-        if run_live:
-            try:
-                print(f"  Running live...")
-                live_output, live_trace = await _run_query("live", query)
-                print(f"  Live: {len(live_output.candidates)} candidates")
-            except Exception as e:
-                print(f"  Live FAILED: {e}")
+            live_output: FindDatasetOutput | None = None
+            live_trace: list = []
+            catalog_output: FindDatasetOutput | None = None
+            catalog_trace: list = []
 
-        # Run catalog
-        if run_catalog:
-            try:
-                print(f"  Running catalog...")
-                catalog_output, catalog_trace = await _run_query("catalog", query)
-                print(f"  Catalog: {len(catalog_output.candidates)} candidates")
-            except Exception as e:
-                print(f"  Catalog FAILED: {e}")
+            # Run live and catalog in parallel when both are enabled
+            tasks: dict[str, asyncio.Task] = {}
+            if run_live:
+                tasks["live"] = asyncio.create_task(_run_query("live", query))
+            if run_catalog:
+                tasks["catalog"] = asyncio.create_task(_run_query("catalog", query))
 
-        # Extract and print tool calls
-        if run_live:
-            live_tool_calls = _extract_tool_calls(live_trace) if live_trace else []
-            _print_tool_calls(live_tool_calls, "live")
-        if run_catalog:
-            catalog_tool_calls = _extract_tool_calls(catalog_trace) if catalog_trace else []
-            _print_tool_calls(catalog_tool_calls, "catalog")
+            for kind, task in tasks.items():
+                try:
+                    output, trace = await task
+                    print(f"  [{idx + 1}] {kind}: {len(output.candidates)} candidates")
+                    if kind == "live":
+                        live_output, live_trace = output, trace
+                    else:
+                        catalog_output, catalog_trace = output, trace
+                except Exception as e:
+                    print(f"  [{idx + 1}] {kind} FAILED: {e}")
+                    error_msg = f"{type(e).__name__}: {e}"
+                    if kind == "live":
+                        live_trace = [{"error": error_msg}]
+                    else:
+                        catalog_trace = [{"error": error_msg}]
 
-        # Save live trace
-        if run_live:
-            live_trace_data = {
-                "query": query,
-                "row": row,
-                "tool_calls": live_tool_calls,
-                "full_trace": [_serialize(msg) for msg in live_trace],
-            }
-            (live_traces_dir / f"{idx:03d}_trace.json").write_text(
-                json.dumps(live_trace_data, indent=2, default=str)
-            )
+            # Extract and print tool calls
+            if run_live:
+                live_tool_calls = _extract_tool_calls(live_trace) if live_trace and not _is_error_trace(live_trace) else []
+                _print_tool_calls(live_tool_calls, f"{idx + 1}/live")
+            if run_catalog:
+                catalog_tool_calls = _extract_tool_calls(catalog_trace) if catalog_trace and not _is_error_trace(catalog_trace) else []
+                _print_tool_calls(catalog_tool_calls, f"{idx + 1}/catalog")
 
-        # Save catalog trace
-        if run_catalog:
-            catalog_trace_data = {
-                "query": query,
-                "row": row,
-                "tool_calls": catalog_tool_calls,
-                "full_trace": [_serialize(msg) for msg in catalog_trace],
-            }
-            (catalog_traces_dir / f"{idx:03d}_trace.json").write_text(
-                json.dumps(catalog_trace_data, indent=2, default=str)
-            )
+            # Save live trace
+            if run_live:
+                live_trace_data = {
+                    "query": query,
+                    "row": row,
+                    "tool_calls": live_tool_calls,
+                    "full_trace": [_serialize(msg) for msg in live_trace],
+                }
+                (live_traces_dir / f"{idx:03d}_trace.json").write_text(
+                    json.dumps(live_trace_data, indent=2, default=str)
+                )
 
-        # Accumulate results
-        results.append(
-            {
-                **row,
-                "live_candidates": _format_candidates(live_output) if live_output else ("" if not run_live else "ERROR"),
-                "live_summary": live_output.summary if live_output else ("" if not run_live else "ERROR"),
-                "live_ids": "\n".join(
-                    c.dataset_id for c in (live_output.candidates if live_output else []) if c.dataset_id
-                ),
-                "catalog_candidates": _format_candidates(catalog_output) if catalog_output else ("" if not run_catalog else "ERROR"),
-                "catalog_summary": catalog_output.summary if catalog_output else ("" if not run_catalog else "ERROR"),
-                "catalog_ids": "\n".join(
-                    c.dataset_id for c in (catalog_output.candidates if catalog_output else []) if c.dataset_id
-                ),
-            }
-        )
+            # Save catalog trace
+            if run_catalog:
+                catalog_trace_data = {
+                    "query": query,
+                    "row": row,
+                    "tool_calls": catalog_tool_calls,
+                    "full_trace": [_serialize(msg) for msg in catalog_trace],
+                }
+                (catalog_traces_dir / f"{idx:03d}_trace.json").write_text(
+                    json.dumps(catalog_trace_data, indent=2, default=str)
+                )
+
+        return {
+            **row,
+            "_idx": idx,
+            "live_candidates": _format_candidates(live_output) if live_output else ("" if not run_live else "ERROR"),
+            "live_summary": live_output.summary if live_output else ("" if not run_live else "ERROR"),
+            "live_ids": "\n".join(
+                c.dataset_id for c in (live_output.candidates if live_output else []) if c.dataset_id
+            ),
+            "catalog_candidates": _format_candidates(catalog_output) if catalog_output else ("" if not run_catalog else "ERROR"),
+            "catalog_summary": catalog_output.summary if catalog_output else ("" if not run_catalog else "ERROR"),
+            "catalog_ids": "\n".join(
+                c.dataset_id for c in (catalog_output.candidates if catalog_output else []) if c.dataset_id
+            ),
+        }
+
+    # Run all queries concurrently (bounded by semaphore)
+    raw_results = await asyncio.gather(*[
+        _process_query(idx, row) for idx, row in enumerate(queries)
+    ])
+
+    # Sort by original index to preserve order in the output
+    results = sorted(raw_results, key=lambda r: r.pop("_idx"))
 
     # Write results Excel
     _write_results_xlsx(output_dir / "results.xlsx", results)
     print(f"\nDone. Results at {output_dir / 'results.xlsx'}")
+
+
+# ---------------------------------------------------------------------------
+# Backfill: re-run only empty catalog traces in an existing output dir
+# ---------------------------------------------------------------------------
+
+
+async def backfill_catalog(output_dir: str | Path) -> None:
+    """Scan *output_dir*/traces/catalog/ for empty traces and re-run them serially."""
+    output_dir = Path(output_dir).resolve()
+    catalog_dir = output_dir / "traces" / "catalog"
+    if not catalog_dir.exists():
+        print(f"No catalog traces directory at {catalog_dir}")
+        return
+
+    # Find trace files with zero tool_calls
+    empty_indices: list[tuple[int, dict]] = []
+    for trace_file in sorted(catalog_dir.glob("*_trace.json")):
+        data = json.loads(trace_file.read_text())
+        if not data.get("tool_calls"):
+            idx = int(trace_file.stem.split("_")[0])
+            empty_indices.append((idx, data["row"]))
+
+    if not empty_indices:
+        print("All catalog traces already have tool calls — nothing to backfill.")
+        return
+
+    print(f"Found {len(empty_indices)} empty catalog traces: {[i for i, _ in empty_indices]}")
+    print("Re-running serially...\n")
+
+    for idx, row in empty_indices:
+        query = row["query"]
+        print(f"[{idx:03d}] {query[:80]}...")
+        try:
+            output, trace = await _run_query("catalog", query)
+            tool_calls = _extract_tool_calls(trace)
+            print(f"  -> {len(output.candidates)} candidates, {len(tool_calls)} tool calls")
+            _print_tool_calls(tool_calls, f"{idx:03d}/catalog")
+        except Exception as e:
+            print(f"  -> FAILED: {e}")
+            tool_calls = []
+            trace = [{"error": f"{type(e).__name__}: {e}"}]
+
+        trace_data = {
+            "query": query,
+            "row": row,
+            "tool_calls": tool_calls,
+            "full_trace": [_serialize(msg) for msg in trace] if not _is_error_trace(trace) else trace,
+        }
+        (catalog_dir / f"{idx:03d}_trace.json").write_text(
+            json.dumps(trace_data, indent=2, default=str)
+        )
+
+    print(f"\nBackfill done. Updated traces in {catalog_dir}")
+
+
+# ---------------------------------------------------------------------------
+# Rebuild: reconstruct results.xlsx from existing trace files
+# ---------------------------------------------------------------------------
+
+
+def _extract_output_from_trace(full_trace: list) -> dict | None:
+    """Extract the final_result args (candidates + summary) from a full_trace."""
+    for msg in reversed(full_trace):
+        if not isinstance(msg, dict) or msg.get("kind") != "response":
+            continue
+        for part in msg.get("parts", []):
+            if part.get("part_kind") == "tool-call" and part.get("tool_name") == "final_result":
+                args = part.get("args")
+                if isinstance(args, str):
+                    return json.loads(args)
+                return args
+    return None
+
+
+def _format_candidates_from_dict(output: dict | None) -> str:
+    """Format candidates dict (from trace) the same way as _format_candidates."""
+    if not output or not output.get("candidates"):
+        return "(no candidates)"
+    lines = []
+    for i, c in enumerate(output["candidates"], 1):
+        parts = [f"{i}."]
+        if c.get("dataset_id"):
+            parts.append(c["dataset_id"])
+        if c.get("title"):
+            parts.append(f'"{c["title"]}"')
+        if c.get("path"):
+            parts.append(f"[path={c['path']}]")
+        if c.get("node"):
+            parts.append(f"(node={c['node']})")
+        if c.get("pds_version"):
+            parts.append(f"[{c['pds_version']}]")
+        lines.append(" ".join(parts))
+    return "\n".join(lines)
+
+
+def rebuild_results(output_dir: str | Path) -> None:
+    """Reconstruct results.xlsx from trace files in an existing output directory."""
+    output_dir = Path(output_dir).resolve()
+    live_dir = output_dir / "traces" / "live"
+    catalog_dir = output_dir / "traces" / "catalog"
+
+    has_live = live_dir.exists()
+    has_catalog = catalog_dir.exists()
+    if not has_live and not has_catalog:
+        print(f"No trace directories found in {output_dir}")
+        return
+
+    # Collect all trace indices
+    indices: set[int] = set()
+    for d in [live_dir, catalog_dir]:
+        if d.exists():
+            for f in d.glob("*_trace.json"):
+                indices.add(int(f.stem.split("_")[0]))
+
+    results = []
+    for idx in sorted(indices):
+        row: dict = {}
+        live_output: dict | None = None
+        catalog_output: dict | None = None
+
+        # Read live trace
+        if has_live:
+            live_file = live_dir / f"{idx:03d}_trace.json"
+            if live_file.exists():
+                data = json.loads(live_file.read_text())
+                row = data.get("row", row)
+                live_output = _extract_output_from_trace(data.get("full_trace", []))
+
+        # Read catalog trace
+        if has_catalog:
+            catalog_file = catalog_dir / f"{idx:03d}_trace.json"
+            if catalog_file.exists():
+                data = json.loads(catalog_file.read_text())
+                row = row or data.get("row", row)
+                catalog_output = _extract_output_from_trace(data.get("full_trace", []))
+
+        results.append({
+            **row,
+            "live_ids": "\n".join(
+                c["dataset_id"] for c in (live_output or {}).get("candidates", []) if c.get("dataset_id")
+            ),
+            "live_candidates": _format_candidates_from_dict(live_output),
+            "live_summary": (live_output or {}).get("summary", ""),
+            "catalog_ids": "\n".join(
+                c["dataset_id"] for c in (catalog_output or {}).get("candidates", []) if c.get("dataset_id")
+            ),
+            "catalog_candidates": _format_candidates_from_dict(catalog_output),
+            "catalog_summary": (catalog_output or {}).get("summary", ""),
+        })
+
+    xlsx_path = output_dir / "results.xlsx"
+    _write_results_xlsx(xlsx_path, results)
+    print(f"Rebuilt {len(results)} rows -> {xlsx_path}")
 
 
 # ---------------------------------------------------------------------------
@@ -380,16 +556,41 @@ def _write_results_xlsx(path: Path, results: list[dict]) -> None:
 def main():
     parser = argparse.ArgumentParser(description="Run PDS finder eval against gold datasets")
     parser.add_argument("--node", default="geo", help="PDS node to filter by (default: geo)")
-    parser.add_argument("--limit", type=int, default=1, help="Max queries to run (default: 1)")
+    parser.add_argument("--limit", type=int, default=1, help="Max queries to run (default: 1, 0 = no limit)")
     parser.add_argument(
         "--mode",
         choices=["both", "live", "catalog"],
         default="both",
         help="Which finder mode(s) to run (default: both)",
     )
+    parser.add_argument(
+        "--concurrency",
+        type=int,
+        default=3,
+        help="Max queries to run concurrently (default: 3)",
+    )
+    parser.add_argument(
+        "--backfill",
+        type=str,
+        default=None,
+        metavar="OUTPUT_DIR",
+        help="Re-run only empty catalog traces in an existing output directory",
+    )
+    parser.add_argument(
+        "--rebuild",
+        type=str,
+        default=None,
+        metavar="OUTPUT_DIR",
+        help="Rebuild results.xlsx from existing trace files in an output directory",
+    )
     args = parser.parse_args()
 
-    asyncio.run(run_eval(node_filter=args.node, limit=args.limit, mode=args.mode))
+    if args.rebuild:
+        rebuild_results(args.rebuild)
+    elif args.backfill:
+        asyncio.run(backfill_catalog(args.backfill))
+    else:
+        asyncio.run(run_eval(node_filter=args.node, limit=args.limit or None, mode=args.mode, concurrency=args.concurrency))
 
 
 if __name__ == "__main__":

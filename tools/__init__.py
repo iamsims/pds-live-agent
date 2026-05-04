@@ -1,45 +1,43 @@
 """Tool functions and pydantic models backing the pydantic-ai PDS Geo finder agent."""
 
-from .browse import (
-    PDSGeoBrowseDirectoryOutput,
-    PDSGeoDirectoryEntry,
-    pds_geo_browse_directory,
+from .inspect_collections import (
+    PDSGeoCollection,
+    PDSGeoInspectCollectionsOutput,
+    pds_geo_inspect_collections,
 )
-from .holdings import (
-    HoldingsEntry,
-    PDSGeoHoldingsItem,
-    PDSGeoSearchHoldingsOutput,
-    pds_geo_search_holdings,
+from .list_dataset_dirs import (
+    PDSGeoDatasetDir,
+    PDSGeoListDatasetDirsOutput,
+    pds_geo_list_dataset_dirs,
 )
-from .inspect import (
-    PDSGeoInspectDatasetOutput,
-    PDSGeoLabel,
-    pds_geo_inspect_dataset,
+from .list_missions import (
+    PDSGeoListMissionsOutput,
+    PDSGeoMission,
+    pds_geo_list_missions,
 )
-from .inspect_with_collections import (
-    PDSGeoInspectWithCollectionsOutput,
-    pds_geo_inspect_with_collections,
-)
-from .scan import (
-    PDSGeoScanItem,
-    PDSGeoScanWithTitlesOutput,
-    pds_geo_scan_with_titles,
+from .probe_datasets import (
+    PDSGeoProbeError,
+    PDSGeoProbeDatasetsOutput,
+    PDSGeoProbeResult,
+    pds_geo_probe_datasets,
 )
 
 __all__ = [
-    "PDSGeoBrowseDirectoryOutput",
-    "PDSGeoDirectoryEntry",
-    "PDSGeoHoldingsItem",
-    "PDSGeoInspectDatasetOutput",
-    "PDSGeoInspectWithCollectionsOutput",
-    "PDSGeoLabel",
-    "PDSGeoScanItem",
-    "PDSGeoScanWithTitlesOutput",
-    "PDSGeoSearchHoldingsOutput",
-    "HoldingsEntry",
-    "pds_geo_browse_directory",
-    "pds_geo_inspect_dataset",
-    "pds_geo_inspect_with_collections",
-    "pds_geo_scan_with_titles",
-    "pds_geo_search_holdings",
+    # list_missions
+    "PDSGeoListMissionsOutput",
+    "PDSGeoMission",
+    "pds_geo_list_missions",
+    # list_dataset_dirs
+    "PDSGeoDatasetDir",
+    "PDSGeoListDatasetDirsOutput",
+    "pds_geo_list_dataset_dirs",
+    # probe_datasets
+    "PDSGeoProbeError",
+    "PDSGeoProbeDatasetsOutput",
+    "PDSGeoProbeResult",
+    "pds_geo_probe_datasets",
+    # inspect_collections
+    "PDSGeoCollection",
+    "PDSGeoInspectCollectionsOutput",
+    "pds_geo_inspect_collections",
 ]
