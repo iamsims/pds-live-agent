@@ -40,7 +40,7 @@ def pds_select_node_tool(node: str) -> dict:
     workflow tips). Then use the other tools with the same node parameter.
 
     Args:
-        node: PDS node identifier. One of: "geo", "ppi", "lroc".
+        node: PDS node identifier. One of: "geo", "ppi", "lroc", "rms", "sbn", "atm".
     """
     try:
         config = get_node_config(node)
@@ -72,12 +72,14 @@ def pds_list_missions_tool(node: str = "geo") -> dict:
     Returns mission names and their instruments. No HTTP call needed.
 
     For GEO: names are top-level directory paths (e.g. mex/, mro/).
-    For PPI: names are filter keywords to use with list_dataset_dirs
-             (e.g. filter='MESS' for MESSENGER, filter='cassini').
+    For PPI/RMS/SBN/ATM: names are filter keywords to use with list_dataset_dirs
+             (e.g. filter='MESS' for MESSENGER, filter='cassini' for PPI;
+              filter='COISS' for RMS Cassini ISS; filter='MROM' for ATM
+              Mars Climate Sounder; filter='orex' for SBN OSIRIS-REx).
     For LROC: returns an empty list — use list_dataset_dirs directly.
 
     Args:
-        node: PDS node identifier ("geo", "ppi", "lroc"). Default "geo".
+        node: PDS node identifier ("geo", "ppi", "lroc", "rms", "sbn", "atm"). Default "geo".
     """
     result = pds_list_missions(node=node)
     return result.model_dump()
@@ -100,12 +102,19 @@ async def pds_list_dataset_dirs_tool(
     its naming convention.
 
     Use this after list_missions to see what datasets exist under a mission
-    (e.g. path="mex/" for GEO), or directly for flat nodes
-    (e.g. path="data/" for PPI with filter="cassini").
+    (e.g. path="mex/" for GEO), or directly for flat nodes:
+      - PPI:  path="data/" with filter="cassini"
+      - LROC: path="data/" (only 3 datasets, no filter needed)
+      - RMS:  path="holdings/volumes/" with filter="COISS" (PDS3),
+              path="pds4/bundles/" (PDS4)
+      - ATM:  path="PDS/data/" with filter="MROM" (PDS3),
+              path="PDS/data/PDS4/" (PDS4)
+      - SBN:  /holdings/ currently 403s — see pds_select_node(node='sbn')
+              workflow notes for the inferred-candidate fallback.
 
     Args:
         path: Directory path to list (e.g. "mex/" for GEO, "data/" for PPI).
-        node: PDS node identifier ("geo", "ppi", "lroc"). Default "geo".
+        node: PDS node identifier ("geo", "ppi", "lroc", "rms", "sbn", "atm"). Default "geo".
         filter: Optional case-insensitive substring filter on directory names.
             Useful for flat nodes with many entries (e.g. PPI has ~767 datasets).
     """
@@ -132,7 +141,7 @@ async def pds_probe_datasets_tool(paths: list[str], node: str = "geo") -> dict:
         paths: List of dataset directory paths to probe
                (e.g. ["mex/mex-m-hrsc-5-refdr-dtm-v1/"] for GEO,
                 ["data/cassini-caps-calibrated/"] for PPI).
-        node: PDS node identifier ("geo", "ppi", "lroc"). Default "geo".
+        node: PDS node identifier ("geo", "ppi", "lroc", "rms", "sbn", "atm"). Default "geo".
     """
     result = await pds_probe_datasets(paths=paths, node=node)
     return result.model_dump()
@@ -159,7 +168,7 @@ async def pds_inspect_collections_tool(
 
     Args:
         path: PDS4 bundle directory path on the node.
-        node: PDS node identifier ("geo", "ppi", "lroc"). Default "geo".
+        node: PDS node identifier ("geo", "ppi", "lroc", "rms", "sbn", "atm"). Default "geo".
         max_subdirs: Cap on sub-dirs to walk for collections (default 20).
     """
     result = await pds_inspect_collections(path=path, max_subdirs=max_subdirs, node=node)

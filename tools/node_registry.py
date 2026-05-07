@@ -154,6 +154,178 @@ _LROC_WORKFLOW = (
 )
 
 # ---------------------------------------------------------------------------
+# RMS — Ring-Moon Systems
+# ---------------------------------------------------------------------------
+
+# RMS publishes under TWO parallel trees:
+#   holdings/volumes/<VOLUME_SET>/<VOLUME>/   — PDS3 volumes (volume-set is the mission/instrument grouping)
+#   pds4/bundles/<bundle_dir>/                — PDS4 bundles (flat list)
+# The agent treats holdings/volumes/ as the primary entry point and uses the
+# volume-set prefixes below as filter keywords (PPI-style).
+
+_RMS_MISSIONS: tuple[dict[str, str], ...] = (
+    {"name": "COISS", "description": "Cassini ISS — Imaging Science Subsystem (NAC + WAC). Saturn rings, satellites, atmosphere."},
+    {"name": "COUVIS", "description": "Cassini UVIS — Ultraviolet Imaging Spectrograph. Ring stellar/solar occultations."},
+    {"name": "COVIMS", "description": "Cassini VIMS — Visual and Infrared Mapping Spectrometer. Rings + satellites."},
+    {"name": "COCIRS", "description": "Cassini CIRS — Composite InfraRed Spectrometer. Saturn/satellite atmospheres."},
+    {"name": "CORSS", "description": "Cassini Radio Science Subsystem ring/atmosphere occultations."},
+    {"name": "COSP", "description": "Cassini SPICE kernels (RMS mirror)."},
+    {"name": "VG_28xx", "description": "Voyager 1/2 ring occultations (PPS/UVS/RSS)."},
+    {"name": "VG_2xxx", "description": "Voyager 1/2 imaging (ISS) — Jupiter, Saturn, Uranus, Neptune."},
+    {"name": "VGISS", "description": "Voyager 1/2 ISS PDS4 calibrated/raw images."},
+    {"name": "GO_00xx", "description": "Galileo SSI imaging — Jupiter/satellites/ring system."},
+    {"name": "EBROCC", "description": "Earth-Based Ring Occultations (1989 Saturn, 1980s/90s Uranus)."},
+    {"name": "ESO_xxxx", "description": "European Southern Observatory ground-based ring observations."},
+    {"name": "RES_xxxx", "description": "Reduced Earth-based stellar occultation results."},
+    {"name": "HSTI", "description": "Hubble WFPC2 imaging of rings/satellites."},
+    {"name": "HSTJ", "description": "Hubble ACS imaging of rings/satellites."},
+    {"name": "HSTU", "description": "Hubble WFC3/STIS imaging of rings/satellites."},
+    {"name": "HSTN", "description": "Hubble NICMOS imaging of rings/satellites."},
+    {"name": "NHxxLO", "description": "New Horizons LORRI imaging — Pluto, KBOs, ring search."},
+    {"name": "NHxxMV", "description": "New Horizons MVIC (Ralph) imaging."},
+    {"name": "ASTROM", "description": "Ground/HST astrometric measurements of irregular satellites."},
+    {"name": "cassini_iss", "description": "PDS4 bundle: Cassini ISS observations (cruise + Saturn tour)."},
+    {"name": "cassini_vims", "description": "PDS4 bundle: Cassini VIMS observations."},
+    {"name": "cassini_uvis", "description": "PDS4 bundle: Cassini UVIS occultations."},
+)
+
+_RMS_ABBREVIATIONS = (
+    "Naming conventions on RMS:\n"
+    "  PDS3 volumes use uppercase prefixes ending in _xxxx or numbered: COISS_1xxx, COVIMS_0xxx, GO_0017, EBROCC_xxxx.\n"
+    "  Each prefix groups many numbered volumes (e.g. COISS_1xxx contains COISS_1001, COISS_1002, ...).\n"
+    "  PDS4 bundles use lowercase descriptive names: cassini_iss, cassini_uvis, cassini_vims, etc.\n"
+    "Mission/instrument keys (use as filter):\n"
+    "  Cassini → CO* (COISS, COUVIS, COVIMS, COCIRS, CORSS) for PDS3; cassini_* for PDS4\n"
+    "  Voyager → VG_2xxx (imaging), VG_28xx (occultations), VGISS (PDS4)\n"
+    "  Galileo → GO_*\n"
+    "  New Horizons → NHxxLO, NHxxMV\n"
+    "  Hubble → HSTI/HSTJ/HSTU/HSTN (camera era)\n"
+    "  Earth-based → EBROCC, ESO_*, RES_*\n"
+)
+
+_RMS_WORKFLOW = (
+    "Two parallel trees:\n"
+    "  PDS3 → holdings/volumes/<VOLUME_SET>/<VOLUME>/  (volume-set wraps multiple numbered volumes)\n"
+    "  PDS4 → pds4/bundles/<bundle>/                   (flat list of bundles)\n"
+    "Start with pds_list_dataset_dirs(path='holdings/volumes/', node='rms', filter='<key>') for PDS3.\n"
+    "For PDS4 bundles, use pds_list_dataset_dirs(path='pds4/bundles/', node='rms') instead.\n"
+    "PDS3 volumes nest one level deep — pds_probe_datasets recurses into the inner numbered\n"
+    "volume directories automatically when given a volume-set path.\n"
+)
+
+# ---------------------------------------------------------------------------
+# SBN — Small Bodies Node
+# ---------------------------------------------------------------------------
+
+# SBN's /holdings/ Apache index returns HTTP 403 to all User-Agents, so the
+# tools cannot crawl it directly. The mission abbreviation list is provided
+# so the agent can still synthesise plausible candidates, but it MUST flag
+# in `reasoning` that the dataset name is inferred (not verified live).
+
+_SBN_MISSIONS: tuple[dict[str, str], ...] = (
+    {"name": "ro-c", "description": "Rosetta at comet 67P/Churyumov-Gerasimenko (OSIRIS, NAVCAM, ALICE, MIRO, GIADA, COSIMA, VIRTIS, ROSINA)."},
+    {"name": "ro-a", "description": "Rosetta asteroid flybys (Lutetia, Steins)."},
+    {"name": "orex", "description": "OSIRIS-REx at asteroid Bennu (OCAMS, OVIRS, OTES, REXIS, OLA)."},
+    {"name": "hay", "description": "Hayabusa at asteroid Itokawa (AMICA, NIRS, LIDAR, XRS)."},
+    {"name": "hyb2", "description": "Hayabusa2 at asteroid Ryugu (ONC, NIRS3, TIR, LIDAR, MASCOT)."},
+    {"name": "lucy", "description": "Lucy mission to Trojan asteroids (L'LORRI, L'Ralph, L'TES)."},
+    {"name": "dart", "description": "DART impactor on Didymos/Dimorphos (DRACO, LICIACube)."},
+    {"name": "sd", "description": "Stardust at comet Wild 2 + Tempel 1 flyby (NAVCAM, CIDA)."},
+    {"name": "di", "description": "Deep Impact at comet Tempel 1 (HRI, MRI, ITS)."},
+    {"name": "dif", "description": "EPOXI / Deep Impact extended mission (Hartley 2 flyby, exoplanet observations)."},
+    {"name": "near-a", "description": "NEAR Shoemaker at asteroid Eros (MSI, NLR, NIS, MAG)."},
+    {"name": "co-d-cda", "description": "Cassini CDA — Cosmic Dust Analyzer (interplanetary/Saturn dust)."},
+    {"name": "gbo", "description": "Ground-based observations of asteroids/comets/KBOs."},
+    {"name": "hst", "description": "Hubble small-body observations (asteroids, comets, KBOs)."},
+    {"name": "spitzer", "description": "Spitzer Space Telescope small-body IR observations."},
+    {"name": "irtf", "description": "NASA IRTF small-body IR observations."},
+)
+
+_SBN_ABBREVIATIONS = (
+    "Naming conventions on SBN (when reachable):\n"
+    "  PDS3 dataset names: <mission>-<target>-<instrument>-<level>-<v> (e.g. ro-c-osiris-2-cru2-mtp003-v2.0).\n"
+    "  PDS4 bundles: urn:nasa:pds:<mission_instrument>_<level> (e.g. urn:nasa:pds:orex.ocams).\n"
+    "Mission keys (use as filter):\n"
+    "  Rosetta comet → ro-c-*; Rosetta asteroid → ro-a-*\n"
+    "  OSIRIS-REx → orex_*; Hayabusa → hay_*; Hayabusa2 → hyb2_*\n"
+    "  Lucy → lucy_*; DART → dart_*\n"
+    "  Stardust → sd-*; Deep Impact → di-* / dii-* / dif-* (EPOXI extension)\n"
+    "  NEAR → near-a-*; Cassini CDA → co-d-cda-*\n"
+    "  Ground/space-based small-body observing → gbo*, hst, spitzer, irtf\n"
+)
+
+_SBN_WORKFLOW = (
+    "KNOWN LIMITATION: SBN's /holdings/ Apache index returns HTTP 403 to all\n"
+    "User-Agents. pds_list_dataset_dirs(path='holdings/', node='sbn') will fail.\n"
+    "Until SBN exposes their holdings tree (or we add a node-specific path that\n"
+    "parses /data_sb/missions/<m>/index.shtml or hits catch.astro.umd.edu),\n"
+    "do the following:\n"
+    "  1. Call pds_list_missions(node='sbn') to see the mission abbreviation table.\n"
+    "  2. Pick the mission(s) that match the query.\n"
+    "  3. Return ONE candidate per likely dataset using the abbreviation pattern\n"
+    "     (e.g. 'orex.ocams' for OSIRIS-REx camera, 'ro-c-osiris' for Rosetta OSIRIS).\n"
+    "  4. In `reasoning`, EXPLICITLY state that the candidate name was inferred\n"
+    "     from the abbreviation table because SBN's holdings index is currently\n"
+    "     unreachable — i.e. the dataset_id is plausible but NOT verified live.\n"
+    "Do not call pds_list_dataset_dirs or pds_probe_datasets on SBN — they will 403.\n"
+)
+
+# ---------------------------------------------------------------------------
+# ATM — Atmospheres
+# ---------------------------------------------------------------------------
+
+# ATM publishes under TWO parallel trees:
+#   PDS/data/<VOLUME>/        — PDS3 volumes (uppercase volume names like MROM_0001)
+#   PDS/data/PDS4/<bundle>/   — PDS4 bundles
+# IMPORTANT: PDS/data/ contains a `PDS4/` subdirectory — that's the PDS4 root,
+# not a PDS3 volume. The agent should skip it when scanning PDS3.
+
+_ATM_MISSIONS: tuple[dict[str, str], ...] = (
+    {"name": "MROM", "description": "Mars Reconnaissance Orbiter MCS (Mars Climate Sounder) — atmospheric temperature/aerosols."},
+    {"name": "MAVENM", "description": "MAVEN at Mars (NGIMS, IUVS, SWIA, SWEA, SEP) — upper atmosphere/ionosphere."},
+    {"name": "MEXSPI", "description": "Mars Express SPICAM — UV/IR atmospheric sensing."},
+    {"name": "MEXASP", "description": "Mars Express ASPERA-3 plasma/neutral atom (atmospheres mirror)."},
+    {"name": "MGSR", "description": "Mars Global Surveyor radio science atmospheric occultations."},
+    {"name": "PVO", "description": "Pioneer Venus Orbiter (OETP, ONMS, OIR, OUVS) — Venus atmosphere/ionosphere."},
+    {"name": "PVP", "description": "Pioneer Venus Probes (Sounder, Day, Night, North, Bus)."},
+    {"name": "GP", "description": "Galileo Probe — Jupiter atmospheric structure/composition (NMS, NEP, ASI, NFR)."},
+    {"name": "VG_IRIS", "description": "Voyager IRIS thermal emission spectra (Jupiter, Saturn, Uranus, Neptune)."},
+    {"name": "VG_PRA", "description": "Voyager Planetary Radio Astronomy (atmospheres mirror)."},
+    {"name": "HP", "description": "Huygens Probe at Titan (DISR, HASI, GCMS, ACP, SSP, DWE)."},
+    {"name": "CO_HUYGENS", "description": "Cassini-Huygens cruise atmospheric observations."},
+    {"name": "MSL_REMS", "description": "Mars Science Laboratory REMS — rover meteorology (pressure, temp, UV, RH, wind)."},
+    {"name": "M2020_MEDA", "description": "Mars 2020 MEDA — rover meteorology (radiation, dust, temp, pressure, wind)."},
+    {"name": "PHX", "description": "Phoenix lander — TEGA, MECA, atmospheric optical depth."},
+    {"name": "EARTH_", "description": "Earth-based atmospheric / supporting observations."},
+)
+
+_ATM_ABBREVIATIONS = (
+    "Naming conventions on ATM:\n"
+    "  PDS3 volumes use uppercase prefixes: MROM_0001, MAVENM_0001, PVO_0001, GP_0001, HP_0001, etc.\n"
+    "  Each prefix typically maps to one mission/instrument; volumes are numbered sequentially.\n"
+    "  PDS4 bundles live under PDS/data/PDS4/ with mission-named directories (Huygens, InSight, MAVEN, etc.).\n"
+    "Mission/instrument keys (use as filter on PDS/data/):\n"
+    "  Mars Climate Sounder (MRO) → MROM\n"
+    "  MAVEN → MAVENM (PDS3) or look in PDS/data/PDS4/MAVEN/ (PDS4)\n"
+    "  Mars Express SPICAM → MEXSPI\n"
+    "  Pioneer Venus → PVO (orbiter), PVP (probes)\n"
+    "  Galileo Probe → GP\n"
+    "  Voyager IRIS → VG_IRIS\n"
+    "  Huygens Probe → HP (PDS3) or PDS/data/PDS4/Huygens/ (PDS4 — has ACP, DISR, DWE, GCMS, HASI, SSP, HK)\n"
+    "  Mars rover weather → MSL_REMS, M2020_MEDA, PHX\n"
+)
+
+_ATM_WORKFLOW = (
+    "Two parallel trees:\n"
+    "  PDS3 → PDS/data/<VOLUME>/  (note: PDS/data/ also contains a `PDS4/` subdir — skip it for PDS3)\n"
+    "  PDS4 → PDS/data/PDS4/<bundle>/  (Huygens, InSight, MAVEN, etc.)\n"
+    "For PDS3: pds_list_dataset_dirs(path='PDS/data/', node='atm', filter='<key>') with the abbreviation prefix.\n"
+    "For PDS4: pds_list_dataset_dirs(path='PDS/data/PDS4/', node='atm') — flat list of bundle dirs.\n"
+    "Many ATM directories are HYBRID — they ship BOTH a PDS3 voldesc.cat in subdirs and a PDS4 bundle XML.\n"
+    "pds_probe_datasets returns one entry per label; expect duplicates with different pds_version values.\n"
+)
+
+# ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
 
@@ -192,6 +364,50 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         description="LROC imaging: NAC and WAC lunar surface images, EDR/CDR/RDR products",
         workflow_notes=_LROC_WORKFLOW,
         abbreviations=_LROC_ABBREVIATIONS,
+    ),
+    "rms": NodeConfig(
+        node_id="rms",
+        base_url="https://pds-rings.seti.org/",
+        display_name="Ring-Moon Systems (RMS)",
+        # Two roots; holdings/volumes/ is the PDS3 entry. PDS4 lives at pds4/bundles/
+        # and is documented in workflow_notes.
+        data_root="holdings/volumes/",
+        has_mission_layer=False,
+        missions=_RMS_MISSIONS,
+        description="Ring-Moon Systems: Saturn rings (Cassini ISS/UVIS/VIMS, Voyager), "
+        "Uranus/Jupiter/Neptune rings, ring occultations, irregular satellites",
+        workflow_notes=_RMS_WORKFLOW,
+        abbreviations=_RMS_ABBREVIATIONS,
+    ),
+    "sbn": NodeConfig(
+        node_id="sbn",
+        base_url="https://pds-smallbodies.astro.umd.edu/",
+        display_name="Small Bodies Node (SBN)",
+        # Holdings index 403s — workflow_notes warns the agent and tells it to
+        # synthesise candidates from the abbreviation table.
+        data_root="holdings/",
+        has_mission_layer=False,
+        missions=_SBN_MISSIONS,
+        description="Small bodies: comets, asteroids, KBOs, dust; spacecraft "
+        "(Rosetta, OSIRIS-REx, Hayabusa, Lucy, DART, Stardust, Deep Impact, NEAR) "
+        "plus ground/space-based observations",
+        workflow_notes=_SBN_WORKFLOW,
+        abbreviations=_SBN_ABBREVIATIONS,
+    ),
+    "atm": NodeConfig(
+        node_id="atm",
+        base_url="https://pds-atmospheres.nmsu.edu/",
+        display_name="Atmospheres (ATM)",
+        # Two roots; PDS/data/ is the PDS3 entry. PDS4 lives at PDS/data/PDS4/
+        # and is documented in workflow_notes.
+        data_root="PDS/data/",
+        has_mission_layer=False,
+        missions=_ATM_MISSIONS,
+        description="Planetary atmospheres and surface meteorology: Mars (MCS, MAVEN, "
+        "REMS, MEDA), Venus (Pioneer Venus), Jupiter (Galileo Probe), Titan (Huygens), "
+        "outer planets (Voyager IRIS)",
+        workflow_notes=_ATM_WORKFLOW,
+        abbreviations=_ATM_ABBREVIATIONS,
     ),
 }
 
