@@ -14,13 +14,13 @@ from loguru import logger
 from pydantic import BaseModel, Field
 
 from .client import (
-    GEO_BASE_URL,
-    GEOLiveClient,
-    GEOLiveClientError,
-    GEOPathInvalidError,
-    GEOPathNotFoundError,
+    PDSLiveClient,
+    PDSLiveClientError,
+    PDSPathInvalidError,
+    PDSPathNotFoundError,
     _extract_title,
 )
+from .node_registry import get_base_url
 
 
 def _extract_dataset_id(fields: dict[str, Any]) -> str | None:
@@ -42,7 +42,7 @@ def _slim_pds4_fields(fields: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
-class PDSGeoCollection(BaseModel):
+class PDSCollection(BaseModel):
     """One PDS4 collection label found in a bundle subdirectory."""
 
     path: str = Field(description="Subdirectory path where this collection was found")
@@ -55,48 +55,64 @@ class PDSGeoCollection(BaseModel):
     fields: dict[str, Any] = Field(description="Slimmed parsed label fields (Identification_Area only)")
 
 
-class PDSGeoInspectCollectionsOutput(BaseModel):
-    """Output for pds_geo_inspect_collections."""
+# Backward-compat alias
+PDSGeoCollection = PDSCollection
+
+
+class PDSInspectCollectionsOutput(BaseModel):
+    """Output for pds_inspect_collections."""
 
     status: str = Field(..., description="'success', 'not_found', or 'invalid_input'")
     bundle_path: str | None = Field(None, description="The bundle path that was scanned")
-    collections: list[PDSGeoCollection] = Field(
+    collections: list[PDSCollection] = Field(
         default_factory=list,
         description="PDS4 collection labels found in subdirectories",
     )
     error: str | None = Field(None, description="Error message when status is not 'success'")
 
 
-async def pds_geo_inspect_collections(
+# Backward-compat alias
+PDSGeoInspectCollectionsOutput = PDSInspectCollectionsOutput
+
+
+async def pds_inspect_collections(
     path: str,
     max_subdirs: int = 20,
     *,
-    base_url: str = GEO_BASE_URL,
+    node: str = "geo",
     timeout: float = 30.0,
     concurrency: int = 10,
-) -> PDSGeoInspectCollectionsOutput:
+) -> PDSInspectCollectionsOutput:
     """Scan subdirectories of a PDS4 bundle for collection labels.
 
     Walks the immediate sub-directories of ``path`` (skipping
     ``document/``, ``index/``, ``catalog/``, ``browse/``, ``checksums/``)
     and collects every ``collection_*.xml/.lblx`` label found.
+
+    Args:
+        path: PDS4 bundle directory path on the node.
+        max_subdirs: Cap on sub-dirs to walk for collections (default 20).
+        node: PDS node identifier ("geo", "ppi", "lroc").
+        timeout: HTTP timeout in seconds.
+        concurrency: Max concurrent collection-label fetches.
     """
     max_subdirs = max(1, min(50, max_subdirs))
+    base_url = get_base_url(node)
 
     try:
-        async with GEOLiveClient(base_url=base_url, timeout=timeout) as client:
+        async with PDSLiveClient(base_url=base_url, timeout=timeout) as client:
             record = await client.inspect_with_pds4_collections(
                 path,
                 max_subdirs=max_subdirs,
                 concurrency=concurrency,
             )
 
-        collections: list[PDSGeoCollection] = []
+        collections: list[PDSCollection] = []
         for label in record.get("collections", []):
             raw_fields = label["fields"]
             slimmed = _slim_pds4_fields(raw_fields)
             collections.append(
-                PDSGeoCollection(
+                PDSCollection(
                     path=record["volume_dir"],
                     dataset_id=_extract_dataset_id(raw_fields),
                     title=label.get("title") or _extract_title("PDS4", raw_fields),
@@ -105,19 +121,23 @@ async def pds_geo_inspect_collections(
                 )
             )
 
-        return PDSGeoInspectCollectionsOutput(
+        return PDSInspectCollectionsOutput(
             status="success",
             bundle_path=record["volume_dir"],
             collections=collections,
         )
 
-    except GEOPathInvalidError as e:
-        return PDSGeoInspectCollectionsOutput(status="invalid_input", error=str(e))
-    except GEOPathNotFoundError as e:
-        return PDSGeoInspectCollectionsOutput(status="not_found", error=str(e))
-    except GEOLiveClientError as e:
-        logger.error(f"GEO live client error: {e}")
+    except PDSPathInvalidError as e:
+        return PDSInspectCollectionsOutput(status="invalid_input", error=str(e))
+    except PDSPathNotFoundError as e:
+        return PDSInspectCollectionsOutput(status="not_found", error=str(e))
+    except PDSLiveClientError as e:
+        logger.error(f"PDS live client error: {e}")
         raise
     except Exception as e:
-        logger.error(f"Unexpected error in pds_geo_inspect_collections: {e}")
+        logger.error(f"Unexpected error in pds_inspect_collections: {e}")
         raise RuntimeError(f"Internal error scanning collections: {e}") from e
+
+
+# Backward-compat alias
+pds_geo_inspect_collections = pds_inspect_collections

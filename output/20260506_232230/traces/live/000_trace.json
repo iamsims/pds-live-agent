@@ -1,0 +1,1562 @@
+{
+  "query": "What does the bottom of the Marius Hills Pit look like and is there potential for cavity access?",
+  "row": {
+    "rank": null,
+    "paper_short": "Wagner 2022",
+    "rationale": null,
+    "paper": "Wagner, R.V., and Robinson, M.S., 2022. Lunar pit morphology: Implications for exploration. JGR Planets, 127(8), e2022JE007328. DOI:10.1029/2022JE007328",
+    "query": "What does the bottom of the Marius Hills Pit look like and is there potential for cavity access?",
+    "expected_ids": "LRO-L-LROC-5-RDR-V1.0",
+    "node": "LROC"
+  },
+  "tool_calls": [
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/",
+        "node": "lroc"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/', 'total': 3, 'filtered_total': None, 'dirs': [{'name': 'LRO-L-LROC-2-EDR-V1.0', 'path': 'data/LRO-L-LROC-2-EDR-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'LRO-L-LROC-3-CDR-V1.0', 'path': 'data/LRO-L-LROC-3-CDR-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'LRO-L-LROC-5-RDR-V1.0', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/', 'pds_hint': 'PDS3'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "data/LRO-L-LROC-2-EDR-V1.0/",
+          "data/LRO-L-LROC-3-CDR-V1.0/",
+          "data/LRO-L-LROC-5-RDR-V1.0/"
+        ],
+        "node": "lroc"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'data/LRO-L-LROC-2-EDR-V1.0', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-2-edr', 'title': 'LRO LROC Data Archive', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-2-edr', 'version_id': '35.0', 'title': 'LRO LROC Data Archive', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2026', 'doi': '10.17189/4xr6-4b89', 'description': 'Un-calibrated data from Lunar Reconnaissance Orbiter Camera (LROC).\\n        This data set comprises Un-calibrated data from the LROC NAC and WAC\\n        cameras. The science data is comprised of Un-calibrated raw images,\\n        along with pointing data and housekeeping information.'}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr', 'title': 'LRO LROC Data Archive', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr', 'version_id': '34.0', 'title': 'LRO LROC Data Archive', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2026', 'doi': '10.17189/bx7p-0d06', 'description': 'Calibrated data from Lunar Reconnaissance Orbiter Camera (LROC). This\\n        data set comprises calibrated data from the LROC NAC and WAC cameras.\\n        The science data is comprised of calibrated raw images, along with\\n        pointing data and housekeeping information.'}}}}, {'path': 'data/LRO-L-LROC-5-RDR-V1.0', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-5-rdr', 'title': 'LRO LROC Data Archive', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-5-rdr', 'version_id': '3.0', 'title': 'LRO LROC Data Archive', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'doi': '10.17189/a6a1-mw73', 'description': 'Reduced data from Lunar Reconnaissance Orbiter Camera (LROC). This\\n        data set comprises calibrated data from the LROC NAC and WAC cameras.\\n        The science data is comprised of calibrated raw images, along with\\n        pointing data and housekeeping information.'}}}}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_inspect_collections",
+      "tool_input": {
+        "path": "data/LRO-L-LROC-5-RDR-V1.0/",
+        "node": "lroc",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'data/LRO-L-LROC-5-RDR-V1.0', 'collections': [{'path': 'data/LRO-L-LROC-5-RDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-5-rdr:lrolrc_2001_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-5-rdr:lrolrc_2001_data', 'version_id': '16.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2026', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': [{'modification_date': '2026-03-14', 'version_id': '16.0', 'description': 'This release includes 51 new NAC IFP ASP DTMs:\\n          \\n          NAC_IFPASP_20703N066493_1 NAC_IFPASP_22025N197202_1\\n          NAC_IFPASP_22028N197211_1 NAC_IFPASP_22034N196008_1\\n          NAC_IFPASP_22037N195602_1 NAC_IFPASP_22044N198392_1\\n          NAC_IFPASP_22054N196797_1 NAC_IFPASP_22065N196004_1\\n          NAC_IFPASP_20735N066211_1 NAC_IFPASP_20876N198597_1\\n          NAC_IFPASP_20939N195776_1 NAC_IFPASP_21889N197603_1\\n          NAC_IFPASP_21899N197880_1 NAC_IFPASP_21905N195173_1\\n          NAC_IFPASP_21916N196968_1 NAC_IFPASP_21991N195506_1\\n          NAC_IFPASP_22010N196741_1 NAC_IFPASP_22015N195218_1\\n          NAC_IFPASP_10815N058614_1 NAC_IFPASP_16018N046688_1\\n          NAC_IFPASP_16063N047579_1 NAC_IFPASP_16689N067298_1\\n          NAC_IFPASP_17171N062332_1 NAC_IFPASP_17329N067015_1\\n          NAC_IFPASP_17643N148244_1 NAC_IFPASP_17874N065846_1\\n          NAC_IFPASP_10896N058735_1 NAC_IFPASP_12634N062156_1\\n          NAC_IFPASP_18617N061915_1 NAC_IFPASP_15024N050443_1\\n          NAC_IFPASP_19020N061157_1 NAC_IFPASP_37303N185571_1\\n          NAC_IFPASP_37303N185651_1 NAC_IFPASP_37309N183775_1\\n          NAC_IFPASP_37339N185444_1 NAC_IFPASP_37351N184836_1\\n          NAC_IFPASP_37352N184642_1 NAC_IFPASP_37352N184804_1\\n          NAC_IFPASP_37375N185255_1 NAC_IFPASP_37420N103250_1\\n          NAC_IFPASP_37475N102257_1 NAC_IFPASP_10681N059027_1\\n          NAC_IFPASP_19936N197692_1 NAC_IFPASP_19941N195743_1\\n          NAC_IFPASP_19986N196510_1 NAC_IFPASP_20052N197299_1\\n          NAC_IFPASP_20059N195464_1 NAC_IFPASP_20073N196917_1\\n          NAC_IFPASP_20098N194821_1 NAC_IFPASP_20687N066856_1\\n          NAC_IFPASP_22022N197188_1\\n          \\n          and 2 new NAC photometric products:\\n          \\n          NAC_PHO_E223S3203 NAC_PHO_E064S3160\\n          \\n          and 3 new NAC ROIs:\\n          \\n          NAC_ROI_MNDLSHTMLOD NAC_ROI_JCKSNCRTLOH NAC_ROI_NASSAUD_LOA\\n          \\n          and 6 new shapefiles:\\n          \\n          SHAPEFILE_WAC_SP_SIXTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_SIXTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_SIXTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_SIXTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_SIXTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_SIXTH_EXTENDED_SCIENCE_MISSION\\n          \\n          and 1 new NAC DTM:\\n          \\n          NAC_DTM_REINER10\\n          \\n          and 13 updated shapefiles to reflect current data:\\n          \\n          SHAPEFILE_NAC_DTMS SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_STEREO_OBSERVATIONS_SP\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_CONTROLLED_MOSAICS SHAPEFILE_FEATURE_MOSAICS_EQ\\n          SHAPEFILE_FEATURE_MOSAICS_NP SHAPEFILE_STEREO_OBSERVATIONS_EQ\\n          SHAPEFILE_STEREO_OBSERVATIONS_NP\\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION'}, {'modification_date': '2025-12-14', 'version_id': '15.0', 'description': 'This release includes 50 new NAC IFP ASP DTMs:\\n          \\n          NAC_IFPASP_12909N063398_1 NAC_IFPASP_23734N059786_1\\n          NAC_IFPASP_23776N060159_1 NAC_IFPASP_24118N065624_1\\n          NAC_IFPASP_24340N061528_1 NAC_IFPASP_27207N060544_1\\n          NAC_IFPASP_27415N055981_1 NAC_IFPASP_27415N055981_2\\n          NAC_IFPASP_27416N056014_1 NAC_IFPASP_27689N055514_1\\n          NAC_IFPASP_27690N055485_1 NAC_IFPASP_27692N055482_1\\n          NAC_IFPASP_29011N055083_1 NAC_IFPASP_33877N001187_1\\n          NAC_IFPASP_12713N062025_1 NAC_IFPASP_12718N062025_1\\n          NAC_IFPASP_12718N062026_1 NAC_IFPASP_12718N062070_1\\n          NAC_IFPASP_12718N062071_1 NAC_IFPASP_12723N062071_1\\n          NAC_IFPASP_12729N062052_1 NAC_IFPASP_12729N062097_1\\n          NAC_IFPASP_12734N062098_1 NAC_IFPASP_12735N062099_1\\n          NAC_IFPASP_12856N061724_1 NAC_IFPASP_12963N066673_1\\n          NAC_IFPASP_13195N064194_1 NAC_IFPASP_13877N065808_1\\n          NAC_IFPASP_14091N072522_1 NAC_IFPASP_14100N072520_1\\n          NAC_IFPASP_14672N054615_1 NAC_IFPASP_14673N054905_1\\n          NAC_IFPASP_14675N055016_1 NAC_IFPASP_14820N071500_1\\n          NAC_IFPASP_15248N050155_1 NAC_IFPASP_15386N063871_1\\n          NAC_IFPASP_16069N047316_1 NAC_IFPASP_16111N046617_1\\n          NAC_IFPASP_16111N046978_1 NAC_IFPASP_16114N046983_1\\n          NAC_IFPASP_16117N046579_1 NAC_IFPASP_16118N046986_1\\n          NAC_IFPASP_16119N046626_1 NAC_IFPASP_16569N050628_1\\n          NAC_IFPASP_18301N050580_1 NAC_IFPASP_18365N067279_1\\n          NAC_IFPASP_18730N053421_1 NAC_IFPASP_18817N051384_1\\n          NAC_IFPASP_19553N064548_1 NAC_IFPASP_22613N061577_1\\n          \\n          and 16 new NAC ROIs:\\n          \\n          NAC_ROI_JCKSNCRTLOF NAC_ROI_AUSTRALELOC NAC_ROI_MOORECTRLOA\\n          NAC_ROI_LANGEMAKLOB NAC_ROI_FIRSOV__LOA NAC_ROI_SIRSALISLOB\\n          NAC_ROI_CABEUSPKLO1 NAC_ROI_CABEUSPKLO2 NAC_ROI_CABEUSPKLOA\\n          NAC_ROI_CABEUSPKLOB NAC_ROI_CABEUSPKLOC NAC_ROI_BOWDITCHLOA\\n          NAC_ROI_SOSIGENSLOC NAC_ROI_HYGINUS_LOC NAC_ROI_OCNSPRCLLOF\\n          NAC_ROI_RIMASHRPLOB\\n          \\n          and 2 new NAC polar products:\\n          \\n          NAC_POLE_NORTH_CM_MAX NAC_POLE_SOUTH_CM_MAX\\n          \\n          and 3 new NAC DTMs:\\n          \\n          NAC_DTM_APENNINE06 NAC_DTM_AESTUUM3 NAC_DTM_AESTUUM\\n          \\n          and 1 new shapefile:\\n          \\n          SHAPEFILE_NAC_IFPASP_DEMS\\n          \\n          and 7 updated NAC ROIs to improve seams:\\n          \\n          NAC_ROI_CRSEIMMKLOB NAC_ROI_MOSCOVNSLOD NAC_ROI_MCORDILNLOA\\n          NAC_ROI_COPERNICLOE NAC_ROI_PYRENAESLOB NAC_ROI_GRAIL___LOA\\n          NAC_ROI_MNDELCTRLOA\\n          \\n          and 1 updated NAC DTM to improve alignment:\\n          \\n          NAC_DTM_AESTUUM2\\n          \\n          and 12 updated shapefiles to reflect current data:\\n          \\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_CONTROLLED_MOSAICS SHAPEFILE_STEREO_OBSERVATIONS_EQ\\n          SHAPEFILE_FEATURE_MOSAICS_EQ SHAPEFILE_FEATURE_MOSAICS_NP\\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_STEREO_OBSERVATIONS_NP\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION'}, {'modification_date': '2025-09-13', 'version_id': '14.0', 'description': 'This release includes 11 new NAC ROIs:\\n          \\n          NAC_ROI_MOUTNPLTLO1 NAC_ROI_WARGNTINLOA NAC_ROI_JCKSNCRTLOE\\n          NAC_ROI_WARGNTINLOB NAC_ROI_SULPICUSLOF NAC_ROI_MOUTNPLTLOD\\n          NAC_ROI_MOUTNPLTLOE NAC_ROI_MOUTNPLTLOF NAC_ROI_MOUTNPLTLOA\\n          NAC_ROI_MOUTNPLTLOB NAC_ROI_MOUTNPLTLOC\\n          \\n          and 4 new NAC DTMs:\\n          \\n          NAC_DTM_NEWCRATER10 NAC_DTM_NOBILE04 NAC_DTM_NASSAU03\\n          NAC_DTM_NEWCRATER11\\n          \\n          and 60 updated shapefiles to reflect the latest data as well as update\\n          a URL that changed:\\n          \\n          SHAPEFILE_NAC_EQ_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_THIRD_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_COMMISSIONING\\n          SHAPEFILE_NAC_NP_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_NOMINAL_MISSION SHAPEFILE_NAC_NP_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_THIRD_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_COMMISSIONING\\n          SHAPEFILE_NAC_SP_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_NOMINAL_MISSION SHAPEFILE_NAC_SP_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_THIRD_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ SHAPEFILE_STEREO_OBSERVATIONS_NP\\n          SHAPEFILE_STEREO_OBSERVATIONS_SP SHAPEFILE_WAC_EQ_COMMISSIONING\\n          SHAPEFILE_WAC_EQ_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_NOMINAL_MISSION SHAPEFILE_WAC_EQ_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_THIRD_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_COMMISSIONING\\n          SHAPEFILE_WAC_NP_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_NOMINAL_MISSION SHAPEFILE_WAC_NP_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_THIRD_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_COMMISSIONING\\n          SHAPEFILE_WAC_SP_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_NOMINAL_MISSION SHAPEFILE_WAC_SP_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_THIRD_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS SHAPEFILE_APOLLO_11\\n          SHAPEFILE_APOLLO_14 SHAPEFILE_APOLLO_12 SHAPEFILE_CONTROLLED_MOSAICS\\n          SHAPEFILE_FEATURE_MOSAICS_EQ SHAPEFILE_FEATURE_MOSAICS_NP\\n          SHAPEFILE_FEATURE_MOSAICS_SP SHAPEFILE_NAC_DTMS\\n          SHAPEFILE_NAC_EQ_COMMISSIONING\\n          SHAPEFILE_NAC_EQ_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_NOMINAL_MISSION\\n          \\n          and 4 updated NAC ROIs to improve mosaic quality:\\n          \\n          NAC_ROI_BOSE_A__LOA NAC_ROI_MAREING_LOG NAC_ROI_HRTZPRNGLOA\\n          NAC_ROI_ORIENTA3LOB'}, {'modification_date': '2025-06-13', 'version_id': '13.0', 'description': 'This release includes 4 new NAC ROIs:\\n          \\n          NAC_ROI_GRUITHSNLOF NAC_ROI_LASSELL_LOA NAC_ROI_MNDLSHTMLOE\\n          NAC_ROI_MARECRISLOJ\\n          \\n          and 5 new NAC DTMs:\\n          \\n          NAC_DTM_GARDNER01 NAC_DTM_CHANGE6 NAC_DTM_POLYBIUSK01\\n          NAC_DTM_GRIMALDI01 NAC_DTM_CARLINIFLOW\\n          \\n          and 13 updated shapefiles FOR REASONS:\\n          \\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_CONTROLLED_MOSAICS SHAPEFILE_FEATURE_MOSAICS_EQ\\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_STEREO_OBSERVATIONS_NP SHAPEFILE_STEREO_OBSERVATIONS_SP\\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_FEATURE_MOSAICS_SP\\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          \\n          and 1 deleted NAC DTM FOR REASONS:\\n          \\n          NAC_DTM_SEISMCLAND\\n          \\n          THIS TEMPLATE MUST BE EDITED BEFORE PUBLICATION'}, {'modification_date': '2025-05-15', 'version_id': '12.0', 'description': 'This release includes 1 new shapefile:\\n          \\n          SHAPEFILE_APOLLO_14\\n          \\n          and 1 new NAC ROI:\\n          \\n          NAC_ROI_MARECRISLOI'}, {'modification_date': '2025-03-13', 'version_id': '11.0', 'description': 'This release includes 6 new shapefiles:\\n          \\n          SHAPEFILE_FEATURE_MOSAICS_EQ SHAPEFILE_FEATURE_MOSAICS_NP\\n          SHAPEFILE_FEATURE_MOSAICS_SP SHAPEFILE_APOLLO_11 SHAPEFILE_APOLLO_12\\n          SHAPEFILE_GLOBAL_NEW_CRATERS\\n          \\n          and 3 new NAC DTMs:\\n          \\n          NAC_DTM_CRISHORSE03 NAC_DTM_HERODOMEGA1 NAC_DTM_NFRIGORIS01\\n          \\n          and 2 new NAC ROIs:\\n          \\n          NAC_ROI_HUMBOLDTLOB NAC_ROI_ARTAMNOVLOA\\n          \\n          and 16 updated shapefiles to reflect the current release:\\n          \\n          SHAPEFILE_NAC_DTMS SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ SHAPEFILE_ANTHROPOGENIC_OBJECTS\\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_CONTROLLED_MOSAICS\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          \\n          and 1 updated NAC ROI to include proper residual files:\\n          \\n          NAC_ROI_ARISTARCLOB\\n          \\n          and 3 deleted shapefiles that were renamed as feature mosaics:\\n          \\n          SHAPEFILE_FEATURED_MOSAICS_EQ SHAPEFILE_FEATURED_MOSAICS_NP\\n          SHAPEFILE_FEATURED_MOSAICS_SP'}, {'modification_date': '2024-12-23', 'version_id': '10.0', 'description': 'This release includes 1 new NAC ROI:\\n          \\n          NAC_ROI_FRIGORISLOB'}, {'modification_date': '2024-12-13', 'version_id': '9.0', 'description': 'This release includes 7 new NAC ROIs:\\n          \\n          NAC_ROI_MARIUS__HIA NAC_ROI_AITKNCTRLOE NAC_ROI_LOHRMANDLOC\\n          NAC_ROI_RUTHERFULOA NAC_ROI_ARISTOTLLOB NAC_ROI_AITKNCTRLOF\\n          NAC_ROI_BRAYLEY_LOA\\n          \\n          and 3 new NAC DTMs:\\n          \\n          NAC_DTM_SPAWRINKLE1 NAC_DTM_AITKEN01 NAC_DTM_NOBILE03\\n          \\n          and 11 updated shapefiles to reflect current data:\\n          \\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_CONTROLLED_MOSAICS SHAPEFILE_STEREO_OBSERVATIONS_SP\\n          SHAPEFILE_NAC_DTMS SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_FEATURED_MOSAICS_EQ\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ\\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          \\n          and 1 deleted NAC ROI because it was replaced by NAC_ROI_RUTHERFULOA:\\n          \\n          NAC_ROI_RUTHERFUHIA'}, {'modification_date': '2024-08-30', 'version_id': '8.0', 'description': 'This release includes 12 new NAC DTMs:\\n          \\n          NAC_DTM_GRUITHMARE3 NAC_DTM_MENDELEEV02 NAC_DTM_RIPHDARNEY1\\n          NAC_DTM_MENDELEEV03 NAC_DTM_MENDELEEV04 NAC_DTM_CLEOMEDES01\\n          NAC_DTM_MALAPERT02 NAC_DTM_MALAPERT03 NAC_DTM_ALPETRAGB01\\n          NAC_DTM_MONSHADLEY1 NAC_DTM_MENDELEEV NAC_DTM_MENDELEEV01\\n          \\n          and 8 new NAC ROIs:\\n          \\n          NAC_ROI_RACAHCTRLOB NAC_ROI_SCALIGERLOB NAC_ROI_DEGERKCHLOC\\n          NAC_ROI_SILBRCTRLOA NAC_ROI_GRUITHSNLOE NAC_ROI_DEGERKCHLO1\\n          NAC_ROI_DEGERKCHLOA NAC_ROI_DEGERKCHLOB\\n          \\n          and 12 updated shapefiles to reflect current data:\\n          \\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_FEATURED_MOSAICS_SP\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_CONTROLLED_MOSAICS\\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_FEATURED_MOSAICS_EQ SHAPEFILE_STEREO_OBSERVATIONS_EQ\\n          SHAPEFILE_NAC_DTMS SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_STEREO_OBSERVATIONS_SP'}, {'modification_date': '2024-06-11', 'version_id': '7.0', 'description': 'This release includes 12 new NAC DTMs:\\n          \\n          NAC_DTM_LAMONTIMP1 NAC_DTM_GRUITHUIS16 NAC_DTM_OPNHEIMRSE2\\n          NAC_DTM_GRUITHUIS17 NAC_DTM_GRUITHUIS18 NAC_DTM_GRUITHUI_2M\\n          NAC_DTM_SCHLUTER NAC_DTM_GRUITHUIS13 NAC_DTM_RIMPARRY1\\n          NAC_DTM_RIMPARRY2 NAC_DTM_GRUITHUIS14 NAC_DTM_GRUITHUIS15\\n          \\n          and 4 new NAC ROIs:\\n          \\n          NAC_ROI_DEGERRIMLO1 NAC_ROI_DEGERRIMLOA NAC_ROI_DEGERRIMLOB\\n          NAC_ROI_DEGERRIMLOC\\n          \\n          and 16 updated NAC DTMs with expanded coverage, improved control, or\\n          improved data quality:\\n          \\n          NAC_DTM_GRUITHUISE6 NAC_DTM_GRUITHUISE7 NAC_DTM_GRUITHUISE8\\n          NAC_DTM_GRUITHUISE9 NAC_DTM_GRUITHUISEN NAC_DTM_GRUITHUIS10\\n          NAC_DTM_GRUITHUIS11 NAC_DTM_MARIUS10 NAC_DTM_GRUITHUIS12\\n          NAC_DTM_GRUITHUISE1 NAC_DTM_SHACKRDGE02 NAC_DTM_NOBILE02\\n          NAC_DTM_GRUITHUISE2 NAC_DTM_GRUITHUISE3 NAC_DTM_GRUITHUISE4\\n          NAC_DTM_GRUITHUISE5\\n          \\n          and 14 updated shapefiles to reflect current data:\\n          \\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS\\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_FEATURED_MOSAICS_EQ SHAPEFILE_FEATURED_MOSAICS_NP\\n          SHAPEFILE_FEATURED_MOSAICS_SP SHAPEFILE_STEREO_OBSERVATIONS_EQ\\n          SHAPEFILE_STEREO_OBSERVATIONS_NP SHAPEFILE_STEREO_OBSERVATIONS_SP\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          \\n          and 1 deleted NAC DTM, SHACKRDGESM, was replaced by SHACKRDGE02.'}, {'modification_date': '2024-04-21', 'version_id': '6.0', 'description': 'This release includes 36 new NAC polar products:\\n          \\n          NAC_POLE_NORTH_CM_235 NAC_POLE_NORTH_CM_245 NAC_POLE_NORTH_CM_255\\n          NAC_POLE_NORTH_CM_265 NAC_POLE_NORTH_CM_275 NAC_POLE_NORTH_CM_285\\n          NAC_POLE_NORTH_CM_295 NAC_POLE_NORTH_CM_305 NAC_POLE_NORTH_CM_315\\n          NAC_POLE_NORTH_CM_325 NAC_POLE_NORTH_CM_335 NAC_POLE_NORTH_CM_345\\n          NAC_POLE_NORTH_CM_355 NAC_POLE_NORTH_CM_005 NAC_POLE_NORTH_CM_015\\n          NAC_POLE_NORTH_CM_025 NAC_POLE_NORTH_CM_035 NAC_POLE_NORTH_CM_045\\n          NAC_POLE_NORTH_CM_055 NAC_POLE_NORTH_CM_065 NAC_POLE_NORTH_CM_075\\n          NAC_POLE_NORTH_CM_085 NAC_POLE_NORTH_CM_095 NAC_POLE_NORTH_CM_105\\n          NAC_POLE_NORTH_CM_115 NAC_POLE_NORTH_CM_125 NAC_POLE_NORTH_CM_135\\n          NAC_POLE_NORTH_CM_145 NAC_POLE_NORTH_CM_155 NAC_POLE_NORTH_CM_165\\n          NAC_POLE_NORTH_CM_175 NAC_POLE_NORTH_CM_185 NAC_POLE_NORTH_CM_195\\n          NAC_POLE_NORTH_CM_205 NAC_POLE_NORTH_CM_215 NAC_POLE_NORTH_CM_225'}, {'modification_date': '2024-03-09', 'version_id': '5.0', 'description': 'This release includes 1 new NAC ROI:\\n          \\n          NAC_ROI_EDDNGTONLOA\\n          \\n          and 2 new NAC DTMs:\\n          \\n          NAC_DTM_MARIUS10 NAC_DTM_CRISHORSE05\\n          \\n          and 41 updated shapefiles to update with the new release and cleanup\\n          the polar shapes:\\n          \\n          SHAPEFILE_WAC_SP_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_THIRD_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_NOMINAL_MISSION SHAPEFILE_NAC_NP_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_THIRD_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_COMMISSIONING\\n          SHAPEFILE_NAC_SP_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_NOMINAL_MISSION SHAPEFILE_NAC_SP_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_THIRD_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ SHAPEFILE_FEATURED_MOSAICS_EQ\\n          SHAPEFILE_FEATURED_MOSAICS_NP\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_FEATURED_MOSAICS_SP\\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS SHAPEFILE_CONTROLLED_MOSAICS\\n          SHAPEFILE_NAC_NP_COMMISSIONING SHAPEFILE_WAC_NP_COMMISSIONING\\n          SHAPEFILE_WAC_NP_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_NOMINAL_MISSION SHAPEFILE_WAC_NP_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_SECOND_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_THIRD_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_COMMISSIONING\\n          SHAPEFILE_WAC_SP_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_NOMINAL_MISSION SHAPEFILE_WAC_SP_SCIENCE_MISSION'}, {'modification_date': '2024-01-27', 'version_id': '4.0', 'description': 'This release includes 1 updated shapefile FOR REASONS:\\n          \\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS\\n          \\n          THIS TEMPLATE MUST BE EDITED BEFORE PUBLICATION'}, {'modification_date': '2023-12-12', 'version_id': '3.0', 'description': 'This release includes 9 new NAC DTMs:\\n          \\n          NAC_DTM_BIRKEJECT01 NAC_DTM_BIRKEJECT02 NAC_DTM_VIKRAMSITE1\\n          NAC_DTM_BERESHEET1 NAC_DTM_BIRKEJECT NAC_DTM_CRISHORSE04\\n          NAC_DTM_GRUITHMARE2 NAC_DTM_SCHLUTER01 NAC_DTM_GEIGER01\\n          \\n          and 20 new NAC ROIs:\\n          \\n          NAC_ROI_MAIRAN__LOB NAC_ROI_MANZINUSLOA NAC_ROI_FENYICTRLOA\\n          NAC_ROI_CLEOMDESLOA NAC_ROI_VITELLO_LOB NAC_ROI_FINSENC_LOA\\n          NAC_ROI_WARNER__LOB NAC_ROI_FINSEN__LOA NAC_ROI_GDANOBRULOF\\n          NAC_ROI_DEUTSCH_LOA NAC_ROI_WARNER__LOA NAC_ROI_GASPARISLOA\\n          NAC_ROI_LANGEMAKLOA NAC_ROI_SCALIGERLOA NAC_ROI_BGSLWSKYLOB\\n          NAC_ROI_MARECRISLOE NAC_ROI_VANDGRAFLOE NAC_ROI_BGSLWSKYLOC\\n          NAC_ROI_VASCGAMALOA NAC_ROI_BRIDGMANLOA\\n          \\n          and 13 updated shapefiles to reflect the current release:\\n          \\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS SHAPEFILE_CONTROLLED_MOSAICS\\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_FEATURED_MOSAICS_EQ SHAPEFILE_FEATURED_MOSAICS_SP\\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ SHAPEFILE_STEREO_OBSERVATIONS_SP\\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          \\n          and 1 updated NAC DTM to improve accuracy of the bounds:\\n          \\n          NAC_DTM_MALAPERTA01'}, {'modification_date': '2023-09-08', 'version_id': '2.0', 'description': 'This release includes 19 new NAC ROIs:\\n          \\n          NAC_ROI_AMUNDRIMLO1 NAC_ROI_SHKLTNPKLO1 NAC_ROI_SHKLTNPKLO2\\n          NAC_ROI_SHKLTNPKLOA NAC_ROI_SHKLTNPKLOB NAC_ROI_SHKLTNPKLOC\\n          NAC_ROI_SHKLTNPKLOD NAC_ROI_SIRSALISLOC NAC_ROI_EULERCNELOB\\n          NAC_ROI_PETAVIUSLOA NAC_ROI_PETAVIUSLOB NAC_ROI_GASSENDILOA\\n          NAC_ROI_AMUNDRIMLOA NAC_ROI_HERIGONSLOA NAC_ROI_AMUNDRIMLOB\\n          NAC_ROI_AITKNCTRLOD NAC_ROI_HYGINUS_LOB NAC_ROI_DAEDALUSLOA\\n          NAC_ROI_FARADAY_LOA\\n          \\n          and 3 new NAC DTMs:\\n          \\n          NAC_DTM_BOOSTIMPCT1 NAC_DTM_SWFECUNPIT1 NAC_DTM_MALAPERTA01\\n          \\n          and 13 updated shapefiles to reflect the latest data:\\n          \\n          SHAPEFILE_NAC_DTMS SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_FEATURED_MOSAICS_EQ\\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_STEREO_OBSERVATIONS_SP SHAPEFILE_FEATURED_MOSAICS_SP\\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS SHAPEFILE_CONTROLLED_MOSAICS\\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ\\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION'}, {'modification_date': '2023-08-16', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}]}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_inspect_collections",
+      "tool_input": {
+        "path": "data/LRO-L-LROC-3-CDR-V1.0/",
+        "node": "lroc",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'data/LRO-L-LROC-3-CDR-V1.0', 'collections': [{'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1001_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1001_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-07', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1002_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1002_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1003_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1003_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1004_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1004_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1005_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1005_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1006_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1006_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1008_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1008_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1009_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1009_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1011_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1011_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1012_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1012_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1014_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1014_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1015_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1015_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1016_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1016_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1017_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1017_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1018_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1018_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1019_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1019_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}, {'path': 'data/LRO-L-LROC-3-CDR-V1.0', 'dataset_id': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1020_data', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1020_data', 'version_id': '1.0', 'title': 'Lunar Reconnaissance Orbiter Camera volume collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Lunar Reconnaissance Orbiter Camera SOC', 'publication_year': '2023', 'description': 'Archive of LROC NAC and WAC data, documentation, and ancillary files'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-09-08', 'version_id': '1.0', 'description': 'conversion of PDS3 LROC archive to comply with PDS4 Information Model'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/LRO-L-LROC-5-RDR-V1.0/",
+        "node": "lroc"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/', 'total': 1, 'filtered_total': None, 'dirs': [{'name': 'LROLRC_2001', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/', 'pds_hint': None}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/",
+        "node": "lroc"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/', 'total': 5, 'filtered_total': None, 'dirs': [{'name': 'CATALOG', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/CATALOG/', 'pds_hint': None}, {'name': 'DATA', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/', 'pds_hint': None}, {'name': 'DOCUMENT', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DOCUMENT/', 'pds_hint': None}, {'name': 'EXTRAS', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/', 'pds_hint': None}, {'name': 'INDEX', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/INDEX/', 'pds_hint': None}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/"
+        ],
+        "node": "lroc"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'LRO-L-LROC-5-RDR-V1.0', 'title': 'LRO: LROC DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'DATA_SET_ID': 'LRO-L-LROC-5-RDR-V1.0', 'VOLUME_SET_NAME': 'LRO: LROC DATA', 'VOLUME_NAME': 'LRO: LROC DATA', 'VOLUME_ID': 'LROLRC_2001', 'PUBLICATION_DATE': '2011-11-16', 'DESCRIPTION': 'This volume contains data collected by the LRO Camera.'}}}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/",
+        "node": "lroc"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/', 'total': 3, 'filtered_total': None, 'dirs': [{'name': 'BDR', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/BDR/', 'pds_hint': None}, {'name': 'MDR', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/MDR/', 'pds_hint': None}, {'name': 'SDP', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/', 'pds_hint': None}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/",
+        "node": "lroc",
+        "filter": "MARIUS"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/', 'total': 8, 'filtered_total': 0, 'dirs': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/MDR/",
+        "node": "lroc",
+        "filter": "MARIUS"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/MDR/', 'total': 2, 'filtered_total': 0, 'dirs': [], 'error': None}"
+    },
+    {
+      "tool_name": "final_result",
+      "tool_input": {
+        "summary": "On the LROC PDS node, the imagery and derived products you\u2019d use to assess the Marius Hills Pit floor and possible skylight/cavity access are contained in the LROC Calibrated Data Records (CDR; best for quantitative image analysis) and the Reduced Data Records (RDR; includes derived products like ROIs/DTMs when available). The node provides both PDS3 dataset IDs and PDS4 bundle/collection logical identifiers for the same archive.",
+        "candidates": [
+          {
+            "dataset_id": "LRO-L-LROC-3-CDR-V1.0",
+            "path": "data/LRO-L-LROC-3-CDR-V1.0/",
+            "title": "LRO LROC DATA",
+            "pds_version": "PDS3",
+            "reasoning": "Calibrated NAC/WAC images are the primary source to visually inspect the pit interior (floor texture, boulder fields, shadowed regions) and to do photometric/contrast-stretch analysis. Prefer this over raw EDR for science interpretation."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr",
+            "path": "data/LRO-L-LROC-3-CDR-V1.0/",
+            "title": "LRO LROC Data Archive",
+            "pds_version": "PDS4",
+            "reasoning": "PDS4 bundle equivalent of the CDR archive (calibrated NAC/WAC images plus geometry/ancillary). Use this if you want modern PDS4 labels/metadata."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1001_data",
+            "path": "data/LRO-L-LROC-3-CDR-V1.0/",
+            "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+            "pds_version": "PDS4",
+            "reasoning": "Collection-level identifier within the CDR PDS4 bundle that points to one of the data collections; use collection LIDs for PDS4-based workflows and searches."
+          },
+          {
+            "dataset_id": "LRO-L-LROC-5-RDR-V1.0",
+            "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/",
+            "title": "LRO: LROC DATA",
+            "pds_version": "PDS3",
+            "reasoning": "Reduced/derived LROC products (RDR) are useful for higher-level context products (e.g., mosaics/ROIs, DTMs) that can help evaluate slopes and potential access constraints around/into pits."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:lro-l-lroc-5-rdr",
+            "path": "data/LRO-L-LROC-5-RDR-V1.0/",
+            "title": "LRO LROC Data Archive",
+            "pds_version": "PDS4",
+            "reasoning": "PDS4 bundle equivalent of the RDR archive for derived products, where available."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:lro-l-lroc-5-rdr:lrolrc_2001_data",
+            "path": "data/LRO-L-LROC-5-RDR-V1.0/",
+            "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+            "pds_version": "PDS4",
+            "reasoning": "Collection-level identifier within the RDR PDS4 bundle; use this as the modern entry point for searching derived products potentially relevant to Marius Hills Pit (e.g., ROIs/DTMs if present)."
+          }
+        ]
+      },
+      "tool_output": "Final result processed."
+    }
+  ],
+  "full_trace": [
+    {
+      "parts": [
+        {
+          "content": "You are a dataset-discovery assistant for the NASA PDS Lunar Reconnaissance Orbiter Camera (LROC) node at https://pds.lroc.im-ldi.com/\n\nDirectory layout and workflow:\nThis node has NO mission layer. Only 3 fixed dataset paths sit under data/.\nDo NOT call pds_list_missions \u2014 it will return an empty list.\nGo directly to pds_list_dataset_dirs(path='data/', node='lroc') to see all 3 datasets.\nThen probe the relevant ones with pds_probe_datasets.\nFor PDS4 bundles, use inspect_collections to get collection-level LIDs.\n\n\nLROC datasets (3 total \u2014 each carries BOTH a PDS3 voldesc and a PDS4 bundle label):\n  LRO-L-LROC-2-EDR-V1.0   (PDS4 LID: urn:nasa:pds:lro-l-lroc-2-edr) \u2014 Experiment Data Records (raw images)\n  LRO-L-LROC-3-CDR-V1.0   (PDS4 LID: urn:nasa:pds:lro-l-lroc-3-cdr) \u2014 Calibrated Data Records\n  LRO-L-LROC-5-RDR-V1.0   (PDS4 LID: urn:nasa:pds:lro-l-lroc-5-rdr) \u2014 Reduced Data Records (derived products)\n\nInstruments: NAC (Narrow Angle Camera), WAC (Wide Angle Camera).\nSub-volumes are numbered directories (e.g. LROLRC_0001/, LROLRC_0002/) inside each dataset.\nThe PDS3 dataset_id and the PDS4 bundle LID address the same underlying data \u2014 they are equivalent.\n\n\nPDS3 vs PDS4:\n  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers (e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n  - PDS4 bundle directories begin with `urn-nasa-pds-`. Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\nYOUR TOOLS (4 tools \u2014 always pass node='lroc'):\n  1. pds_list_missions(node='lroc') \u2014 returns mission directories with descriptions. No HTTP.\n  2. pds_list_dataset_dirs(path, node='lroc', filter=...) \u2014 lists sub-directory names under a path. Cheap HTTP, no label parsing.\n  3. pds_probe_datasets(paths, node='lroc') \u2014 probes specific directories for PDS labels. Accepts a list of paths (max 20).\n  4. pds_inspect_collections(path, node='lroc') \u2014 scans PDS4 bundle subdirs for collection labels.\n\nWORKFLOW:\n  Step 1: Call pds_list_dataset_dirs(path='data/', node='lroc', filter='<keyword>') to find datasets.\n  Step 2: Call pds_probe_datasets with the most relevant paths.\n  Step 3: If PDS4 bundles found, call pds_inspect_collections.\n  Step 4: Return candidates.\n\nCRITICAL RULES:\n  1. EVERY query requires at least one candidate. Never dismiss a query.\n  2. Prefer CALIBRATED/REDUCED data over raw/EDR for science queries.\n  3. For PDS4, use inspect_collections ONLY for top 2-3 bundles. Return COLLECTION-level LID when :data or :calibrated exists.\n  4. When the SAME data is available as both PDS3 and PDS4, return BOTH identifiers \u2014 emit one candidate per identifier. Most published papers cite the PDS3 dataset_id (e.g. MESS-E_V_H_SW-MAG-3-CDR-CALIBRATED-V1.0, LRO-L-LROC-5-RDR-V1.0); the PDS4 collection LID is the modern equivalent. Do NOT silently drop the PDS3 form.\n  5. Stay under 8 tool calls per query.\n  6. Only return paths you've actually probed \u2014 never guess.\n",
+          "timestamp": "2026-05-06 23:22:32.167852+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "What does the bottom of the Marius Hills Pit look like and is there potential for cavity access?",
+          "timestamp": "2026-05-06 23:22:32.167889+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-05-06 23:22:32.168141+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"data/\",\"node\":\"lroc\"}",
+          "tool_call_id": "call_Xd6Fgi2plTVB7yEOEv6t89nt",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2158,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 218,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 186,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:22:38.335596+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:22:33+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcfrVi5VCUdM4j6WG64UiaDYoUFik",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/",
+            "total": 3,
+            "filtered_total": null,
+            "dirs": [
+              {
+                "name": "LRO-L-LROC-2-EDR-V1.0",
+                "path": "data/LRO-L-LROC-2-EDR-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "LRO-L-LROC-3-CDR-V1.0",
+                "path": "data/LRO-L-LROC-3-CDR-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "LRO-L-LROC-5-RDR-V1.0",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/",
+                "pds_hint": "PDS3"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_Xd6Fgi2plTVB7yEOEv6t89nt",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:22:38.710899+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:22:38.715181+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\":[\"data/LRO-L-LROC-2-EDR-V1.0/\",\"data/LRO-L-LROC-3-CDR-V1.0/\",\"data/LRO-L-LROC-5-RDR-V1.0/\"],\"node\":\"lroc\"}",
+          "tool_call_id": "call_r2X2xMjbSthr2ZtEuwqBJ55k",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 2353,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1408,
+        "output_tokens": 405,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 326,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:22:52.462131+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:22:39+00:00"
+      },
+      "provider_response_id": "chatcmpl-Dcfrba60rrTqcPr8xq7AW44XEVmwD",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "data/LRO-L-LROC-2-EDR-V1.0",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-2-edr",
+                "title": "LRO LROC Data Archive",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-2-edr",
+                    "version_id": "35.0",
+                    "title": "LRO LROC Data Archive",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2026",
+                      "doi": "10.17189/4xr6-4b89",
+                      "description": "Un-calibrated data from Lunar Reconnaissance Orbiter Camera (LROC).\n        This data set comprises Un-calibrated data from the LROC NAC and WAC\n        cameras. The science data is comprised of Un-calibrated raw images,\n        along with pointing data and housekeeping information."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr",
+                "title": "LRO LROC Data Archive",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr",
+                    "version_id": "34.0",
+                    "title": "LRO LROC Data Archive",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2026",
+                      "doi": "10.17189/bx7p-0d06",
+                      "description": "Calibrated data from Lunar Reconnaissance Orbiter Camera (LROC). This\n        data set comprises calibrated data from the LROC NAC and WAC cameras.\n        The science data is comprised of calibrated raw images, along with\n        pointing data and housekeeping information."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-5-RDR-V1.0",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-5-rdr",
+                "title": "LRO LROC Data Archive",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-5-rdr",
+                    "version_id": "3.0",
+                    "title": "LRO LROC Data Archive",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "doi": "10.17189/a6a1-mw73",
+                      "description": "Reduced data from Lunar Reconnaissance Orbiter Camera (LROC). This\n        data set comprises calibrated data from the LROC NAC and WAC cameras.\n        The science data is comprised of calibrated raw images, along with\n        pointing data and housekeeping information."
+                    }
+                  }
+                }
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_r2X2xMjbSthr2ZtEuwqBJ55k",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:22:53.411976+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:22:53.412628+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_inspect_collections",
+          "args": "{\"path\": \"data/LRO-L-LROC-5-RDR-V1.0/\", \"node\": \"lroc\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_cUPvOWUnhLKAFImFnN9kegFM",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "args": "{\"path\": \"data/LRO-L-LROC-3-CDR-V1.0/\", \"node\": \"lroc\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_uY9wpN9w9By35fe5zHTdPUjM",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3108,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 1408,
+        "output_tokens": 284,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 173,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:23:00.653504+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:22:54+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcfrqDZ6hSjJ0cE5qFgH0x0Jpdgef",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "data/LRO-L-LROC-5-RDR-V1.0",
+            "collections": [
+              {
+                "path": "data/LRO-L-LROC-5-RDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-5-rdr:lrolrc_2001_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-5-rdr:lrolrc_2001_data",
+                    "version_id": "16.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2026",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": [
+                        {
+                          "modification_date": "2026-03-14",
+                          "version_id": "16.0",
+                          "description": "This release includes 51 new NAC IFP ASP DTMs:\n          \n          NAC_IFPASP_20703N066493_1 NAC_IFPASP_22025N197202_1\n          NAC_IFPASP_22028N197211_1 NAC_IFPASP_22034N196008_1\n          NAC_IFPASP_22037N195602_1 NAC_IFPASP_22044N198392_1\n          NAC_IFPASP_22054N196797_1 NAC_IFPASP_22065N196004_1\n          NAC_IFPASP_20735N066211_1 NAC_IFPASP_20876N198597_1\n          NAC_IFPASP_20939N195776_1 NAC_IFPASP_21889N197603_1\n          NAC_IFPASP_21899N197880_1 NAC_IFPASP_21905N195173_1\n          NAC_IFPASP_21916N196968_1 NAC_IFPASP_21991N195506_1\n          NAC_IFPASP_22010N196741_1 NAC_IFPASP_22015N195218_1\n          NAC_IFPASP_10815N058614_1 NAC_IFPASP_16018N046688_1\n          NAC_IFPASP_16063N047579_1 NAC_IFPASP_16689N067298_1\n          NAC_IFPASP_17171N062332_1 NAC_IFPASP_17329N067015_1\n          NAC_IFPASP_17643N148244_1 NAC_IFPASP_17874N065846_1\n          NAC_IFPASP_10896N058735_1 NAC_IFPASP_12634N062156_1\n          NAC_IFPASP_18617N061915_1 NAC_IFPASP_15024N050443_1\n          NAC_IFPASP_19020N061157_1 NAC_IFPASP_37303N185571_1\n          NAC_IFPASP_37303N185651_1 NAC_IFPASP_37309N183775_1\n          NAC_IFPASP_37339N185444_1 NAC_IFPASP_37351N184836_1\n          NAC_IFPASP_37352N184642_1 NAC_IFPASP_37352N184804_1\n          NAC_IFPASP_37375N185255_1 NAC_IFPASP_37420N103250_1\n          NAC_IFPASP_37475N102257_1 NAC_IFPASP_10681N059027_1\n          NAC_IFPASP_19936N197692_1 NAC_IFPASP_19941N195743_1\n          NAC_IFPASP_19986N196510_1 NAC_IFPASP_20052N197299_1\n          NAC_IFPASP_20059N195464_1 NAC_IFPASP_20073N196917_1\n          NAC_IFPASP_20098N194821_1 NAC_IFPASP_20687N066856_1\n          NAC_IFPASP_22022N197188_1\n          \n          and 2 new NAC photometric products:\n          \n          NAC_PHO_E223S3203 NAC_PHO_E064S3160\n          \n          and 3 new NAC ROIs:\n          \n          NAC_ROI_MNDLSHTMLOD NAC_ROI_JCKSNCRTLOH NAC_ROI_NASSAUD_LOA\n          \n          and 6 new shapefiles:\n          \n          SHAPEFILE_WAC_SP_SIXTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_SIXTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_SIXTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_SIXTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_SIXTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_SIXTH_EXTENDED_SCIENCE_MISSION\n          \n          and 1 new NAC DTM:\n          \n          NAC_DTM_REINER10\n          \n          and 13 updated shapefiles to reflect current data:\n          \n          SHAPEFILE_NAC_DTMS SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_STEREO_OBSERVATIONS_SP\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_CONTROLLED_MOSAICS SHAPEFILE_FEATURE_MOSAICS_EQ\n          SHAPEFILE_FEATURE_MOSAICS_NP SHAPEFILE_STEREO_OBSERVATIONS_EQ\n          SHAPEFILE_STEREO_OBSERVATIONS_NP\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION"
+                        },
+                        {
+                          "modification_date": "2025-12-14",
+                          "version_id": "15.0",
+                          "description": "This release includes 50 new NAC IFP ASP DTMs:\n          \n          NAC_IFPASP_12909N063398_1 NAC_IFPASP_23734N059786_1\n          NAC_IFPASP_23776N060159_1 NAC_IFPASP_24118N065624_1\n          NAC_IFPASP_24340N061528_1 NAC_IFPASP_27207N060544_1\n          NAC_IFPASP_27415N055981_1 NAC_IFPASP_27415N055981_2\n          NAC_IFPASP_27416N056014_1 NAC_IFPASP_27689N055514_1\n          NAC_IFPASP_27690N055485_1 NAC_IFPASP_27692N055482_1\n          NAC_IFPASP_29011N055083_1 NAC_IFPASP_33877N001187_1\n          NAC_IFPASP_12713N062025_1 NAC_IFPASP_12718N062025_1\n          NAC_IFPASP_12718N062026_1 NAC_IFPASP_12718N062070_1\n          NAC_IFPASP_12718N062071_1 NAC_IFPASP_12723N062071_1\n          NAC_IFPASP_12729N062052_1 NAC_IFPASP_12729N062097_1\n          NAC_IFPASP_12734N062098_1 NAC_IFPASP_12735N062099_1\n          NAC_IFPASP_12856N061724_1 NAC_IFPASP_12963N066673_1\n          NAC_IFPASP_13195N064194_1 NAC_IFPASP_13877N065808_1\n          NAC_IFPASP_14091N072522_1 NAC_IFPASP_14100N072520_1\n          NAC_IFPASP_14672N054615_1 NAC_IFPASP_14673N054905_1\n          NAC_IFPASP_14675N055016_1 NAC_IFPASP_14820N071500_1\n          NAC_IFPASP_15248N050155_1 NAC_IFPASP_15386N063871_1\n          NAC_IFPASP_16069N047316_1 NAC_IFPASP_16111N046617_1\n          NAC_IFPASP_16111N046978_1 NAC_IFPASP_16114N046983_1\n          NAC_IFPASP_16117N046579_1 NAC_IFPASP_16118N046986_1\n          NAC_IFPASP_16119N046626_1 NAC_IFPASP_16569N050628_1\n          NAC_IFPASP_18301N050580_1 NAC_IFPASP_18365N067279_1\n          NAC_IFPASP_18730N053421_1 NAC_IFPASP_18817N051384_1\n          NAC_IFPASP_19553N064548_1 NAC_IFPASP_22613N061577_1\n          \n          and 16 new NAC ROIs:\n          \n          NAC_ROI_JCKSNCRTLOF NAC_ROI_AUSTRALELOC NAC_ROI_MOORECTRLOA\n          NAC_ROI_LANGEMAKLOB NAC_ROI_FIRSOV__LOA NAC_ROI_SIRSALISLOB\n          NAC_ROI_CABEUSPKLO1 NAC_ROI_CABEUSPKLO2 NAC_ROI_CABEUSPKLOA\n          NAC_ROI_CABEUSPKLOB NAC_ROI_CABEUSPKLOC NAC_ROI_BOWDITCHLOA\n          NAC_ROI_SOSIGENSLOC NAC_ROI_HYGINUS_LOC NAC_ROI_OCNSPRCLLOF\n          NAC_ROI_RIMASHRPLOB\n          \n          and 2 new NAC polar products:\n          \n          NAC_POLE_NORTH_CM_MAX NAC_POLE_SOUTH_CM_MAX\n          \n          and 3 new NAC DTMs:\n          \n          NAC_DTM_APENNINE06 NAC_DTM_AESTUUM3 NAC_DTM_AESTUUM\n          \n          and 1 new shapefile:\n          \n          SHAPEFILE_NAC_IFPASP_DEMS\n          \n          and 7 updated NAC ROIs to improve seams:\n          \n          NAC_ROI_CRSEIMMKLOB NAC_ROI_MOSCOVNSLOD NAC_ROI_MCORDILNLOA\n          NAC_ROI_COPERNICLOE NAC_ROI_PYRENAESLOB NAC_ROI_GRAIL___LOA\n          NAC_ROI_MNDELCTRLOA\n          \n          and 1 updated NAC DTM to improve alignment:\n          \n          NAC_DTM_AESTUUM2\n          \n          and 12 updated shapefiles to reflect current data:\n          \n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_CONTROLLED_MOSAICS SHAPEFILE_STEREO_OBSERVATIONS_EQ\n          SHAPEFILE_FEATURE_MOSAICS_EQ SHAPEFILE_FEATURE_MOSAICS_NP\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_STEREO_OBSERVATIONS_NP\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION"
+                        },
+                        {
+                          "modification_date": "2025-09-13",
+                          "version_id": "14.0",
+                          "description": "This release includes 11 new NAC ROIs:\n          \n          NAC_ROI_MOUTNPLTLO1 NAC_ROI_WARGNTINLOA NAC_ROI_JCKSNCRTLOE\n          NAC_ROI_WARGNTINLOB NAC_ROI_SULPICUSLOF NAC_ROI_MOUTNPLTLOD\n          NAC_ROI_MOUTNPLTLOE NAC_ROI_MOUTNPLTLOF NAC_ROI_MOUTNPLTLOA\n          NAC_ROI_MOUTNPLTLOB NAC_ROI_MOUTNPLTLOC\n          \n          and 4 new NAC DTMs:\n          \n          NAC_DTM_NEWCRATER10 NAC_DTM_NOBILE04 NAC_DTM_NASSAU03\n          NAC_DTM_NEWCRATER11\n          \n          and 60 updated shapefiles to reflect the latest data as well as update\n          a URL that changed:\n          \n          SHAPEFILE_NAC_EQ_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_THIRD_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_COMMISSIONING\n          SHAPEFILE_NAC_NP_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_NOMINAL_MISSION SHAPEFILE_NAC_NP_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_THIRD_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_COMMISSIONING\n          SHAPEFILE_NAC_SP_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_NOMINAL_MISSION SHAPEFILE_NAC_SP_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_THIRD_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ SHAPEFILE_STEREO_OBSERVATIONS_NP\n          SHAPEFILE_STEREO_OBSERVATIONS_SP SHAPEFILE_WAC_EQ_COMMISSIONING\n          SHAPEFILE_WAC_EQ_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_NOMINAL_MISSION SHAPEFILE_WAC_EQ_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_THIRD_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_COMMISSIONING\n          SHAPEFILE_WAC_NP_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_NOMINAL_MISSION SHAPEFILE_WAC_NP_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_THIRD_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_COMMISSIONING\n          SHAPEFILE_WAC_SP_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_NOMINAL_MISSION SHAPEFILE_WAC_SP_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_THIRD_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS SHAPEFILE_APOLLO_11\n          SHAPEFILE_APOLLO_14 SHAPEFILE_APOLLO_12 SHAPEFILE_CONTROLLED_MOSAICS\n          SHAPEFILE_FEATURE_MOSAICS_EQ SHAPEFILE_FEATURE_MOSAICS_NP\n          SHAPEFILE_FEATURE_MOSAICS_SP SHAPEFILE_NAC_DTMS\n          SHAPEFILE_NAC_EQ_COMMISSIONING\n          SHAPEFILE_NAC_EQ_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_NOMINAL_MISSION\n          \n          and 4 updated NAC ROIs to improve mosaic quality:\n          \n          NAC_ROI_BOSE_A__LOA NAC_ROI_MAREING_LOG NAC_ROI_HRTZPRNGLOA\n          NAC_ROI_ORIENTA3LOB"
+                        },
+                        {
+                          "modification_date": "2025-06-13",
+                          "version_id": "13.0",
+                          "description": "This release includes 4 new NAC ROIs:\n          \n          NAC_ROI_GRUITHSNLOF NAC_ROI_LASSELL_LOA NAC_ROI_MNDLSHTMLOE\n          NAC_ROI_MARECRISLOJ\n          \n          and 5 new NAC DTMs:\n          \n          NAC_DTM_GARDNER01 NAC_DTM_CHANGE6 NAC_DTM_POLYBIUSK01\n          NAC_DTM_GRIMALDI01 NAC_DTM_CARLINIFLOW\n          \n          and 13 updated shapefiles FOR REASONS:\n          \n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_CONTROLLED_MOSAICS SHAPEFILE_FEATURE_MOSAICS_EQ\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_STEREO_OBSERVATIONS_NP SHAPEFILE_STEREO_OBSERVATIONS_SP\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_FEATURE_MOSAICS_SP\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          \n          and 1 deleted NAC DTM FOR REASONS:\n          \n          NAC_DTM_SEISMCLAND\n          \n          THIS TEMPLATE MUST BE EDITED BEFORE PUBLICATION"
+                        },
+                        {
+                          "modification_date": "2025-05-15",
+                          "version_id": "12.0",
+                          "description": "This release includes 1 new shapefile:\n          \n          SHAPEFILE_APOLLO_14\n          \n          and 1 new NAC ROI:\n          \n          NAC_ROI_MARECRISLOI"
+                        },
+                        {
+                          "modification_date": "2025-03-13",
+                          "version_id": "11.0",
+                          "description": "This release includes 6 new shapefiles:\n          \n          SHAPEFILE_FEATURE_MOSAICS_EQ SHAPEFILE_FEATURE_MOSAICS_NP\n          SHAPEFILE_FEATURE_MOSAICS_SP SHAPEFILE_APOLLO_11 SHAPEFILE_APOLLO_12\n          SHAPEFILE_GLOBAL_NEW_CRATERS\n          \n          and 3 new NAC DTMs:\n          \n          NAC_DTM_CRISHORSE03 NAC_DTM_HERODOMEGA1 NAC_DTM_NFRIGORIS01\n          \n          and 2 new NAC ROIs:\n          \n          NAC_ROI_HUMBOLDTLOB NAC_ROI_ARTAMNOVLOA\n          \n          and 16 updated shapefiles to reflect the current release:\n          \n          SHAPEFILE_NAC_DTMS SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ SHAPEFILE_ANTHROPOGENIC_OBJECTS\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_CONTROLLED_MOSAICS\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\n          \n          and 1 updated NAC ROI to include proper residual files:\n          \n          NAC_ROI_ARISTARCLOB\n          \n          and 3 deleted shapefiles that were renamed as feature mosaics:\n          \n          SHAPEFILE_FEATURED_MOSAICS_EQ SHAPEFILE_FEATURED_MOSAICS_NP\n          SHAPEFILE_FEATURED_MOSAICS_SP"
+                        },
+                        {
+                          "modification_date": "2024-12-23",
+                          "version_id": "10.0",
+                          "description": "This release includes 1 new NAC ROI:\n          \n          NAC_ROI_FRIGORISLOB"
+                        },
+                        {
+                          "modification_date": "2024-12-13",
+                          "version_id": "9.0",
+                          "description": "This release includes 7 new NAC ROIs:\n          \n          NAC_ROI_MARIUS__HIA NAC_ROI_AITKNCTRLOE NAC_ROI_LOHRMANDLOC\n          NAC_ROI_RUTHERFULOA NAC_ROI_ARISTOTLLOB NAC_ROI_AITKNCTRLOF\n          NAC_ROI_BRAYLEY_LOA\n          \n          and 3 new NAC DTMs:\n          \n          NAC_DTM_SPAWRINKLE1 NAC_DTM_AITKEN01 NAC_DTM_NOBILE03\n          \n          and 11 updated shapefiles to reflect current data:\n          \n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_CONTROLLED_MOSAICS SHAPEFILE_STEREO_OBSERVATIONS_SP\n          SHAPEFILE_NAC_DTMS SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_FEATURED_MOSAICS_EQ\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          \n          and 1 deleted NAC ROI because it was replaced by NAC_ROI_RUTHERFULOA:\n          \n          NAC_ROI_RUTHERFUHIA"
+                        },
+                        {
+                          "modification_date": "2024-08-30",
+                          "version_id": "8.0",
+                          "description": "This release includes 12 new NAC DTMs:\n          \n          NAC_DTM_GRUITHMARE3 NAC_DTM_MENDELEEV02 NAC_DTM_RIPHDARNEY1\n          NAC_DTM_MENDELEEV03 NAC_DTM_MENDELEEV04 NAC_DTM_CLEOMEDES01\n          NAC_DTM_MALAPERT02 NAC_DTM_MALAPERT03 NAC_DTM_ALPETRAGB01\n          NAC_DTM_MONSHADLEY1 NAC_DTM_MENDELEEV NAC_DTM_MENDELEEV01\n          \n          and 8 new NAC ROIs:\n          \n          NAC_ROI_RACAHCTRLOB NAC_ROI_SCALIGERLOB NAC_ROI_DEGERKCHLOC\n          NAC_ROI_SILBRCTRLOA NAC_ROI_GRUITHSNLOE NAC_ROI_DEGERKCHLO1\n          NAC_ROI_DEGERKCHLOA NAC_ROI_DEGERKCHLOB\n          \n          and 12 updated shapefiles to reflect current data:\n          \n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_FEATURED_MOSAICS_SP\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_CONTROLLED_MOSAICS\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_FEATURED_MOSAICS_EQ SHAPEFILE_STEREO_OBSERVATIONS_EQ\n          SHAPEFILE_NAC_DTMS SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_STEREO_OBSERVATIONS_SP"
+                        },
+                        {
+                          "modification_date": "2024-06-11",
+                          "version_id": "7.0",
+                          "description": "This release includes 12 new NAC DTMs:\n          \n          NAC_DTM_LAMONTIMP1 NAC_DTM_GRUITHUIS16 NAC_DTM_OPNHEIMRSE2\n          NAC_DTM_GRUITHUIS17 NAC_DTM_GRUITHUIS18 NAC_DTM_GRUITHUI_2M\n          NAC_DTM_SCHLUTER NAC_DTM_GRUITHUIS13 NAC_DTM_RIMPARRY1\n          NAC_DTM_RIMPARRY2 NAC_DTM_GRUITHUIS14 NAC_DTM_GRUITHUIS15\n          \n          and 4 new NAC ROIs:\n          \n          NAC_ROI_DEGERRIMLO1 NAC_ROI_DEGERRIMLOA NAC_ROI_DEGERRIMLOB\n          NAC_ROI_DEGERRIMLOC\n          \n          and 16 updated NAC DTMs with expanded coverage, improved control, or\n          improved data quality:\n          \n          NAC_DTM_GRUITHUISE6 NAC_DTM_GRUITHUISE7 NAC_DTM_GRUITHUISE8\n          NAC_DTM_GRUITHUISE9 NAC_DTM_GRUITHUISEN NAC_DTM_GRUITHUIS10\n          NAC_DTM_GRUITHUIS11 NAC_DTM_MARIUS10 NAC_DTM_GRUITHUIS12\n          NAC_DTM_GRUITHUISE1 NAC_DTM_SHACKRDGE02 NAC_DTM_NOBILE02\n          NAC_DTM_GRUITHUISE2 NAC_DTM_GRUITHUISE3 NAC_DTM_GRUITHUISE4\n          NAC_DTM_GRUITHUISE5\n          \n          and 14 updated shapefiles to reflect current data:\n          \n          SHAPEFILE_ANTHROPOGENIC_OBJECTS\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_FEATURED_MOSAICS_EQ SHAPEFILE_FEATURED_MOSAICS_NP\n          SHAPEFILE_FEATURED_MOSAICS_SP SHAPEFILE_STEREO_OBSERVATIONS_EQ\n          SHAPEFILE_STEREO_OBSERVATIONS_NP SHAPEFILE_STEREO_OBSERVATIONS_SP\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          \n          and 1 deleted NAC DTM, SHACKRDGESM, was replaced by SHACKRDGE02."
+                        },
+                        {
+                          "modification_date": "2024-04-21",
+                          "version_id": "6.0",
+                          "description": "This release includes 36 new NAC polar products:\n          \n          NAC_POLE_NORTH_CM_235 NAC_POLE_NORTH_CM_245 NAC_POLE_NORTH_CM_255\n          NAC_POLE_NORTH_CM_265 NAC_POLE_NORTH_CM_275 NAC_POLE_NORTH_CM_285\n          NAC_POLE_NORTH_CM_295 NAC_POLE_NORTH_CM_305 NAC_POLE_NORTH_CM_315\n          NAC_POLE_NORTH_CM_325 NAC_POLE_NORTH_CM_335 NAC_POLE_NORTH_CM_345\n          NAC_POLE_NORTH_CM_355 NAC_POLE_NORTH_CM_005 NAC_POLE_NORTH_CM_015\n          NAC_POLE_NORTH_CM_025 NAC_POLE_NORTH_CM_035 NAC_POLE_NORTH_CM_045\n          NAC_POLE_NORTH_CM_055 NAC_POLE_NORTH_CM_065 NAC_POLE_NORTH_CM_075\n          NAC_POLE_NORTH_CM_085 NAC_POLE_NORTH_CM_095 NAC_POLE_NORTH_CM_105\n          NAC_POLE_NORTH_CM_115 NAC_POLE_NORTH_CM_125 NAC_POLE_NORTH_CM_135\n          NAC_POLE_NORTH_CM_145 NAC_POLE_NORTH_CM_155 NAC_POLE_NORTH_CM_165\n          NAC_POLE_NORTH_CM_175 NAC_POLE_NORTH_CM_185 NAC_POLE_NORTH_CM_195\n          NAC_POLE_NORTH_CM_205 NAC_POLE_NORTH_CM_215 NAC_POLE_NORTH_CM_225"
+                        },
+                        {
+                          "modification_date": "2024-03-09",
+                          "version_id": "5.0",
+                          "description": "This release includes 1 new NAC ROI:\n          \n          NAC_ROI_EDDNGTONLOA\n          \n          and 2 new NAC DTMs:\n          \n          NAC_DTM_MARIUS10 NAC_DTM_CRISHORSE05\n          \n          and 41 updated shapefiles to update with the new release and cleanup\n          the polar shapes:\n          \n          SHAPEFILE_WAC_SP_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_THIRD_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_NOMINAL_MISSION SHAPEFILE_NAC_NP_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_THIRD_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_COMMISSIONING\n          SHAPEFILE_NAC_SP_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_NOMINAL_MISSION SHAPEFILE_NAC_SP_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_THIRD_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ SHAPEFILE_FEATURED_MOSAICS_EQ\n          SHAPEFILE_FEATURED_MOSAICS_NP\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_FEATURED_MOSAICS_SP\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS SHAPEFILE_CONTROLLED_MOSAICS\n          SHAPEFILE_NAC_NP_COMMISSIONING SHAPEFILE_WAC_NP_COMMISSIONING\n          SHAPEFILE_WAC_NP_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_NOMINAL_MISSION SHAPEFILE_WAC_NP_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_SECOND_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_THIRD_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_COMMISSIONING\n          SHAPEFILE_WAC_SP_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FOURTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_NOMINAL_MISSION SHAPEFILE_WAC_SP_SCIENCE_MISSION"
+                        },
+                        {
+                          "modification_date": "2024-01-27",
+                          "version_id": "4.0",
+                          "description": "This release includes 1 updated shapefile FOR REASONS:\n          \n          SHAPEFILE_ANTHROPOGENIC_OBJECTS\n          \n          THIS TEMPLATE MUST BE EDITED BEFORE PUBLICATION"
+                        },
+                        {
+                          "modification_date": "2023-12-12",
+                          "version_id": "3.0",
+                          "description": "This release includes 9 new NAC DTMs:\n          \n          NAC_DTM_BIRKEJECT01 NAC_DTM_BIRKEJECT02 NAC_DTM_VIKRAMSITE1\n          NAC_DTM_BERESHEET1 NAC_DTM_BIRKEJECT NAC_DTM_CRISHORSE04\n          NAC_DTM_GRUITHMARE2 NAC_DTM_SCHLUTER01 NAC_DTM_GEIGER01\n          \n          and 20 new NAC ROIs:\n          \n          NAC_ROI_MAIRAN__LOB NAC_ROI_MANZINUSLOA NAC_ROI_FENYICTRLOA\n          NAC_ROI_CLEOMDESLOA NAC_ROI_VITELLO_LOB NAC_ROI_FINSENC_LOA\n          NAC_ROI_WARNER__LOB NAC_ROI_FINSEN__LOA NAC_ROI_GDANOBRULOF\n          NAC_ROI_DEUTSCH_LOA NAC_ROI_WARNER__LOA NAC_ROI_GASPARISLOA\n          NAC_ROI_LANGEMAKLOA NAC_ROI_SCALIGERLOA NAC_ROI_BGSLWSKYLOB\n          NAC_ROI_MARECRISLOE NAC_ROI_VANDGRAFLOE NAC_ROI_BGSLWSKYLOC\n          NAC_ROI_VASCGAMALOA NAC_ROI_BRIDGMANLOA\n          \n          and 13 updated shapefiles to reflect the current release:\n          \n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS SHAPEFILE_CONTROLLED_MOSAICS\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_FEATURED_MOSAICS_EQ SHAPEFILE_FEATURED_MOSAICS_SP\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ SHAPEFILE_STEREO_OBSERVATIONS_SP\n          SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION SHAPEFILE_NAC_DTMS\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          \n          and 1 updated NAC DTM to improve accuracy of the bounds:\n          \n          NAC_DTM_MALAPERTA01"
+                        },
+                        {
+                          "modification_date": "2023-09-08",
+                          "version_id": "2.0",
+                          "description": "This release includes 19 new NAC ROIs:\n          \n          NAC_ROI_AMUNDRIMLO1 NAC_ROI_SHKLTNPKLO1 NAC_ROI_SHKLTNPKLO2\n          NAC_ROI_SHKLTNPKLOA NAC_ROI_SHKLTNPKLOB NAC_ROI_SHKLTNPKLOC\n          NAC_ROI_SHKLTNPKLOD NAC_ROI_SIRSALISLOC NAC_ROI_EULERCNELOB\n          NAC_ROI_PETAVIUSLOA NAC_ROI_PETAVIUSLOB NAC_ROI_GASSENDILOA\n          NAC_ROI_AMUNDRIMLOA NAC_ROI_HERIGONSLOA NAC_ROI_AMUNDRIMLOB\n          NAC_ROI_AITKNCTRLOD NAC_ROI_HYGINUS_LOB NAC_ROI_DAEDALUSLOA\n          NAC_ROI_FARADAY_LOA\n          \n          and 3 new NAC DTMs:\n          \n          NAC_DTM_BOOSTIMPCT1 NAC_DTM_SWFECUNPIT1 NAC_DTM_MALAPERTA01\n          \n          and 13 updated shapefiles to reflect the latest data:\n          \n          SHAPEFILE_NAC_DTMS SHAPEFILE_WAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_FEATURED_MOSAICS_EQ\n          SHAPEFILE_NAC_EQ_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_WAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_STEREO_OBSERVATIONS_SP SHAPEFILE_FEATURED_MOSAICS_SP\n          SHAPEFILE_WAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_NAC_SP_FIFTH_EXTENDED_SCIENCE_MISSION\n          SHAPEFILE_ANTHROPOGENIC_OBJECTS SHAPEFILE_CONTROLLED_MOSAICS\n          SHAPEFILE_STEREO_OBSERVATIONS_EQ\n          SHAPEFILE_NAC_NP_FIFTH_EXTENDED_SCIENCE_MISSION"
+                        },
+                        {
+                          "modification_date": "2023-08-16",
+                          "version_id": "1.0",
+                          "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_cUPvOWUnhLKAFImFnN9kegFM",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:23:01.886934+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "data/LRO-L-LROC-3-CDR-V1.0",
+            "collections": [
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1001_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1001_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-07",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1002_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1002_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1003_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1003_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1004_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1004_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1005_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1005_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1006_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1006_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1008_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1008_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1009_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1009_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1011_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1011_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1012_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1012_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1014_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1014_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1015_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1015_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1016_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1016_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1017_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1017_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1018_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1018_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1019_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1019_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/LRO-L-LROC-3-CDR-V1.0",
+                "dataset_id": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1020_data",
+                "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1020_data",
+                    "version_id": "1.0",
+                    "title": "Lunar Reconnaissance Orbiter Camera volume collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Lunar Reconnaissance Orbiter Camera SOC",
+                      "publication_year": "2023",
+                      "description": "Archive of LROC NAC and WAC data, documentation, and ancillary files"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-09-08",
+                        "version_id": "1.0",
+                        "description": "conversion of PDS3 LROC archive to comply with PDS4 Information Model"
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_uY9wpN9w9By35fe5zHTdPUjM",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:23:38.590898+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:23:38.591638+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"data/LRO-L-LROC-5-RDR-V1.0/\",\"node\":\"lroc\"}",
+          "tool_call_id": "call_AcIkUn2tzDSRyCiGrGKywTEq",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 16019,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2432,
+        "output_tokens": 330,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 285,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:23:48.130616+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:23:39+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcfsZgtLUzP32ntbPYJbbr1wCu6kB",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/LRO-L-LROC-5-RDR-V1.0/",
+            "total": 1,
+            "filtered_total": null,
+            "dirs": [
+              {
+                "name": "LROLRC_2001",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/",
+                "pds_hint": null
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_AcIkUn2tzDSRyCiGrGKywTEq",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:23:48.326642+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:23:48.327416+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/\",\"node\":\"lroc\"}",
+          "tool_call_id": "call_46xeuDy9bsfnYrYrGqTvtm7e",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 16151,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 15744,
+        "output_tokens": 632,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 581,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:24:02.399015+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:23:48+00:00"
+      },
+      "provider_response_id": "chatcmpl-Dcfsi9WHzrl2L8dsSLhX19eDv122H",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/",
+            "total": 5,
+            "filtered_total": null,
+            "dirs": [
+              {
+                "name": "CATALOG",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/CATALOG/",
+                "pds_hint": null
+              },
+              {
+                "name": "DATA",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/",
+                "pds_hint": null
+              },
+              {
+                "name": "DOCUMENT",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DOCUMENT/",
+                "pds_hint": null
+              },
+              {
+                "name": "EXTRAS",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/EXTRAS/",
+                "pds_hint": null
+              },
+              {
+                "name": "INDEX",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/INDEX/",
+                "pds_hint": null
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_46xeuDy9bsfnYrYrGqTvtm7e",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:24:02.693369+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:24:02.693750+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\":[\"data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/\"],\"node\":\"lroc\"}",
+          "tool_call_id": "call_1XyZOoQsQeqlwEDYrLvMFONE",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 16442,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 15744,
+        "output_tokens": 1771,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1719,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:24:34.760277+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:24:03+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcfsxMmG2qTobqkENPZoOyugLmdNR",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "LRO-L-LROC-5-RDR-V1.0",
+                "title": "LRO: LROC DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "DATA_SET_ID": "LRO-L-LROC-5-RDR-V1.0",
+                    "VOLUME_SET_NAME": "LRO: LROC DATA",
+                    "VOLUME_NAME": "LRO: LROC DATA",
+                    "VOLUME_ID": "LROLRC_2001",
+                    "PUBLICATION_DATE": "2011-11-16",
+                    "DESCRIPTION": "This volume contains data collected by the LRO Camera."
+                  }
+                }
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_1XyZOoQsQeqlwEDYrLvMFONE",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:24:35.201853+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:24:35.202654+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/\",\"node\":\"lroc\"}",
+          "tool_call_id": "call_Tup3IaYLct2EYJhlbSNLu5We",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 16675,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 15744,
+        "output_tokens": 913,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 860,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:24:51.550349+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:24:35+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcftTvXQ5zTY7GieW7CA0upzFDWZy",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/",
+            "total": 3,
+            "filtered_total": null,
+            "dirs": [
+              {
+                "name": "BDR",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/BDR/",
+                "pds_hint": null
+              },
+              {
+                "name": "MDR",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/MDR/",
+                "pds_hint": null
+              },
+              {
+                "name": "SDP",
+                "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/",
+                "pds_hint": null
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_Tup3IaYLct2EYJhlbSNLu5We",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:24:51.742650+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:24:51.743125+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/\",\"node\":\"lroc\",\"filter\":\"MARIUS\"}",
+          "tool_call_id": "call_ldHLXkgNjc4sD10vxEa5sgfs",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 16903,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 15744,
+        "output_tokens": 864,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 802,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:25:07.731788+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:24:52+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcftkIUOEcTIlBrD11tjU3ZWfiFls",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/SDP/",
+            "total": 8,
+            "filtered_total": 0,
+            "dirs": [],
+            "error": null
+          },
+          "tool_call_id": "call_ldHLXkgNjc4sD10vxEa5sgfs",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:25:08.052400+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:25:08.053191+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/MDR/\",\"node\":\"lroc\",\"filter\":\"MARIUS\"}",
+          "tool_call_id": "call_a0EgVcEsq5JjFy5BmG4grkUQ",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 17023,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 15744,
+        "output_tokens": 1269,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1208,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:25:29.811652+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:25:08+00:00"
+      },
+      "provider_response_id": "chatcmpl-Dcfu034xwNMITOvYpVZXVwoZ0cRuy",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/DATA/MDR/",
+            "total": 2,
+            "filtered_total": 0,
+            "dirs": [],
+            "error": null
+          },
+          "tool_call_id": "call_a0EgVcEsq5JjFy5BmG4grkUQ",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:25:30.020485+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:25:30.020909+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "args": "{\"summary\":\"On the LROC PDS node, the imagery and derived products you\u2019d use to assess the Marius Hills Pit floor and possible skylight/cavity access are contained in the LROC Calibrated Data Records (CDR; best for quantitative image analysis) and the Reduced Data Records (RDR; includes derived products like ROIs/DTMs when available). The node provides both PDS3 dataset IDs and PDS4 bundle/collection logical identifiers for the same archive.\",\"candidates\":[{\"dataset_id\":\"LRO-L-LROC-3-CDR-V1.0\",\"path\":\"data/LRO-L-LROC-3-CDR-V1.0/\",\"title\":\"LRO LROC DATA\",\"pds_version\":\"PDS3\",\"reasoning\":\"Calibrated NAC/WAC images are the primary source to visually inspect the pit interior (floor texture, boulder fields, shadowed regions) and to do photometric/contrast-stretch analysis. Prefer this over raw EDR for science interpretation.\"},{\"dataset_id\":\"urn:nasa:pds:lro-l-lroc-3-cdr\",\"path\":\"data/LRO-L-LROC-3-CDR-V1.0/\",\"title\":\"LRO LROC Data Archive\",\"pds_version\":\"PDS4\",\"reasoning\":\"PDS4 bundle equivalent of the CDR archive (calibrated NAC/WAC images plus geometry/ancillary). Use this if you want modern PDS4 labels/metadata.\"},{\"dataset_id\":\"urn:nasa:pds:lro-l-lroc-3-cdr:lrolrc_1001_data\",\"path\":\"data/LRO-L-LROC-3-CDR-V1.0/\",\"title\":\"Lunar Reconnaissance Orbiter Camera volume collection\",\"pds_version\":\"PDS4\",\"reasoning\":\"Collection-level identifier within the CDR PDS4 bundle that points to one of the data collections; use collection LIDs for PDS4-based workflows and searches.\"},{\"dataset_id\":\"LRO-L-LROC-5-RDR-V1.0\",\"path\":\"data/LRO-L-LROC-5-RDR-V1.0/LROLRC_2001/\",\"title\":\"LRO: LROC DATA\",\"pds_version\":\"PDS3\",\"reasoning\":\"Reduced/derived LROC products (RDR) are useful for higher-level context products (e.g., mosaics/ROIs, DTMs) that can help evaluate slopes and potential access constraints around/into pits.\"},{\"dataset_id\":\"urn:nasa:pds:lro-l-lroc-5-rdr\",\"path\":\"data/LRO-L-LROC-5-RDR-V1.0/\",\"title\":\"LRO LROC Data Archive\",\"pds_version\":\"PDS4\",\"reasoning\":\"PDS4 bundle equivalent of the RDR archive for derived products, where available.\"},{\"dataset_id\":\"urn:nasa:pds:lro-l-lroc-5-rdr:lrolrc_2001_data\",\"path\":\"data/LRO-L-LROC-5-RDR-V1.0/\",\"title\":\"Lunar Reconnaissance Orbiter Camera volume collection\",\"pds_version\":\"PDS4\",\"reasoning\":\"Collection-level identifier within the RDR PDS4 bundle; use this as the modern entry point for searching derived products potentially relevant to Marius Hills Pit (e.g., ROIs/DTMs if present).\"}]}",
+          "tool_call_id": "call_veGB8JDabxaomwmeUdceWs8D",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 17141,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 16768,
+        "output_tokens": 2653,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1941,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 23:26:15.421174+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 23:25:30+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcfuM1wrbqzzCbuk12oUqtHeSywZk",
+      "finish_reason": "tool_call",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "content": "Final result processed.",
+          "tool_call_id": "call_veGB8JDabxaomwmeUdceWs8D",
+          "metadata": null,
+          "timestamp": "2026-05-06 23:26:15.422704+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 23:26:15.422741+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dff99-a366-7281-ba69-662a639523c5",
+      "metadata": null
+    }
+  ]
+}

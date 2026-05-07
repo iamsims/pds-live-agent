@@ -1,0 +1,1581 @@
+{
+  "query": "At what downtail distance does the statistical separation between events tailward and planetward of the Saturn's reconnection X line?",
+  "row": {
+    "rank": null,
+    "paper_short": "Smith 2016",
+    "rationale": null,
+    "paper": "Smith, A.W., et al., 2016. Magnetic reconnection in Saturn's magnetotail: A comprehensive magnetic field survey. JGR Space Physics, 121(4), pp.2984-3005. DOI:10.1002/2015JA022005",
+    "query": "At what downtail distance does the statistical separation between events tailward and planetward of the Saturn's reconnection X line?",
+    "expected_ids": "urn:nasa:pds:cassini-mag-cal:data-1min-krtp",
+    "node": "PPI"
+  },
+  "tool_calls": [
+    {
+      "tool_name": "pds_list_missions",
+      "tool_input": {
+        "node": "ppi"
+      },
+      "tool_output": "{'missions': [{'name': 'cassini', 'description': \"Cassini at Saturn (CAPS, MAG, MIMI-CHEMS/INCA/LEMMS, RPWS, INMS). Also filter 'CO' for PDS3 IDs.\"}, {'name': 'galileo', 'description': \"Galileo at Jupiter + flybys of Earth/Venus/asteroids (EPD, MAG, PLS, PWS, PPR, HIC, SSD, RSS). Also filter 'GO' for PDS3 IDs.\"}, {'name': 'juno', 'description': \"Juno at Jupiter (Waves, JADE/JAD, JEDI/JED, FGM, ASC). Also filter 'JNO' for PDS3 IDs.\"}, {'name': 'VG1', 'description': \"Voyager 1 at Jupiter, Saturn, and interplanetary (CRS, LECP, MAG, PLS, PWS, PRA, RSS). Also filter 'vg1' for PDS4.\"}, {'name': 'VG2', 'description': \"Voyager 2 at Jupiter, Saturn, Uranus, Neptune, and interplanetary (CRS, LECP, MAG, PLS, PWS, PRA, RSS). Also filter 'vg2' for PDS4.\"}, {'name': 'MESS', 'description': \"MESSENGER at Mercury (EPPS incl. FIPS & EPS, MAG). Also filter 'messenger' for PDS4 bundle. Target: Mercury.\"}, {'name': 'MEX', 'description': 'Mars Express (ASPERA-3 incl. ELS/IMA/NPI, MARSIS). Target: Mars.'}, {'name': 'maven', 'description': 'MAVEN at Mars (MAG, LPW, SEP, STATIC, SWEA, SWIA, EUV, ROSE). Target: Mars.'}, {'name': 'P10', 'description': \"Pioneer 10 at Jupiter (CPI, CRT, GTT, HVM, PA, TRD, UV). Also filter 'p10' for PDS4.\"}, {'name': 'P11', 'description': \"Pioneer 11 at Jupiter and Saturn (CPI, CRT, FGM, GTT, HVM, PA, TRD, UV). Also filter 'p11' for PDS4.\"}, {'name': 'ULY', 'description': \"Ulysses at Jupiter and interplanetary (COSPIN, EPAC, HISCALE, SWOOPS, VHM-FGM, URAP, GAS, GRB, SCE, SWICS). Also filter 'ulysses' for PDS4.\"}, {'name': 'NH', 'description': 'New Horizons at Jupiter and Pluto (PEPSSI, SWAP). Target: Jupiter, Pluto.'}, {'name': 'PVO', 'description': \"Pioneer Venus Orbiter (OEFD, OETP, OIMS, OMAG, ONMS, ORPA, ORSE). Also filter 'pvo' for PDS4. Target: Venus.\"}, {'name': 'LP', 'description': \"Lunar Prospector (MAG, ER \u2014 electron reflectometer). Also filter 'lp' for PDS4. Target: Moon.\"}, {'name': 'MGS', 'description': \"Mars Global Surveyor (MAG/ER, RSS). Also filter 'mgs' for PDS4. Target: Mars.\"}, {'name': 'NEAR', 'description': 'NEAR Shoemaker (MAG). Target: Eros, Earth flyby.'}, {'name': 'M10', 'description': 'Mariner 10 (MAG, PLS). Target: Mercury.'}, {'name': 'LRO', 'description': \"Lunar Reconnaissance Orbiter (CRaTER). Also filter 'lro' for PDS4. Target: Moon.\"}, {'name': 'ODY', 'description': 'Mars Odyssey (MARIE \u2014 radiation). Target: Mars.'}, {'name': 'MSL', 'description': 'Mars Science Laboratory / Curiosity (RAD \u2014 radiation). Target: Mars.'}, {'name': 'insight', 'description': 'InSight (IFG \u2014 fluxgate magnetometer). Target: Mars.'}, {'name': 'vex', 'description': 'Venus Express (ASPERA-4 ELS, MAG). Target: Venus.'}, {'name': 'ICE', 'description': 'International Cometary Explorer (EPAS, MAG, PLAWAV, RADWAV, SWPLAS). Target: Giacobini-Zinner.'}, {'name': 'GIO', 'description': 'Giotto (IMS incl. HERS/HIS, JPA, MAG). Target: Halley.'}, {'name': 'VEGA', 'description': 'Vega 1 & 2 (MISCHA, PM1, TNM). Target: Halley.'}, {'name': 'DS1', 'description': 'Deep Space 1 (PEPE). Target: Borrelly.'}, {'name': 'radiojove', 'description': 'Radio JOVE ground-based radio observations of Jupiter.'}], 'count': 27, 'note': \"Node 'ppi' has no mission sub-directories. Use each mission 'name' as the filter keyword: pds_list_dataset_dirs(path='data/', node='ppi', filter='<name>').\"}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/",
+        "node": "ppi",
+        "filter": "cassini"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/', 'total': 781, 'filtered_total': 15, 'dirs': [{'name': 'cassini-caps-calibrated', 'path': 'data/cassini-caps-calibrated/', 'pds_hint': None}, {'name': 'cassini-caps-derived', 'path': 'data/cassini-caps-derived/', 'pds_hint': None}, {'name': 'cassini-caps-fitted-parameters', 'path': 'data/cassini-caps-fitted-parameters/', 'pds_hint': None}, {'name': 'cassini-caps-raw', 'path': 'data/cassini-caps-raw/', 'pds_hint': None}, {'name': 'cassini-mag-cal', 'path': 'data/cassini-mag-cal/', 'pds_hint': None}, {'name': 'cassini-mag-raw', 'path': 'data/cassini-mag-raw/', 'pds_hint': None}, {'name': 'cassini-mimi-chems-cal', 'path': 'data/cassini-mimi-chems-cal/', 'pds_hint': None}, {'name': 'cassini-mimi-chems-raw', 'path': 'data/cassini-mimi-chems-raw/', 'pds_hint': None}, {'name': 'cassini-mimi-inca-cal', 'path': 'data/cassini-mimi-inca-cal/', 'pds_hint': None}, {'name': 'cassini-mimi-inca-raw', 'path': 'data/cassini-mimi-inca-raw/', 'pds_hint': None}, {'name': 'cassini-mimi-lemms-cal', 'path': 'data/cassini-mimi-lemms-cal/', 'pds_hint': None}, {'name': 'cassini-mimi-lemms-raw', 'path': 'data/cassini-mimi-lemms-raw/', 'pds_hint': None}, {'name': 'cassini-mimi', 'path': 'data/cassini-mimi/', 'pds_hint': None}, {'name': 'cassini-rpws-electron_density', 'path': 'data/cassini-rpws-electron_density/', 'pds_hint': None}, {'name': 'cassini-rpws-hfr-qtn', 'path': 'data/cassini-rpws-hfr-qtn/', 'pds_hint': None}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "node": "ppi",
+        "paths": [
+          "data/cassini-mag-cal/",
+          "data/cassini-mag-raw/",
+          "data/cassini-caps-derived/",
+          "data/cassini-mimi-lemms-cal/",
+          "data/cassini-rpws-electron_density/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'data/cassini-mag-cal', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal', 'title': 'Cassini Magnetometer Calibrated Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal', 'version_id': '1.1', 'title': 'Cassini Magnetometer Calibrated Bundle', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'doi': '10.17189/4pxs-bm06', 'description': 'This bundle contains Cassini magnetometer calibrated data for the entire mission. The bundle includes\\n                1 minute averaged and 1 second averaged data provided in Kronographic (KRTP, KSO, KSM) coordinates at Saturn,       \\n                Geographic coordinates (GSE) for the Earth flyby, Jovigraphic coordinates for the Jupiter flyby, and \\n                RTN coordinates for the entire mission, and full time resolution data provided in RTN coordinates for cruise, \\n                Kronographic (KRTP) coordinates for Saturn Tour, Geographic coordinates (GSE) for the Earth flyby,and \\n                IAU_Jupiter (J3) and JMAG XYZ (JMXYZ) for Outer Cruise. A spice metakernel collection for the 1 minute \\n                averaged data is provided as well.'}}}}, {'path': 'data/cassini-mag-raw', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:cassini-mag-raw', 'title': 'Cassini Magnetometer Raw Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-raw', 'version_id': '1.0', 'title': 'Cassini Magnetometer Raw Bundle', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas', 'publication_year': '2024', 'doi': '10.17189/83je-rf36', 'description': 'This bundle contains Cassini magnetometer raw magnetic field data for the entire mission. The bundle includes\\n                magnetic-field data from the Fluxgate Magnetometer and the Vector Helium Magnetomer in Vector mode.\\n                Data are received in science and housekeeping rates. Additional collections, such as spacecraft attitude, analog, \\n                command validation, configuration image, error counter, user-defined engineering data, browse plots, and calibration,\\n                are also included.'}}}}, {'path': 'data/cassini-caps-derived', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:cassini-caps-derived', 'title': 'Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-caps-derived', 'version_id': '1.0', 'title': 'Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Bundle', 'information_model_version': '1.16.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Waite, J.H.; Furman, J.D.', 'publication_year': '2022', 'doi': '10.17189/2sst-w415', 'description': 'The uncalibrated data were acquired in a mix of CAPS operating modes     \\n                beginning with the first instrument checkout in January 1999 and         \\n                containing throughout the Cassini Tour and through the end of prime      \\n                mission.  The data cover the time period from 1999-004T03:07:47     \\n                UT until end of prime mission (July 2008). In addition, it covers   \\n                data received during extended missions.  Sampling rates were variable    \\n                and depended upon the downlink capabilities and other activities         \\n                on-board.'}}}}, {'path': 'data/cassini-mimi-lemms-cal', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:cassini-mimi-lemms-cal', 'title': 'Cassini MIMI LEMMS Calibrated Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mimi-lemms-cal', 'version_id': '1.0', 'title': 'Cassini MIMI LEMMS Calibrated Bundle', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Vandegriff, Jon', 'publication_year': '2024', 'doi': '10.17189/3zxe-9m66', 'keyword': ['LEMMS', 'MIMI'], 'description': 'This bundle contains Cassini Magnetospheric Imaging Instrument (MIMI) Low Energy Magnetospheric\\n                Measurement System (LEMMS) accumulation rates, pulse height analysis and priority accumulation rate \\n                data for 2004-01-01T00:00:00.000Z to 2017-09-16T00:00:00.000Z.'}}}}, {'path': 'data/cassini-rpws-electron_density', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:cassini-rpws-electron_density', 'title': 'Cassini RPWS Electron Densities from Upper Hybrid and Plasma Wave Frequencies', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-rpws-electron_density', 'version_id': '1.0', 'title': 'Cassini RPWS Electron Densities from Upper Hybrid and Plasma Wave Frequencies', 'information_model_version': '1.13.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Persoon, A.M.; Groene, J.B.; West, E.E.; Kurth, W.S.; Wahlund, J.-E.; Gurnett, D.A.', 'publication_year': '2019', 'doi': '10.17189/1518302', 'keyword': ['Cassini', 'electron density', 'plasma wave', 'Saturn', 'Jupiter', 'Earth'], 'description': 'This bundle provides electron number density values derived from features observed in plasma wave data obtained by the Cassini Radio and Plasma Wave Science (RPWS) instruments, along with observed or derived characteristic frequencies, and useful positional parameters for the spacecraft and related bodies.  When present, frequency values of narrowband emissions at the upper hybrid resonance were digitized and combined with measured or model magnetic field to derive electron number density.  At other times, features such as the upper cutoff in auroral hiss or electron plasma oscillations were used to determine the plasma frequency and electron density.'}}}}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_inspect_collections",
+      "tool_input": {
+        "node": "ppi",
+        "path": "data/cassini-mag-cal/",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'data/cassini-mag-cal', 'collections': [{'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1min-krtp', 'title': 'Cassini MAG Calibrated 1 Min. Avg. Data in KRTP Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1min-krtp', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Min. Avg. Data in KRTP Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/yg94-6e83', 'description': \"This collection contains Cassini magnetic-field 1 minute averages in KRTP      \\n                coordinates, from the Fluxgate Magnetometer (FGM) instrument. KRTP coordinates \\n                are the standard right-handed spherical triad: R (Saturn to spacecraft), Phi \\n                (parallel to Saturn's equator), and Theta (completes right handed set).\"}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'This collection was originally released in 2023 as part of the \\n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1MINAVG-V2.1 data set. The metadata \\n                    have been migrated to PDS4, the data themselves are unchanged.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1min-ksm', 'title': 'Cassini MAG Calibrated 1 Min. Avg. Data in KSM Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1min-ksm', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Min. Avg. Data in KSM Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/tq3a-p829', 'description': \"This collection contains Cassini magnetic-field 1 minute averages in KSM       \\n                coordinates, from the Fluxgate Magnetometer (FGM) instrument. KSM coordinates \\n                consist of X (Saturn to Sun), Z (X-Z plane contains Saturn's centered magnetic \\n                dipole axis, M), and Y (completes right handed set).\"}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'This collection was originally released in 2023 as part of the \\n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1MINAVG-V2.1 data set. The metadata \\n                    have been migrated to PDS4, the data themselves are unchanged.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1min-kso', 'title': 'Cassini MAG Calibrated 1 Min. Avg. Data in KSO Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1min-kso', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Min. Avg. Data in KSO Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/j1gb-e836', 'description': \"This collection contains Cassini magnetic-field 1 minute averages in KSO       \\n                coordinates, from the Fluxgate Magnetometer (FGM) instrument. KSO coordinates \\n                consist of X (Saturn to Sun), Z (parallel to Saturn's orbital plane upward \\n                normal), and Y (completes the right handed set).\"}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'This collection was originally released in 2023 as part of the \\n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1MINAVG-V2.1 data set. The metadata \\n                    have been migrated to PDS4, the data themselves are unchanged.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1min-rtn', 'title': 'Cassini MAG Calibrated 1 Min. Avg. Data in RTN Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1min-rtn', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Min. Avg. Data in RTN Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/2wax-gm60', 'description': 'This collection contains Cassini magnetic-field 1 minute averages,\\n                from the Cassini Fluxgate Magnetometer (FGM), in RTN coordinates. \\n                RTN coordinates consist of R (radial component, Sun to the spacecraft), \\n                T (tangential component, parallel to the Solar Equatorial plane and \\n                perpendicular to R), and N (normal component, completes right handed set).'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-12-20', 'version_id': '1.0', 'description': 'Original product version 8 RTN data from the PDS3 \\n                    CO-E/SW/J/S-MAG-4-SUMM-1MINAVG-V2.1 data set, released \\n                    2023-10-13.  The metadata were migrated to PDS4, the \\n                    data are unchanged. This is the first version converted \\n                    to PDS4.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1sec-gse', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in GSE Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1sec-gse', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in GSE Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/9jfh-3a88', 'description': 'This collection contains Cassini magnetic-field 1 second averages, in \\n            GSE coordinates, from the Fluxgate Magnetometer (FGM) instrument.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4.\\n               It was migrated to PDS4 from the PDS3 data set \\n               CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1sec-j3', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in J3 Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1sec-j3', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in J3 Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/06r9-8p61', 'description': 'This collection contains Cassini magnetic-field 1 second averages in J3 coordinates, \\n                from the Fluxgate Magnetometer (FGM) instrument.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'Original product version 6 J3 data from the PDS3 \\n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, released \\n                    2019-06-17.  The metadata were migrated to PDS4, the data \\n                    are unchanged.\\n                    \\n                    This is the first version of this collection migrated to PDS4. \\n                    The PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 data set was \\n                    superseded by the 2.0 dataset 2019-06-17.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1sec-jmxyz', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in JMXYZ Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1sec-jmxyz', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in JMXYZ Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/xqsr-2717', 'description': 'This collection contains Cassini magnetic-field 1 second averages in JMXYZ coordinates,\\n                from the Fluxgate Magnetometer (FGM) instrument.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'Original product version 6 JMXYZ data from the PDS3 \\n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, released 2019-06-17.  \\n                    The metadata were migrated to PDS4, the data are unchanged.\\n                \\n                    This is the first version of this collection migrated to PDS4. The \\n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset was superseded by t\\n                    he 2.0 dataset 2019-06-17.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1sec-krtp', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in KRTP Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1sec-krtp', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in KRTP Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/desd-0c05', 'description': 'This collection contains Cassini magnetic-field 1 second averages in KRTP coordinates,\\n                from the Fluxgate Magnetometer (FGM) instrument.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'Original product version 6 KRTP data from the PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 \\n                    data set, released 2019-06-17.  The metadata were migrated to PDS4, the data are unchanged.\\n                \\n                    This is the first version of this collection migrated to PDS4. The PDS3 \\n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset was superseded by the 2.0 \\n                    dataset 2019-06-17.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1sec-ksm', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in KSM Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1sec-ksm', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in KSM Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/hyxn-js95', 'description': 'This collection contains Cassini magnetic-field 1 second averages in KSM \\n                coordinates, from the Fluxgate Magnetometer (FGM) instrument.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-12-13', 'version_id': '1.0', 'description': 'Original product version 6 KSM data from the PDS3 \\n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, released \\n                    2019-06-17.  The metadata were migrated to PDS4, the \\n                    data are unchanged.\\n                \\n                    This is the first version of this collection migrated to \\n                    PDS4.  The PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset \\n                    was superseded by the 2.0 dataset 2019-06-17.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1sec-kso', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in KSO Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1sec-kso', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in KSO Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/3n1m-4727', 'description': 'This collection contains Cassini magnetic-field 1 second averages in KSO \\n                coordinates, from the Fluxgate Magnetometer (FGM) instrument.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'Original product version 6 KSO data from the \\n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, \\n                    released 2019-06-17.  The metadata were migrated \\n                    to PDS4, the data are unchanged.\\n                    \\n                    This is the first version of this collection \\n                    migrated to PDS4. The PDS3 \\n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset \\n                    was superseded by the 2.0 dataset 2019-06-17.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-1sec-rtn', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in RTN Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-1sec-rtn', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated 1 Sec. Avg. Data in RTN Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/b730-5011', 'description': 'This collection contains Cassini magnetic-field 1 second averages in RTN \\n                coordinates,from the Fluxgate Magnetometer (FGM) instrument.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'Original product version 6 RTN data from the PDS3 \\n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, released \\n                    2019-06-17.  The metadata were migrated to PDS4, the \\n                    data are unchanged.\\n                \\n                    This is the first version of this collection migrated to \\n                    PDS4.  The PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset \\n                    was superseded by the 2.0 dataset 2019-06-17.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-full-gse', 'title': 'Cassini MAG Calibrated Full Res. Data in GSE Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-full-gse', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated Full Res. Data in GSE Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/bn5h-8e81', 'description': 'Cassini magnetic-field data in the highest time resolution available, \\n            from the Fluxgate Magnetometer (FGM) instrument in GSE coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'The metadata have been migrated to PDS4, the data values are\\n               unchanged.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-full-j3', 'title': 'Cassini MAG Calibrated Full Res. Data in J3 Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-full-j3', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated Full Res. Data in J3 Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/6c1p-jj58', 'description': 'This collection contains Cassini FGM (Fluxgate Magnetometer) \\n                magnetic-field data in the highest time resolution available \\n                in J3 coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'This collection contains J3 data from the \\n                    PDS3 CO-E/SW/J/S-MAG-3-RDR-FULL-RES-V2.0 data set, \\n                    released 2019-06-05. The metadata were migrated to PDS4.\\n                    This is the first version of this collection migrated to PDS4.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-full-jmxyz', 'title': 'Cassini MAG Calibrated Full Res. Data in JMXYZ Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-full-jmxyz', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated Full Res. Data in JMXYZ Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/827g-fe03', 'description': 'This collection contains Cassini FGM (Fluxgate Magnetometer)\\n                magnetic-field data in the highest time resolution available \\n                in JMXYZ coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'This collection contains JMXYZ data from the PDS3 \\n                    CO-E/SW/J/S-MAG-3-RDR-FULL-RES-V2.0 data set, released 2019-06-05.\\n                    The metadata were migrated to PDS4. This is the first version of \\n                    this collection migrated to PDS4.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-full-krtp', 'title': 'Cassini MAG Calibrated Full Res. Data in KRTP Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-full-krtp', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated Full Res. Data in KRTP Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/7pdg-da68', 'description': 'This collection contains Cassini FGM (Fluxgate Magnetometer)\\n                magnetic-field data in the highest time resolution available \\n                in KRTP coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-12-20', 'version_id': '1.0', 'description': 'This collection contains KRTP data from the PDS3 \\n                    CO-E/SW/J/S-MAG-3-RDR-FULL-RES-V2.0 data set, released 2019-06-05.\\n                    The metadata were migrated to PDS4. This is the first version of \\n                    this collection migrated to PDS4.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-full-rtn', 'title': 'Cassini MAG Calibrated Full Res. Data in RTN Coords. Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-full-rtn', 'version_id': '1.0', 'title': 'Cassini MAG Calibrated Full Res. Data in RTN Coords. Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/2myh-nj38', 'description': 'This collection contains Cassini FGM (Fluxgate Magnetometer)\\n                magnetic-field data in the highest time resolution available \\n                in RTN coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'This collection contains RTN data from the PDS3 \\n                    CO-E/SW/J/S-MAG-3-RDR-FULL-RES-V2.0 data set, released 2019-06-05.\\n                    The metadata were migrated to PDS4. This is the first version of \\n                    this collection migrated to PDS4.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-shm-hkrate-asc', 'title': 'Cassini Scalar Helium MAG Calibrated Housekeeping ASCII Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-shm-hkrate-asc', 'version_id': '1.0', 'title': 'Cassini Scalar Helium MAG Calibrated Housekeeping ASCII Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas', 'publication_year': '2023', 'doi': '10.17189/5g8s-2s29', 'description': 'This collections contains Cassini scalar helium magnetometer (SHM) housekeeping \\n            ASCII data collected between 1999-08-18T02:56:40.391 and 2005-06-08T15:14:44.057.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'ASCII files, generated from the PDS3 CO-E/SW/J/S-MAG-3-RDR-CALIB-SHM-V2.0 \\n               dataset, DATA directory, converted to PDS4.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-shm-hkrate', 'title': 'Cassini Scalar Helium MAG Calibrated Housekeeping Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-shm-hkrate', 'version_id': '1.0', 'title': 'Cassini Scalar Helium MAG Calibrated Housekeeping Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas', 'publication_year': '2023', 'doi': '10.17189/n2ky-bd12', 'description': 'This collection contains Cassini scalar helium (SHM) magnetometer \\n            housekeeping data collected between 1999-08-18 and 2005-06-08.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'This collection contains scalar data from the PDS3 \\n               CO-E/SW/J/S-MAG-3-RDR-CALIB-SHM-V2.0 dataset, released \\n               2019-05-15.  The metadata were migrated to PDS4.  This is the \\n               first version converted to PDS4.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-shm-scirate-asc', 'title': 'Cassini Scalar Helium MAG Calibrated Science ASCII Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-shm-scirate-asc', 'version_id': '1.0', 'title': 'Cassini Scalar Helium MAG Calibrated Science ASCII Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas', 'publication_year': '2023', 'doi': '10.17189/pg4n-f845', 'description': 'This collection contains Cassini scalar helium magnetometer (SHM)\\n            science ASCII data collected between 1999-08-18 and 2005-10-11.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'ASCII files, generated from the PDS3 CO-E/SW/J/S-MAG-3-RDR-CALIB-SHM-V2.0 \\n               dataset, DATA directory, converted to PDS4.'}}}}}, {'path': 'data/cassini-mag-cal', 'dataset_id': 'urn:nasa:pds:cassini-mag-cal:data-shm-scirate', 'title': 'Cassini Scalar Helium MAG Calibrated Science Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-mag-cal:data-shm-scirate', 'version_id': '1.0', 'title': 'Cassini Scalar Helium MAG Calibrated Science Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas', 'publication_year': '2023', 'doi': '10.17189/324t-wa59', 'description': 'This collection contains Cassini scalar helium magnetometer (SHM)\\n            science data collected between 1999-08-18 and 2005-10-11.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-11-20', 'version_id': '1.0', 'description': 'This collections contains scalar helium magnetometer data from the PDS3\\n               CO-E/SW/J/S-MAG-3-RDR-CALIB-SHM-V2.0 dataset, released\\n               2019-05-15.  The metadata were migrated to PDS4.  This is the\\n               first version converted to PDS4.'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_inspect_collections",
+      "tool_input": {
+        "node": "ppi",
+        "path": "data/cassini-caps-derived/",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'data/cassini-caps-derived', 'collections': [{'path': 'data/cassini-caps-derived', 'dataset_id': 'urn:nasa:pds:cassini-caps-derived:data-ele-mom', 'title': 'Cassini-Huygens Plasma Spectrometer (CAPS) Derived Electron Moments Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-caps-derived:data-ele-mom', 'version_id': '1.0', 'title': 'Cassini-Huygens Plasma Spectrometer (CAPS) Derived Electron Moments Data Collection', 'information_model_version': '1.16.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Waite, J.H.; Furman, J.D.', 'publication_year': '2022', 'doi': '10.17189/nzk5-rq31', 'description': 'This collection consists of all of the electron moments data generated from the Cassini \\n        Plasma Spectrometer (CAPS) electron spectrometer uncalibrated data.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2022-11-01', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. It was migrated to PDS4 from the \\n          PDS3 data set CO-E/J/S/SW-CAPS-5-DDR-ELE-MOMENTS-V1.0.'}}}}}, {'path': 'data/cassini-caps-derived', 'dataset_id': 'urn:nasa:pds:cassini-caps-derived:data-ion-moments', 'title': 'Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Ion Moments Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-caps-derived:data-ion-moments', 'version_id': '1.0', 'title': 'Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Ion Moments Data Collection', 'information_model_version': '1.16.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Waite, J.H.; Furman, J.D.', 'publication_year': '2022', 'doi': '10.17189/0tg3-2z14', 'description': 'CASSINI ORBITER SAT/SW CAPS DERIVED ION MOMENTS V1.0'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2022-11-01', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. \\n          It was migrated to PDS4 from the PDS3 data set CO-S/SW-CAPS-5-DDR-ION-MOMENTS-V1.0.'}}}}}, {'path': 'data/cassini-caps-derived', 'dataset_id': 'urn:nasa:pds:cassini-caps-derived:data-scpot', 'title': 'Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Spacecraft Potential Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:cassini-caps-derived:data-scpot', 'version_id': '1.0', 'title': 'Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Spacecraft Potential Data Collection', 'information_model_version': '1.16.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Waite, J.H.; Furman, J.D.', 'publication_year': '2022', 'doi': '10.17189/n7eb-4k86', 'description': 'CASSINI ORBITER SAT/SW CAPS DERIVED V1.0'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2022-11-01', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. \\n          It was migrated to PDS4 from the PDS3 data set CO-E/J/S/SW-CAPS-5-DDR-SC-POTENTIAL-V1.0.'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/",
+        "node": "ppi",
+        "filter": "plasmoid"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/', 'total': 781, 'filtered_total': 0, 'dirs': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_select_node",
+      "tool_input": {
+        "node": "ppi"
+      },
+      "tool_output": "{'node': 'ppi', 'display_name': 'Planetary Plasma Interactions (PPI)', 'base_url': 'https://pds-ppi.igpp.ucla.edu/', 'data_root': 'data/', 'has_mission_layer': False, 'mission_count': 27, 'workflow_notes': \"All ~781 datasets sit directly under data/ with no mission sub-directories.\\nThe mission 'name' from pds_list_missions is the filter keyword to use with list_dataset_dirs.\\n\", 'abbreviations': 'Dataset naming conventions:\\n  PDS3 dirs use uppercase mission codes: MESS-, CO-, GO-, JNO-, VG1-, VG2-, MEX-, P10-, P11-, ULY-, NH-, PVO-, etc.\\n  PDS4 dirs use lowercase names: cassini-, galileo-, juno-, maven-, messenger-, ulysses-, etc.\\n  Both conventions exist for many missions. Use pds_list_missions to see all available missions and filter keywords.\\n'}"
+    },
+    {
+      "tool_name": "final_result",
+      "tool_input": {
+        "summary": "Statistical studies of Cassini magnetotail reconnection commonly interpret the transition between predominantly planetward vs tailward reconnection outflow signatures as occurring near X_KSM \u2248 \u221230 RS (order-of-magnitude: a few\u00d710 RS downtail), i.e., an average reconnection X-line location around ~30 Saturn radii downtail. To reproduce/verify that separation with PDS PPI data, use Cassini MAG calibrated magnetic field in KSM coordinates (to identify plasmoids/dipolarizations and compute downtail distance) together with CAPS derived ion moments (to determine flow direction) and optional particle/plasma context datasets below.",
+        "candidates": [
+          {
+            "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1sec-ksm",
+            "path": "data/cassini-mag-cal/",
+            "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in KSM Coords. Collection",
+            "mission": "cassini",
+            "node": "ppi",
+            "pds_version": "PDS4",
+            "reasoning": "Primary dataset to locate reconnection signatures and bin events by downtail distance X_KSM (negative X is downtail). 1-second cadence is useful for identifying plasmoid signatures, dipolarizations, and Hall/current sheet crossings in the magnetotail."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1min-ksm",
+            "path": "data/cassini-mag-cal/",
+            "title": "Cassini MAG Calibrated 1 Min. Avg. Data in KSM Coords. Collection",
+            "mission": "cassini",
+            "node": "ppi",
+            "pds_version": "PDS4",
+            "reasoning": "Lower-cadence KSM magnetic field for long-interval statistics (event surveys, occurrence rates vs X_KSM) and to pair with trajectory/SPICE when computing spacecraft downtail distance for each event."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:cassini-caps-derived:data-ion-moments",
+            "path": "data/cassini-caps-derived/",
+            "title": "Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Ion Moments Data Collection",
+            "mission": "cassini",
+            "node": "ppi",
+            "pds_version": "PDS4",
+            "reasoning": "Provides plasma bulk velocity moments that can be used to classify events as planetward vs tailward outflows relative to the inferred X-line; combine with MAG to define reconnection events and with spacecraft position to compute the separation distance statistically."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:cassini-mimi-lemms-cal",
+            "path": "data/cassini-mimi-lemms-cal/",
+            "title": "Cassini MIMI LEMMS Calibrated Bundle",
+            "mission": "cassini",
+            "node": "ppi",
+            "pds_version": "PDS4",
+            "reasoning": "Energetic particle context for reconnection (injections, anisotropies) that can help confirm event classification and timing when performing the planetward/tailward separation analysis."
+          },
+          {
+            "dataset_id": "urn:nasa:pds:cassini-rpws-electron_density",
+            "path": "data/cassini-rpws-electron_density/",
+            "title": "Cassini RPWS Electron Densities from Upper Hybrid and Plasma Wave Frequencies",
+            "mission": "cassini",
+            "node": "ppi",
+            "pds_version": "PDS4",
+            "reasoning": "Useful contextual plasma density for identifying plasma sheet vs lobe intervals (reconnection environment), which can affect inferred X-line location and the statistical separation distance."
+          }
+        ]
+      },
+      "tool_output": "Final result processed."
+    }
+  ],
+  "full_trace": [
+    {
+      "parts": [
+        {
+          "content": "You are a dataset-discovery assistant for the NASA PDS Planetary Plasma Interactions (PPI) node at https://pds-ppi.igpp.ucla.edu/\n\nDirectory layout and workflow:\nAll ~781 datasets sit directly under data/ with no mission sub-directories.\nThe mission 'name' from pds_list_missions is the filter keyword to use with list_dataset_dirs.\n\n\nDataset naming conventions:\n  PDS3 dirs use uppercase mission codes: MESS-, CO-, GO-, JNO-, VG1-, VG2-, MEX-, P10-, P11-, ULY-, NH-, PVO-, etc.\n  PDS4 dirs use lowercase names: cassini-, galileo-, juno-, maven-, messenger-, ulysses-, etc.\n  Both conventions exist for many missions. Use pds_list_missions to see all available missions and filter keywords.\n\n\nPDS3 vs PDS4:\n  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers (e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n  - PDS4 bundle directories begin with `urn-nasa-pds-`. Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\nYOUR TOOLS (4 tools \u2014 always pass node='ppi'):\n  1. pds_list_missions(node='ppi') \u2014 returns mission directories with descriptions. No HTTP.\n  2. pds_list_dataset_dirs(path, node='ppi', filter=...) \u2014 lists sub-directory names under a path. Cheap HTTP, no label parsing.\n  3. pds_probe_datasets(paths, node='ppi') \u2014 probes specific directories for PDS labels. Accepts a list of paths (max 20).\n  4. pds_inspect_collections(path, node='ppi') \u2014 scans PDS4 bundle subdirs for collection labels.\n\nWORKFLOW:\n  Step 1: Call pds_list_missions(node='ppi') to see all available missions and their filter keywords.\n  Step 2: Identify which mission(s) are relevant to the query.\n  Step 3: Call pds_list_dataset_dirs(path='data/', node='ppi', filter='<mission_name>') using the mission name as filter keyword.\n  Step 4: Call pds_probe_datasets with the most relevant paths (batch up to 20).\n  Step 5: If PDS4 bundles found, call pds_inspect_collections on top 2-3.\n  Step 6: Return candidates.\n\nCRITICAL RULES:\n  1. EVERY query requires at least one candidate. Never dismiss a query.\n  2. Prefer CALIBRATED/REDUCED data over raw/EDR for science queries.\n  3. For PDS4, use inspect_collections ONLY for top 2-3 bundles. Return COLLECTION-level LID when :data or :calibrated exists.\n  4. When both PDS3 and PDS4 versions exist, prefer the PDS4 collection-level identifier.\n  5. Stay under 8 tool calls per query.\n  6. Only return paths you've actually probed \u2014 never guess.\n",
+          "timestamp": "2026-05-06 04:10:08.970241+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "At what downtail distance does the statistical separation between events tailward and planetward of the Saturn's reconnection X line?",
+          "timestamp": "2026-05-06 04:10:08.970259+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-05-06 04:10:08.970476+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_missions",
+          "args": "{\"node\":\"ppi\"}",
+          "tool_call_id": "call_Ztw5xzdlXjoyWDb9atJEA4VK",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 1963,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 468,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 442,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 04:10:19.946563+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 04:10:10+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcNsI71rGNWhKioPpTErgq1oZrITj",
+      "finish_reason": "tool_call",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_missions",
+          "content": {
+            "missions": [
+              {
+                "name": "cassini",
+                "description": "Cassini at Saturn (CAPS, MAG, MIMI-CHEMS/INCA/LEMMS, RPWS, INMS). Also filter 'CO' for PDS3 IDs."
+              },
+              {
+                "name": "galileo",
+                "description": "Galileo at Jupiter + flybys of Earth/Venus/asteroids (EPD, MAG, PLS, PWS, PPR, HIC, SSD, RSS). Also filter 'GO' for PDS3 IDs."
+              },
+              {
+                "name": "juno",
+                "description": "Juno at Jupiter (Waves, JADE/JAD, JEDI/JED, FGM, ASC). Also filter 'JNO' for PDS3 IDs."
+              },
+              {
+                "name": "VG1",
+                "description": "Voyager 1 at Jupiter, Saturn, and interplanetary (CRS, LECP, MAG, PLS, PWS, PRA, RSS). Also filter 'vg1' for PDS4."
+              },
+              {
+                "name": "VG2",
+                "description": "Voyager 2 at Jupiter, Saturn, Uranus, Neptune, and interplanetary (CRS, LECP, MAG, PLS, PWS, PRA, RSS). Also filter 'vg2' for PDS4."
+              },
+              {
+                "name": "MESS",
+                "description": "MESSENGER at Mercury (EPPS incl. FIPS & EPS, MAG). Also filter 'messenger' for PDS4 bundle. Target: Mercury."
+              },
+              {
+                "name": "MEX",
+                "description": "Mars Express (ASPERA-3 incl. ELS/IMA/NPI, MARSIS). Target: Mars."
+              },
+              {
+                "name": "maven",
+                "description": "MAVEN at Mars (MAG, LPW, SEP, STATIC, SWEA, SWIA, EUV, ROSE). Target: Mars."
+              },
+              {
+                "name": "P10",
+                "description": "Pioneer 10 at Jupiter (CPI, CRT, GTT, HVM, PA, TRD, UV). Also filter 'p10' for PDS4."
+              },
+              {
+                "name": "P11",
+                "description": "Pioneer 11 at Jupiter and Saturn (CPI, CRT, FGM, GTT, HVM, PA, TRD, UV). Also filter 'p11' for PDS4."
+              },
+              {
+                "name": "ULY",
+                "description": "Ulysses at Jupiter and interplanetary (COSPIN, EPAC, HISCALE, SWOOPS, VHM-FGM, URAP, GAS, GRB, SCE, SWICS). Also filter 'ulysses' for PDS4."
+              },
+              {
+                "name": "NH",
+                "description": "New Horizons at Jupiter and Pluto (PEPSSI, SWAP). Target: Jupiter, Pluto."
+              },
+              {
+                "name": "PVO",
+                "description": "Pioneer Venus Orbiter (OEFD, OETP, OIMS, OMAG, ONMS, ORPA, ORSE). Also filter 'pvo' for PDS4. Target: Venus."
+              },
+              {
+                "name": "LP",
+                "description": "Lunar Prospector (MAG, ER \u2014 electron reflectometer). Also filter 'lp' for PDS4. Target: Moon."
+              },
+              {
+                "name": "MGS",
+                "description": "Mars Global Surveyor (MAG/ER, RSS). Also filter 'mgs' for PDS4. Target: Mars."
+              },
+              {
+                "name": "NEAR",
+                "description": "NEAR Shoemaker (MAG). Target: Eros, Earth flyby."
+              },
+              {
+                "name": "M10",
+                "description": "Mariner 10 (MAG, PLS). Target: Mercury."
+              },
+              {
+                "name": "LRO",
+                "description": "Lunar Reconnaissance Orbiter (CRaTER). Also filter 'lro' for PDS4. Target: Moon."
+              },
+              {
+                "name": "ODY",
+                "description": "Mars Odyssey (MARIE \u2014 radiation). Target: Mars."
+              },
+              {
+                "name": "MSL",
+                "description": "Mars Science Laboratory / Curiosity (RAD \u2014 radiation). Target: Mars."
+              },
+              {
+                "name": "insight",
+                "description": "InSight (IFG \u2014 fluxgate magnetometer). Target: Mars."
+              },
+              {
+                "name": "vex",
+                "description": "Venus Express (ASPERA-4 ELS, MAG). Target: Venus."
+              },
+              {
+                "name": "ICE",
+                "description": "International Cometary Explorer (EPAS, MAG, PLAWAV, RADWAV, SWPLAS). Target: Giacobini-Zinner."
+              },
+              {
+                "name": "GIO",
+                "description": "Giotto (IMS incl. HERS/HIS, JPA, MAG). Target: Halley."
+              },
+              {
+                "name": "VEGA",
+                "description": "Vega 1 & 2 (MISCHA, PM1, TNM). Target: Halley."
+              },
+              {
+                "name": "DS1",
+                "description": "Deep Space 1 (PEPE). Target: Borrelly."
+              },
+              {
+                "name": "radiojove",
+                "description": "Radio JOVE ground-based radio observations of Jupiter."
+              }
+            ],
+            "count": 27,
+            "note": "Node 'ppi' has no mission sub-directories. Use each mission 'name' as the filter keyword: pds_list_dataset_dirs(path='data/', node='ppi', filter='<name>')."
+          },
+          "tool_call_id": "call_Ztw5xzdlXjoyWDb9atJEA4VK",
+          "metadata": null,
+          "timestamp": "2026-05-06 04:10:19.962072+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 04:10:19.962367+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"data/\",\"node\":\"ppi\",\"filter\":\"cassini\"}",
+          "tool_call_id": "call_6v1ERvnd8yr9sO2OiNwi2BSy",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3024,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 916,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 880,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 04:10:35.145698+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 04:10:20+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcNsSbtGCHrtYz2R83d9gMEj7PRYa",
+      "finish_reason": "tool_call",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/",
+            "total": 781,
+            "filtered_total": 15,
+            "dirs": [
+              {
+                "name": "cassini-caps-calibrated",
+                "path": "data/cassini-caps-calibrated/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-caps-derived",
+                "path": "data/cassini-caps-derived/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-caps-fitted-parameters",
+                "path": "data/cassini-caps-fitted-parameters/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-caps-raw",
+                "path": "data/cassini-caps-raw/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-mag-cal",
+                "path": "data/cassini-mag-cal/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-mag-raw",
+                "path": "data/cassini-mag-raw/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-mimi-chems-cal",
+                "path": "data/cassini-mimi-chems-cal/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-mimi-chems-raw",
+                "path": "data/cassini-mimi-chems-raw/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-mimi-inca-cal",
+                "path": "data/cassini-mimi-inca-cal/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-mimi-inca-raw",
+                "path": "data/cassini-mimi-inca-raw/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-mimi-lemms-cal",
+                "path": "data/cassini-mimi-lemms-cal/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-mimi-lemms-raw",
+                "path": "data/cassini-mimi-lemms-raw/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-mimi",
+                "path": "data/cassini-mimi/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-rpws-electron_density",
+                "path": "data/cassini-rpws-electron_density/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-rpws-hfr-qtn",
+                "path": "data/cassini-rpws-hfr-qtn/",
+                "pds_hint": null
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_6v1ERvnd8yr9sO2OiNwi2BSy",
+          "metadata": null,
+          "timestamp": "2026-05-06 04:10:40.273396+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 04:10:40.273903+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"node\":\"ppi\",\"paths\":[\"data/cassini-mag-cal/\",\"data/cassini-mag-raw/\",\"data/cassini-caps-derived/\",\"data/cassini-mimi-lemms-cal/\",\"data/cassini-rpws-electron_density/\"]}",
+          "tool_call_id": "call_RWHlJ6hVOZN9elaLWICTp0EJ",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 3526,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2432,
+        "output_tokens": 637,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 558,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 04:10:51.220499+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 04:10:41+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcNsnbRaUmcPdv3DtNGIv7rrriouu",
+      "finish_reason": "tool_call",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "data/cassini-mag-cal",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal",
+                "title": "Cassini Magnetometer Calibrated Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal",
+                    "version_id": "1.1",
+                    "title": "Cassini Magnetometer Calibrated Bundle",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/4pxs-bm06",
+                      "description": "This bundle contains Cassini magnetometer calibrated data for the entire mission. The bundle includes\n                1 minute averaged and 1 second averaged data provided in Kronographic (KRTP, KSO, KSM) coordinates at Saturn,       \n                Geographic coordinates (GSE) for the Earth flyby, Jovigraphic coordinates for the Jupiter flyby, and \n                RTN coordinates for the entire mission, and full time resolution data provided in RTN coordinates for cruise, \n                Kronographic (KRTP) coordinates for Saturn Tour, Geographic coordinates (GSE) for the Earth flyby,and \n                IAU_Jupiter (J3) and JMAG XYZ (JMXYZ) for Outer Cruise. A spice metakernel collection for the 1 minute \n                averaged data is provided as well."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-raw",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:cassini-mag-raw",
+                "title": "Cassini Magnetometer Raw Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-raw",
+                    "version_id": "1.0",
+                    "title": "Cassini Magnetometer Raw Bundle",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas",
+                      "publication_year": "2024",
+                      "doi": "10.17189/83je-rf36",
+                      "description": "This bundle contains Cassini magnetometer raw magnetic field data for the entire mission. The bundle includes\n                magnetic-field data from the Fluxgate Magnetometer and the Vector Helium Magnetomer in Vector mode.\n                Data are received in science and housekeeping rates. Additional collections, such as spacecraft attitude, analog, \n                command validation, configuration image, error counter, user-defined engineering data, browse plots, and calibration,\n                are also included."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-caps-derived",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:cassini-caps-derived",
+                "title": "Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-caps-derived",
+                    "version_id": "1.0",
+                    "title": "Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Bundle",
+                    "information_model_version": "1.16.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Waite, J.H.; Furman, J.D.",
+                      "publication_year": "2022",
+                      "doi": "10.17189/2sst-w415",
+                      "description": "The uncalibrated data were acquired in a mix of CAPS operating modes     \n                beginning with the first instrument checkout in January 1999 and         \n                containing throughout the Cassini Tour and through the end of prime      \n                mission.  The data cover the time period from 1999-004T03:07:47     \n                UT until end of prime mission (July 2008). In addition, it covers   \n                data received during extended missions.  Sampling rates were variable    \n                and depended upon the downlink capabilities and other activities         \n                on-board."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mimi-lemms-cal",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:cassini-mimi-lemms-cal",
+                "title": "Cassini MIMI LEMMS Calibrated Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mimi-lemms-cal",
+                    "version_id": "1.0",
+                    "title": "Cassini MIMI LEMMS Calibrated Bundle",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Vandegriff, Jon",
+                      "publication_year": "2024",
+                      "doi": "10.17189/3zxe-9m66",
+                      "keyword": [
+                        "LEMMS",
+                        "MIMI"
+                      ],
+                      "description": "This bundle contains Cassini Magnetospheric Imaging Instrument (MIMI) Low Energy Magnetospheric\n                Measurement System (LEMMS) accumulation rates, pulse height analysis and priority accumulation rate \n                data for 2004-01-01T00:00:00.000Z to 2017-09-16T00:00:00.000Z."
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-rpws-electron_density",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:cassini-rpws-electron_density",
+                "title": "Cassini RPWS Electron Densities from Upper Hybrid and Plasma Wave Frequencies",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-rpws-electron_density",
+                    "version_id": "1.0",
+                    "title": "Cassini RPWS Electron Densities from Upper Hybrid and Plasma Wave Frequencies",
+                    "information_model_version": "1.13.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Persoon, A.M.; Groene, J.B.; West, E.E.; Kurth, W.S.; Wahlund, J.-E.; Gurnett, D.A.",
+                      "publication_year": "2019",
+                      "doi": "10.17189/1518302",
+                      "keyword": [
+                        "Cassini",
+                        "electron density",
+                        "plasma wave",
+                        "Saturn",
+                        "Jupiter",
+                        "Earth"
+                      ],
+                      "description": "This bundle provides electron number density values derived from features observed in plasma wave data obtained by the Cassini Radio and Plasma Wave Science (RPWS) instruments, along with observed or derived characteristic frequencies, and useful positional parameters for the spacecraft and related bodies.  When present, frequency values of narrowband emissions at the upper hybrid resonance were digitized and combined with measured or model magnetic field to derive electron number density.  At other times, features such as the upper cutoff in auroral hiss or electron plasma oscillations were used to determine the plasma frequency and electron density."
+                    }
+                  }
+                }
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_RWHlJ6hVOZN9elaLWICTp0EJ",
+          "metadata": null,
+          "timestamp": "2026-05-06 04:10:53.378953+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 04:10:53.379248+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_inspect_collections",
+          "args": "{\"node\": \"ppi\", \"path\": \"data/cassini-mag-cal/\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_lxTT9IKG2MnmDDYS4B39cWff",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "args": "{\"node\": \"ppi\", \"path\": \"data/cassini-caps-derived/\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_pmcmphQ6Uqli50bwRycux2B9",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 5101,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 2432,
+        "output_tokens": 836,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 742,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 04:11:07.119140+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 04:10:53+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcNszDzCMXy6AhSOZPJVb8oLLnWq1",
+      "finish_reason": "tool_call",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "data/cassini-mag-cal",
+            "collections": [
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1min-krtp",
+                "title": "Cassini MAG Calibrated 1 Min. Avg. Data in KRTP Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1min-krtp",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Min. Avg. Data in KRTP Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/yg94-6e83",
+                      "description": "This collection contains Cassini magnetic-field 1 minute averages in KRTP      \n                coordinates, from the Fluxgate Magnetometer (FGM) instrument. KRTP coordinates \n                are the standard right-handed spherical triad: R (Saturn to spacecraft), Phi \n                (parallel to Saturn's equator), and Theta (completes right handed set)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "This collection was originally released in 2023 as part of the \n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1MINAVG-V2.1 data set. The metadata \n                    have been migrated to PDS4, the data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1min-ksm",
+                "title": "Cassini MAG Calibrated 1 Min. Avg. Data in KSM Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1min-ksm",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Min. Avg. Data in KSM Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/tq3a-p829",
+                      "description": "This collection contains Cassini magnetic-field 1 minute averages in KSM       \n                coordinates, from the Fluxgate Magnetometer (FGM) instrument. KSM coordinates \n                consist of X (Saturn to Sun), Z (X-Z plane contains Saturn's centered magnetic \n                dipole axis, M), and Y (completes right handed set)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "This collection was originally released in 2023 as part of the \n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1MINAVG-V2.1 data set. The metadata \n                    have been migrated to PDS4, the data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1min-kso",
+                "title": "Cassini MAG Calibrated 1 Min. Avg. Data in KSO Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1min-kso",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Min. Avg. Data in KSO Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/j1gb-e836",
+                      "description": "This collection contains Cassini magnetic-field 1 minute averages in KSO       \n                coordinates, from the Fluxgate Magnetometer (FGM) instrument. KSO coordinates \n                consist of X (Saturn to Sun), Z (parallel to Saturn's orbital plane upward \n                normal), and Y (completes the right handed set)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "This collection was originally released in 2023 as part of the \n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1MINAVG-V2.1 data set. The metadata \n                    have been migrated to PDS4, the data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1min-rtn",
+                "title": "Cassini MAG Calibrated 1 Min. Avg. Data in RTN Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1min-rtn",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Min. Avg. Data in RTN Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/2wax-gm60",
+                      "description": "This collection contains Cassini magnetic-field 1 minute averages,\n                from the Cassini Fluxgate Magnetometer (FGM), in RTN coordinates. \n                RTN coordinates consist of R (radial component, Sun to the spacecraft), \n                T (tangential component, parallel to the Solar Equatorial plane and \n                perpendicular to R), and N (normal component, completes right handed set)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-12-20",
+                        "version_id": "1.0",
+                        "description": "Original product version 8 RTN data from the PDS3 \n                    CO-E/SW/J/S-MAG-4-SUMM-1MINAVG-V2.1 data set, released \n                    2023-10-13.  The metadata were migrated to PDS4, the \n                    data are unchanged. This is the first version converted \n                    to PDS4."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1sec-gse",
+                "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in GSE Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1sec-gse",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in GSE Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/9jfh-3a88",
+                      "description": "This collection contains Cassini magnetic-field 1 second averages, in \n            GSE coordinates, from the Fluxgate Magnetometer (FGM) instrument."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4.\n               It was migrated to PDS4 from the PDS3 data set \n               CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1sec-j3",
+                "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in J3 Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1sec-j3",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in J3 Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/06r9-8p61",
+                      "description": "This collection contains Cassini magnetic-field 1 second averages in J3 coordinates, \n                from the Fluxgate Magnetometer (FGM) instrument."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "Original product version 6 J3 data from the PDS3 \n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, released \n                    2019-06-17.  The metadata were migrated to PDS4, the data \n                    are unchanged.\n                    \n                    This is the first version of this collection migrated to PDS4. \n                    The PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 data set was \n                    superseded by the 2.0 dataset 2019-06-17."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1sec-jmxyz",
+                "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in JMXYZ Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1sec-jmxyz",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in JMXYZ Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/xqsr-2717",
+                      "description": "This collection contains Cassini magnetic-field 1 second averages in JMXYZ coordinates,\n                from the Fluxgate Magnetometer (FGM) instrument."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "Original product version 6 JMXYZ data from the PDS3 \n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, released 2019-06-17.  \n                    The metadata were migrated to PDS4, the data are unchanged.\n                \n                    This is the first version of this collection migrated to PDS4. The \n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset was superseded by t\n                    he 2.0 dataset 2019-06-17."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1sec-krtp",
+                "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in KRTP Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1sec-krtp",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in KRTP Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/desd-0c05",
+                      "description": "This collection contains Cassini magnetic-field 1 second averages in KRTP coordinates,\n                from the Fluxgate Magnetometer (FGM) instrument."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "Original product version 6 KRTP data from the PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 \n                    data set, released 2019-06-17.  The metadata were migrated to PDS4, the data are unchanged.\n                \n                    This is the first version of this collection migrated to PDS4. The PDS3 \n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset was superseded by the 2.0 \n                    dataset 2019-06-17."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1sec-ksm",
+                "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in KSM Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1sec-ksm",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in KSM Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/hyxn-js95",
+                      "description": "This collection contains Cassini magnetic-field 1 second averages in KSM \n                coordinates, from the Fluxgate Magnetometer (FGM) instrument."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-12-13",
+                        "version_id": "1.0",
+                        "description": "Original product version 6 KSM data from the PDS3 \n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, released \n                    2019-06-17.  The metadata were migrated to PDS4, the \n                    data are unchanged.\n                \n                    This is the first version of this collection migrated to \n                    PDS4.  The PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset \n                    was superseded by the 2.0 dataset 2019-06-17."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1sec-kso",
+                "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in KSO Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1sec-kso",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in KSO Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/3n1m-4727",
+                      "description": "This collection contains Cassini magnetic-field 1 second averages in KSO \n                coordinates, from the Fluxgate Magnetometer (FGM) instrument."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "Original product version 6 KSO data from the \n                    PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, \n                    released 2019-06-17.  The metadata were migrated \n                    to PDS4, the data are unchanged.\n                    \n                    This is the first version of this collection \n                    migrated to PDS4. The PDS3 \n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset \n                    was superseded by the 2.0 dataset 2019-06-17."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-1sec-rtn",
+                "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in RTN Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-1sec-rtn",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated 1 Sec. Avg. Data in RTN Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/b730-5011",
+                      "description": "This collection contains Cassini magnetic-field 1 second averages in RTN \n                coordinates,from the Fluxgate Magnetometer (FGM) instrument."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "Original product version 6 RTN data from the PDS3 \n                    CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V2.0 data set, released \n                    2019-06-17.  The metadata were migrated to PDS4, the \n                    data are unchanged.\n                \n                    This is the first version of this collection migrated to \n                    PDS4.  The PDS3 CO-E/SW/J/S-MAG-4-SUMM-1SECAVG-V1.0 dataset \n                    was superseded by the 2.0 dataset 2019-06-17."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-full-gse",
+                "title": "Cassini MAG Calibrated Full Res. Data in GSE Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-full-gse",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated Full Res. Data in GSE Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/bn5h-8e81",
+                      "description": "Cassini magnetic-field data in the highest time resolution available, \n            from the Fluxgate Magnetometer (FGM) instrument in GSE coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "The metadata have been migrated to PDS4, the data values are\n               unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-full-j3",
+                "title": "Cassini MAG Calibrated Full Res. Data in J3 Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-full-j3",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated Full Res. Data in J3 Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/6c1p-jj58",
+                      "description": "This collection contains Cassini FGM (Fluxgate Magnetometer) \n                magnetic-field data in the highest time resolution available \n                in J3 coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "This collection contains J3 data from the \n                    PDS3 CO-E/SW/J/S-MAG-3-RDR-FULL-RES-V2.0 data set, \n                    released 2019-06-05. The metadata were migrated to PDS4.\n                    This is the first version of this collection migrated to PDS4."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-full-jmxyz",
+                "title": "Cassini MAG Calibrated Full Res. Data in JMXYZ Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-full-jmxyz",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated Full Res. Data in JMXYZ Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/827g-fe03",
+                      "description": "This collection contains Cassini FGM (Fluxgate Magnetometer)\n                magnetic-field data in the highest time resolution available \n                in JMXYZ coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "This collection contains JMXYZ data from the PDS3 \n                    CO-E/SW/J/S-MAG-3-RDR-FULL-RES-V2.0 data set, released 2019-06-05.\n                    The metadata were migrated to PDS4. This is the first version of \n                    this collection migrated to PDS4."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-full-krtp",
+                "title": "Cassini MAG Calibrated Full Res. Data in KRTP Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-full-krtp",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated Full Res. Data in KRTP Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/7pdg-da68",
+                      "description": "This collection contains Cassini FGM (Fluxgate Magnetometer)\n                magnetic-field data in the highest time resolution available \n                in KRTP coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-12-20",
+                        "version_id": "1.0",
+                        "description": "This collection contains KRTP data from the PDS3 \n                    CO-E/SW/J/S-MAG-3-RDR-FULL-RES-V2.0 data set, released 2019-06-05.\n                    The metadata were migrated to PDS4. This is the first version of \n                    this collection migrated to PDS4."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-full-rtn",
+                "title": "Cassini MAG Calibrated Full Res. Data in RTN Coords. Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-full-rtn",
+                    "version_id": "1.0",
+                    "title": "Cassini MAG Calibrated Full Res. Data in RTN Coords. Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/2myh-nj38",
+                      "description": "This collection contains Cassini FGM (Fluxgate Magnetometer)\n                magnetic-field data in the highest time resolution available \n                in RTN coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "This collection contains RTN data from the PDS3 \n                    CO-E/SW/J/S-MAG-3-RDR-FULL-RES-V2.0 data set, released 2019-06-05.\n                    The metadata were migrated to PDS4. This is the first version of \n                    this collection migrated to PDS4."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-shm-hkrate-asc",
+                "title": "Cassini Scalar Helium MAG Calibrated Housekeeping ASCII Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-shm-hkrate-asc",
+                    "version_id": "1.0",
+                    "title": "Cassini Scalar Helium MAG Calibrated Housekeeping ASCII Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas",
+                      "publication_year": "2023",
+                      "doi": "10.17189/5g8s-2s29",
+                      "description": "This collections contains Cassini scalar helium magnetometer (SHM) housekeeping \n            ASCII data collected between 1999-08-18T02:56:40.391 and 2005-06-08T15:14:44.057."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "ASCII files, generated from the PDS3 CO-E/SW/J/S-MAG-3-RDR-CALIB-SHM-V2.0 \n               dataset, DATA directory, converted to PDS4."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-shm-hkrate",
+                "title": "Cassini Scalar Helium MAG Calibrated Housekeeping Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-shm-hkrate",
+                    "version_id": "1.0",
+                    "title": "Cassini Scalar Helium MAG Calibrated Housekeeping Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas",
+                      "publication_year": "2023",
+                      "doi": "10.17189/n2ky-bd12",
+                      "description": "This collection contains Cassini scalar helium (SHM) magnetometer \n            housekeeping data collected between 1999-08-18 and 2005-06-08."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "This collection contains scalar data from the PDS3 \n               CO-E/SW/J/S-MAG-3-RDR-CALIB-SHM-V2.0 dataset, released \n               2019-05-15.  The metadata were migrated to PDS4.  This is the \n               first version converted to PDS4."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-shm-scirate-asc",
+                "title": "Cassini Scalar Helium MAG Calibrated Science ASCII Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-shm-scirate-asc",
+                    "version_id": "1.0",
+                    "title": "Cassini Scalar Helium MAG Calibrated Science ASCII Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas",
+                      "publication_year": "2023",
+                      "doi": "10.17189/pg4n-f845",
+                      "description": "This collection contains Cassini scalar helium magnetometer (SHM)\n            science ASCII data collected between 1999-08-18 and 2005-10-11."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "ASCII files, generated from the PDS3 CO-E/SW/J/S-MAG-3-RDR-CALIB-SHM-V2.0 \n               dataset, DATA directory, converted to PDS4."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-mag-cal",
+                "dataset_id": "urn:nasa:pds:cassini-mag-cal:data-shm-scirate",
+                "title": "Cassini Scalar Helium MAG Calibrated Science Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-mag-cal:data-shm-scirate",
+                    "version_id": "1.0",
+                    "title": "Cassini Scalar Helium MAG Calibrated Science Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Dougherty, Michele K.; Kellock, Stephen; Slootweg, A. Peter; Achilleos, Nicholas",
+                      "publication_year": "2023",
+                      "doi": "10.17189/324t-wa59",
+                      "description": "This collection contains Cassini scalar helium magnetometer (SHM)\n            science data collected between 1999-08-18 and 2005-10-11."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-11-20",
+                        "version_id": "1.0",
+                        "description": "This collections contains scalar helium magnetometer data from the PDS3\n               CO-E/SW/J/S-MAG-3-RDR-CALIB-SHM-V2.0 dataset, released\n               2019-05-15.  The metadata were migrated to PDS4.  This is the\n               first version converted to PDS4."
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_lxTT9IKG2MnmDDYS4B39cWff",
+          "metadata": null,
+          "timestamp": "2026-05-06 04:11:08.709858+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "data/cassini-caps-derived",
+            "collections": [
+              {
+                "path": "data/cassini-caps-derived",
+                "dataset_id": "urn:nasa:pds:cassini-caps-derived:data-ele-mom",
+                "title": "Cassini-Huygens Plasma Spectrometer (CAPS) Derived Electron Moments Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-caps-derived:data-ele-mom",
+                    "version_id": "1.0",
+                    "title": "Cassini-Huygens Plasma Spectrometer (CAPS) Derived Electron Moments Data Collection",
+                    "information_model_version": "1.16.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Waite, J.H.; Furman, J.D.",
+                      "publication_year": "2022",
+                      "doi": "10.17189/nzk5-rq31",
+                      "description": "This collection consists of all of the electron moments data generated from the Cassini \n        Plasma Spectrometer (CAPS) electron spectrometer uncalibrated data."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2022-11-01",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. It was migrated to PDS4 from the \n          PDS3 data set CO-E/J/S/SW-CAPS-5-DDR-ELE-MOMENTS-V1.0."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-caps-derived",
+                "dataset_id": "urn:nasa:pds:cassini-caps-derived:data-ion-moments",
+                "title": "Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Ion Moments Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-caps-derived:data-ion-moments",
+                    "version_id": "1.0",
+                    "title": "Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Ion Moments Data Collection",
+                    "information_model_version": "1.16.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Waite, J.H.; Furman, J.D.",
+                      "publication_year": "2022",
+                      "doi": "10.17189/0tg3-2z14",
+                      "description": "CASSINI ORBITER SAT/SW CAPS DERIVED ION MOMENTS V1.0"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2022-11-01",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. \n          It was migrated to PDS4 from the PDS3 data set CO-S/SW-CAPS-5-DDR-ION-MOMENTS-V1.0."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/cassini-caps-derived",
+                "dataset_id": "urn:nasa:pds:cassini-caps-derived:data-scpot",
+                "title": "Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Spacecraft Potential Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:cassini-caps-derived:data-scpot",
+                    "version_id": "1.0",
+                    "title": "Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Spacecraft Potential Data Collection",
+                    "information_model_version": "1.16.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Waite, J.H.; Furman, J.D.",
+                      "publication_year": "2022",
+                      "doi": "10.17189/n7eb-4k86",
+                      "description": "CASSINI ORBITER SAT/SW CAPS DERIVED V1.0"
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2022-11-01",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. \n          It was migrated to PDS4 from the PDS3 data set CO-E/J/S/SW-CAPS-5-DDR-SC-POTENTIAL-V1.0."
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_pmcmphQ6Uqli50bwRycux2B9",
+          "metadata": null,
+          "timestamp": "2026-05-06 04:11:08.335075+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 04:11:08.710755+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"data/\",\"node\":\"ppi\",\"filter\":\"plasmoid\"}",
+          "tool_call_id": "call_yISSa6r4Ka5n9ebxHA3aGm7E",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 13971,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 4480,
+        "output_tokens": 623,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 587,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 04:11:18.905071+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 04:11:09+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcNtFQMJz8jXimzZzjVzdOSQu98zW",
+      "finish_reason": "tool_call",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/",
+            "total": 781,
+            "filtered_total": 0,
+            "dirs": [],
+            "error": null
+          },
+          "tool_call_id": "call_yISSa6r4Ka5n9ebxHA3aGm7E",
+          "metadata": null,
+          "timestamp": "2026-05-06 04:11:19.525168+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 04:11:19.525715+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_select_node",
+          "args": "{\"node\":\"ppi\"}",
+          "tool_call_id": "call_Apq83LFluh0Btu3iGNJNNjeM",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 14041,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 13696,
+        "output_tokens": 1291,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1266,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 04:11:40.530077+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 04:11:19+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcNtP5nhNMe669tGHS8CFD9MRDAQl",
+      "finish_reason": "tool_call",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_select_node",
+          "content": {
+            "node": "ppi",
+            "display_name": "Planetary Plasma Interactions (PPI)",
+            "base_url": "https://pds-ppi.igpp.ucla.edu/",
+            "data_root": "data/",
+            "has_mission_layer": false,
+            "mission_count": 27,
+            "workflow_notes": "All ~781 datasets sit directly under data/ with no mission sub-directories.\nThe mission 'name' from pds_list_missions is the filter keyword to use with list_dataset_dirs.\n",
+            "abbreviations": "Dataset naming conventions:\n  PDS3 dirs use uppercase mission codes: MESS-, CO-, GO-, JNO-, VG1-, VG2-, MEX-, P10-, P11-, ULY-, NH-, PVO-, etc.\n  PDS4 dirs use lowercase names: cassini-, galileo-, juno-, maven-, messenger-, ulysses-, etc.\n  Both conventions exist for many missions. Use pds_list_missions to see all available missions and filter keywords.\n"
+          },
+          "tool_call_id": "call_Apq83LFluh0Btu3iGNJNNjeM",
+          "metadata": null,
+          "timestamp": "2026-05-06 04:11:40.536805+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 04:11:40.537227+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "args": "{\"summary\":\"Statistical studies of Cassini magnetotail reconnection commonly interpret the transition between predominantly planetward vs tailward reconnection outflow signatures as occurring near X_KSM \u2248 \u221230 RS (order-of-magnitude: a few\u00d710 RS downtail), i.e., an average reconnection X-line location around ~30 Saturn radii downtail. To reproduce/verify that separation with PDS PPI data, use Cassini MAG calibrated magnetic field in KSM coordinates (to identify plasmoids/dipolarizations and compute downtail distance) together with CAPS derived ion moments (to determine flow direction) and optional particle/plasma context datasets below.\",\"candidates\":[{\"dataset_id\":\"urn:nasa:pds:cassini-mag-cal:data-1sec-ksm\",\"path\":\"data/cassini-mag-cal/\",\"title\":\"Cassini MAG Calibrated 1 Sec. Avg. Data in KSM Coords. Collection\",\"mission\":\"cassini\",\"node\":\"ppi\",\"pds_version\":\"PDS4\",\"reasoning\":\"Primary dataset to locate reconnection signatures and bin events by downtail distance X_KSM (negative X is downtail). 1-second cadence is useful for identifying plasmoid signatures, dipolarizations, and Hall/current sheet crossings in the magnetotail.\"},{\"dataset_id\":\"urn:nasa:pds:cassini-mag-cal:data-1min-ksm\",\"path\":\"data/cassini-mag-cal/\",\"title\":\"Cassini MAG Calibrated 1 Min. Avg. Data in KSM Coords. Collection\",\"mission\":\"cassini\",\"node\":\"ppi\",\"pds_version\":\"PDS4\",\"reasoning\":\"Lower-cadence KSM magnetic field for long-interval statistics (event surveys, occurrence rates vs X_KSM) and to pair with trajectory/SPICE when computing spacecraft downtail distance for each event.\"},{\"dataset_id\":\"urn:nasa:pds:cassini-caps-derived:data-ion-moments\",\"path\":\"data/cassini-caps-derived/\",\"title\":\"Cassini-Huygens Cassini Plasma Spectrometer (CAPS) Derived Ion Moments Data Collection\",\"mission\":\"cassini\",\"node\":\"ppi\",\"pds_version\":\"PDS4\",\"reasoning\":\"Provides plasma bulk velocity moments that can be used to classify events as planetward vs tailward outflows relative to the inferred X-line; combine with MAG to define reconnection events and with spacecraft position to compute the separation distance statistically.\"},{\"dataset_id\":\"urn:nasa:pds:cassini-mimi-lemms-cal\",\"path\":\"data/cassini-mimi-lemms-cal/\",\"title\":\"Cassini MIMI LEMMS Calibrated Bundle\",\"mission\":\"cassini\",\"node\":\"ppi\",\"pds_version\":\"PDS4\",\"reasoning\":\"Energetic particle context for reconnection (injections, anisotropies) that can help confirm event classification and timing when performing the planetward/tailward separation analysis.\"},{\"dataset_id\":\"urn:nasa:pds:cassini-rpws-electron_density\",\"path\":\"data/cassini-rpws-electron_density/\",\"title\":\"Cassini RPWS Electron Densities from Upper Hybrid and Plasma Wave Frequencies\",\"mission\":\"cassini\",\"node\":\"ppi\",\"pds_version\":\"PDS4\",\"reasoning\":\"Useful contextual plasma density for identifying plasma sheet vs lobe intervals (reconnection environment), which can affect inferred X-line location and the statistical separation distance.\"}]}",
+          "tool_call_id": "call_PomeLhqLA7wF2WuJTvwURmBa",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 14279,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 13696,
+        "output_tokens": 2933,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 2202,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-06 04:12:24.969155+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-06 04:11:41+00:00"
+      },
+      "provider_response_id": "chatcmpl-DcNtlxjeb2F3BzFkk5ByOqdvN1dJj",
+      "finish_reason": "tool_call",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "content": "Final result processed.",
+          "tool_call_id": "call_PomeLhqLA7wF2WuJTvwURmBa",
+          "metadata": null,
+          "timestamp": "2026-05-06 04:12:24.970397+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-06 04:12:24.970422+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019dfb7a-98c9-72c9-9b59-5adb644b4ac0",
+      "metadata": null
+    }
+  ]
+}

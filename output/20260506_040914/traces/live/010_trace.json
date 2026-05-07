@@ -1,0 +1,16 @@
+{
+  "query": "Is the mass loss inferred from the detected Saturn plasmoid/reconnection event catalog sufficient to balance Enceladus as a plasma source?",
+  "row": {
+    "rank": null,
+    "paper_short": "Smith 2016",
+    "rationale": null,
+    "paper": "Smith, A.W., et al., 2016. Magnetic reconnection in Saturn's magnetotail: A comprehensive magnetic field survey. JGR Space Physics, 121(4), pp.2984-3005. DOI:10.1002/2015JA022005",
+    "query": "Is the mass loss inferred from the detected Saturn plasmoid/reconnection event catalog sufficient to balance Enceladus as a plasma source?",
+    "expected_ids": "urn:nasa:pds:cassini-mag-cal:data-1min-krtp",
+    "node": "PPI"
+  },
+  "tool_calls": [],
+  "full_trace": [
+    "{'error': \"TypeError: 'NoneType' object is not callable\"}"
+  ]
+}

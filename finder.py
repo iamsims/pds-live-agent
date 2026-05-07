@@ -4,8 +4,10 @@ Pick a configuration via the ``kind`` argument:
 
     build_finder(kind="live")
         → connects via stdio to ``pydantic_code.mcp_server`` (subprocess);
-          the served tools fetch directories from
-          https://pds-geosciences.wustl.edu/ live.
+          the served tools fetch directories from any supported PDS node live.
+
+    build_finder(kind="live", node="ppi")
+        → same as above but with a PPI-focused system prompt (no routing step).
 
     build_finder(kind="catalog")
         → connects via streamable HTTP to a FastMCP cloud server fronting
@@ -19,9 +21,9 @@ harness.
 
 Usage:
     >>> from pydantic_code.finder import build_finder
-    >>> agent = build_finder(kind="catalog")
+    >>> agent = build_finder(kind="live", node="ppi")
     >>> async with agent:
-    ...     result = await agent.run("Mars 2020 PIXL data")
+    ...     result = await agent.run("Cassini magnetospheric plasma data")
     >>> for c in result.output.candidates:
     ...     print(c.dataset_id, c.title, c.node)
 """
@@ -57,9 +59,9 @@ class FinderConfig:
 def _get_config(kind: FinderKind, **kwargs) -> FinderConfig:
     """Lazy-import the config from the appropriate mode module."""
     if kind == "live":
-        from pydantic_code.live_finder.pds_geo_finder import get_finder_config
+        from pydantic_code.live_finder.pds_finder import get_finder_config
 
-        return get_finder_config()
+        return get_finder_config(node=kwargs.get("node"))
     elif kind == "catalog":
         from pydantic_code.catalog_finder.pds_catalog_finder import get_finder_config
 
@@ -82,9 +84,9 @@ class DatasetCandidate(BaseModel):
 
     Most fields are optional because the two modes surface different attributes:
 
-      * live mode populates ``path`` (the GEO directory) plus whatever the
-        inspected label exposes (``dataset_id``, ``pds_version``, ``mission``,
-        ``title``).
+      * live mode populates ``path`` (relative to the node's base URL) plus
+        whatever the inspected label exposes (``dataset_id``, ``pds_version``,
+        ``mission``, ``title``, ``node``).
       * catalog mode populates ``dataset_id``, ``title``, ``mission``,
         ``node``, ``pds_version`` from the catalog entry.
 
@@ -102,7 +104,7 @@ class DatasetCandidate(BaseModel):
     path: str | None = Field(
         default=None,
         description=(
-            "Path relative to https://pds-geosciences.wustl.edu/ (live mode only). "
+            "Path relative to the node's base URL (live mode only). "
             "Leave None in catalog mode."
         ),
     )
@@ -134,6 +136,7 @@ class FindDatasetOutput(BaseModel):
 def build_finder(
     kind: FinderKind,
     *,
+    node: str | None = None,
     model: str = "openai:gpt-5.2",
     reasoning_effort: Literal["low", "medium", "high"] = "high",
     catalog_url: str | None = None,
@@ -149,13 +152,16 @@ def build_finder(
 
     Args:
         kind: ``"live"`` or ``"catalog"``.
+        node: PDS node identifier (live mode only). When specified, builds a
+            single-node agent with a focused prompt. When None, builds a
+            multi-node agent that routes via ``pds_select_node``.
         model: pydantic-ai model string (kept identical between modes).
         reasoning_effort: For reasoning models. Kept identical between modes.
         catalog_url: Override ``$PDS_CATALOG_MCP_URL`` (catalog mode only).
         catalog_headers: Override the default Bearer-from-env header
             (catalog mode only).
     """
-    config = _get_config(kind, catalog_url=catalog_url, catalog_headers=catalog_headers)
+    config = _get_config(kind, node=node, catalog_url=catalog_url, catalog_headers=catalog_headers)
 
     return Agent(
         model,

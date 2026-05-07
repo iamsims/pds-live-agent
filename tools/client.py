@@ -1,4 +1,8 @@
-"""Async HTTP client for the live GEO node directory at pds-geosciences.wustl.edu."""
+"""Async HTTP client for live PDS node directories (Apache-served).
+
+Works with any PDS node that serves Apache mod_autoindex directory listings
+and standard PDS3/PDS4 label files. Originally built for GEO, now generic.
+"""
 
 from __future__ import annotations
 
@@ -21,39 +25,45 @@ from .parsers import (
 GEO_BASE_URL = "https://pds-geosciences.wustl.edu/"
 
 
-class GEOLiveClientError(Exception):
-    """Base exception for GEO live client errors."""
+class PDSLiveClientError(Exception):
+    """Base exception for PDS live client errors."""
 
 
-class GEOPathNotFoundError(GEOLiveClientError):
+class PDSPathNotFoundError(PDSLiveClientError):
     """Raised when a requested path returns 404."""
 
 
-class GEOPathInvalidError(GEOLiveClientError):
+class PDSPathInvalidError(PDSLiveClientError):
     """Raised when the caller-supplied path is malformed or escapes the base URL."""
+
+
+# Backward-compat aliases
+GEOLiveClientError = PDSLiveClientError
+GEOPathNotFoundError = PDSPathNotFoundError
+GEOPathInvalidError = PDSPathInvalidError
 
 
 def _normalize_relative_path(path: str, *, must_be_dir: bool = False) -> str:
     """Validate a caller-supplied relative path and return its canonical form.
 
     Rejects absolute paths, schemes, ``..`` segments, and backslashes — anything
-    that could escape the GEO base URL.
+    that could escape the base URL.
     """
     raw = path.strip()
     if not raw:
         return ""
 
     if "://" in raw or raw.startswith("//"):
-        raise GEOPathInvalidError(f"Path must be relative to {GEO_BASE_URL}, got: {raw!r}")
+        raise PDSPathInvalidError(f"Path must be relative, got: {raw!r}")
     if raw.startswith("/"):
         raw = raw.lstrip("/")
     if "\\" in raw:
-        raise GEOPathInvalidError(f"Backslashes are not allowed in path: {raw!r}")
+        raise PDSPathInvalidError(f"Backslashes are not allowed in path: {raw!r}")
 
     segments = [seg for seg in raw.split("/") if seg != ""]
     for seg in segments:
         if seg in (".", ".."):
-            raise GEOPathInvalidError(f"Path may not contain '.' or '..' segments: {raw!r}")
+            raise PDSPathInvalidError(f"Path may not contain '.' or '..' segments: {raw!r}")
 
     cleaned = "/".join(segments)
     if must_be_dir and cleaned and not raw.endswith("/"):
@@ -63,14 +73,14 @@ def _normalize_relative_path(path: str, *, must_be_dir: bool = False) -> str:
     return cleaned
 
 
-class GEOLiveClient:
-    """Async client for the GEO node directory tree.
+class PDSLiveClient:
+    """Async client for any PDS node directory tree served via Apache.
 
     Use as an async context manager:
 
-        async with GEOLiveClient() as client:
-            dirs, files = await client.list_directory("<mission>/")
-            metadata = await client.inspect_dataset("<mission>/<bundle_or_volume>/")
+        async with PDSLiveClient(base_url="https://pds-ppi.igpp.ucla.edu/") as client:
+            dirs, files = await client.list_directory("data/")
+            metadata = await client.inspect_dataset("data/<dataset>/")
     """
 
     def __init__(
@@ -84,12 +94,12 @@ class GEOLiveClient:
         self.max_bytes = max_bytes
         self._client: httpx.AsyncClient | None = None
 
-    async def __aenter__(self) -> "GEOLiveClient":
+    async def __aenter__(self) -> "PDSLiveClient":
         self._client = httpx.AsyncClient(
             timeout=self.timeout,
             follow_redirects=True,
             headers={
-                "User-Agent": "akd-ext-pds-geo-live/0.1",
+                "User-Agent": "akd-ext-pds-live/0.1",
                 "Accept": "text/html,application/xml;q=0.9,*/*;q=0.8",
             },
         )
@@ -107,7 +117,7 @@ class GEOLiveClient:
 
     def _ensure_client(self) -> httpx.AsyncClient:
         if self._client is None:
-            raise GEOLiveClientError("GEOLiveClient must be used as an async context manager")
+            raise PDSLiveClientError("PDSLiveClient must be used as an async context manager")
         return self._client
 
     def _resolve(self, relative_path: str, *, must_be_dir: bool = False) -> str:
@@ -119,18 +129,18 @@ class GEOLiveClient:
         try:
             response = await client.get(url)
         except httpx.HTTPError as e:
-            raise GEOLiveClientError(f"HTTP error fetching {url}: {e}") from e
+            raise PDSLiveClientError(f"HTTP error fetching {url}: {e}") from e
 
         if response.status_code == 404:
-            raise GEOPathNotFoundError(f"Not found: {url}")
+            raise PDSPathNotFoundError(f"Not found: {url}")
         try:
             response.raise_for_status()
         except httpx.HTTPStatusError as e:
-            raise GEOLiveClientError(f"HTTP {response.status_code} fetching {url}: {e}") from e
+            raise PDSLiveClientError(f"HTTP {response.status_code} fetching {url}: {e}") from e
 
         content = response.content
         if len(content) > self.max_bytes:
-            raise GEOLiveClientError(f"Response from {url} is {len(content)} bytes, exceeds max_bytes={self.max_bytes}")
+            raise PDSLiveClientError(f"Response from {url} is {len(content)} bytes, exceeds max_bytes={self.max_bytes}")
         return response.text
 
     # ------------------------------------------------------------------
@@ -169,7 +179,7 @@ class GEOLiveClient:
             ``volume_dir`` is from the first label.
 
         Raises:
-            GEOPathNotFoundError: If no label file can be located in the directory
+            PDSPathNotFoundError: If no label file can be located in the directory
                 or its immediate subdirectories.
         """
         url = self._resolve(relative_path, must_be_dir=True)
@@ -208,11 +218,11 @@ class GEOLiveClient:
                         for lbl in sub_labels:
                             lbl["volume_dir"] = vdir
                         labels.extend(sub_labels)
-                except (GEOPathNotFoundError, GEOLiveClientError):
+                except (PDSPathNotFoundError, PDSLiveClientError):
                     continue
 
         if not labels:
-            raise GEOPathNotFoundError(
+            raise PDSPathNotFoundError(
                 f"No voldesc.cat/voldesc.sfd, bundle_*.xml/.lblx, or collection_*.xml/.lblx found at {url}"
             )
 
@@ -254,7 +264,7 @@ class GEOLiveClient:
             try:
                 parsed = xml_to_dict(content)
             except ET.ParseError as e:
-                raise GEOLiveClientError(f"Failed to parse XML at {furl}: {e}") from e
+                raise PDSLiveClientError(f"Failed to parse XML at {furl}: {e}") from e
             fields = parsed
             if len(parsed) == 1:
                 inner = next(iter(parsed.values()))
@@ -313,7 +323,7 @@ class GEOLiveClient:
             }``.
 
         Raises:
-            GEOPathNotFoundError: If no labels at all are found at the input path.
+            PDSPathNotFoundError: If no labels at all are found at the input path.
         """
         record = await self.inspect_dataset(relative_path)
         bundle_labels = record["labels"]
@@ -351,11 +361,56 @@ class GEOLiveClient:
                 async with sem:
                     try:
                         sub_record = await self.inspect_dataset(sub_path)
-                    except (GEOPathNotFoundError, GEOLiveClientError):
+                    except (PDSPathNotFoundError, PDSLiveClientError):
                         return []
                     except Exception:  # noqa: BLE001
                         return []
-                return [label for label in sub_record["labels"] if label["file_type"].startswith("collection")]
+
+                sub_labels = sub_record.get("labels", [])
+                collections = [lbl for lbl in sub_labels if lbl["file_type"].startswith("collection")]
+                if collections:
+                    return collections
+
+                # Fallback for PDS3 sub-volume layout (e.g. LROC's LROLRC_2001/):
+                # collection_*.xml lives one level deeper inside DATA/. Only descend
+                # when the immediate subdir looks like a PDS3 sub-volume (has voldesc).
+                has_voldesc = any(lbl["file_type"].startswith("voldesc") for lbl in sub_labels)
+                if not has_voldesc:
+                    return []
+
+                async with sem:
+                    try:
+                        sub_dir_urls, _ = await self.list_directory(sub_path)
+                    except (PDSPathNotFoundError, PDSLiveClientError):
+                        return []
+                    except Exception:  # noqa: BLE001
+                        return []
+
+                data_subpath: str | None = None
+                for d_url in sub_dir_urls:
+                    if filename_from_url(d_url).lower() != "data":
+                        continue
+                    target_path = urlsplit(d_url).path
+                    data_subpath = (
+                        target_path[len(base_path) :]
+                        if target_path.startswith(base_path)
+                        else target_path.lstrip("/")
+                    )
+                    break
+                if not data_subpath:
+                    return []
+
+                async with sem:
+                    try:
+                        descent_record = await self.inspect_dataset(data_subpath)
+                    except (PDSPathNotFoundError, PDSLiveClientError):
+                        return []
+                    except Exception:  # noqa: BLE001
+                        return []
+                return [
+                    lbl for lbl in descent_record.get("labels", [])
+                    if lbl["file_type"].startswith("collection")
+                ]
 
             sub_results = await asyncio.gather(*[_scan_collection(p) for p in candidate_paths])
             for collected in sub_results:
@@ -417,7 +472,7 @@ class GEOLiveClient:
             async with sem:
                 try:
                     record = await self.inspect_dataset(relative)
-                except (GEOPathNotFoundError, GEOLiveClientError):
+                except (PDSPathNotFoundError, PDSLiveClientError):
                     return item
                 except Exception:  # noqa: BLE001 - one bad subdir shouldn't kill the scan
                     return item
@@ -436,6 +491,10 @@ class GEOLiveClient:
             "scanned_count": len(items),
             "items": items,
         }
+
+
+# Backward-compat alias
+GEOLiveClient = PDSLiveClient
 
 
 def _extract_title(pds_version: str, fields: dict[str, Any]) -> str | None:

@@ -1,0 +1,16 @@
+{
+  "query": "In which auroral zone are H+ and/or H3+ cyclotron waves commonly observed?",
+  "row": {
+    "rank": null,
+    "paper_short": "Sulaiman 2022",
+    "rationale": null,
+    "paper": "Sulaiman, A.H., et al., 2022. Jupiter's low-altitude auroral zones: Fields, particles, plasma waves, and density depletions. JGR Space Physics, 127(8), e2022JA030334. DOI:10.1029/2022JA030334",
+    "query": "In which auroral zone are H+ and/or H3+ cyclotron waves commonly observed?",
+    "expected_ids": "JNO-E/J/SS-WAV-3-CDR-BSTFULL-V1.0\nJNO-J/SW-JAD-3-CALIBRATED-V1.0\nJNO-J-JED-3-CDR-V1.0",
+    "node": "PPI"
+  },
+  "tool_calls": [],
+  "full_trace": [
+    "{'error': \"TypeError: 'NoneType' object is not callable\"}"
+  ]
+}

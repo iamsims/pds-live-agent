@@ -16,13 +16,13 @@ from loguru import logger
 from pydantic import BaseModel, Field
 
 from .client import (
-    GEO_BASE_URL,
-    GEOLiveClient,
-    GEOLiveClientError,
-    GEOPathInvalidError,
-    GEOPathNotFoundError,
+    PDSLiveClient,
+    PDSLiveClientError,
+    PDSPathInvalidError,
+    PDSPathNotFoundError,
     _extract_title,
 )
+from .node_registry import get_base_url
 
 
 # ---------------------------------------------------------------------------
@@ -93,10 +93,10 @@ def _extract_dataset_id(pds_version: str, fields: dict[str, Any]) -> str | None:
 # ---------------------------------------------------------------------------
 
 
-class PDSGeoProbeResult(BaseModel):
+class PDSProbeResult(BaseModel):
     """One probed dataset directory with its parsed label metadata."""
 
-    path: str = Field(description="Directory path relative to GEO root where the label was found")
+    path: str = Field(description="Directory path relative to the node root where the label was found")
     pds_version: str = Field(description="'PDS3' or 'PDS4'")
     file_type: str = Field(
         description=(
@@ -112,26 +112,38 @@ class PDSGeoProbeResult(BaseModel):
     fields: dict[str, Any] = Field(description="Slimmed parsed label fields")
 
 
-class PDSGeoProbeError(BaseModel):
+# Backward-compat aliases
+PDSGeoProbeResult = PDSProbeResult
+
+
+class PDSProbeError(BaseModel):
     """One path that could not be probed."""
 
     path: str = Field(description="The path that was requested")
     error: str = Field(description="Why the probe failed")
 
 
-class PDSGeoProbeDatasetsOutput(BaseModel):
-    """Output for pds_geo_probe_datasets."""
+# Backward-compat alias
+PDSGeoProbeError = PDSProbeError
+
+
+class PDSProbeDatasetsOutput(BaseModel):
+    """Output for pds_probe_datasets."""
 
     status: str = Field(..., description="'success' or 'error'")
-    results: list[PDSGeoProbeResult] = Field(
+    results: list[PDSProbeResult] = Field(
         default_factory=list,
         description="Leaf-node labels found (one entry per label file; hybrid dirs produce multiple entries)",
     )
-    errors: list[PDSGeoProbeError] = Field(
+    errors: list[PDSProbeError] = Field(
         default_factory=list,
         description="Paths that could not be probed (404, invalid path, etc.)",
     )
     error: str | None = Field(None, description="Top-level error message if the entire probe failed")
+
+
+# Backward-compat alias
+PDSGeoProbeDatasetsOutput = PDSProbeDatasetsOutput
 
 
 # ---------------------------------------------------------------------------
@@ -139,12 +151,12 @@ class PDSGeoProbeDatasetsOutput(BaseModel):
 # ---------------------------------------------------------------------------
 
 
-async def pds_geo_probe_datasets(
+async def pds_probe_datasets(
     paths: list[str],
     *,
-    base_url: str = GEO_BASE_URL,
+    node: str = "geo",
     timeout: float = 30.0,
-) -> PDSGeoProbeDatasetsOutput:
+) -> PDSProbeDatasetsOutput:
     """Probe one or more dataset directories for PDS labels.
 
     For each path, fetches the directory listing and looks for leaf-node
@@ -158,18 +170,24 @@ async def pds_geo_probe_datasets(
     multiple result entries.
 
     Returns parsed metadata including dataset_id, title, and slimmed fields.
+
+    Args:
+        paths: List of dataset directory paths to probe (max 20).
+        node: PDS node identifier ("geo", "ppi", "lroc").
+        timeout: HTTP timeout in seconds.
     """
     if not paths:
-        return PDSGeoProbeDatasetsOutput(status="success")
+        return PDSProbeDatasetsOutput(status="success")
 
     # Cap the number of paths to prevent abuse
     paths = paths[:20]
+    base_url = get_base_url(node)
 
-    results: list[PDSGeoProbeResult] = []
-    errors: list[PDSGeoProbeError] = []
+    results: list[PDSProbeResult] = []
+    errors: list[PDSProbeError] = []
 
     try:
-        async with GEOLiveClient(base_url=base_url, timeout=timeout) as client:
+        async with PDSLiveClient(base_url=base_url, timeout=timeout) as client:
             for path in paths:
                 try:
                     record = await client.inspect_dataset(path)
@@ -189,7 +207,7 @@ async def pds_geo_probe_datasets(
                             slimmed = _slim_pds4_fields(raw_fields)
 
                         results.append(
-                            PDSGeoProbeResult(
+                            PDSProbeResult(
                                 path=label.get("volume_dir", record["volume_dir"]),
                                 pds_version=pds_version,
                                 file_type=ft,
@@ -199,24 +217,28 @@ async def pds_geo_probe_datasets(
                             )
                         )
 
-                except GEOPathInvalidError as e:
-                    errors.append(PDSGeoProbeError(path=path, error=str(e)))
-                except GEOPathNotFoundError as e:
-                    errors.append(PDSGeoProbeError(path=path, error=str(e)))
-                except GEOLiveClientError as e:
-                    errors.append(PDSGeoProbeError(path=path, error=str(e)))
+                except PDSPathInvalidError as e:
+                    errors.append(PDSProbeError(path=path, error=str(e)))
+                except PDSPathNotFoundError as e:
+                    errors.append(PDSProbeError(path=path, error=str(e)))
+                except PDSLiveClientError as e:
+                    errors.append(PDSProbeError(path=path, error=str(e)))
 
     except Exception as e:
-        logger.error(f"Unexpected error in pds_geo_probe_datasets: {e}")
-        return PDSGeoProbeDatasetsOutput(
+        logger.error(f"Unexpected error in pds_probe_datasets: {e}")
+        return PDSProbeDatasetsOutput(
             status="error",
             results=results,
             errors=errors,
             error=f"Internal error: {e}",
         )
 
-    return PDSGeoProbeDatasetsOutput(
+    return PDSProbeDatasetsOutput(
         status="success",
         results=results,
         errors=errors,
     )
+
+
+# Backward-compat alias
+pds_geo_probe_datasets = pds_probe_datasets

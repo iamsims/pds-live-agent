@@ -1,0 +1,16 @@
+{
+  "query": "What is the dominant inward force in Jupiter's dawnside magnetodisk, and what is the dominant outward force?",
+  "row": {
+    "rank": null,
+    "paper_short": "Liu 2024",
+    "rationale": null,
+    "paper": "Liu, Z.Y., et al., 2024. Juno observations of Jupiter's magnetodisk plasma: Implications for equilibrium and dynamics. JGR Space Physics, 129(11), e2024JA032976. DOI:10.1029/2024JA032976",
+    "query": "What is the dominant inward force in Jupiter's dawnside magnetodisk, and what is the dominant outward force?",
+    "expected_ids": "JNO-J-3-FGM-CAL-V1.0\nJNO-J/SW-JAD-5-CALIBRATED-V1.0\nJNO-J-JED-3-CDR-V1.0",
+    "node": "PPI"
+  },
+  "tool_calls": [],
+  "full_trace": [
+    "{'error': \"TypeError: 'NoneType' object is not callable\"}"
+  ]
+}

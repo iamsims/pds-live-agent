@@ -39,6 +39,7 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 _GOLD_FILE = Path(__file__).resolve().parent / "data" / "gold_standard_bundle_collection_dataset_level.xlsx"
+_NODE_CLASS_FILE = Path(__file__).resolve().parent / "data" / "pds_node_classification.xlsx"
 
 # Column indices (0-based) in the gold sheet
 _COL_RANK = 0
@@ -49,6 +50,13 @@ _COL_QUERY = 4
 _COL_EXPECTED_IDS = 5
 _COL_NODE = 6
 
+# Column indices in pds_node_classification.xlsx
+_NC_COL_PAPER_SHORT = 0
+_NC_COL_PAPER = 1
+_NC_COL_QUERY = 2
+_NC_COL_EXPECTED_IDS = 3  # "Expected Identifiers (bundle/collection only)"
+_NC_COL_PRIMARY_NODE = 4
+
 
 def load_gold_queries(
     node_filter: str | None = None,
@@ -58,7 +66,17 @@ def load_gold_queries(
 
     Returns a list of dicts with keys: rank, paper_short, rationale, paper,
     query, expected_ids, node.
+
+    Uses pds_node_classification.xlsx for nodes not in the geo-focused gold
+    standard file (e.g. ppi, atm, sbn).
     """
+    # Nodes available in the geo-focused gold standard file
+    _GEO_GOLD_NODES = {"geo", "img", "geo,img", "atm", "atm,img", "sbn"}
+
+    # Decide which file to use based on node_filter
+    if node_filter and node_filter.lower() not in _GEO_GOLD_NODES:
+        return _load_from_node_classification(node_filter, limit)
+
     wb = openpyxl.load_workbook(_GOLD_FILE, read_only=True)
     ws = wb["Gold Datasets"]
 
@@ -76,6 +94,37 @@ def load_gold_queries(
                 "query": row[_COL_QUERY],
                 "expected_ids": row[_COL_EXPECTED_IDS],
                 "node": row[_COL_NODE],
+            }
+        )
+        if limit and len(rows) >= limit:
+            break
+
+    wb.close()
+    return rows
+
+
+def _load_from_node_classification(
+    node_filter: str,
+    limit: int | None = None,
+) -> list[dict]:
+    """Load queries from pds_node_classification.xlsx filtered by Primary PDS Node."""
+    wb = openpyxl.load_workbook(_NODE_CLASS_FILE, read_only=True)
+    ws = wb["PDS Node Classification"]
+
+    rows: list[dict] = []
+    for row in ws.iter_rows(min_row=2, values_only=True):
+        node = str(row[_NC_COL_PRIMARY_NODE]).strip().lower() if row[_NC_COL_PRIMARY_NODE] else ""
+        if node != node_filter.lower():
+            continue
+        rows.append(
+            {
+                "rank": None,
+                "paper_short": row[_NC_COL_PAPER_SHORT],
+                "rationale": None,
+                "paper": row[_NC_COL_PAPER],
+                "query": row[_NC_COL_QUERY],
+                "expected_ids": row[_NC_COL_EXPECTED_IDS],
+                "node": row[_NC_COL_PRIMARY_NODE],
             }
         )
         if limit and len(rows) >= limit:
@@ -153,14 +202,14 @@ def _print_tool_calls(tool_calls: list[dict], label: str) -> None:
 # ---------------------------------------------------------------------------
 
 
-async def _run_query(kind: str, query: str, max_retries: int = 2) -> tuple[FindDatasetOutput, list]:
+async def _run_query(kind: str, query: str, node: str | None = None, max_retries: int = 2) -> tuple[FindDatasetOutput, list]:
     """Run one query through a finder and return (output, raw_messages).
 
     Retries up to *max_retries* times when the agent returns zero candidates
     (which usually indicates a spurious early exit or transient failure).
     """
     for attempt in range(1, max_retries + 1):
-        agent = build_finder(kind=kind)  # type: ignore[arg-type]
+        agent = build_finder(kind=kind, node=node)  # type: ignore[arg-type]
         async with agent:
             result = await agent.run(query)
         output = result.output
@@ -233,6 +282,7 @@ async def run_eval(
 
     async def _process_query(idx: int, row: dict) -> dict:
         query = row["query"]
+        query_node = str(row.get("node", "")).strip().lower() or node_filter
 
         async with sem:
             print(f"\n[{idx + 1}/{len(queries)}] {query[:80]}...")
@@ -245,7 +295,7 @@ async def run_eval(
             # Run live and catalog in parallel when both are enabled
             tasks: dict[str, asyncio.Task] = {}
             if run_live:
-                tasks["live"] = asyncio.create_task(_run_query("live", query))
+                tasks["live"] = asyncio.create_task(_run_query("live", query, node=query_node))
             if run_catalog:
                 tasks["catalog"] = asyncio.create_task(_run_query("catalog", query))
 
@@ -326,57 +376,71 @@ async def run_eval(
 
 
 # ---------------------------------------------------------------------------
-# Backfill: re-run only empty catalog traces in an existing output dir
+# Backfill: re-run only empty traces in an existing output dir
 # ---------------------------------------------------------------------------
 
 
-async def backfill_catalog(output_dir: str | Path) -> None:
-    """Scan *output_dir*/traces/catalog/ for empty traces and re-run them serially."""
+async def backfill(output_dir: str | Path, mode: str = "both") -> None:
+    """Scan *output_dir*/traces/ for empty traces and re-run them serially.
+
+    *mode* can be "both", "live", or "catalog" to control which trace dirs
+    are scanned and backfilled.
+    """
     output_dir = Path(output_dir).resolve()
-    catalog_dir = output_dir / "traces" / "catalog"
-    if not catalog_dir.exists():
-        print(f"No catalog traces directory at {catalog_dir}")
-        return
 
-    # Find trace files with zero tool_calls
-    empty_indices: list[tuple[int, dict]] = []
-    for trace_file in sorted(catalog_dir.glob("*_trace.json")):
-        data = json.loads(trace_file.read_text())
-        if not data.get("tool_calls"):
-            idx = int(trace_file.stem.split("_")[0])
-            empty_indices.append((idx, data["row"]))
+    kinds: list[str] = []
+    if mode in ("both", "live"):
+        kinds.append("live")
+    if mode in ("both", "catalog"):
+        kinds.append("catalog")
 
-    if not empty_indices:
-        print("All catalog traces already have tool calls — nothing to backfill.")
-        return
+    for kind in kinds:
+        traces_dir = output_dir / "traces" / kind
+        if not traces_dir.exists():
+            print(f"No {kind} traces directory at {traces_dir} — skipping.")
+            continue
 
-    print(f"Found {len(empty_indices)} empty catalog traces: {[i for i, _ in empty_indices]}")
-    print("Re-running serially...\n")
+        # Find trace files with zero tool_calls
+        empty_indices: list[tuple[int, dict]] = []
+        for trace_file in sorted(traces_dir.glob("*_trace.json")):
+            data = json.loads(trace_file.read_text())
+            if not data.get("tool_calls"):
+                idx = int(trace_file.stem.split("_")[0])
+                empty_indices.append((idx, data["row"]))
 
-    for idx, row in empty_indices:
-        query = row["query"]
-        print(f"[{idx:03d}] {query[:80]}...")
-        try:
-            output, trace = await _run_query("catalog", query)
-            tool_calls = _extract_tool_calls(trace)
-            print(f"  -> {len(output.candidates)} candidates, {len(tool_calls)} tool calls")
-            _print_tool_calls(tool_calls, f"{idx:03d}/catalog")
-        except Exception as e:
-            print(f"  -> FAILED: {e}")
-            tool_calls = []
-            trace = [{"error": f"{type(e).__name__}: {e}"}]
+        if not empty_indices:
+            print(f"All {kind} traces already have tool calls — nothing to backfill.")
+            continue
 
-        trace_data = {
-            "query": query,
-            "row": row,
-            "tool_calls": tool_calls,
-            "full_trace": [_serialize(msg) for msg in trace] if not _is_error_trace(trace) else trace,
-        }
-        (catalog_dir / f"{idx:03d}_trace.json").write_text(
-            json.dumps(trace_data, indent=2, default=str)
-        )
+        print(f"Found {len(empty_indices)} empty {kind} traces: {[i for i, _ in empty_indices]}")
+        print("Re-running serially...\n")
 
-    print(f"\nBackfill done. Updated traces in {catalog_dir}")
+        for idx, row in empty_indices:
+            query = row["query"]
+            query_node = str(row.get("node", "")).strip().lower() or None
+            print(f"[{idx:03d}] ({kind}) {query[:80]}...")
+            try:
+                node_arg = query_node if kind == "live" else None
+                output, trace = await _run_query(kind, query, node=node_arg)
+                tool_calls = _extract_tool_calls(trace)
+                print(f"  -> {len(output.candidates)} candidates, {len(tool_calls)} tool calls")
+                _print_tool_calls(tool_calls, f"{idx:03d}/{kind}")
+            except Exception as e:
+                print(f"  -> FAILED: {e}")
+                tool_calls = []
+                trace = [{"error": f"{type(e).__name__}: {e}"}]
+
+            trace_data = {
+                "query": query,
+                "row": row,
+                "tool_calls": tool_calls,
+                "full_trace": [_serialize(msg) for msg in trace] if not _is_error_trace(trace) else trace,
+            }
+            (traces_dir / f"{idx:03d}_trace.json").write_text(
+                json.dumps(trace_data, indent=2, default=str)
+            )
+
+        print(f"\nBackfill done for {kind}. Updated traces in {traces_dir}")
 
 
 # ---------------------------------------------------------------------------
@@ -574,7 +638,7 @@ def main():
         type=str,
         default=None,
         metavar="OUTPUT_DIR",
-        help="Re-run only empty catalog traces in an existing output directory",
+        help="Re-run empty traces in an existing output directory (uses --mode to select live/catalog/both)",
     )
     parser.add_argument(
         "--rebuild",
@@ -588,7 +652,7 @@ def main():
     if args.rebuild:
         rebuild_results(args.rebuild)
     elif args.backfill:
-        asyncio.run(backfill_catalog(args.backfill))
+        asyncio.run(backfill(args.backfill, mode=args.mode))
     else:
         asyncio.run(run_eval(node_filter=args.node, limit=args.limit or None, mode=args.mode, concurrency=args.concurrency))
 

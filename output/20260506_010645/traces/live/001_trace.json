@@ -1,0 +1,16 @@
+{
+  "query": "Could Mercury's ring current produce a measurable magnetic storm like depression?",
+  "row": {
+    "rank": null,
+    "paper_short": "Zhao 2022",
+    "rationale": null,
+    "paper": "Zhao, J.T., et al., 2022. Observational evidence of ring current in the magnetosphere of Mercury. Nature Communications, 13(1), p.924. DOI:10.1038/s41467-022-28521-3",
+    "query": "Could Mercury's ring current produce a measurable magnetic storm like depression?",
+    "expected_ids": "MESS-E_V_H_SW-EPPS-3-FIPS-DDR-V2.0\nMESS-E_V_H_SW-MAG-3-CDR-CALIBRATED-V1.0",
+    "node": "PPI"
+  },
+  "tool_calls": [],
+  "full_trace": [
+    "{'error': \"TypeError: 'NoneType' object is not callable\"}"
+  ]
+}
