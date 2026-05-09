@@ -197,6 +197,63 @@ _LROC_WORKFLOW_STEPS = (
 )
 
 # ---------------------------------------------------------------------------
+# IMG — JPL Imaging Node
+# ---------------------------------------------------------------------------
+
+# JPL IMG hosts the legacy planetary imaging archive at /img/data/. Top level is
+# a flat list of mission directories. Each mission can nest deeply (e.g. cassini
+# branches into cassini_orbiter/, opus/, pds4/, public/) — the agent should call
+# list_dataset_dirs at successive depths rather than guessing paths.
+
+_IMG_MISSIONS: tuple[dict[str, str], ...] = (
+    {"name": "cassini", "description": "Cassini imaging at Saturn (ISS NAC/WAC). Nests into cassini_orbiter/, opus/, pds4/, public/."},
+    {"name": "galileo", "description": "Galileo SSI imaging at Jupiter and asteroid flybys (Gaspra, Ida)."},
+    {"name": "voyager", "description": "Voyager 1 & 2 ISS imaging — Jupiter, Saturn, Uranus, Neptune."},
+    {"name": "mariner6", "description": "Mariner 6 Mars flyby imaging (1969)."},
+    {"name": "mariner7", "description": "Mariner 7 Mars flyby imaging (1969)."},
+    {"name": "mariner9", "description": "Mariner 9 Mars orbiter imaging (1971-72)."},
+    {"name": "mariner10", "description": "Mariner 10 Mercury and Venus imaging (1973-75)."},
+    {"name": "viking_orbiter", "description": "Viking Orbiter 1 & 2 imaging of Mars (1976-80)."},
+    {"name": "viking_lander", "description": "Viking Lander 1 & 2 surface imaging at Mars."},
+    {"name": "magellan", "description": "Magellan SAR/altimetry/radiometry/emissivity imaging at Venus."},
+    {"name": "messenger", "description": "MESSENGER MDIS imaging at Mercury (legacy IMG mirror)."},
+    {"name": "near", "description": "NEAR Shoemaker MSI imaging at asteroid Eros."},
+    {"name": "stardust", "description": "Stardust NAVCAM imaging of comet Wild 2 + Tempel 1 flyby."},
+    {"name": "deepimpact", "description": "Deep Impact HRI/MRI/ITS imaging at comet Tempel 1."},
+)
+
+_IMG_ABBREVIATIONS = (
+    "Naming conventions on IMG:\n"
+    "  Top level: lowercase mission directories (cassini/, galileo/, mariner9/, viking_orbiter/, …).\n"
+    "  Inside a mission: variable structure. Cassini for example has cassini_orbiter/, opus/, "
+    "pds4/, and public/ — all four can contain datasets at different depths.\n"
+    "  PDS3 dataset names: hyphenated identifiers (e.g. co-s-iss-2-edr-v1.0); PDS4 bundles begin with urn-nasa-pds-.\n"
+    "Skip these directories at every level when scanning: checksums, document, index, catalog, "
+    "extras, browse, software, errata.\n"
+)
+
+_IMG_WORKFLOW = (
+    "Directory layout: img/data/<mission>/[<sub-tree>/]<dataset_or_bundle>/\n"
+    "Top level under img/data/ is a flat list of mission directories. Many missions nest one or\n"
+    "two more levels before reaching dataset roots (Cassini is the most extreme — four parallel\n"
+    "sub-trees). Recurse with list_dataset_dirs rather than guessing paths.\n"
+    "There is no holdings/inventory page — the Apache directory listing is the only index.\n"
+)
+
+_IMG_WORKFLOW_STEPS = (
+    "Step 1: If you know the mission directory from the abbreviation table, skip directly to "
+    "list_dataset_dirs(path='img/data/<mission>/', node='img'). Otherwise call "
+    "pds_list_missions(node='img') first to see the mission list.\n"
+    "Step 2: Call pds_list_dataset_dirs for the mission directory. If results look like another "
+    "layer of organisational sub-trees (e.g. cassini_orbiter/, opus/, pds4/, public/ for Cassini), "
+    "call list_dataset_dirs again on the relevant sub-tree to reach actual dataset roots.\n"
+    "Step 3: Call pds_probe_datasets with the most relevant dataset paths (batch up to 20).\n"
+    "Step 4: If PDS4 bundles are found, call pds_inspect_collections on top 2-3.\n"
+    "Step 5: Return candidates.\n"
+    "Most queries take 3-4 tool calls because of the extra mission-internal layer.\n"
+)
+
+# ---------------------------------------------------------------------------
 # RMS — Ring-Moon Systems
 # ---------------------------------------------------------------------------
 
@@ -414,6 +471,86 @@ _ATM_WORKFLOW_STEPS = (
 )
 
 # ---------------------------------------------------------------------------
+# NAIF — Navigation and Ancillary Information Facility (SPICE archive)
+# ---------------------------------------------------------------------------
+
+# NAIF publishes SPICE kernel archives (SPK, CK, FK, IK, LSK, PCK, SCLK) under
+# TWO parallel trees:
+#   pub/naif/pds/data/   — PDS3 archives (mission → version_dir, e.g. lro-l-spice-6-v1.0/lrosp_1000/)
+#   pub/naif/pds/pds4/   — PDS4 bundles (flat list)
+# PDS3 nests two levels deep (the mission archive contains a numbered version
+# directory which is the actual PDS3 volume). The agent treats data/ as the
+# primary entry and recurses one extra level when probing.
+
+_NAIF_MISSIONS: tuple[dict[str, str], ...] = (
+    {"name": "lro-l-spice-6", "description": "Lunar Reconnaissance Orbiter SPICE kernels."},
+    {"name": "msl-m-spice-6", "description": "Mars Science Laboratory / Curiosity SPICE kernels."},
+    {"name": "mars2020-m-spice-6", "description": "Mars 2020 / Perseverance SPICE kernels."},
+    {"name": "insight-m-spice-6", "description": "InSight lander SPICE kernels."},
+    {"name": "mer1-m-spice-6", "description": "Mars Exploration Rover Opportunity (MER-1) SPICE kernels."},
+    {"name": "mer2-m-spice-6", "description": "Mars Exploration Rover Spirit (MER-2) SPICE kernels."},
+    {"name": "mex-e_m-spice-6", "description": "Mars Express SPICE kernels."},
+    {"name": "mro-m-spice-6", "description": "Mars Reconnaissance Orbiter SPICE kernels."},
+    {"name": "mgs-m-spice-6", "description": "Mars Global Surveyor SPICE kernels."},
+    {"name": "ody-m-spice-6", "description": "Mars Odyssey SPICE kernels."},
+    {"name": "maven-m-spice-6", "description": "MAVEN SPICE kernels."},
+    {"name": "co-s_e_v-spice-6", "description": "Cassini-Huygens SPICE kernels (Saturn tour + cruise)."},
+    {"name": "vg1-j_s-spice-6", "description": "Voyager 1 SPICE kernels (Jupiter, Saturn)."},
+    {"name": "vg2-j_s_u_n-spice-6", "description": "Voyager 2 SPICE kernels (Jupiter, Saturn, Uranus, Neptune)."},
+    {"name": "go-j_e_a-spice-6", "description": "Galileo SPICE kernels (Jupiter, Earth, asteroids)."},
+    {"name": "near-a-spice-6", "description": "NEAR Shoemaker SPICE kernels."},
+    {"name": "mess-e_v_h-spice-6", "description": "MESSENGER SPICE kernels (Mercury cruise + orbit)."},
+    {"name": "juno-j-spice-6", "description": "Juno SPICE kernels at Jupiter."},
+    {"name": "nh-j_p_ss-spice-6", "description": "New Horizons SPICE kernels (Jupiter, Pluto, KBO encounters)."},
+    {"name": "ro-c_e_a-spice-6", "description": "Rosetta SPICE kernels (comet 67P, Earth flybys, asteroid flybys)."},
+    {"name": "orex-bennu-spice-6", "description": "OSIRIS-REx SPICE kernels at asteroid Bennu."},
+    {"name": "hyb2-ryugu-spice-6", "description": "Hayabusa2 SPICE kernels at asteroid Ryugu."},
+    {"name": "lucy-spice-6", "description": "Lucy SPICE kernels (Trojan asteroid mission)."},
+    {"name": "dart-spice-6", "description": "DART SPICE kernels (Didymos/Dimorphos impact)."},
+)
+
+_NAIF_ABBREVIATIONS = (
+    "Naming conventions on NAIF:\n"
+    "  PDS3 archive root: <mission>-<target>-spice-6-v<x.y>/  (e.g. lro-l-spice-6-v1.0/).\n"
+    "  Each archive root contains ONE numbered version sub-directory (e.g. lrosp_1000/, "
+    "msls_1000/) which is the actual PDS3 volume holding voldesc.cat and data/, catalog/, etc.\n"
+    "  PDS4 bundles use lowercase mission identifiers under pub/naif/pds/pds4/.\n"
+    "Kernel types stored: SPK (trajectories), CK (orientation), FK (frames), IK (instrument), "
+    "LSK (leapseconds), PCK (planetary constants), SCLK (spacecraft clocks). Only relevant "
+    "when the query is about geometry/pointing/timing rather than measured science data.\n"
+    "Skip these directories when scanning: checksums, extras, browse, software, errata, "
+    "document, index, catalog.\n"
+)
+
+_NAIF_WORKFLOW = (
+    "Two parallel trees:\n"
+    "  PDS3 → pub/naif/pds/data/<mission_archive>/<version_dir>/   (TWO levels deep)\n"
+    "  PDS4 → pub/naif/pds/pds4/<bundle>/                          (flat list)\n"
+    "PDS3 archives nest the actual volume one level inside (e.g. lro-l-spice-6-v1.0/lrosp_1000/ "
+    "contains the voldesc.cat). pds_probe_datasets recurses into that inner directory automatically.\n"
+    "Multiple version dirs may exist (lrosp_1000/, lrosp_1001/, …) — prefer the highest-numbered version.\n"
+    "NAIF is the SPICE archive: only use it for queries about ephemerides, attitude, frames, or "
+    "spacecraft clocks. For measured science data (imaging, spectroscopy, fields/particles) use a "
+    "discipline node instead.\n"
+)
+
+_NAIF_WORKFLOW_STEPS = (
+    "Step 1: Confirm the query is actually about SPICE / geometry / pointing / timing — if it's "
+    "about measured science data, use a discipline node (GEO/PPI/RMS/IMG/etc.) instead.\n"
+    "Step 2: Decide PDS3 vs PDS4. Most NAIF papers cite the PDS3 archive id (e.g. "
+    "LRO-L-SPICE-6-V1.0); PDS4 bundles are the modern equivalent.\n"
+    "Step 3 (PDS3): Call pds_list_dataset_dirs(path='pub/naif/pds/data/', node='naif', "
+    "filter='<mission>') with a mission key from the abbreviation table.\n"
+    "Step 3 (PDS4): Call pds_list_dataset_dirs(path='pub/naif/pds/pds4/', node='naif') — "
+    "flat list of bundles.\n"
+    "Step 4: Call pds_probe_datasets on the relevant archive root(s). For PDS3, the tool "
+    "automatically recurses into the inner numbered version directory to find voldesc.cat; "
+    "when multiple version dirs exist, prefer the highest version (e.g. lrosp_1001 over lrosp_1000).\n"
+    "Step 5: For PDS4 bundles, call pds_inspect_collections on top 2-3.\n"
+    "Step 6: Return BOTH PDS3 archive id and PDS4 bundle LID when both exist for the same mission.\n"
+)
+
+# ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
 
@@ -455,6 +592,20 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         workflow_notes=_LROC_WORKFLOW,
         abbreviations=_LROC_ABBREVIATIONS,
         workflow_steps=_LROC_WORKFLOW_STEPS,
+    ),
+    "img": NodeConfig(
+        node_id="img",
+        base_url="https://planetarydata.jpl.nasa.gov/",
+        display_name="JPL Imaging Node (IMG)",
+        data_root="img/data/",
+        has_mission_layer=True,
+        missions=_IMG_MISSIONS,
+        description="JPL legacy planetary imaging archive: Cassini ISS, Voyager ISS, Galileo SSI, "
+        "Mariner missions, Viking Orbiter/Lander, Magellan SAR, MESSENGER MDIS, NEAR MSI, plus "
+        "small-body imaging (Stardust, Deep Impact)",
+        workflow_notes=_IMG_WORKFLOW,
+        abbreviations=_IMG_ABBREVIATIONS,
+        workflow_steps=_IMG_WORKFLOW_STEPS,
     ),
     "rms": NodeConfig(
         node_id="rms",
@@ -502,6 +653,22 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         workflow_notes=_ATM_WORKFLOW,
         abbreviations=_ATM_ABBREVIATIONS,
         workflow_steps=_ATM_WORKFLOW_STEPS,
+    ),
+    "naif": NodeConfig(
+        node_id="naif",
+        base_url="https://naif.jpl.nasa.gov/",
+        display_name="Navigation and Ancillary Information Facility (NAIF)",
+        # Two roots; pub/naif/pds/data/ is the PDS3 entry (mission archives nest one
+        # level deeper into a numbered version dir). PDS4 lives at pub/naif/pds/pds4/.
+        data_root="pub/naif/pds/data/",
+        has_mission_layer=True,
+        missions=_NAIF_MISSIONS,
+        description="SPICE kernel archive: spacecraft ephemerides, orientation, frames, "
+        "instrument geometry, and clocks. Use for geometry/pointing/timing queries — not "
+        "for measured science data",
+        workflow_notes=_NAIF_WORKFLOW,
+        abbreviations=_NAIF_ABBREVIATIONS,
+        workflow_steps=_NAIF_WORKFLOW_STEPS,
     ),
 }
 

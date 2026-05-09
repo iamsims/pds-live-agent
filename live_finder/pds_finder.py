@@ -1,14 +1,13 @@
 """Generalized multi-node PDS live finder agent.
 
-Supports GEO, PPI, LROC, RMS, SBN, and ATM nodes. Two operating modes:
+Supports GEO, PPI, LROC, IMG, RMS, SBN, ATM, and NAIF nodes. Two operating modes:
 
 1. **Multi-node** (node=None): Agent gets a routing prompt and uses
    ``pds_select_node`` to determine which node to query. Used when the
    caller doesn't know the target node upfront.
 
-2. **Single-node** (node="geo"|"ppi"|"lroc"|"rms"|"sbn"|"atm"): Agent gets
-   a focused prompt with node-specific context baked in. Saves one tool
-   call (no routing step).
+2. **Single-node** (node in SUPPORTED_NODES): Agent gets a focused prompt
+   with node-specific context baked in. Saves one tool call (no routing step).
 
 The MCP server (``pydantic_code.tools.mcp_server``) serves the same 5 tools
 regardless of mode — all tools accept a ``node`` parameter.
@@ -44,24 +43,31 @@ _MULTI_NODE_SYSTEM_PROMPT = (
     "plasma, particles, fields, radio/plasma waves\n"
     "  - LROC (Lunar Reconnaissance Orbiter Camera): NAC/WAC lunar imaging, "
     "EDR/CDR/RDR products\n"
+    "  - IMG (JPL Imaging Node): legacy planetary imaging — Cassini ISS, Voyager ISS, "
+    "Galileo SSI, Mariner missions, Viking Orbiter/Lander, Magellan SAR, MESSENGER MDIS, "
+    "NEAR MSI, Stardust, Deep Impact\n"
     "  - RMS (Ring-Moon Systems): Saturn rings (Cassini ISS/UVIS/VIMS, Voyager), "
     "Uranus/Jupiter/Neptune rings, ring occultations, irregular satellites\n"
     "  - SBN (Small Bodies Node): comets, asteroids, KBOs, dust; Rosetta, "
     "OSIRIS-REx, Hayabusa, Lucy, DART, Stardust, Deep Impact, NEAR\n"
     "  - ATM (Atmospheres): planetary atmospheres + surface meteorology — "
     "Mars (MCS/MAVEN/REMS/MEDA), Venus (Pioneer Venus), Jupiter (Galileo Probe), "
-    "Titan (Huygens), outer planets (Voyager IRIS)\n\n"
+    "Titan (Huygens), outer planets (Voyager IRIS)\n"
+    "  - NAIF (Navigation and Ancillary Information Facility): SPICE kernels — "
+    "spacecraft ephemerides, attitude/orientation, frames, instrument geometry, "
+    "and clocks. Use ONLY for geometry/pointing/timing queries\n\n"
     # ---- WORKFLOW ----
     "WORKFLOW:\n"
     "  Step 0: Determine which node is relevant from the query.\n"
     "          Call pds_select_node(node=...) to get node-specific context "
     "(missions, abbreviations, workflow tips).\n"
     "  Step 1: Call pds_list_missions(node=...) to see available missions.\n"
-    "          For GEO this returns mission directories. For PPI/RMS/SBN/ATM "
+    "          For GEO/IMG/NAIF this returns mission directories. For PPI/RMS/SBN/ATM "
     "the names are filter keywords. For LROC, skip to list_dataset_dirs.\n"
     "  Step 2: Call pds_list_dataset_dirs(path=..., node=..., filter=...).\n"
     "          For flat nodes with many datasets (PPI ~767, ATM ~2000, RMS ~84), "
-    "use filter= to narrow by keyword.\n"
+    "use filter= to narrow by keyword. For IMG, you may need a second list call "
+    "to traverse mission-internal sub-trees (e.g. cassini → cassini_orbiter/, opus/, pds4/, public/).\n"
     "  Step 3: Call pds_probe_datasets(paths=[...], node=...) with the most "
     "relevant directories.\n"
     "  Step 4: If PDS4 bundles are found and you need collection-level LIDs, "
@@ -74,13 +80,20 @@ _MULTI_NODE_SYSTEM_PROMPT = (
     "  - Magnetic fields, plasma, particles, solar wind, magnetospheres, "
     "radio/plasma waves, energetic particles → PPI\n"
     "  - Specifically LROC camera images of the Moon (NAC/WAC) → LROC\n"
+    "  - Legacy planetary imaging (Cassini ISS, Voyager ISS, Galileo SSI, Mariner, "
+    "Viking, Magellan SAR, MESSENGER MDIS) — when the data is camera images and the "
+    "query doesn't fit GEO/RMS/LROC scope → IMG. Note: Cassini ISS ring observations "
+    "go to RMS, not IMG; Mars surface imaging via HiRISE/CTX goes to GEO.\n"
     "  - Saturn/Uranus/Jupiter/Neptune RINGS, ring occultations, irregular "
     "satellites (small icy moons), Cassini ISS/UVIS/VIMS ring observations → RMS\n"
     "  - Comets, asteroids, KBOs, interplanetary dust, mission targets like "
     "Bennu/Itokawa/Ryugu/67P/Eros, Lucy Trojans, DART → SBN\n"
     "  - Planetary atmospheres (temperature/composition/aerosols/clouds), "
     "surface meteorology (wind, pressure, RH, dust opacity), atmospheric "
-    "occultations, Mars Climate Sounder, Huygens Titan descent → ATM\n\n"
+    "occultations, Mars Climate Sounder, Huygens Titan descent → ATM\n"
+    "  - SPICE kernels, spacecraft trajectory/ephemerides, instrument pointing, "
+    "frames, leapseconds, spacecraft clocks → NAIF (only when the query is about "
+    "geometry/pointing/timing — not measured science data)\n\n"
     # ---- KNOWN LIMITATION ----
     "KNOWN LIMITATION:\n"
     "  SBN's holdings index returns HTTP 403 to all crawlers. For SBN queries, "
