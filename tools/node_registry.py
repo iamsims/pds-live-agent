@@ -12,7 +12,12 @@ from dataclasses import dataclass, field
 
 @dataclass(frozen=True)
 class NodeConfig:
-    """Static configuration for one PDS discipline node."""
+    """Static configuration for one PDS discipline node.
+
+    Per-node optimization protocol: when tuning the prompt for a single node,
+    edit ONLY this node's entry below — never the general prompt builder in
+    ``live_finder.pds_finder``. See CLAUDE.md at the project root.
+    """
 
     node_id: str
     base_url: str
@@ -21,8 +26,13 @@ class NodeConfig:
     has_mission_layer: bool  # True → missions sit between data_root and datasets
     missions: tuple[dict[str, str], ...] = field(default_factory=tuple)
     description: str = ""
+    # Free-form prose: directory layout + any caveats (HTTP 403, hybrid trees, etc.).
     workflow_notes: str = ""
+    # Mission/instrument abbreviation table — used by the agent for fast lookup.
     abbreviations: str = ""
+    # Numbered step-by-step plan the agent should follow for THIS node.
+    # Drop-in replacement for the if/elif branching the prompt builder used to do.
+    workflow_steps: str = ""
 
 
 # ---------------------------------------------------------------------------
@@ -83,6 +93,18 @@ _GEO_WORKFLOW = (
     "Most queries can be answered in 3 tool calls: list_dataset_dirs → probe_datasets → inspect_collections.\n"
 )
 
+_GEO_WORKFLOW_STEPS = (
+    "Step 1: If you know the mission directory from the abbreviation table, "
+    "skip directly to list_dataset_dirs(path='<mission>/', node='geo').\n"
+    "        Otherwise call pds_list_missions(node='geo') first.\n"
+    "Step 2: Call pds_list_dataset_dirs for the relevant mission directory. "
+    "Scan names and pds_hints to identify promising datasets.\n"
+    "Step 3: Call pds_probe_datasets with the most relevant paths (batch up to 20).\n"
+    "Step 4: If PDS4 bundles are found, call pds_inspect_collections on top 2-3.\n"
+    "Step 5: Return candidates.\n"
+    "Most queries can be answered in 3 tool calls: list_dataset_dirs → probe_datasets → inspect_collections.\n"
+)
+
 # ---------------------------------------------------------------------------
 # PPI — Planetary Plasma Interactions
 # ---------------------------------------------------------------------------
@@ -130,6 +152,16 @@ _PPI_WORKFLOW = (
     "The mission 'name' from pds_list_missions is the filter keyword to use with list_dataset_dirs.\n"
 )
 
+_PPI_WORKFLOW_STEPS = (
+    "Step 1: Call pds_list_missions(node='ppi') to see all available missions and their filter keywords.\n"
+    "Step 2: Identify which mission(s) are relevant to the query.\n"
+    "Step 3: Call pds_list_dataset_dirs(path='data/', node='ppi', filter='<mission_name>') "
+    "using the mission name as the filter keyword. Filter is mandatory — ~781 entries otherwise.\n"
+    "Step 4: Call pds_probe_datasets with the most relevant paths (batch up to 20).\n"
+    "Step 5: If PDS4 bundles are found, call pds_inspect_collections on top 2-3.\n"
+    "Step 6: Return candidates.\n"
+)
+
 # ---------------------------------------------------------------------------
 # LROC — Lunar Reconnaissance Orbiter Camera
 # ---------------------------------------------------------------------------
@@ -151,6 +183,17 @@ _LROC_WORKFLOW = (
     "Go directly to pds_list_dataset_dirs(path='data/', node='lroc') to see all 3 datasets.\n"
     "Then probe the relevant ones with pds_probe_datasets.\n"
     "For PDS4 bundles, use inspect_collections to get collection-level LIDs.\n"
+)
+
+_LROC_WORKFLOW_STEPS = (
+    "Step 1: SKIP pds_list_missions — it returns an empty list for LROC. "
+    "Call pds_list_dataset_dirs(path='data/', node='lroc') directly to see all 3 datasets "
+    "(EDR, CDR, RDR — each a hybrid PDS3+PDS4 directory).\n"
+    "Step 2: Call pds_probe_datasets on the level(s) implied by the query "
+    "(EDR=raw, CDR=calibrated, RDR=reduced/derived).\n"
+    "Step 3: Call pds_inspect_collections on the relevant PDS4 bundles to get collection-level LIDs.\n"
+    "Step 4: Return candidates — emit BOTH the PDS3 dataset_id and the PDS4 LID for the same data "
+    "(e.g. LRO-L-LROC-5-RDR-V1.0 + urn:nasa:pds:lro-l-lroc-5-rdr).\n"
 )
 
 # ---------------------------------------------------------------------------
@@ -213,6 +256,21 @@ _RMS_WORKFLOW = (
     "volume directories automatically when given a volume-set path.\n"
 )
 
+_RMS_WORKFLOW_STEPS = (
+    "Step 1: Decide PDS3 vs PDS4 based on the query (most published papers cite PDS3 volumes; "
+    "the PDS4 bundles are the modern equivalent for Cassini ISS/UVIS/VIMS and Voyager ISS).\n"
+    "Step 2 (PDS3): Call pds_list_dataset_dirs(path='holdings/volumes/', node='rms', "
+    "filter='<KEY>') with a volume-set prefix from the abbreviation table "
+    "(e.g. COISS, COVIMS, GO_00, VG_28, NHxxLO).\n"
+    "Step 2 (PDS4): Call pds_list_dataset_dirs(path='pds4/bundles/', node='rms') — "
+    "flat list of named bundles (cassini_iss, cassini_uvis, cassini_vims, …).\n"
+    "Step 3: Call pds_probe_datasets on the most relevant volume-sets/bundles. "
+    "For PDS3 volume-sets, the tool recurses one level into the inner numbered volumes automatically.\n"
+    "Step 4: For PDS4 bundles, call pds_inspect_collections on top 2-3 to get collection LIDs.\n"
+    "Step 5: When the same instrument has BOTH a PDS3 volume-set and a PDS4 bundle, return BOTH "
+    "candidates. Do not silently drop the PDS3 form.\n"
+)
+
 # ---------------------------------------------------------------------------
 # SBN — Small Bodies Node
 # ---------------------------------------------------------------------------
@@ -270,6 +328,21 @@ _SBN_WORKFLOW = (
     "Do not call pds_list_dataset_dirs or pds_probe_datasets on SBN — they will 403.\n"
 )
 
+_SBN_WORKFLOW_STEPS = (
+    "DEGRADED MODE — SBN's holdings index is HTTP 403 to all crawlers, so the live tools cannot "
+    "verify candidates. Do NOT call pds_list_dataset_dirs or pds_probe_datasets on this node.\n"
+    "Step 1: Call pds_list_missions(node='sbn') to load the mission abbreviation table.\n"
+    "Step 2: Pick the mission(s) that match the query (Rosetta=ro-c/ro-a, OSIRIS-REx=orex, "
+    "Hayabusa=hay/hyb2, Lucy=lucy, DART=dart, Stardust=sd, Deep Impact=di/dif, NEAR=near-a, "
+    "Cassini CDA=co-d-cda, ground/space-based=gbo/hst/spitzer/irtf).\n"
+    "Step 3: Synthesise ONE candidate per likely dataset using the abbreviation pattern: "
+    "PDS3 = '<mission>-<target>-<instrument>-<level>-v<n>' (e.g. ro-c-osiris-2-cru2-mtp003-v2.0); "
+    "PDS4 = 'urn:nasa:pds:<mission_instrument>' (e.g. urn:nasa:pds:orex.ocams).\n"
+    "Step 4: In every candidate's `reasoning`, EXPLICITLY state that the dataset_id was inferred "
+    "from the abbreviation table — NOT verified live — because SBN's holdings index is unreachable.\n"
+    "Step 5: Return candidates.\n"
+)
+
 # ---------------------------------------------------------------------------
 # ATM — Atmospheres
 # ---------------------------------------------------------------------------
@@ -325,6 +398,21 @@ _ATM_WORKFLOW = (
     "pds_probe_datasets returns one entry per label; expect duplicates with different pds_version values.\n"
 )
 
+_ATM_WORKFLOW_STEPS = (
+    "Step 1: Decide PDS3 vs PDS4 based on the query.\n"
+    "Step 2 (PDS3): Call pds_list_dataset_dirs(path='PDS/data/', node='atm', filter='<KEY>') "
+    "with a volume prefix from the abbreviation table (MROM, MAVENM, MEXSPI, PVO, GP, HP, "
+    "VG_IRIS, MSL_REMS, M2020_MEDA, PHX, EARTH_, …). Filter is mandatory — ~2000 entries. "
+    "Ignore the `PDS4/` subdirectory at this level.\n"
+    "Step 2 (PDS4): Call pds_list_dataset_dirs(path='PDS/data/PDS4/', node='atm') — flat list "
+    "of bundle directories (Huygens/, InSight/, MAVEN/, …).\n"
+    "Step 3: Call pds_probe_datasets on the most relevant paths. HYBRID directories ship BOTH "
+    "PDS3 voldesc.cat and PDS4 bundle XML — expect duplicate entries with different pds_version.\n"
+    "Step 4: For PDS4 bundles, call pds_inspect_collections on top 2-3 (e.g. Huygens has "
+    "ACP, DISR, DWE, GCMS, HASI, SSP, HK collections).\n"
+    "Step 5: Return BOTH PDS3 and PDS4 IDs when the directory is hybrid.\n"
+)
+
 # ---------------------------------------------------------------------------
 # Registry
 # ---------------------------------------------------------------------------
@@ -341,6 +429,7 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         "topography, gravity, geochemistry, imaging, spectroscopy",
         workflow_notes=_GEO_WORKFLOW,
         abbreviations=_GEO_ABBREVIATIONS,
+        workflow_steps=_GEO_WORKFLOW_STEPS,
     ),
     "ppi": NodeConfig(
         node_id="ppi",
@@ -353,6 +442,7 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         "ionospheres, radio/plasma waves, energetic particles",
         workflow_notes=_PPI_WORKFLOW,
         abbreviations=_PPI_ABBREVIATIONS,
+        workflow_steps=_PPI_WORKFLOW_STEPS,
     ),
     "lroc": NodeConfig(
         node_id="lroc",
@@ -364,6 +454,7 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         description="LROC imaging: NAC and WAC lunar surface images, EDR/CDR/RDR products",
         workflow_notes=_LROC_WORKFLOW,
         abbreviations=_LROC_ABBREVIATIONS,
+        workflow_steps=_LROC_WORKFLOW_STEPS,
     ),
     "rms": NodeConfig(
         node_id="rms",
@@ -378,6 +469,7 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         "Uranus/Jupiter/Neptune rings, ring occultations, irregular satellites",
         workflow_notes=_RMS_WORKFLOW,
         abbreviations=_RMS_ABBREVIATIONS,
+        workflow_steps=_RMS_WORKFLOW_STEPS,
     ),
     "sbn": NodeConfig(
         node_id="sbn",
@@ -393,6 +485,7 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         "plus ground/space-based observations",
         workflow_notes=_SBN_WORKFLOW,
         abbreviations=_SBN_ABBREVIATIONS,
+        workflow_steps=_SBN_WORKFLOW_STEPS,
     ),
     "atm": NodeConfig(
         node_id="atm",
@@ -408,6 +501,7 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         "outer planets (Voyager IRIS)",
         workflow_notes=_ATM_WORKFLOW,
         abbreviations=_ATM_ABBREVIATIONS,
+        workflow_steps=_ATM_WORKFLOW_STEPS,
     ),
 }
 

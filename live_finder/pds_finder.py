@@ -117,33 +117,37 @@ _MULTI_NODE_SYSTEM_PROMPT = (
 
 
 def _build_single_node_prompt(node: str) -> str:
-    """Build a focused single-node system prompt (no routing step needed)."""
+    """Build a focused single-node system prompt by injecting registry blocks.
+
+    The general scaffolding (intro / PDS3-vs-PDS4 / tool list / critical rules) is
+    universal and lives here. Everything node-specific (directory layout,
+    abbreviation table, numbered workflow steps) is read from the registry.
+
+    To tune behaviour for ONE node, edit that node's entry in
+    ``pydantic_code.tools.node_registry`` — do not modify this function.
+    """
     config = get_node_config(node)
 
-    # Base structure
-    prompt = (
+    return (
+        # ---- Intro ----
         f"You are a dataset-discovery assistant for the NASA PDS "
         f"{config.display_name} node at {config.base_url}\n\n"
-    )
 
-    # Node-specific workflow and abbreviations
-    if config.workflow_notes:
-        prompt += f"Directory layout and workflow:\n{config.workflow_notes}\n\n"
-    if config.abbreviations:
-        prompt += f"{config.abbreviations}\n\n"
+        # ---- Node-specific: directory layout / caveats ----
+        f"Directory layout and workflow:\n{config.workflow_notes}\n\n"
 
-    # PDS3 vs PDS4 conventions
-    prompt += (
+        # ---- Node-specific: abbreviation table ----
+        f"{config.abbreviations}\n\n"
+
+        # ---- Universal: PDS3 vs PDS4 conventions ----
         "PDS3 vs PDS4:\n"
         "  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers "
         "(e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n"
         "  - PDS4 bundle directories begin with `urn-nasa-pds-`. "
         "Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n"
         "  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\n"
-    )
 
-    # Tool descriptions
-    prompt += (
+        # ---- Universal: tool list ----
         f"YOUR TOOLS (4 tools — always pass node='{node}'):\n"
         f"  1. pds_list_missions(node='{node}') — returns mission directories "
         "with descriptions. No HTTP.\n"
@@ -153,49 +157,11 @@ def _build_single_node_prompt(node: str) -> str:
         "directories for PDS labels. Accepts a list of paths (max 20).\n"
         f"  4. pds_inspect_collections(path, node='{node}') — scans PDS4 "
         "bundle subdirs for collection labels.\n\n"
-    )
 
-    # Workflow (node-aware)
-    if config.has_mission_layer:
-        prompt += (
-            "WORKFLOW:\n"
-            f"  Step 1: If you know the mission directory from the abbreviation table, "
-            f"skip directly to list_dataset_dirs(path='<mission>/', node='{node}').\n"
-            f"          Otherwise call pds_list_missions(node='{node}') first.\n"
-            f"  Step 2: Call pds_list_dataset_dirs for the relevant mission directory. "
-            "Scan names and pds_hints to identify promising datasets.\n"
-            f"  Step 3: Call pds_probe_datasets with the most relevant paths (batch up to 20).\n"
-            f"  Step 4: If PDS4 bundles found, call pds_inspect_collections on top 2-3.\n"
-            f"  Step 5: Return candidates.\n\n"
-            "Most queries can be answered in 3 tool calls: "
-            "list_dataset_dirs → probe_datasets → inspect_collections.\n\n"
-        )
-    elif config.missions:
-        # Flat node with a mission keyword list (e.g. PPI)
-        prompt += (
-            "WORKFLOW:\n"
-            f"  Step 1: Call pds_list_missions(node='{node}') to see all available missions "
-            "and their filter keywords.\n"
-            f"  Step 2: Identify which mission(s) are relevant to the query.\n"
-            f"  Step 3: Call pds_list_dataset_dirs(path='{config.data_root}', node='{node}', "
-            "filter='<mission_name>') using the mission name as filter keyword.\n"
-            f"  Step 4: Call pds_probe_datasets with the most relevant paths (batch up to 20).\n"
-            f"  Step 5: If PDS4 bundles found, call pds_inspect_collections on top 2-3.\n"
-            f"  Step 6: Return candidates.\n\n"
-        )
-    else:
-        # Flat node with no mission list (e.g. LROC)
-        prompt += (
-            "WORKFLOW:\n"
-            f"  Step 1: Call pds_list_dataset_dirs(path='{config.data_root}', node='{node}'"
-            ", filter='<keyword>') to find datasets.\n"
-            f"  Step 2: Call pds_probe_datasets with the most relevant paths.\n"
-            f"  Step 3: If PDS4 bundles found, call pds_inspect_collections.\n"
-            f"  Step 4: Return candidates.\n\n"
-        )
+        # ---- Node-specific: numbered workflow ----
+        f"WORKFLOW:\n{config.workflow_steps}\n"
 
-    # Critical rules
-    prompt += (
+        # ---- Universal: critical rules ----
         "CRITICAL RULES:\n"
         "  1. EVERY query requires at least one candidate. Never dismiss a query.\n"
         "  2. Prefer CALIBRATED/REDUCED data over raw/EDR for science queries.\n"
@@ -209,8 +175,6 @@ def _build_single_node_prompt(node: str) -> str:
         "  5. Stay under 8 tool calls per query.\n"
         "  6. Only return paths you've actually probed — never guess.\n"
     )
-
-    return prompt
 
 
 # ---------------------------------------------------------------------------
