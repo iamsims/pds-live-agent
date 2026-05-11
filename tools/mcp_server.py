@@ -7,12 +7,13 @@ Run standalone:
 The agent in ``pydantic_code.live_finder`` connects to this server via
 ``MCPServerStdio`` — it spawns this module as a subprocess automatically.
 
-Tools (5):
+Tools (6):
     0. pds_select_node          — get node-specific context (abbreviations, workflow)
     1. pds_list_missions        — mission list for a node (no HTTP for hardcoded nodes)
     2. pds_list_dataset_dirs    — list sub-dirs under a path (cheap HTTP)
     3. pds_probe_datasets       — probe specific paths for PDS labels (recursive leaf-find)
     4. pds_inspect_collections  — scan PDS4 bundle subdirs for collection labels
+    5. pds_resolve_volume       — find which child of a volume-set carries which DATA_SET_ID
 """
 
 from __future__ import annotations
@@ -24,6 +25,7 @@ from pydantic_code.tools.list_dataset_dirs import pds_list_dataset_dirs
 from pydantic_code.tools.list_missions import pds_list_missions
 from pydantic_code.tools.node_registry import get_node_config, list_available_nodes
 from pydantic_code.tools.probe_datasets import pds_probe_datasets
+from pydantic_code.tools.resolve_volume import pds_resolve_volume
 
 mcp = FastMCP("pds-tools")
 
@@ -172,6 +174,43 @@ async def pds_inspect_collections_tool(
         max_subdirs: Cap on sub-dirs to walk for collections (default 20).
     """
     result = await pds_inspect_collections(path=path, max_subdirs=max_subdirs, node=node)
+    return result.model_dump()
+
+
+# ------------------------------------------------------------------
+# Tool 5: resolve volume-set (find which child carries which DATA_SET_ID)
+# ------------------------------------------------------------------
+
+@mcp.tool(name="pds_resolve_volume")
+async def pds_resolve_volume_tool(
+    volume_set_path: str,
+    node: str = "rms",
+    dataset_id_hint: str | None = None,
+    sample: int = 8,
+) -> dict:
+    """Probe a volume-set's children to find which one carries which DATA_SET_ID.
+
+    Volume-sets on RMS (COUVIS_0xxx, COISS_2xxx) and volume series on ATM
+    (jnomwr_*, MROM_*, cocirs_*) contain many sibling volumes with different
+    DATA_SET_IDs (e.g. raw vs calibrated, EDR vs DDR). This tool lists every
+    child and probes up to `sample` of them, ordered to prefer children whose
+    name resembles `dataset_id_hint`. Returns per-child dataset_ids plus a
+    `best_match` path when any sampled child contains a fuzzy-match to the hint.
+
+    Args:
+        volume_set_path: Parent directory (volume-set or volume series).
+        node: PDS node identifier ("geo", "ppi", "lroc", "rms", "sbn", "atm", "img").
+        dataset_id_hint: Substring or full DATA_SET_ID you're looking for (slash- and
+            case-insensitive match). When provided, child ordering and `best_match`
+            both use this.
+        sample: Maximum number of children to probe (default 8, max 20).
+    """
+    result = await pds_resolve_volume(
+        volume_set_path=volume_set_path,
+        node=node,
+        dataset_id_hint=dataset_id_hint,
+        sample=sample,
+    )
     return result.model_dump()
 
 
