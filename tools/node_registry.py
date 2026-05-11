@@ -352,10 +352,9 @@ _RMS_WORKFLOW_STEPS = (
 # SBN — Small Bodies Node
 # ---------------------------------------------------------------------------
 
-# SBN's /holdings/ Apache index returns HTTP 403 to all User-Agents, so the
-# tools cannot crawl it directly. The mission abbreviation list is provided
-# so the agent can still synthesise plausible candidates, but it MUST flag
-# in `reasoning` that the dataset name is inferred (not verified live).
+# SBN's /holdings/ Apache index is now accessible (~800+ dataset dirs).
+# Historically it returned HTTP 403; the workflow includes a fallback to
+# the abbreviation table if 403 recurs.
 
 _SBN_MISSIONS: tuple[dict[str, str], ...] = (
     {"name": "ro-c", "description": "Rosetta at comet 67P/Churyumov-Gerasimenko (OSIRIS, NAVCAM, ALICE, MIRO, GIADA, COSIMA, VIRTIS, ROSINA)."},
@@ -390,34 +389,32 @@ _SBN_ABBREVIATIONS = (
 )
 
 _SBN_WORKFLOW = (
-    "KNOWN LIMITATION: SBN's /holdings/ Apache index returns HTTP 403 to all\n"
-    "User-Agents. pds_list_dataset_dirs(path='holdings/', node='sbn') will fail.\n"
-    "Until SBN exposes their holdings tree (or we add a node-specific path that\n"
-    "parses /data_sb/missions/<m>/index.shtml or hits catch.astro.umd.edu),\n"
-    "do the following:\n"
-    "  1. Call pds_list_missions(node='sbn') to see the mission abbreviation table.\n"
-    "  2. Pick the mission(s) that match the query.\n"
-    "  3. Return ONE candidate per likely dataset using the abbreviation pattern\n"
-    "     (e.g. 'orex.ocams' for OSIRIS-REx camera, 'ro-c-osiris' for Rosetta OSIRIS).\n"
-    "  4. In `reasoning`, EXPLICITLY state that the candidate name was inferred\n"
-    "     from the abbreviation table because SBN's holdings index is currently\n"
-    "     unreachable — i.e. the dataset_id is plausible but NOT verified live.\n"
-    "Do not call pds_list_dataset_dirs or pds_probe_datasets on SBN — they will 403.\n"
+    "Directory layout: holdings/<dataset_dir>/  — ~800+ dataset directories, flat list.\n"
+    "SBN's /holdings/ Apache index is now accessible. Use pds_list_dataset_dirs "
+    "with a filter keyword from the mission table to narrow results.\n"
+    "IMPORTANT: The holdings index has historically been intermittent (HTTP 403). If "
+    "pds_list_dataset_dirs returns status='forbidden', fall back to synthesising candidates "
+    "from the abbreviation table (see 403 FALLBACK in workflow steps).\n"
 )
 
 _SBN_WORKFLOW_STEPS = (
-    "DEGRADED MODE — SBN's holdings index is HTTP 403 to all crawlers, so the live tools cannot "
-    "verify candidates. Do NOT call pds_list_dataset_dirs or pds_probe_datasets on this node.\n"
     "Step 1: Call pds_list_missions(node='sbn') to load the mission abbreviation table.\n"
-    "Step 2: Pick the mission(s) that match the query (Rosetta=ro-c/ro-a, OSIRIS-REx=orex, "
+    "Step 2: Identify the mission(s) relevant to the query (Rosetta=ro-c/ro-a, OSIRIS-REx=orex, "
     "Hayabusa=hay/hyb2, Lucy=lucy, DART=dart, Stardust=sd, Deep Impact=di/dif, NEAR=near-a, "
     "Cassini CDA=co-d-cda, ground/space-based=gbo/hst/spitzer/irtf).\n"
-    "Step 3: Synthesise ONE candidate per likely dataset using the abbreviation pattern: "
+    "Step 3: Call pds_list_dataset_dirs(path='holdings/', node='sbn', filter='<mission_key>') "
+    "to list matching dataset directories.\n"
+    "Step 4: If Step 3 succeeds, call pds_probe_datasets on the most relevant paths (batch up to 20).\n"
+    "Step 5: If PDS4 bundles are found, call pds_inspect_collections on top 2-3.\n"
+    "Step 6: Return candidates.\n\n"
+    "403 FALLBACK — If pds_list_dataset_dirs returns status='forbidden' (HTTP 403), the holdings "
+    "index is temporarily unreachable. In that case:\n"
+    "  a. Synthesise ONE candidate per likely dataset using the abbreviation pattern from Step 1: "
     "PDS3 = '<mission>-<target>-<instrument>-<level>-v<n>' (e.g. ro-c-osiris-2-cru2-mtp003-v2.0); "
     "PDS4 = 'urn:nasa:pds:<mission_instrument>' (e.g. urn:nasa:pds:orex.ocams).\n"
-    "Step 4: In every candidate's `reasoning`, EXPLICITLY state that the dataset_id was inferred "
-    "from the abbreviation table — NOT verified live — because SBN's holdings index is unreachable.\n"
-    "Step 5: Return candidates.\n"
+    "  b. In every candidate's `reasoning`, EXPLICITLY state that the dataset_id was inferred "
+    "from the abbreviation table because SBN's holdings index returned HTTP 403 — "
+    "the candidate is plausible but NOT verified live.\n"
 )
 
 # ---------------------------------------------------------------------------
@@ -655,8 +652,7 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         node_id="sbn",
         base_url="https://pds-smallbodies.astro.umd.edu/",
         display_name="Small Bodies Node (SBN)",
-        # Holdings index 403s — workflow_notes warns the agent and tells it to
-        # synthesise candidates from the abbreviation table.
+        # Holdings index now accessible; workflow includes 403 fallback.
         data_root="holdings/",
         has_mission_layer=False,
         missions=_SBN_MISSIONS,

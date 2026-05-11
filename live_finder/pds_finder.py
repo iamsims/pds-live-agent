@@ -12,9 +12,9 @@ Supports GEO, PPI, LROC, IMG, RMS, SBN, ATM, and NAIF nodes. Two operating modes
 The MCP server (``pydantic_code.tools.mcp_server``) serves the same 5 tools
 regardless of mode — all tools accept a ``node`` parameter.
 
-NOTE: SBN's holdings index is currently HTTP 403 to all User-Agents — the SBN
-single-node prompt instructs the agent to synthesise candidates from the
-abbreviation table and flag the limitation in `reasoning`.
+NOTE: SBN's holdings index has historically been intermittent (HTTP 403). The
+SBN workflow now tries the normal tools first; if list_dataset_dirs returns
+status='forbidden', the agent falls back to the abbreviation table.
 """
 
 from __future__ import annotations
@@ -96,12 +96,12 @@ _MULTI_NODE_SYSTEM_PROMPT = (
     "  - SPICE kernels, spacecraft trajectory/ephemerides, instrument pointing, "
     "frames, leapseconds, spacecraft clocks → NAIF (only when the query is about "
     "geometry/pointing/timing — not measured science data)\n\n"
-    # ---- KNOWN LIMITATION ----
-    "KNOWN LIMITATION:\n"
-    "  SBN's holdings index returns HTTP 403 to all crawlers. For SBN queries, "
-    "DO NOT call list_dataset_dirs/probe_datasets — call pds_select_node + "
-    "pds_list_missions, then synthesise a candidate from the abbreviation "
-    "table and FLAG in `reasoning` that the dataset_id is inferred (not verified).\n\n"
+    # ---- NOTE ON SBN ----
+    "NOTE ON SBN:\n"
+    "  SBN's holdings index may intermittently return HTTP 403. Use the normal tool "
+    "workflow for SBN. If list_dataset_dirs returns status='forbidden', fall back to "
+    "the abbreviation table (call pds_select_node + pds_list_missions, synthesise "
+    "candidates, and flag in reasoning that the ID is inferred, not verified).\n\n"
     # ---- PDS3 vs PDS4 ----
     "PDS3 vs PDS4:\n"
     "  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers "

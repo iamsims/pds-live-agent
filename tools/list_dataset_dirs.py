@@ -145,6 +145,13 @@ async def pds_list_dataset_dirs(
         return PDSListDatasetDirsOutput(status="not_found", path=path, error=str(e))
     except PDSLiveClientError as e:
         logger.error(f"PDS live client error: {e}")
+        if "HTTP 403" in str(e):
+            return PDSListDatasetDirsOutput(
+                status="forbidden",
+                path=path,
+                error="HTTP 403 — server denied access. Use the abbreviation table "
+                "to synthesise candidates instead.",
+            )
         raise
     except Exception as e:
         logger.error(f"Unexpected error in pds_list_dataset_dirs: {e}")

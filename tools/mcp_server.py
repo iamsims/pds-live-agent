@@ -109,8 +109,8 @@ async def pds_list_dataset_dirs_tool(
               path="pds4/bundles/" (PDS4)
       - ATM:  path="PDS/data/" with filter="MROM" (PDS3),
               path="PDS/data/PDS4/" (PDS4)
-      - SBN:  /holdings/ currently 403s — see pds_select_node(node='sbn')
-              workflow notes for the inferred-candidate fallback.
+      - SBN:  path="holdings/" with filter="<mission_key>" (may 403 intermittently;
+              agent falls back to abbreviation table per workflow notes).
 
     Args:
         path: Directory path to list (e.g. "mex/" for GEO, "data/" for PPI).
