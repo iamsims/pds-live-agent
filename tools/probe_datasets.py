@@ -63,29 +63,54 @@ def _slim_pds4_fields(fields: dict[str, Any]) -> dict[str, Any]:
     return out
 
 
-def _extract_dataset_id(pds_version: str, fields: dict[str, Any]) -> str | None:
-    """Extract the canonical dataset identifier from parsed label fields."""
+def _extract_dataset_ids(pds_version: str, fields: dict[str, Any]) -> list[str]:
+    """Extract ALL dataset identifiers from parsed label fields.
+
+    Cassini-family voldescs ship a list-valued ``DATA_SET_ID`` (one entry per
+    product type on the volume — e.g. SSB, CUBE, SPEC, CALIB). Return every
+    such ID so the agent can match against gold without re-parsing the slim
+    fields.
+    """
     if pds_version == "PDS3":
-        # Try VOLUME.DATA_SET_ID first, then top-level DATA_SET_ID
+        candidates: list[Any] = []
         volume = fields.get("VOLUME")
         if isinstance(volume, dict):
-            dsid = volume.get("DATA_SET_ID")
-            if isinstance(dsid, str) and dsid.strip():
-                return dsid.strip()
-        top_dsid = fields.get("DATA_SET_ID")
-        if isinstance(top_dsid, str) and top_dsid.strip():
-            return top_dsid.strip()
-        return None
+            candidates.append(volume.get("DATA_SET_ID"))
+        candidates.append(fields.get("DATA_SET_ID"))
+        out: list[str] = []
+        seen: set[str] = set()
+        for c in candidates:
+            if isinstance(c, list):
+                for item in c:
+                    if isinstance(item, str) and item.strip() and item.strip() not in seen:
+                        out.append(item.strip())
+                        seen.add(item.strip())
+            elif isinstance(c, str) and c.strip() and c.strip() not in seen:
+                out.append(c.strip())
+                seen.add(c.strip())
+        return out
 
     if pds_version == "PDS4":
         ia = fields.get("Identification_Area")
         if isinstance(ia, dict):
             lid = ia.get("logical_identifier")
             if isinstance(lid, str) and lid.strip():
-                return lid.strip()
-        return None
+                return [lid.strip()]
+        return []
 
-    return None
+    return []
+
+
+def _extract_dataset_id(pds_version: str, fields: dict[str, Any]) -> str | None:
+    """Backward-compat scalar accessor.
+
+    Returns the first dataset_id (or ``None``). Callers wanting the full list
+    of IDs on multi-DATA_SET_ID voldescs should use ``dataset_ids`` on the
+    probe result instead — added as part of the Phase 3 tool optimization
+    so the agent doesn't have to dig into ``fields.VOLUME.DATA_SET_ID``.
+    """
+    ids = _extract_dataset_ids(pds_version, fields)
+    return ids[0] if ids else None
 
 
 # ---------------------------------------------------------------------------
@@ -106,7 +131,19 @@ class PDSProbeResult(BaseModel):
     )
     dataset_id: str | None = Field(
         default=None,
-        description="PDS3: VOLUME.DATA_SET_ID; PDS4: Identification_Area.logical_identifier",
+        description=(
+            "PDS3: VOLUME.DATA_SET_ID (first entry if list-valued); "
+            "PDS4: Identification_Area.logical_identifier. "
+            "For voldescs that ship multiple DATA_SET_IDs, see `dataset_ids` for the full set."
+        ),
+    )
+    dataset_ids: list[str] = Field(
+        default_factory=list,
+        description=(
+            "All dataset IDs declared by the label. Cassini voldescs (UVIS, ISS, VIMS, CIRS) "
+            "ship multiple DATA_SET_IDs — one per product type on the volume. "
+            "Match against gold by scanning this list."
+        ),
     )
     title: str | None = Field(default=None, description="Human-readable title from the label")
     fields: dict[str, Any] = Field(description="Slimmed parsed label fields")
@@ -244,12 +281,14 @@ async def pds_probe_datasets(
                         else:
                             slimmed = _slim_pds4_fields(raw_fields)
 
+                        ids = _extract_dataset_ids(pds_version, raw_fields)
                         results.append(
                             PDSProbeResult(
                                 path=label.get("volume_dir", record["volume_dir"]),
                                 pds_version=pds_version,
                                 file_type=ft,
-                                dataset_id=_extract_dataset_id(pds_version, raw_fields),
+                                dataset_id=ids[0] if ids else None,
+                                dataset_ids=ids,
                                 title=label.get("title") or _extract_title(pds_version, raw_fields),
                                 fields=slimmed,
                             )
