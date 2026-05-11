@@ -129,6 +129,67 @@ multi-node prompt. Per-node fields only.
 if changes are tiny), plus `docs/node_optimization_briefs/<node>.md`
 summarising the diff and reasoning per node for review.
 
+### Phase 7 — Overfitting audit + blind re-evaluation
+
+Phase 5 prompts were tuned against the gold set, and an audit of the
+`test_per_node_20260511_184652` traces showed several per-node prompts
+had drifted into overfitting:
+
+- "gold target" / "gold id" terminology leaking from the eval harness
+  into production prompts (IMG, RMS, SBN, PPI, ATM).
+- Hardcoded fallback DATA_SET_IDs that coincide with test-set answers
+  (IMG Step 5: `MESS-E/V/H-MDIS-2-EDR-RAWDATA-V1.0`,
+  `MER2-M-PANCAM-3-RADCAL-RDR-V1.0`).
+- Hardcoded path patterns reverse-engineered from failing queries
+  (IMG Step 3 `mrox_NNNN/`, `MSGRMDS_NNNN/`; RMS COUVIS_0003
+  Jupiter→Saturn transition fact; RMS Step 4b COUVIS-specific recipe).
+- Step-by-step recipes that pre-solve specific test queries (SBN Step 3
+  NEAR MSI walkthrough).
+- Illustrative examples in abbreviation tables that happen to be the
+  exact expected answers (SBN NEAR MSI EDR/DIM ids; PPI MESS FIPS DDR).
+
+**De-overfit pass (done in this phase, registry-only):**
+- Replaced all "gold" wording with neutral phrasing ("target
+  DATA_SET_ID", "target id") across IMG, RMS, SBN, PPI, ATM.
+- Removed hardcoded fallback DATA_SET_IDs and PDS4-LID patterns from
+  IMG Step 5; consolidated the PDS4-partial-coverage note into a
+  single general line in `_IMG_WORKFLOW`.
+- Generalised IMG Step 3 to teach `pds_resolve_volume` as a pattern
+  ("any parent dir, any DATA_SET_ID fragment") instead of giving
+  `mrox_*` / `MSGRMDS_*` examples.
+- Generalised RMS Step 4b the same way; replaced the COUVIS_0003 fact
+  with the general principle that early volumes can span mission-phase
+  boundaries.
+- Rephrased the RMS VIMS QUBE/EDR clause as a node convention instead
+  of a gold-vs-real recipe.
+- Swapped the SBN NEAR MSI examples for non-test-set ones
+  (NEAR-A-NLR-5-EROS/SHAPE/GRAVITY-V1.0, HAY-A-AMICA-3-AMICAGEOM-V1.0)
+  that still illustrate the slash → underscore encoding.
+- Removed the SBN Step 3 NEAR MSI walkthrough; Step 3 now teaches the
+  general "underscore-encode a discriminating substring" pattern.
+- Removed the PPI MESS FIPS DDR example (coincidental test-set answer).
+
+**Blind re-evaluation harness:**
+- Built `data/pds_node_classification_blind.xlsx` — a sanitised copy of
+  the gold workbook for evaluation runs that should NOT see answers.
+  Columns kept: `row_index`, `Paper Short`, `Paper`, `Query`.
+  Columns dropped: `Expected Identifiers (bundle/collection only)`,
+  `Primary PDS Node`, `Secondary PDS Nodes`, `All PDS Nodes`,
+  `Primary Node Identifiers`, `Secondary Node Identifiers`,
+  `Removed (product-level) Identifiers`.
+- `row_index` is 1-based and preserves source row order so results can
+  be joined back against the original
+  `data/pds_node_classification.xlsx` for analysis only after the run
+  completes. The agent's input is the blind file; gold lookup happens
+  off-agent.
+
+**Deliverable:** registry edits (this commit) + the blind workbook.
+Re-run the per-node trace test against the blind file and compare
+against the pre-de-overfit `test_per_node_20260511_184652` baseline.
+Success = no major accuracy regression from the de-overfitting pass.
+Regressions on a specific node indicate the prompt was depending on
+the removed gold-language hooks and needs a more general fix.
+
 ## Success criteria for the whole plan
 
 1. Tools strictly more general (no node-specific branching; lines of code
@@ -164,6 +225,8 @@ Phase 3 (implement generic tool changes)  ─── if no cross-node friction, s
 Phase 4 (re-trace, measure delta)
    ↓
 Phase 5 (per-node prompt edits + verify each node end-to-end)
+   ↓
+Phase 7 (overfitting audit + blind re-evaluation against sanitised xlsx)
 ```
 
 Each phase produces a deliverable the user can review before the next phase.
