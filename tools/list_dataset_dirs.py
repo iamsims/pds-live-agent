@@ -26,14 +26,48 @@ from .parsers import filename_from_url
 # e.g. "mex-m-hrsc-5-refdr-dtm-v1" (at least 3 hyphens, ends with -v<digits>).
 _PDS3_DIR_RE = re.compile(r"^[A-Za-z0-9_]+(-[A-Za-z0-9_]+){2,}-[Vv]\d+", re.IGNORECASE)
 
+# PDS3 volume-set directories on RMS (e.g. COISS_2xxx, COUVIS_0xxx, GO_0017)
+# and ATM (e.g. cocirs_0401, MROM_2001, jnomwr_1100V2): uppercase or lowercase
+# letters, underscore, digits (often _0xxx, _Nxxx, _<digits>).
+_PDS3_VOLSET_RE = re.compile(r"^[A-Za-z][A-Za-z0-9]*_[0-9A-Za-z_]+", re.ASCII)
+
+# PDS4 bundle dirs typically use lowercase descriptive names with
+# underscores/hyphens, sometimes containing "bundle". Examples:
+#   cassini_iss, cassini-mag-cal, juno_jiram_bundle, mer2_pancam_sci_calibrated2,
+#   mgn-atm-profile, msl_ice-dust, junocam_atm-ml-calib
+# Heuristic: all-lowercase, contains at least one separator (_ or -),
+# does NOT match the PDS3 volume regex, does NOT end with -vN, and the
+# basename has at least two tokens.
+_PDS4_BUNDLE_RE = re.compile(r"^[a-z][a-z0-9]*([_\-][a-z0-9]+)+$")
+
 
 def _infer_pds_version(dirname: str) -> str | None:
-    """Infer PDS version from a directory name (heuristic, no HTTP)."""
+    """Infer PDS version from a directory name (heuristic, no HTTP).
+
+    Rules, in priority order:
+      1. ``urn-nasa-pds-…`` / ``urn_nasa_pds_…`` → PDS4 (canonical LID form).
+      2. Hyphenated name ending with ``-v<digits>`` → PDS3 dataset directory
+         (e.g. ``mex-m-hrsc-5-refdr-dtm-v1``).
+      3. ``<UPPER_OR_LOWER>_<DIGITS_OR_LETTERS>`` (e.g. ``COISS_2001``,
+         ``MROM_2001``, ``jnomwr_1100V2``, ``cocirs_1709``) → PDS3 volume.
+      4. All-lowercase with at least one ``_`` or ``-`` separator and not
+         matching PDS3 patterns → PDS4 bundle (e.g. ``cassini-mag-cal``,
+         ``juno_jiram_bundle``, ``mer2_pancam_sci_calibrated2``).
+      5. Otherwise → None.
+    """
     lower = dirname.lower()
     if lower.startswith("urn-nasa-pds-") or lower.startswith("urn_nasa_pds_"):
         return "PDS4"
     if _PDS3_DIR_RE.match(dirname):
         return "PDS3"
+    # Volume-set heuristic: NAME_<num> shape. Only fires when the dir name
+    # actually contains digits in the tail token, so plain words like
+    # "messenger" or "cassini" don't get tagged PDS3.
+    if _PDS3_VOLSET_RE.match(dirname) and any(ch.isdigit() for ch in dirname):
+        return "PDS3"
+    # PDS4 bundle heuristic: all lowercase, contains separator, no version-vN tail.
+    if dirname == lower and _PDS4_BUNDLE_RE.match(lower):
+        return "PDS4"
     return None
 
 
