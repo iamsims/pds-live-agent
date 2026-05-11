@@ -195,13 +195,16 @@ class PDSLiveClient:
                 lbl["volume_dir"] = vdir
 
         # Fallback: if no labels at this level, try one level down into
-        # ALL subdirectories to find every leaf node.
+        # subdirectories to find leaf nodes.  Cap at 5 subdirectories to
+        # avoid massive output from volume-sets (e.g. COISS_2xxx has 116
+        # numbered volumes, all sharing the same dataset_id).
+        _MAX_SUBDIR_RECURSE = 5
         if not labels and dirs:
             base_path = urlsplit(self.base_url).path
             if not base_path.endswith("/"):
                 base_path += "/"
 
-            for d_url in dirs:
+            for d_url in dirs[:_MAX_SUBDIR_RECURSE]:
                 target_path = urlsplit(d_url).path
                 sub_relative = (
                     target_path[len(base_path):]

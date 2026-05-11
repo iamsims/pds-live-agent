@@ -265,7 +265,7 @@ _IMG_WORKFLOW_STEPS = (
 
 _RMS_MISSIONS: tuple[dict[str, str], ...] = (
     {"name": "COISS", "description": "Cassini ISS — Imaging Science Subsystem (NAC + WAC). Saturn rings, satellites, atmosphere."},
-    {"name": "COUVIS", "description": "Cassini UVIS — Ultraviolet Imaging Spectrograph. Ring stellar/solar occultations."},
+    {"name": "COUVIS", "description": "Cassini UVIS — Ultraviolet Imaging Spectrograph. UV spectroscopy (SPEC), stellar/solar occultations (SSB), calibrated products (CALIB). Covers rings AND satellite surfaces (Rhea, Enceladus, etc.)."},
     {"name": "COVIMS", "description": "Cassini VIMS — Visual and Infrared Mapping Spectrometer. Rings + satellites."},
     {"name": "COCIRS", "description": "Cassini CIRS — Composite InfraRed Spectrometer. Saturn/satellite atmospheres."},
     {"name": "CORSS", "description": "Cassini Radio Science Subsystem ring/atmosphere occultations."},
@@ -299,33 +299,53 @@ _RMS_ABBREVIATIONS = (
     "  Voyager → VG_2xxx (imaging), VG_28xx (occultations), VGISS (PDS4)\n"
     "  Galileo → GO_*\n"
     "  New Horizons → NHxxLO, NHxxMV\n"
-    "  Hubble → HSTI/HSTJ/HSTU/HSTN (camera era)\n"
+    "  Hubble → HSTI/HSTJ/HSTU/HSTN (camera era — each volume is a unique HST program)\n"
     "  Earth-based → EBROCC, ESO_*, RES_*\n"
+    "Cassini UVIS data types (COUVIS volumes):\n"
+    "  COUVIS_0xxx = raw + calibrated spectra/images (SPEC, SSB, CALIB, CUBE, etc.)\n"
+    "  COUVIS_8xxx = ring stellar/solar occultation profiles\n"
+    "  For UV spectroscopy of surfaces (Rhea, Enceladus, etc.), use COUVIS_0xxx (not _8xxx).\n"
+    "Cassini ISS volume-sets:\n"
+    "  COISS_1xxx = cruise-phase EDRs (Earth/Venus/Jupiter)\n"
+    "  COISS_2xxx = Saturn-tour EDRs (the main science dataset)\n"
+    "  COISS_3xxx = cartographic map products (MIDR)\n"
+    "  COISS_0xxx = calibration files/software\n"
 )
 
 _RMS_WORKFLOW = (
     "Two parallel trees:\n"
     "  PDS3 → holdings/volumes/<VOLUME_SET>/<VOLUME>/  (volume-set wraps multiple numbered volumes)\n"
-    "  PDS4 → pds4/bundles/<bundle>/                   (flat list of bundles)\n"
-    "Start with pds_list_dataset_dirs(path='holdings/volumes/', node='rms', filter='<key>') for PDS3.\n"
-    "For PDS4 bundles, use pds_list_dataset_dirs(path='pds4/bundles/', node='rms') instead.\n"
-    "PDS3 volumes nest one level deep — pds_probe_datasets recurses into the inner numbered\n"
-    "volume directories automatically when given a volume-set path.\n"
+    "  PDS4 → pds4/bundles/<bundle>/                   (flat list of bundles)\n\n"
+    "CRITICAL — volume-set explosion warning:\n"
+    "  Volume-sets (e.g. COISS_2xxx, COUVIS_0xxx_v1, HSTUx_xxxx_v1.0) contain many numbered\n"
+    "  volumes (often 30-100+). Do NOT probe a volume-set directory directly — pds_probe_datasets\n"
+    "  will recurse into ALL volumes and produce massive redundant output (100+ near-identical results).\n"
+    "  Instead, probe a SINGLE representative volume inside the set, e.g.:\n"
+    "    pds_probe_datasets(paths=['holdings/volumes/COUVIS_0xxx_v1/COUVIS_0009/'], node='rms')\n"
+    "  All volumes in a set share the same dataset_id, so one probe is enough.\n"
+    "  HST volumes are the exception — each volume has a unique dataset_id per HST program,\n"
+    "  but you still should NOT probe the entire set. Pick 1-2 representative volumes.\n"
 )
 
 _RMS_WORKFLOW_STEPS = (
-    "Step 1: Decide PDS3 vs PDS4 based on the query (most published papers cite PDS3 volumes; "
-    "the PDS4 bundles are the modern equivalent for Cassini ISS/UVIS/VIMS and Voyager ISS).\n"
-    "Step 2 (PDS3): Call pds_list_dataset_dirs(path='holdings/volumes/', node='rms', "
+    "Step 1: Call pds_list_missions(node='rms') to see the 23 instrument/mission filter keys.\n"
+    "Step 2: Identify the SPECIFIC instrument(s) relevant to the query from the mission list:\n"
+    "          - UV spectroscopy/absorption on surfaces → COUVIS (not COISS or HST)\n"
+    "          - Visible imaging of rings/satellites → COISS\n"
+    "          - IR spectral mapping → COVIMS\n"
+    "          - Thermal spectra → COCIRS\n"
+    "        Do NOT explore instruments not mentioned or implied by the query.\n"
+    "Step 3 (PDS3): Call pds_list_dataset_dirs(path='holdings/volumes/', node='rms', "
     "filter='<KEY>') with a volume-set prefix from the abbreviation table "
     "(e.g. COISS, COVIMS, GO_00, VG_28, NHxxLO).\n"
-    "Step 2 (PDS4): Call pds_list_dataset_dirs(path='pds4/bundles/', node='rms') — "
+    "Step 3 (PDS4): Call pds_list_dataset_dirs(path='pds4/bundles/', node='rms', filter='<key>') — "
     "flat list of named bundles (cassini_iss, cassini_uvis, cassini_vims, …).\n"
-    "Step 3: Call pds_probe_datasets on the most relevant volume-sets/bundles. "
-    "For PDS3 volume-sets, the tool recurses one level into the inner numbered volumes automatically.\n"
-    "Step 4: For PDS4 bundles, call pds_inspect_collections on top 2-3 to get collection LIDs.\n"
-    "Step 5: When the same instrument has BOTH a PDS3 volume-set and a PDS4 bundle, return BOTH "
-    "candidates. Do not silently drop the PDS3 form.\n"
+    "Step 4: Pick ONE representative volume from each relevant volume-set and probe it. "
+    "Do NOT probe the volume-set directory itself — see the volume-set explosion warning above. "
+    "Example: pds_probe_datasets(paths=['holdings/volumes/COISS_2xxx/COISS_2001/'], node='rms')\n"
+    "Step 5: For PDS4 bundles, call pds_inspect_collections on top 2-3 to get collection LIDs.\n"
+    "Step 6: When the same instrument has BOTH a PDS3 volume-set and a PDS4 bundle, return BOTH "
+    "candidates. Do NOT silently drop the PDS3 form. Stay under 8 tool calls total.\n"
 )
 
 # ---------------------------------------------------------------------------
@@ -423,6 +443,10 @@ _ATM_MISSIONS: tuple[dict[str, str], ...] = (
     {"name": "VG_PRA", "description": "Voyager Planetary Radio Astronomy (atmospheres mirror)."},
     {"name": "HP", "description": "Huygens Probe at Titan (DISR, HASI, GCMS, ACP, SSP, DWE)."},
     {"name": "CO_HUYGENS", "description": "Cassini-Huygens cruise atmospheric observations."},
+    {"name": "cocirs", "description": "Cassini CIRS — Composite InfraRed Spectrometer. Thermal emission spectra (10-600 cm⁻¹) of Saturn, Titan, and icy satellites (Enceladus, etc.). ATM mirror of RMS COCIRS volumes. ~84 volumes: cocirs_0401 … cocirs_1709."},
+    {"name": "cors", "description": "Cassini Radio Science (RSS) atmospheric/ionospheric occultations at Saturn, Titan, and icy satellites. ~430 volumes: cors_0001 … cors_0434."},
+    {"name": "coiss", "description": "Cassini ISS — Imaging Science Subsystem (ATM mirror). Limited holdings on ATM."},
+    {"name": "coradr", "description": "Cassini RADAR — Titan surface/atmosphere radiometry (ATM mirror). Limited holdings on ATM."},
     {"name": "MSL_REMS", "description": "Mars Science Laboratory REMS — rover meteorology (pressure, temp, UV, RH, wind)."},
     {"name": "M2020_MEDA", "description": "Mars 2020 MEDA — rover meteorology (radiation, dust, temp, pressure, wind)."},
     {"name": "PHX", "description": "Phoenix lander — TEGA, MECA, atmospheric optical depth."},
@@ -431,10 +455,15 @@ _ATM_MISSIONS: tuple[dict[str, str], ...] = (
 
 _ATM_ABBREVIATIONS = (
     "Naming conventions on ATM:\n"
-    "  PDS3 volumes use uppercase prefixes: MROM_0001, MAVENM_0001, PVO_0001, GP_0001, HP_0001, etc.\n"
+    "  PDS3 volumes use lowercase prefixes on ATM: cocirs_0401, cors_0001, mrom_0001, etc.\n"
     "  Each prefix typically maps to one mission/instrument; volumes are numbered sequentially.\n"
     "  PDS4 bundles live under PDS/data/PDS4/ with mission-named directories (Huygens, InSight, MAVEN, etc.).\n"
     "Mission/instrument keys (use as filter on PDS/data/):\n"
+    "  Cassini CIRS (thermal IR spectra) → cocirs  (84 volumes: cocirs_0401 … cocirs_1709)\n"
+    "  Cassini Radio Science (RSS) → cors  (430+ volumes: cors_0001 … cors_0434)\n"
+    "  Cassini ISS (imaging, limited) → coiss\n"
+    "  Cassini RADAR (Titan) → coradr\n"
+    "  Cassini-Huygens cruise → CO_HUYGENS\n"
     "  Mars Climate Sounder (MRO) → MROM\n"
     "  MAVEN → MAVENM (PDS3) or look in PDS/data/PDS4/MAVEN/ (PDS4)\n"
     "  Mars Express SPICAM → MEXSPI\n"
@@ -649,7 +678,8 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         missions=_ATM_MISSIONS,
         description="Planetary atmospheres and surface meteorology: Mars (MCS, MAVEN, "
         "REMS, MEDA), Venus (Pioneer Venus), Jupiter (Galileo Probe), Titan (Huygens), "
-        "outer planets (Voyager IRIS)",
+        "outer planets (Voyager IRIS), Saturn system (Cassini CIRS thermal spectra, "
+        "Cassini RSS atmospheric occultations)",
         workflow_notes=_ATM_WORKFLOW,
         abbreviations=_ATM_ABBREVIATIONS,
         workflow_steps=_ATM_WORKFLOW_STEPS,

@@ -110,6 +110,10 @@ class PDSProbeResult(BaseModel):
     )
     title: str | None = Field(default=None, description="Human-readable title from the label")
     fields: dict[str, Any] = Field(description="Slimmed parsed label fields")
+    volume_count: int = Field(
+        default=1,
+        description="Number of sibling volumes sharing this dataset_id (>1 means duplicates were collapsed)",
+    )
 
 
 # Backward-compat aliases
@@ -144,6 +148,40 @@ class PDSProbeDatasetsOutput(BaseModel):
 
 # Backward-compat alias
 PDSGeoProbeDatasetsOutput = PDSProbeDatasetsOutput
+
+
+# ---------------------------------------------------------------------------
+# Deduplication helper
+# ---------------------------------------------------------------------------
+
+
+def _deduplicate_results(results: list[PDSProbeResult]) -> list[PDSProbeResult]:
+    """Collapse results that share the same (dataset_id, pds_version).
+
+    Volume-set recursion often produces dozens of identical entries (e.g.
+    COISS_2xxx → 116 volumes all reporting CO-S-ISSNA/ISSWA-2-EDR-V1.0).
+    We keep only the first representative and set ``volume_count`` to the
+    total number of siblings.
+
+    Results with ``dataset_id=None`` are never collapsed.
+    """
+    seen: dict[tuple[str, str], int] = {}  # (dataset_id, pds_version) → index in out
+    out: list[PDSProbeResult] = []
+
+    for r in results:
+        if r.dataset_id is None:
+            out.append(r)
+            continue
+
+        key = (r.dataset_id, r.pds_version)
+        if key in seen:
+            # Increment the count on the representative entry
+            out[seen[key]].volume_count += 1
+        else:
+            seen[key] = len(out)
+            out.append(r)
+
+    return out
 
 
 # ---------------------------------------------------------------------------
@@ -232,6 +270,13 @@ async def pds_probe_datasets(
             errors=errors,
             error=f"Internal error: {e}",
         )
+
+    # Deduplicate results that share the same dataset_id — volume-set
+    # recursion can produce dozens of identical entries (e.g. COISS_2xxx
+    # yields 116 volumes all with the same dataset_id).  Keep only the
+    # first representative per (dataset_id, pds_version) pair and annotate
+    # it with a volume_count so the agent knows how many siblings exist.
+    results = _deduplicate_results(results)
 
     return PDSProbeDatasetsOutput(
         status="success",
