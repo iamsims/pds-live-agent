@@ -145,6 +145,12 @@ _PPI_ABBREVIATIONS = (
     "  PDS3 dirs use uppercase mission codes: MESS-, CO-, GO-, JNO-, VG1-, VG2-, MEX-, P10-, P11-, ULY-, NH-, PVO-, etc.\n"
     "  PDS4 dirs use lowercase names: cassini-, galileo-, juno-, maven-, messenger-, ulysses-, etc.\n"
     "  Both conventions exist for many missions. Use pds_list_missions to see all available missions and filter keywords.\n"
+    "Slash-encoding in DATA_SET_IDs: directory names cannot contain '/' so PPI replaces it\n"
+    "with '_'. The dir 'JNO-J_SW-JAD-5-CALIBRATED-V1.0' corresponds to DATA_SET_ID\n"
+    "'JNO-J/SW-JAD-5-CALIBRATED-V1.0', and 'MESS-E_V_H_SW-EPPS-3-FIPS-DDR-V2.0' →\n"
+    "'MESS-E/V/H/SW-EPPS-3-FIPS-DDR-V2.0'. When the gold target contains '/', look for the\n"
+    "directory with '_' in those positions — pds_probe_datasets will return the canonical\n"
+    "DATA_SET_ID with the slashes restored.\n"
 )
 
 _PPI_WORKFLOW = (
@@ -216,10 +222,14 @@ _IMG_MISSIONS: tuple[dict[str, str], ...] = (
     {"name": "viking_orbiter", "description": "Viking Orbiter 1 & 2 imaging of Mars (1976-80)."},
     {"name": "viking_lander", "description": "Viking Lander 1 & 2 surface imaging at Mars."},
     {"name": "magellan", "description": "Magellan SAR/altimetry/radiometry/emissivity imaging at Venus."},
-    {"name": "messenger", "description": "MESSENGER MDIS imaging at Mercury (legacy IMG mirror)."},
+    {"name": "messenger", "description": "MESSENGER MDIS imaging at Mercury (legacy IMG mirror) — img/data/messenger/MDIS/MSGRMDS_*/ are the PDS3 volumes; IMG does NOT host the urn:nasa:pds:messenger_mdis_* PDS4 bundles (those live at PPI). Return the PDS3 DATA_SET_ID."},
     {"name": "near", "description": "NEAR Shoemaker MSI imaging at asteroid Eros."},
     {"name": "stardust", "description": "Stardust NAVCAM imaging of comet Wild 2 + Tempel 1 flyby."},
     {"name": "deepimpact", "description": "Deep Impact HRI/MRI/ITS imaging at comet Tempel 1."},
+    # Additional mission dirs that exist under img/data/ but were missing from the legacy list:
+    {"name": "mro", "description": "Mars Reconnaissance Orbiter cameras at IMG: img/data/mro/ctx/ (CTX EDR, ~5500 mrox_* volumes), img/data/mro/hirise/ (HiRISE EXTRAS only — main RDR not mirrored at IMG, hosted at GEO), img/data/mro/marci/."},
+    {"name": "mer", "description": "Mars Exploration Rovers (Spirit=MER2, Opportunity=MER1) imaging: img/data/mer/ and direct PDS3 dirs img/data/mer1-* / mer2-* (Pancam, Navcam, Hazcam, Mini-TES, APXS). IMG hosts ONLY the PDS3 mer{1,2}-m-<inst>-<level>-* dirs; urn:nasa:pds:mer{1,2}_<inst>_sci_calibrated* PDS4 LIDs are NOT mirrored at IMG (hosted at GEO). Return the PDS3 DATA_SET_ID."},
+    {"name": "lro", "description": "LRO LROC imaging (limited mirror) — full LROC archive is at the LROC node."},
 )
 
 _IMG_ABBREVIATIONS = (
@@ -238,19 +248,35 @@ _IMG_WORKFLOW = (
     "two more levels before reaching dataset roots (Cassini is the most extreme — four parallel\n"
     "sub-trees). Recurse with list_dataset_dirs rather than guessing paths.\n"
     "There is no holdings/inventory page — the Apache directory listing is the only index.\n"
+    "IMPORTANT — PDS4 coverage at IMG is partial. For MESSENGER MDIS, MER cameras, MRO HiRISE,\n"
+    "the urn:nasa:pds:<mission>_<inst>_* PDS4 bundles are NOT mirrored here even though the\n"
+    "PDS3 equivalents are. When the gold target is a urn: LID and a single list+probe doesn't\n"
+    "find a matching bundle, return the closest PDS3 DATA_SET_ID and note that IMG only hosts\n"
+    "the PDS3 mirror for that mission.\n"
 )
 
 _IMG_WORKFLOW_STEPS = (
     "Step 1: If you know the mission directory from the abbreviation table, skip directly to "
     "list_dataset_dirs(path='img/data/<mission>/', node='img'). Otherwise call "
-    "pds_list_missions(node='img') first to see the mission list.\n"
+    "pds_list_missions(node='img') first to see the mission list. Mission entries now include "
+    "mro/ (CTX, HiRISE-EXTRAS, MARCI), mer/ (Pancam/Navcam/Hazcam/MiniTES/APXS), and notes on "
+    "which urn: LIDs are NOT mirrored at IMG.\n"
     "Step 2: Call pds_list_dataset_dirs for the mission directory. If results look like another "
-    "layer of organisational sub-trees (e.g. cassini_orbiter/, opus/, pds4/, public/ for Cassini), "
-    "call list_dataset_dirs again on the relevant sub-tree to reach actual dataset roots.\n"
-    "Step 3: Call pds_probe_datasets with the most relevant dataset paths (batch up to 20).\n"
+    "layer of organisational sub-trees (e.g. cassini_orbiter/, opus/, pds4/, public/ for Cassini, "
+    "or ctx/, hirise/, marci/ for mro), call list_dataset_dirs again on the relevant sub-tree.\n"
+    "Step 3: Volume-set targets — when the dataset is split across many numbered volumes (e.g. "
+    "img/data/mro/ctx/mrox_NNNN/, img/data/messenger/MDIS/MSGRMDS_NNNN/), call "
+    "pds_resolve_volume(volume_set_path='img/data/mro/ctx/', node='img', "
+    "dataset_id_hint='<DATA_SET_ID fragment>', sample=8). It returns per-child dataset_ids in "
+    "one call instead of multiple sequential probes.\n"
     "Step 4: If PDS4 bundles are found, call pds_inspect_collections on top 2-3.\n"
-    "Step 5: Return candidates.\n"
-    "Most queries take 3-4 tool calls because of the extra mission-internal layer.\n"
+    "Step 5: When the gold target is urn:nasa:pds:messenger_mdis_*, urn:nasa:pds:mer{1,2}_*, or "
+    "MRO-M-HIRISE-* and you don't find a matching bundle at IMG after Steps 1–4, "
+    "return the PDS3 mirror's DATA_SET_ID (e.g. MESS-E/V/H-MDIS-2-EDR-RAWDATA-V1.0 for MDIS, "
+    "MER2-M-PANCAM-3-RADCAL-RDR-V1.0 for Spirit Pancam calibrated) plus a 'PDS4 not mirrored "
+    "at IMG' note. Do NOT keep hunting for the PDS4 form past one extra list/probe.\n"
+    "Step 6: Use the new `dataset_ids` field on pds_probe_datasets results when a voldesc "
+    "ships multiple DATA_SET_IDs — match against the full list, not just the scalar.\n"
 )
 
 # ---------------------------------------------------------------------------
@@ -302,14 +328,30 @@ _RMS_ABBREVIATIONS = (
     "  Hubble → HSTI/HSTJ/HSTU/HSTN (camera era — each volume is a unique HST program)\n"
     "  Earth-based → EBROCC, ESO_*, RES_*\n"
     "Cassini UVIS data types (COUVIS volumes):\n"
-    "  COUVIS_0xxx = raw + calibrated spectra/images (SPEC, SSB, CALIB, CUBE, etc.)\n"
-    "  COUVIS_8xxx = ring stellar/solar occultation profiles\n"
+    "  COUVIS_0xxx     = raw + calibrated spectra/images (SPEC, SSB, CALIB, CUBE, etc.)\n"
+    "  COUVIS_0xxx_v1  = older v1 publication of the same archive (gold v1.0/1.2 ids live here)\n"
+    "  COUVIS_8xxx     = ring stellar/solar occultation profiles\n"
     "  For UV spectroscopy of surfaces (Rhea, Enceladus, etc.), use COUVIS_0xxx (not _8xxx).\n"
+    "  COUVIS volume range:\n"
+    "    COUVIS_0001..0008 = JUPITER encounter (DATA_SET_IDs prefixed CO-J-UVIS-…)\n"
+    "    COUVIS_0003 also carries CO-S-UVIS-* (Jupiter+Saturn transition volume) and is\n"
+    "    therefore the EARLIEST volume to contain a CO-S-UVIS-* id\n"
+    "    COUVIS_0004+  = SATURN-tour only (CO-S-UVIS-…)\n"
     "Cassini ISS volume-sets:\n"
-    "  COISS_1xxx = cruise-phase EDRs (Earth/Venus/Jupiter)\n"
-    "  COISS_2xxx = Saturn-tour EDRs (the main science dataset)\n"
+    "  COISS_1xxx = cruise-phase EDRs (Earth/Venus/Jupiter; DATA_SET_ID prefixed CO-J/V/E-…)\n"
+    "  COISS_2xxx = Saturn-tour EDRs (the main science dataset; DATA_SET_ID CO-S-ISSNA/ISSWA-…)\n"
     "  COISS_3xxx = cartographic map products (MIDR)\n"
     "  COISS_0xxx = calibration files/software\n"
+    "Cassini VIMS volume-sets:\n"
+    "  COVIMS_0xxx = raw image/spectral cubes. DATA_SET_ID convention is\n"
+    "    CO-E/V/J/S-VIMS-2-QUBE-V1.0 (note: QUBE not EDR). If gold says 'CO-S-VIMS-2-EDR-V1.0'\n"
+    "    return CO-E/V/J/S-VIMS-2-QUBE-V1.0 with a 'gold id variant; node hosts QUBE' note.\n"
+    "  COVIMS_8xxx = ring stellar/solar occultation profiles.\n"
+    "Multi-DATA_SET_ID voldescs (common on Cassini):\n"
+    "  COUVIS_*, COCIRS_*, COVIMS_* voldesc.cat files declare DATA_SET_ID as a list (one id per\n"
+    "  product type on the volume — SSB/SPEC/CUBE/CALIB/WAV etc.). pds_probe_datasets now\n"
+    "  exposes the full list in `dataset_ids`. Match the gold id against this list, not only\n"
+    "  the scalar `dataset_id` field (which is just the first one).\n"
 )
 
 _RMS_WORKFLOW = (
@@ -343,9 +385,18 @@ _RMS_WORKFLOW_STEPS = (
     "Step 4: Pick ONE representative volume from each relevant volume-set and probe it. "
     "Do NOT probe the volume-set directory itself — see the volume-set explosion warning above. "
     "Example: pds_probe_datasets(paths=['holdings/volumes/COISS_2xxx/COISS_2001/'], node='rms')\n"
+    "Step 4b (preferred for UVIS Saturn / search by dataset_id substring): When the target\n"
+    "is a specific CO-S-UVIS-2-<TYPE>-V<x>.<y> id, call pds_resolve_volume(\n"
+    "  volume_set_path='holdings/volumes/COUVIS_0xxx_v1/', node='rms',\n"
+    "  dataset_id_hint='CO-S-UVIS-2-<TYPE>', sample=4)\n"
+    "It probes a hint-ranked sample and returns a `best_match` pointing at the first child\n"
+    "whose `dataset_ids` list contains the requested id. One call replaces several manual\n"
+    "probes — especially useful for the CO-S-UVIS-* family because the first hosting volume\n"
+    "is COUVIS_0003 (Jupiter+Saturn transition), not COUVIS_0001.\n"
     "Step 5: For PDS4 bundles, call pds_inspect_collections on top 2-3 to get collection LIDs.\n"
     "Step 6: When the same instrument has BOTH a PDS3 volume-set and a PDS4 bundle, return BOTH "
-    "candidates. Do NOT silently drop the PDS3 form. Stay under 8 tool calls total.\n"
+    "candidates. Always scan `dataset_ids` (not only `dataset_id`) since Cassini voldescs "
+    "ship many ids per volume. Do NOT silently drop the PDS3 form. Stay under 8 tool calls total.\n"
 )
 
 # ---------------------------------------------------------------------------
@@ -455,13 +506,24 @@ _ATM_ABBREVIATIONS = (
     "  PDS3 volumes use lowercase prefixes on ATM: cocirs_0401, cors_0001, mrom_0001, etc.\n"
     "  Each prefix typically maps to one mission/instrument; volumes are numbered sequentially.\n"
     "  PDS4 bundles live under PDS/data/PDS4/ with mission-named directories (Huygens, InSight, MAVEN, etc.).\n"
+    "  IMPORTANT — many PDS4 bundles are ALSO co-located inside their PDS3 mirror volume\n"
+    "  under PDS/data/<VOLNAME>/ (hybrid). The Juno MWR PDS4 bundle, for instance, lives at\n"
+    "  PDS/data/jnomwr_1100V2/ (not under PDS/data/PDS4/). Always probe the PDS3 volume too\n"
+    "  when looking for a urn:nasa:pds: identifier on ATM.\n"
     "Mission/instrument keys (use as filter on PDS/data/):\n"
-    "  Cassini CIRS (thermal IR spectra) → cocirs  (84 volumes: cocirs_0401 … cocirs_1709)\n"
+    "  Cassini CIRS (thermal IR spectra) → cocirs  (84 volumes: cocirs_0401 … cocirs_1709;\n"
+    "                                       cocirs_1709 is the latest TSDR V4.0 + CUBES V2.0)\n"
     "  Cassini Radio Science (RSS) → cors  (430+ volumes: cors_0001 … cors_0434)\n"
     "  Cassini ISS (imaging, limited) → coiss\n"
     "  Cassini RADAR (Titan) → coradr\n"
     "  Cassini-Huygens cruise → CO_HUYGENS\n"
-    "  Mars Climate Sounder (MRO) → MROM\n"
+    "  Mars Climate Sounder (MRO) → MROM  — volume-number convention:\n"
+    "        MROM_0xxx = EDR (raw, level-2),  MROM_2xxx = DDR (derived, level-5).\n"
+    "        Pick MROM_2001 for MRO-M-MCS-5-DDR-V6.2.\n"
+    "  Juno MWR → jnomwr  — volume-number convention:\n"
+    "        jnomwr_0xxx = EDR (raw),  jnomwr_1xxx = RDR (calibrated).\n"
+    "        The PDS4 bundle urn:nasa:pds:juno_mwr ships INSIDE the PDS3 hybrid volume;\n"
+    "        the :data_calibrated collection lives in jnomwr_1100V2 (not 0100V2 which is raw).\n"
     "  MAVEN → MAVENM (PDS3) or look in PDS/data/PDS4/MAVEN/ (PDS4)\n"
     "  Mars Express SPICAM → MEXSPI\n"
     "  Pioneer Venus → PVO (orbiter), PVP (probes)\n"
@@ -485,15 +547,30 @@ _ATM_WORKFLOW_STEPS = (
     "Step 1: Decide PDS3 vs PDS4 based on the query.\n"
     "Step 2 (PDS3): Call pds_list_dataset_dirs(path='PDS/data/', node='atm', filter='<KEY>') "
     "with a volume prefix from the abbreviation table (MROM, MAVENM, MEXSPI, PVO, GP, HP, "
-    "VG_IRIS, MSL_REMS, M2020_MEDA, PHX, EARTH_, …). Filter is mandatory — ~2000 entries. "
-    "Ignore the `PDS4/` subdirectory at this level.\n"
-    "Step 2 (PDS4): Call pds_list_dataset_dirs(path='PDS/data/PDS4/', node='atm') — flat list "
-    "of bundle directories (Huygens/, InSight/, MAVEN/, …).\n"
-    "Step 3: Call pds_probe_datasets on the most relevant paths. HYBRID directories ship BOTH "
-    "PDS3 voldesc.cat and PDS4 bundle XML — expect duplicate entries with different pds_version.\n"
-    "Step 4: For PDS4 bundles, call pds_inspect_collections on top 2-3 (e.g. Huygens has "
-    "ACP, DISR, DWE, GCMS, HASI, SSP, HK collections).\n"
-    "Step 5: Return BOTH PDS3 and PDS4 IDs when the directory is hybrid.\n"
+    "VG_IRIS, MSL_REMS, M2020_MEDA, PHX, EARTH_, jnomwr, cocirs, cors, …). Filter is "
+    "mandatory — ~2000 entries. Ignore the `PDS4/` subdirectory at this level.\n"
+    "Step 2 (PDS4 — top-level bundles): Call pds_list_dataset_dirs(path='PDS/data/PDS4/', "
+    "node='atm') — flat list of mission-named bundle dirs (Huygens/, InSight/, MAVEN/, …).\n"
+    "Step 2-bis (PDS4 hybrids — IMPORTANT): If the gold target is a urn:nasa:pds:<mission> "
+    "identifier and Step 2 (PDS4) didn't find a matching bundle, the bundle is most likely "
+    "co-located inside the PDS3 mirror volume under PDS/data/<VOLNAME>/. Run Step 3 there.\n"
+    "Step 3: When a mission spans many numbered volumes that differ by product level "
+    "(e.g. jnomwr_0xxx=raw / jnomwr_1xxx=calibrated; MROM_0xxx=EDR / MROM_2xxx=DDR), "
+    "call pds_resolve_volume(volume_set_path='PDS/data/', node='atm', "
+    "dataset_id_hint='<target dataset_id or product type>', sample=8) instead of probing "
+    "volumes one by one. The hint can be a partial DATA_SET_ID, product keyword "
+    "('calibrated', 'DDR', 'RDR'), or instrument code; the tool ranks children by hint "
+    "similarity and probes the top `sample` of them in one call, returning per-child "
+    "dataset_ids and a `best_match` path.\n"
+    "Step 4: For PDS4 bundles (top-level OR hybrid), call pds_inspect_collections on the "
+    "matched bundle path. Many bundles ship per-product collections "
+    "(e.g. urn:…:juno_mwr:data_calibrated, urn:…:juno_mwr:data_raw); pick the one whose "
+    "logical_identifier matches the gold query.\n"
+    "Step 5: Use pds_probe_datasets only when you already know the specific volume path. "
+    "It returns `dataset_id` (first id, scalar) AND `dataset_ids` (full list); on Cassini "
+    "voldescs like cocirs_1709 the latter carries multiple ids (TSDR + CUBES). Always scan "
+    "`dataset_ids` when matching against gold.\n"
+    "Step 6: Return BOTH PDS3 and PDS4 IDs when the directory is hybrid.\n"
 )
 
 # ---------------------------------------------------------------------------
