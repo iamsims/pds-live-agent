@@ -403,69 +403,161 @@ _RMS_WORKFLOW_STEPS = (
 # SBN — Small Bodies Node
 # ---------------------------------------------------------------------------
 
-# SBN's /holdings/ Apache index is now accessible (~800+ dataset dirs).
-# Historically it returned HTTP 403; the workflow includes a fallback to
-# the abbreviation table if 403 recurs.
+# SBN is a federated archive split across multiple sub-mirrors. The mission set
+# the agent needs (Dawn, NEAR, OSIRIS-REx, Hayabusa, Hayabusa2, Lucy, DART) lives
+# at PSI's archive at https://sbnarchive.psi.edu/ , not at UMD's
+# https://pds-smallbodies.astro.umd.edu/holdings/ which only carries the
+# comet / ICE / Rosetta / Stardust / Deep Impact mirror.
+#
+# We point SBN at PSI here because every gold-classification query targets a
+# PSI-hosted mission. PSI uses two parallel trees:
+#
+#   pds3/<mission>/<DATASET_UPPER_UNDER>/   — PDS3 dataset dirs (underscores)
+#   pds4/<mission>/<bundle>/                — PDS4 bundles (lowercase, dot-separated LID)
+#
+# Note PSI's PDS3 naming differs from every other node: hyphens AND slashes in
+# the canonical DATA_SET_ID are both written as underscores in the directory
+# name, e.g. NEAR_A_MSI_3_EDR_EROS_ORBIT_V1_0/ ↔ NEAR-A-MSI-3-EDR-EROS/ORBIT-V1.0
+# (note "EROS/ORBIT" becomes "EROS_ORBIT", not "EROS_ORBIT_V1.0"). The version
+# suffix is "_V1_0" rather than "-V1.0".
+#
+# UMD-hosted missions (Rosetta ro-c-*, Stardust sd-*, Deep Impact di-*, comets,
+# International Halley Watch, etc.) are NOT reachable from this base_url. If a
+# query targets one of those, fall back to noting that the dataset lives at
+# UMD's mirror (pds-smallbodies.astro.umd.edu/holdings/) and document the
+# expected dataset_id from the abbreviation pattern. See SBN_UMD_FALLBACK below.
 
 _SBN_MISSIONS: tuple[dict[str, str], ...] = (
-    {"name": "ro-c", "description": "Rosetta at comet 67P/Churyumov-Gerasimenko (OSIRIS, NAVCAM, ALICE, MIRO, GIADA, COSIMA, VIRTIS, ROSINA)."},
-    {"name": "ro-a", "description": "Rosetta asteroid flybys (Lutetia, Steins)."},
-    {"name": "orex", "description": "OSIRIS-REx at asteroid Bennu (OCAMS, OVIRS, OTES, REXIS, OLA)."},
-    {"name": "hay", "description": "Hayabusa at asteroid Itokawa (AMICA, NIRS, LIDAR, XRS)."},
-    {"name": "hyb2", "description": "Hayabusa2 at asteroid Ryugu (ONC, NIRS3, TIR, LIDAR, MASCOT)."},
-    {"name": "lucy", "description": "Lucy mission to Trojan asteroids (L'LORRI, L'Ralph, L'TES)."},
-    {"name": "dart", "description": "DART impactor on Didymos/Dimorphos (DRACO, LICIACube)."},
-    {"name": "sd", "description": "Stardust at comet Wild 2 + Tempel 1 flyby (NAVCAM, CIDA)."},
-    {"name": "di", "description": "Deep Impact at comet Tempel 1 (HRI, MRI, ITS)."},
-    {"name": "dif", "description": "EPOXI / Deep Impact extended mission (Hartley 2 flyby, exoplanet observations)."},
-    {"name": "near-a", "description": "NEAR Shoemaker at asteroid Eros (MSI, NLR, NIS, MAG)."},
-    {"name": "co-d-cda", "description": "Cassini CDA — Cosmic Dust Analyzer (interplanetary/Saturn dust)."},
-    {"name": "gbo", "description": "Ground-based observations of asteroids/comets/KBOs."},
-    {"name": "hst", "description": "Hubble small-body observations (asteroids, comets, KBOs)."},
-    {"name": "spitzer", "description": "Spitzer Space Telescope small-body IR observations."},
-    {"name": "irtf", "description": "NASA IRTF small-body IR observations."},
+    # PSI /pds3/ subtrees
+    {"name": "dawn", "description": "Dawn at Vesta + Ceres — pds3/dawn/{fc,grand,grav,vir}/. FC=Framing Camera, GRaND=Gamma Ray and Neutron Detector, GRAV=gravity, VIR=Visible+IR Mapping Spectrometer."},
+    {"name": "near", "description": "NEAR Shoemaker at asteroid Eros — pds3/near/<NEAR_A_*>/. Instruments: MSI (imaging), NLR (laser ranging), NIS (near-IR spectrometer), MAG, GRS, XRS."},
+    {"name": "hayabusa", "description": "Hayabusa at asteroid Itokawa — pds3/hayabusa/. Instruments: AMICA, NIRS, LIDAR, XRS."},
+    {"name": "cassini", "description": "Cassini small-body imaging (PSI mirror, distinct from RMS/PPI/ATM)."},
+    {"name": "galileo", "description": "Galileo small-body imaging — Gaspra, Ida flybys (PSI mirror)."},
+    {"name": "ulysses", "description": "Ulysses small-body observations (PSI mirror)."},
+    {"name": "iras", "description": "IRAS infrared asteroid/comet observations."},
+    {"name": "neat", "description": "NEAT survey asteroid astrometry/photometry."},
+    {"name": "msx", "description": "MSX (Midcourse Space Experiment) asteroid IR observations."},
+    {"name": "non_mission", "description": "Ground/space-based non-mission small-body data archives."},
+    {"name": "multi_mission", "description": "Cross-mission small-body data products."},
+    # PSI /pds4/ subtrees
+    {"name": "orex", "description": "OSIRIS-REx at asteroid Bennu — pds4/orex/{orex.ocams, orex.ovirs, orex.otes, orex.ola, orex.rexis, orex.spectral_analysis, ...}. Each is a PDS4 bundle with LID urn:nasa:pds:<bundle_name>."},
+    {"name": "hayabusa2", "description": "Hayabusa2 at asteroid Ryugu — pds4/hayabusa2/. Instruments: ONC, NIRS3, TIR, LIDAR, MASCOT."},
+    {"name": "clipper", "description": "Europa Clipper (PDS4-only at this archive)."},
+    {"name": "ldex", "description": "LADEE dust experiment (PDS4 archive)."},
+    # Dual-host: UMD mirror has these but not PSI:
+    {"name": "ro-c", "description": "Rosetta at comet 67P — NOT hosted at PSI. Lives at UMD's pds-smallbodies.astro.umd.edu/holdings/. Out of reach from this base_url."},
+    {"name": "stardust", "description": "Stardust at Wild 2 / Tempel 1 — NOT hosted at PSI (UMD-only). Out of reach."},
+    {"name": "di", "description": "Deep Impact at Tempel 1 — NOT hosted at PSI (UMD-only). Out of reach."},
+    {"name": "lucy", "description": "Lucy at Trojan asteroids — published at MIT/JPL mirrors (not yet at PSI). Out of reach from this base_url."},
+    {"name": "dart", "description": "DART impactor on Didymos/Dimorphos — published at JHUAPL mirror (not at PSI). Out of reach."},
 )
 
 _SBN_ABBREVIATIONS = (
-    "Naming conventions on SBN (when reachable):\n"
-    "  PDS3 dataset names: <mission>-<target>-<instrument>-<level>-<v> (e.g. ro-c-osiris-2-cru2-mtp003-v2.0).\n"
-    "  PDS4 bundles: urn:nasa:pds:<mission_instrument>_<level> (e.g. urn:nasa:pds:orex.ocams).\n"
-    "Mission keys (use as filter):\n"
-    "  Rosetta comet → ro-c-*; Rosetta asteroid → ro-a-*\n"
-    "  OSIRIS-REx → orex_*; Hayabusa → hay_*; Hayabusa2 → hyb2_*\n"
-    "  Lucy → lucy_*; DART → dart_*\n"
-    "  Stardust → sd-*; Deep Impact → di-* / dii-* / dif-* (EPOXI extension)\n"
-    "  NEAR → near-a-*; Cassini CDA → co-d-cda-*\n"
-    "  Ground/space-based small-body observing → gbo*, hst, spitzer, irtf\n"
+    "Naming conventions on SBN (PSI archive — sbnarchive.psi.edu):\n"
+    "  Two parallel trees:\n"
+    "    pds3/<mission>/<DATASET_UPPER_UNDERSCORE>/  — PDS3 PSI uses ALL_CAPS_WITH_UNDERSCORES\n"
+    "    pds4/<mission>/<lower.dot.name>/            — PDS4 bundles, LID-style dot-separated\n"
+    "\n"
+    "PDS3 underscore-encoding (PSI-specific, IMPORTANT):\n"
+    "  Both '-' and '/' in the canonical DATA_SET_ID become '_' in the directory name.\n"
+    "  Version 'V1.0' is written 'V1_0' (the period also becomes underscore).\n"
+    "  Examples:\n"
+    "    Gold DATA_SET_ID                          → PSI directory name\n"
+    "    DAWN-A-VIR-3-RDR-IR-CERES-SPECTRA-V1.0   → DWNCSPC_I1B/  (Dawn uses short codes — see Dawn note)\n"
+    "    NEAR-A-MSI-3-EDR-EROS/ORBIT-V1.0          → NEAR_A_MSI_3_EDR_EROS_ORBIT_V1_0/\n"
+    "    NEAR-A-MSI-5-DIM-EROS/ORBIT-V1.0          → NEAR_A_MSI_5_DIM_EROS_ORBIT_V1_0/\n"
+    "  When the gold id contains '/', map it to '_' in the path AND look for the corresponding\n"
+    "  underscore-joined target keyword (EROS/ORBIT → EROS_ORBIT, not EROS_ORBIT_V1).\n"
+    "\n"
+    "PDS4 dot-encoded LIDs (PSI):\n"
+    "  Bundle dir name matches the LID body verbatim, with '.' preserved:\n"
+    "    urn:nasa:pds:orex.otes  ↔  pds4/orex/orex.otes/\n"
+    "    urn:nasa:pds:orex.ovirs ↔  pds4/orex/orex.ovirs/\n"
+    "    urn:nasa:pds:orex.ola   ↔  pds4/orex/orex.ola/\n"
+    "  Note: SBN PDS4 bundles use DOT separators inside the bundle LID (orex.otes), unlike\n"
+    "  most other nodes which use HYPHENS (cassini-mag-cal) or UNDERSCORES (juno_mwr).\n"
+    "\n"
+    "Dawn-specific PDS3 short codes (pds3/dawn/<inst>/<short>):\n"
+    "  Dawn volumes use short DWN<phase><inst>_<level><rev> codes rather than full hyphenated\n"
+    "  DATA_SET_IDs. Example codes (phase = mission phase):\n"
+    "    DWNC1VIR_I1A = Dawn Ceres approach VIR IR L1A; DWNCSPC_I1B = Ceres Survey VIR L1B; etc.\n"
+    "    DWN<phase><inst>_<V|I><level><rev>:\n"
+    "      phase: C=Ceres, V=Vesta, X=cruise, C1/C2/C3/C4/C6/C7=Ceres sub-phases (XMO/HAMO/LAMO)\n"
+    "      inst:  VIR=visual+IR spectro; FC=framing camera; GRD=GRaND\n"
+    "      V vs I: V=Visible band; I=Infrared band\n"
+    "      level: 1A=raw, 1B=calibrated, 5=DDR/mosaic\n"
+    "    To find DAWN-A-VIR-3-RDR-IR-CERES-SPECTRA-V1.0 → look for DWNC<n>VIR_I1B/ (Ceres + IR + L1B).\n"
+    "    To find DAWN-A-VIR-5-DDR-CERES-MOSAIC-V1.0     → look for DWNCSPC_5IRMOSAIC/ or similar L5.\n"
+    "    To find DAWN-A-FC2-5-CERESMOSAIC-V1.0          → look in pds3/dawn/fc/ for DWNC*FC2_5*MOSAIC*.\n"
+    "\n"
+    "Mission keys (use as filter; pick the subtree to list first):\n"
+    "  PDS3 missions →  pds3/dawn/, pds3/near/, pds3/hayabusa/, pds3/cassini/, pds3/galileo/,\n"
+    "                  pds3/ulysses/, pds3/iras/, pds3/neat/, pds3/msx/, pds3/non_mission/,\n"
+    "                  pds3/multi_mission/\n"
+    "  PDS4 missions →  pds4/orex/, pds4/hayabusa2/, pds4/cassini/, pds4/dawn/, pds4/galileo/,\n"
+    "                  pds4/hayabusa/, pds4/iras/, pds4/msx/, pds4/ldex/, pds4/clipper/\n"
+    "  UMD-only (NOT reachable from this base_url): Rosetta (ro-c, ro-a), Stardust (sd),\n"
+    "                                                Deep Impact (di, dif, dii), comets/ICE/Halley.\n"
+    "                                                See SBN_UMD_FALLBACK in workflow_steps.\n"
 )
 
 _SBN_WORKFLOW = (
-    "Directory layout: holdings/<dataset_dir>/  — ~800+ dataset directories, flat list.\n"
-    "SBN's /holdings/ Apache index is now accessible. Use pds_list_dataset_dirs "
-    "with a filter keyword from the mission table to narrow results.\n"
-    "IMPORTANT: The holdings index has historically been intermittent (HTTP 403). If "
-    "pds_list_dataset_dirs returns status='forbidden', fall back to synthesising candidates "
-    "from the abbreviation table (see 403 FALLBACK in workflow steps).\n"
+    "Directory layout (PSI archive — sbnarchive.psi.edu):\n"
+    "  pds3/<mission>/<DATASET_UPPER_UNDER>/   — PDS3 datasets, all-caps + underscores\n"
+    "  pds4/<mission>/<lower.dot.name>/        — PDS4 bundles, dot-separated LID\n"
+    "Top level under pds3/ and pds4/ are flat lists of mission directories. Each mission\n"
+    "directory contains its dataset dirs directly OR splits into per-instrument subdirs\n"
+    "(Dawn does both: pds3/dawn/{fc,grand,grav,vir}/ each have dataset dirs inside).\n"
+    "\n"
+    "PSI ships each dataset both as a .zip / .tar.gz archive AND as an unpacked directory of\n"
+    "the same name; we always probe the unpacked directory (the one without the archive\n"
+    "extension). The pds_list_dataset_dirs filter excludes the archive files automatically\n"
+    "because it only returns directories.\n"
+    "\n"
+    "UMD coverage gap — Rosetta, Stardust, Deep Impact, ICE/Halley, and most comet datasets\n"
+    "live at https://pds-smallbodies.astro.umd.edu/holdings/ (UMD's mirror), which is a\n"
+    "different base_url. If the query targets one of those, the agent cannot reach the data\n"
+    "from this base_url; see SBN_UMD_FALLBACK in workflow_steps.\n"
 )
 
 _SBN_WORKFLOW_STEPS = (
-    "Step 1: Call pds_list_missions(node='sbn') to load the mission abbreviation table.\n"
-    "Step 2: Identify the mission(s) relevant to the query (Rosetta=ro-c/ro-a, OSIRIS-REx=orex, "
-    "Hayabusa=hay/hyb2, Lucy=lucy, DART=dart, Stardust=sd, Deep Impact=di/dif, NEAR=near-a, "
-    "Cassini CDA=co-d-cda, ground/space-based=gbo/hst/spitzer/irtf).\n"
-    "Step 3: Call pds_list_dataset_dirs(path='holdings/', node='sbn', filter='<mission_key>') "
-    "to list matching dataset directories.\n"
-    "Step 4: If Step 3 succeeds, call pds_probe_datasets on the most relevant paths (batch up to 20).\n"
-    "Step 5: If PDS4 bundles are found, call pds_inspect_collections on top 2-3.\n"
-    "Step 6: Return candidates.\n\n"
-    "403 FALLBACK — If pds_list_dataset_dirs returns status='forbidden' (HTTP 403), the holdings "
-    "index is temporarily unreachable. In that case:\n"
-    "  a. Synthesise ONE candidate per likely dataset using the abbreviation pattern from Step 1: "
-    "PDS3 = '<mission>-<target>-<instrument>-<level>-v<n>' (e.g. ro-c-osiris-2-cru2-mtp003-v2.0); "
-    "PDS4 = 'urn:nasa:pds:<mission_instrument>' (e.g. urn:nasa:pds:orex.ocams).\n"
-    "  b. In every candidate's `reasoning`, EXPLICITLY state that the dataset_id was inferred "
-    "from the abbreviation table because SBN's holdings index returned HTTP 403 — "
-    "the candidate is plausible but NOT verified live.\n"
+    "Step 1: Decide which subtree (pds3/ or pds4/) the query targets. Gold ids that start\n"
+    "        with 'urn:nasa:pds:' use pds4/; everything else (DAWN-*, NEAR-A-*, HAY-*, etc.)\n"
+    "        uses pds3/.\n"
+    "Step 2: Decide which mission directory the query targets. Use the abbreviation table:\n"
+    "        DAWN gold → pds3/dawn/<inst>/  (split into fc/, grand/, grav/, vir/ for PDS3)\n"
+    "        NEAR gold → pds3/near/         (flat list of NEAR_A_<INST>_<LEVEL>_* dirs)\n"
+    "        OREX gold → pds4/orex/         (flat list of orex.<instrument> bundles)\n"
+    "Step 3 (PDS3 PSI): Call pds_list_dataset_dirs(path='pds3/<mission>/[<inst>/]', node='sbn',\n"
+    "        filter='<token>') with a filter that matches the underscore-encoded form of the\n"
+    "        gold id. Examples:\n"
+    "          DAWN-A-VIR-3-RDR-IR-CERES-SPECTRA-V1.0 →\n"
+    "             list_dataset_dirs(path='pds3/dawn/vir/', filter='I1B') then pick a Ceres\n"
+    "             volume (DWNCSPC_I1B, DWNC1VIR_I1B, …) and probe it.\n"
+    "          NEAR-A-MSI-3-EDR-EROS/ORBIT-V1.0 →\n"
+    "             list_dataset_dirs(path='pds3/near/', filter='MSI_3_EDR_EROS_ORBIT') then\n"
+    "             probe the single match NEAR_A_MSI_3_EDR_EROS_ORBIT_V1_0/.\n"
+    "Step 3 (PDS4 PSI): Call pds_list_dataset_dirs(path='pds4/<mission>/', node='sbn',\n"
+    "        filter='<instrument>') and pick the bundle whose name matches the LID body:\n"
+    "          urn:nasa:pds:orex.otes →\n"
+    "             list_dataset_dirs(path='pds4/orex/', filter='orex.otes') →\n"
+    "             pick the unversioned dir 'orex.otes/' (NOT orex.otes_v10.0/ which is an\n"
+    "             older snapshot; the latest is named without _vN.0).\n"
+    "Step 4: pds_probe_datasets on the matched dataset path (max 1 call per id).\n"
+    "Step 5: For PDS4 bundles, follow with pds_inspect_collections to get per-instrument\n"
+    "        collection LIDs (urn:nasa:pds:orex.otes:data_calibrated etc.).\n"
+    "Step 6: Use the new `dataset_ids` field on probe_datasets — when a voldesc declares\n"
+    "        multiple ids, match against the full list (rare on PSI but happens for some\n"
+    "        Dawn volumes that mix VIS+IR products).\n"
+    "\n"
+    "SBN_UMD_FALLBACK — If the gold dataset_id starts with 'ro-c-', 'ro-a-', 'sd-', 'di-',\n"
+    "  'dif-', 'dii-', 'ear-', or otherwise hits one of the UMD-only missions listed above:\n"
+    "    a. Do NOT spend tool calls hunting at this base_url; PSI does not host them.\n"
+    "    b. Return a candidate using the abbreviation pattern\n"
+    "       '<mission>-<target>-<instrument>-<level>-v<n>' and note in `reasoning` that the\n"
+    "       dataset lives at UMD's mirror (pds-smallbodies.astro.umd.edu/holdings/), not\n"
+    "       PSI's archive. Cap the trace at 2 tool calls in this fallback path.\n"
 )
 
 # ---------------------------------------------------------------------------
@@ -727,15 +819,18 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
     ),
     "sbn": NodeConfig(
         node_id="sbn",
-        base_url="https://pds-smallbodies.astro.umd.edu/",
-        display_name="Small Bodies Node (SBN)",
-        # Holdings index now accessible; workflow includes 403 fallback.
-        data_root="holdings/",
-        has_mission_layer=False,
+        # PSI hosts the gold-classification mission set (Dawn, NEAR, OSIRIS-REx,
+        # Hayabusa, Hayabusa2). UMD's mirror covers Rosetta/Stardust/Deep
+        # Impact/comets — out of reach from this base_url; see SBN_UMD_FALLBACK.
+        base_url="https://sbnarchive.psi.edu/",
+        display_name="Small Bodies Node (SBN — PSI mirror)",
+        # Two parallel trees under the root: pds3/ and pds4/. No single data_root.
+        data_root="pds3/",
+        has_mission_layer=True,
         missions=_SBN_MISSIONS,
-        description="Small bodies: comets, asteroids, KBOs, dust; spacecraft "
-        "(Rosetta, OSIRIS-REx, Hayabusa, Lucy, DART, Stardust, Deep Impact, NEAR) "
-        "plus ground/space-based observations",
+        description="Small bodies: asteroids and small-body spacecraft missions hosted at "
+        "PSI's SBN sub-archive (Dawn, NEAR, OSIRIS-REx, Hayabusa, Hayabusa2). "
+        "Rosetta / Stardust / Deep Impact / comets live at UMD's separate mirror.",
         workflow_notes=_SBN_WORKFLOW,
         abbreviations=_SBN_ABBREVIATIONS,
         workflow_steps=_SBN_WORKFLOW_STEPS,
