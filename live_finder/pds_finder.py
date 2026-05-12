@@ -25,7 +25,7 @@ from pathlib import Path
 
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
-from pydantic_ai.mcp import MCPServerStdio
+from pydantic_ai.mcp import MCPServerStdio, MCPServerStreamableHTTP
 from pydantic_ai.settings import ModelSettings
 
 from pydantic_code.tools.node_registry import SUPPORTED_NODES, get_node_config
@@ -291,66 +291,69 @@ ROUTER_SYSTEM_PROMPT = (
 # purpose. No literal '{' or '}' — the appendix is rendered via str.format.
 
 _GEO_LAYER3_TOOLS = (
-    "  - ODE_search_products(target=..., instrument=..., bbox=..., pt=..., "
-    "product_type=...): faceted product search across GEO/ODE holdings. "
-    "Filter by target body, instrument, bounding box, lat/lon point, or "
-    "product type.\n"
-    "  - ODE_count_products(target=..., instrument=..., bbox=...): cheap count "
-    "before pulling a large result set.\n"
-    "  - ODE_list_instruments(target=...): enumerate instrument codes valid "
-    "for a target.\n"
-    "  - ODE_list_feature_classes(target=...) / ODE_list_feature_names("
-    "target=..., feature_class=...): gazetteer lookup for named surface "
-    "features (craters, maria, etc.).\n"
-    "  - ODE_get_feature_bounds(target=..., feature_name=...): bounding box "
-    "for a named feature; feed the bbox into ODE_search_products.\n"
+    "  - ode_search_products_tool(target=..., instrument=..., bbox=..., "
+    "pt=..., product_type=...): faceted product search across GEO/ODE "
+    "holdings. Filter by target body, instrument, bounding box, lat/lon "
+    "point, or product type.\n"
+    "  - ode_count_products_tool(target=..., instrument=..., bbox=...): cheap "
+    "count before pulling a large result set.\n"
+    "  - ode_list_instruments_tool(target=...): enumerate instrument codes "
+    "valid for a target.\n"
+    "  - ode_list_feature_classes_tool(target=...) / "
+    "ode_list_feature_names_tool(target=..., feature_class=...): gazetteer "
+    "lookup for named surface features (craters, maria, etc.).\n"
+    "  - ode_get_feature_bounds_tool(target=..., feature_name=...): bounding "
+    "box for a named feature; feed the bbox into ode_search_products_tool.\n"
 )
 
 _IMG_LAYER3_TOOLS = (
-    "  - IMG_search(target=..., instrument=..., mission=..., time_range=..., "
-    "filters=...): IMG faceted product search.\n"
-    "  - IMG_get_facets(field=...): enumerate valid facet values (instruments, "
-    "missions, targets, product types) for the IMG catalog.\n"
-    "  - IMG_get_product(product_id=...): fetch metadata for one IMG product.\n"
-    "  - IMG_count(target=..., instrument=..., ...): count matches without "
-    "pulling rows.\n"
+    "  - img_search_tool(target=..., instrument=..., mission=..., "
+    "time_range=..., filters=...): IMG faceted product search.\n"
+    "  - img_get_facets_tool(field=...): enumerate valid facet values "
+    "(instruments, missions, targets, product types) for the IMG catalog.\n"
+    "  - img_get_product_tool(product_id=...): fetch metadata for one IMG "
+    "product.\n"
+    "  - img_count_tool(target=..., instrument=..., ...): count matches "
+    "without pulling rows.\n"
 )
 
 _RMS_LAYER3_TOOLS = (
-    "  - OPUS_search(target=..., instrument=..., time_range=..., "
+    "  - opus_search_tool(target=..., instrument=..., time_range=..., "
     "ring_geometry=..., observation_type=...): RMS OPUS faceted product "
     "search at the observation/granule level.\n"
-    "  - OPUS_count(...): count results before pulling them.\n"
-    "  - OPUS_get_metadata(opus_id=...): metadata for one observation.\n"
-    "  - OPUS_get_files(opus_id=..., product_type=...): file list for one "
-    "observation, optionally filtered by product type (raw / calibrated / "
-    "preview / geometry).\n"
+    "  - opus_count_tool(...): count results before pulling them.\n"
+    "  - opus_get_metadata_tool(opus_id=...): metadata for one observation.\n"
+    "  - opus_get_files_tool(opus_id=..., product_type=...): file list for "
+    "one observation, optionally filtered by product type (raw / calibrated "
+    "/ preview / geometry).\n"
 )
 
 _SBN_LAYER3_TOOLS = (
-    "  - SBN_search_object(target_name=..., target_type=...): look up data by "
-    "small-body name (comet, asteroid, KBO).\n"
-    "  - SBN_search_coordinates(ra=..., dec=..., radius=..., epoch=...): "
-    "spatial search of small-body observations near a sky position.\n"
-    "  - SBN_list_sources(): enumerate SBN sub-archives / mirrors when the PSI "
-    "tree is unavailable (e.g. UMD mirror for Rosetta / Stardust / Deep "
-    "Impact / comets).\n"
+    "  - sbn_search_object_tool(target_name=..., target_type=...): look up "
+    "data by small-body name (comet, asteroid, KBO).\n"
+    "  - sbn_search_coordinates_tool(ra=..., dec=..., radius=..., "
+    "epoch=...): spatial search of small-body observations near a sky "
+    "position.\n"
+    "  - sbn_list_sources_tool(): enumerate SBN sub-archives / mirrors when "
+    "the PSI tree is unavailable (e.g. UMD mirror for Rosetta / Stardust / "
+    "Deep Impact / comets).\n"
 )
 
 # Shared PDS4 registry fallback for nodes without a bespoke deep-search API
 # (PPI, ATM, NAIF, LROC) and also the safe default for any unknown node.
 _PDS4_FALLBACK = (
-    "  - PDS4_search_bundles(keywords=..., investigation=..., instrument=..., "
-    "target=...): cross-node PDS4 registry bundle search.\n"
-    "  - PDS4_search_collections(bundle_lid=..., keywords=..., ...): collection "
-    "search; reuse the Stage 1 bundle LID as a filter when possible.\n"
-    "  - PDS4_search_products(collection_lid=..., keywords=..., ...): "
+    "  - pds4search_bundles_tool(keywords=..., investigation=..., "
+    "instrument=..., target=...): cross-node PDS4 registry bundle search.\n"
+    "  - pds4search_collections_tool(bundle_lid=..., keywords=..., ...): "
+    "collection search; reuse the Stage 1 bundle LID as a filter when "
+    "possible.\n"
+    "  - pds4search_products_tool(collection_lid=..., keywords=..., ...): "
     "product-level search inside a collection.\n"
-    "  - PDS4_search_investigations / PDS4_search_instruments / "
-    "PDS4_search_instrument_hosts / PDS4_search_targets: context-product "
-    "lookups when user-facing names need to be resolved to LIDs.\n"
-    "  - PDS4_get_product(lid=...): fetch one product label by LID.\n"
-    "  - PDS4_crawl_context_product(lid=...): walk a context product's "
+    "  - pds4search_investigations_tool / pds4search_instruments_tool / "
+    "pds4search_instrument_hosts_tool / pds4search_targets_tool: context-"
+    "product lookups when user-facing names need to be resolved to LIDs.\n"
+    "  - pds4get_product_tool(lid=...): fetch one product label by LID.\n"
+    "  - pds4crawl_context_product_tool(lid=...): walk a context product's "
     "associations to find related bundles/collections.\n"
 )
 
@@ -363,6 +366,46 @@ LAYER3_TOOLS_BY_NODE: dict[str, str] = {
     "atm":  _PDS4_FALLBACK,
     "naif": _PDS4_FALLBACK,
     "lroc": _PDS4_FALLBACK,
+}
+
+
+# Per-node allow-list for the Stage 2 MCP server. The worker only sees the
+# tools in this frozenset for its node — the others are filtered out before
+# the agent ever learns they exist.
+_PDS4_FALLBACK_ALLOWED = frozenset({
+    "pds4search_bundles_tool",
+    "pds4search_collections_tool",
+    "pds4search_products_tool",
+    "pds4search_investigations_tool",
+    "pds4search_instruments_tool",
+    "pds4search_instrument_hosts_tool",
+    "pds4search_targets_tool",
+    "pds4get_product_tool",
+    "pds4crawl_context_product_tool",
+})
+
+LAYER3_ALLOWED_TOOLS: dict[str, frozenset[str]] = {
+    "geo":  frozenset({
+        "ode_search_products_tool", "ode_count_products_tool",
+        "ode_list_instruments_tool", "ode_list_feature_classes_tool",
+        "ode_list_feature_names_tool", "ode_get_feature_bounds_tool",
+    }),
+    "img":  frozenset({
+        "img_search_tool", "img_get_facets_tool",
+        "img_get_product_tool", "img_count_tool",
+    }),
+    "rms":  frozenset({
+        "opus_search_tool", "opus_count_tool",
+        "opus_get_metadata_tool", "opus_get_files_tool",
+    }),
+    "sbn":  frozenset({
+        "sbn_search_object_tool", "sbn_search_coordinates_tool",
+        "sbn_list_sources_tool",
+    }),
+    "ppi":  _PDS4_FALLBACK_ALLOWED,
+    "atm":  _PDS4_FALLBACK_ALLOWED,
+    "naif": _PDS4_FALLBACK_ALLOWED,
+    "lroc": _PDS4_FALLBACK_ALLOWED,
 }
 
 
@@ -483,6 +526,87 @@ def _build_mcp() -> MCPServerStdio:
         args=["-m", "pydantic_code.tools.mcp_server"],
         env={**os.environ, "PYTHONPATH": _PACKAGE_ROOT + os.pathsep + os.environ.get("PYTHONPATH", "")},
         timeout=30,
+    )
+
+
+# Hosted FastMCP server that exposes the Stage 2 deeper-search tools
+# (ode_*, opus_*, img_*, sbn_*, pds4*). Defaults match the production
+# deployment; override via env vars for staging or local mirrors.
+_DEFAULT_STAGE2_URL = "https://natural-bronze-stingray.fastmcp.app/mcp"
+
+
+def _build_stage2_mcp(
+    *,
+    url: str | None = None,
+    headers: dict[str, str] | None = None,
+) -> MCPServerStreamableHTTP:
+    """Connect to the hosted Stage 2 MCP server (streamable HTTP).
+
+    Auth: ``Authorization: Bearer <FAST_MCP_AUTH>`` is set automatically when
+    that env var is present (same convention as catalog mode). Pass ``headers``
+    explicitly to override.
+    """
+    resolved_url = url or os.environ.get("PDS_STAGE2_MCP_URL") or _DEFAULT_STAGE2_URL
+    if headers is None:
+        token = os.environ.get("FAST_MCP_AUTH")
+        headers = {"Authorization": f"Bearer {token}"} if token else None
+    return MCPServerStreamableHTTP(url=resolved_url, headers=headers)
+
+
+def _build_stage2_toolset_for(node: str, **stage2_kwargs):
+    """Build a per-node filtered Stage 2 toolset.
+
+    The Stage 2 MCP exposes all 26 layered tools; ``.filtered(...)`` hides
+    everything not in ``LAYER3_ALLOWED_TOOLS[node]`` so the worker only ever
+    sees its node's faceted-search tools.
+    """
+    allowed = LAYER3_ALLOWED_TOOLS.get(node.lower(), _PDS4_FALLBACK_ALLOWED)
+    return _build_stage2_mcp(**stage2_kwargs).filtered(
+        lambda ctx, td: td.name in allowed
+    )
+
+
+def build_layered_finder(
+    node: str,
+    *,
+    model: str = "openai:gpt-5.2",
+    reasoning_effort: str = "high",
+    stage2_url: str | None = None,
+    stage2_headers: dict[str, str] | None = None,
+) -> Agent[None, "PDSLiveFindDatasetOutput"]:
+    """Build a layered worker agent for a single node.
+
+    Stage 1 toolset: the existing stdio MCP (4 live HTTP tools).
+    Stage 2 toolset: the hosted FastMCP server, filtered to the per-node
+    allow-list in ``LAYER3_ALLOWED_TOOLS``.
+
+    Routing (picking the node) is the caller's responsibility — wrap this
+    in a router-driven runner that calls the router agent first, then passes
+    the resulting node here.
+    """
+    stage1 = _build_mcp()
+    stage2 = _build_stage2_toolset_for(node, url=stage2_url, headers=stage2_headers)
+
+    return Agent(
+        model,
+        toolsets=[stage1, stage2],
+        output_type=PDSLiveFindDatasetOutput,
+        system_prompt=_build_layered_prompt(node),
+        model_settings=ModelSettings(extra_body={"reasoning_effort": reasoning_effort}),
+        retries=2,
+    )
+
+
+def build_router_agent(model: str = "openai:gpt-5.2") -> Agent[None, RouterDecision]:
+    """Build the tool-less routing agent.
+
+    Returns a ``RouterDecision`` with ``primary_node``, ``secondary_node``,
+    ``confidence``, and ``reasoning``. No MCP attached — pure classification.
+    """
+    return Agent(
+        model,
+        output_type=RouterDecision,
+        system_prompt=ROUTER_SYSTEM_PROMPT,
     )
 
 
