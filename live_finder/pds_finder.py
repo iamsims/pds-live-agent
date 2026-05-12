@@ -667,6 +667,22 @@ class LayeredFinder:
         result = await worker.run(query)
         return decision, result.output
 
+    async def run_traced(
+        self,
+        query: str,
+    ) -> tuple[RouterDecision, PDSLiveFindDatasetOutput, list]:
+        """Like ``run()`` but also returns the worker's full message history.
+
+        The third element is whatever ``Agent.run().all_messages()`` returns
+        for the worker — feed it into ``run_eval._extract_tool_calls`` to
+        get a tidy list of (tool_name, tool_input, tool_output) triples.
+        """
+        decision = await self.route(query)
+        node = decision.primary_node or self._fallback
+        worker = await self._get_worker(node)
+        result = await worker.run(query)
+        return decision, result.output, list(result.all_messages())
+
 
 async def run_layered_query(
     query: str,
