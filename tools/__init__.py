@@ -29,7 +29,6 @@ from .node_registry import (
     NodeConfig,
     get_base_url,
     get_node_config,
-    list_available_nodes,
 )
 from .probe_datasets import (
     PDSGeoProbeError,
@@ -48,7 +47,6 @@ __all__ = [
     "NODE_REGISTRY",
     "get_node_config",
     "get_base_url",
-    "list_available_nodes",
     # list_missions (new + compat)
     "PDSMission",
     "PDSListMissionsOutput",

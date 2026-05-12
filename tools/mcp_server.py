@@ -7,8 +7,7 @@ Run standalone:
 The agent in ``pydantic_code.live_finder`` connects to this server via
 ``MCPServerStdio`` — it spawns this module as a subprocess automatically.
 
-Tools (6):
-    0. pds_select_node          — get node-specific context (abbreviations, workflow)
+Tools (5):
     1. pds_list_missions        — mission list for a node (no HTTP for hardcoded nodes)
     2. pds_list_dataset_dirs    — list sub-dirs under a path (cheap HTTP)
     3. pds_probe_datasets       — probe specific paths for PDS labels (recursive leaf-find)
@@ -23,44 +22,10 @@ from fastmcp import FastMCP
 from pydantic_code.tools.inspect_collections import pds_inspect_collections
 from pydantic_code.tools.list_dataset_dirs import pds_list_dataset_dirs
 from pydantic_code.tools.list_missions import pds_list_missions
-from pydantic_code.tools.node_registry import get_node_config, list_available_nodes
 from pydantic_code.tools.probe_datasets import pds_probe_datasets
 from pydantic_code.tools.resolve_volume import pds_resolve_volume
 
 mcp = FastMCP("pds-tools")
-
-
-# ------------------------------------------------------------------
-# Tool 0: select node (get node-specific context)
-# ------------------------------------------------------------------
-
-@mcp.tool(name="pds_select_node")
-def pds_select_node_tool(node: str) -> dict:
-    """Select a PDS node and get its workflow context.
-
-    Call this FIRST to get node-specific guidance (missions, abbreviations,
-    workflow tips). Then use the other tools with the same node parameter.
-
-    Args:
-        node: PDS node identifier. One of: "geo", "ppi", "lroc", "rms", "sbn", "atm".
-    """
-    try:
-        config = get_node_config(node)
-    except ValueError:
-        return {
-            "error": f"Unknown node: {node!r}",
-            "available_nodes": list_available_nodes(),
-        }
-    return {
-        "node": config.node_id,
-        "display_name": config.display_name,
-        "base_url": config.base_url,
-        "data_root": config.data_root,
-        "has_mission_layer": config.has_mission_layer,
-        "mission_count": len(config.missions),
-        "workflow_notes": config.workflow_notes,
-        "abbreviations": config.abbreviations,
-    }
 
 
 # ------------------------------------------------------------------

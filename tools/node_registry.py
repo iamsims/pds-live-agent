@@ -25,7 +25,6 @@ class NodeConfig:
     data_root: str  # relative path to the data listing root ("" for GEO, "data/" for PPI/LROC)
     has_mission_layer: bool  # True → missions sit between data_root and datasets
     missions: tuple[dict[str, str], ...] = field(default_factory=tuple)
-    description: str = ""
     # Free-form prose: directory layout + any caveats (HTTP 403, hybrid trees, etc.).
     workflow_notes: str = ""
     # Mission/instrument abbreviation table — used by the agent for fast lookup.
@@ -790,8 +789,6 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         data_root="",
         has_mission_layer=True,
         missions=_GEO_MISSIONS,
-        description="Geoscience data: Mars, Venus, Mercury, Moon surface/subsurface measurements, "
-        "topography, gravity, geochemistry, imaging, spectroscopy",
         workflow_notes=_GEO_WORKFLOW,
         abbreviations=_GEO_ABBREVIATIONS,
         workflow_steps=_GEO_WORKFLOW_STEPS,
@@ -803,8 +800,6 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         data_root="data/",
         has_mission_layer=False,
         missions=_PPI_MISSIONS,
-        description="Plasma, particle, and fields data: magnetospheres, solar wind, "
-        "ionospheres, radio/plasma waves, energetic particles",
         workflow_notes=_PPI_WORKFLOW,
         abbreviations=_PPI_ABBREVIATIONS,
         workflow_steps=_PPI_WORKFLOW_STEPS,
@@ -816,7 +811,6 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         data_root="data/",
         has_mission_layer=False,
         missions=(),
-        description="LROC imaging: NAC and WAC lunar surface images, EDR/CDR/RDR products",
         workflow_notes=_LROC_WORKFLOW,
         abbreviations=_LROC_ABBREVIATIONS,
         workflow_steps=_LROC_WORKFLOW_STEPS,
@@ -828,9 +822,6 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         data_root="img/data/",
         has_mission_layer=True,
         missions=_IMG_MISSIONS,
-        description="JPL legacy planetary imaging archive: Cassini ISS, Voyager ISS, Galileo SSI, "
-        "Mariner missions, Viking Orbiter/Lander, Magellan SAR, MESSENGER MDIS, NEAR MSI, plus "
-        "small-body imaging (Stardust, Deep Impact)",
         workflow_notes=_IMG_WORKFLOW,
         abbreviations=_IMG_ABBREVIATIONS,
         workflow_steps=_IMG_WORKFLOW_STEPS,
@@ -844,8 +835,6 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         data_root="holdings/volumes/",
         has_mission_layer=False,
         missions=_RMS_MISSIONS,
-        description="Ring-Moon Systems: Saturn rings (Cassini ISS/UVIS/VIMS, Voyager), "
-        "Uranus/Jupiter/Neptune rings, ring occultations, irregular satellites",
         workflow_notes=_RMS_WORKFLOW,
         abbreviations=_RMS_ABBREVIATIONS,
         workflow_steps=_RMS_WORKFLOW_STEPS,
@@ -861,9 +850,6 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         data_root="pds3/",
         has_mission_layer=True,
         missions=_SBN_MISSIONS,
-        description="Small bodies: asteroids and small-body spacecraft missions hosted at "
-        "PSI's SBN sub-archive (Dawn, NEAR, OSIRIS-REx, Hayabusa, Hayabusa2). "
-        "Rosetta / Stardust / Deep Impact / comets live at UMD's separate mirror.",
         workflow_notes=_SBN_WORKFLOW,
         abbreviations=_SBN_ABBREVIATIONS,
         workflow_steps=_SBN_WORKFLOW_STEPS,
@@ -877,10 +863,6 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         data_root="PDS/data/",
         has_mission_layer=False,
         missions=_ATM_MISSIONS,
-        description="Planetary atmospheres and surface meteorology: Mars (MCS, MAVEN, "
-        "REMS, MEDA), Venus (Pioneer Venus), Jupiter (Galileo Probe), Titan (Huygens), "
-        "outer planets (Voyager IRIS), Saturn system (Cassini CIRS thermal spectra, "
-        "Cassini RSS atmospheric occultations)",
         workflow_notes=_ATM_WORKFLOW,
         abbreviations=_ATM_ABBREVIATIONS,
         workflow_steps=_ATM_WORKFLOW_STEPS,
@@ -894,9 +876,6 @@ NODE_REGISTRY: dict[str, NodeConfig] = {
         data_root="pub/naif/pds/data/",
         has_mission_layer=True,
         missions=_NAIF_MISSIONS,
-        description="SPICE kernel archive: spacecraft ephemerides, orientation, frames, "
-        "instrument geometry, and clocks. Use for geometry/pointing/timing queries — not "
-        "for measured science data",
         workflow_notes=_NAIF_WORKFLOW,
         abbreviations=_NAIF_ABBREVIATIONS,
         workflow_steps=_NAIF_WORKFLOW_STEPS,
@@ -921,14 +900,3 @@ def get_base_url(node_id: str) -> str:
     """Shortcut: get the base URL for a node."""
     return get_node_config(node_id).base_url
 
-
-def list_available_nodes() -> list[dict[str, str]]:
-    """Return a summary of all registered nodes (for the select_node tool)."""
-    return [
-        {
-            "node_id": cfg.node_id,
-            "display_name": cfg.display_name,
-            "description": cfg.description,
-        }
-        for cfg in NODE_REGISTRY.values()
-    ]
