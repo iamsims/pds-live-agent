@@ -1,16 +1,18 @@
-"""Generalized multi-node PDS live finder agent.
+"""PDS live finder agent — single-node and layered modes.
 
 Supports GEO, PPI, LROC, IMG, RMS, SBN, ATM, and NAIF nodes. Two operating modes:
 
-1. **Multi-node** (node=None): Agent gets a routing prompt and uses
-   ``pds_select_node`` to determine which node to query. Used when the
-   caller doesn't know the target node upfront.
+1. **Single-node**: Caller specifies ``node``. The agent gets a focused
+   prompt with that node's context baked in (directory layout, abbreviations,
+   workflow steps). Used when the target node is known upfront.
 
-2. **Single-node** (node in SUPPORTED_NODES): Agent gets a focused prompt
-   with node-specific context baked in. Saves one tool call (no routing step).
+2. **Layered**: A tool-less router agent classifies the query to one node,
+   then a single-node worker runs with that node's prompt plus an extra
+   Stage 2 toolset of deeper faceted-search tools (ODE / OPUS / IMG / SBN /
+   PDS4). See ``LayeredFinder`` and ``run_layered_query``.
 
-The MCP server (``pydantic_code.tools.mcp_server``) serves the same 5 tools
-regardless of mode — all tools accept a ``node`` parameter.
+The MCP server (``pydantic_code.tools.mcp_server``) serves 5 stateless tools
+that all take a ``node`` parameter.
 
 NOTE: SBN's holdings index has historically been intermittent (HTTP 403). The
 SBN workflow now tries the normal tools first; if list_dataset_dirs returns
@@ -21,7 +23,9 @@ from __future__ import annotations
 
 import os
 import sys
+from contextlib import AsyncExitStack
 from pathlib import Path
+from typing import Literal
 
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
@@ -31,104 +35,8 @@ from pydantic_ai.settings import ModelSettings
 from pydantic_code.tools.node_registry import SUPPORTED_NODES, get_node_config
 
 # ---------------------------------------------------------------------------
-# System prompts
+# Single-node system prompt builder
 # ---------------------------------------------------------------------------
-
-_MULTI_NODE_SYSTEM_PROMPT = (
-    "You are a dataset-discovery assistant for NASA's Planetary Data System (PDS).\n\n"
-    "You have access to live PDS node directories via tools. Supported nodes:\n"
-    "  - GEO (Geosciences): Mars, Venus, Mercury, Moon surface/subsurface, "
-    "topography, gravity, geochemistry, spectroscopy\n"
-    "  - PPI (Planetary Plasma Interactions): magnetospheres, solar wind, "
-    "plasma, particles, fields, radio/plasma waves\n"
-    "  - LROC (Lunar Reconnaissance Orbiter Camera): NAC/WAC lunar imaging, "
-    "EDR/CDR/RDR products\n"
-    "  - IMG (JPL Imaging Node): legacy planetary imaging — Cassini ISS, Voyager ISS, "
-    "Galileo SSI, Mariner missions, Viking Orbiter/Lander, Magellan SAR, MESSENGER MDIS, "
-    "NEAR MSI, Stardust, Deep Impact\n"
-    "  - RMS (Ring-Moon Systems): Saturn rings (Cassini ISS/UVIS/VIMS, Voyager), "
-    "Uranus/Jupiter/Neptune rings, ring occultations, irregular satellites\n"
-    "  - SBN (Small Bodies Node): comets, asteroids, KBOs, dust; Rosetta, "
-    "OSIRIS-REx, Hayabusa, Lucy, DART, Stardust, Deep Impact, NEAR\n"
-    "  - ATM (Atmospheres): planetary atmospheres + surface meteorology — "
-    "Mars (MCS/MAVEN/REMS/MEDA), Venus (Pioneer Venus), Jupiter (Galileo Probe), "
-    "Titan (Huygens), outer planets (Voyager IRIS), Saturn system (Cassini CIRS "
-    "thermal spectra, Cassini RSS atmospheric occultations)\n"
-    "  - NAIF (Navigation and Ancillary Information Facility): SPICE kernels — "
-    "spacecraft ephemerides, attitude/orientation, frames, instrument geometry, "
-    "and clocks. Use ONLY for geometry/pointing/timing queries\n\n"
-    # ---- WORKFLOW ----
-    "WORKFLOW:\n"
-    "  Step 0: Determine which node is relevant from the query.\n"
-    "          Call pds_select_node(node=...) to get node-specific context "
-    "(missions, abbreviations, workflow tips).\n"
-    "  Step 1: Call pds_list_missions(node=...) to see available missions.\n"
-    "          For GEO/IMG/NAIF this returns mission directories. For PPI/RMS/SBN/ATM "
-    "the names are filter keywords. For LROC, skip to list_dataset_dirs.\n"
-    "  Step 2: Call pds_list_dataset_dirs(path=..., node=..., filter=...).\n"
-    "          For flat nodes with many datasets (PPI ~767, ATM ~2000, RMS ~84), "
-    "use filter= to narrow by keyword. For IMG, you may need a second list call "
-    "to traverse mission-internal sub-trees (e.g. cassini → cassini_orbiter/, opus/, pds4/, public/).\n"
-    "  Step 3: Call pds_probe_datasets(paths=[...], node=...) with the most "
-    "relevant directories.\n"
-    "  Step 4: If PDS4 bundles are found and you need collection-level LIDs, "
-    "call pds_inspect_collections(path=..., node=...).\n"
-    "  Step 5: Return candidates with dataset_id, title, and reasoning.\n\n"
-    # ---- NODE SELECTION GUIDE ----
-    "NODE SELECTION GUIDE:\n"
-    "  - Mars/Venus/Mercury/Moon surface geology, geochemistry, topography, "
-    "gravity, radar sounding, thermal emission, imaging spectroscopy → GEO\n"
-    "  - Magnetic fields, plasma, particles, solar wind, magnetospheres, "
-    "radio/plasma waves, energetic particles → PPI\n"
-    "  - Specifically LROC camera images of the Moon (NAC/WAC) → LROC\n"
-    "  - Legacy planetary imaging (Cassini ISS, Voyager ISS, Galileo SSI, Mariner, "
-    "Viking, Magellan SAR, MESSENGER MDIS) — when the data is camera images and the "
-    "query doesn't fit GEO/RMS/LROC scope → IMG. Note: Cassini ISS ring observations "
-    "go to RMS, not IMG; Mars surface imaging via HiRISE/CTX goes to GEO.\n"
-    "  - Saturn/Uranus/Jupiter/Neptune RINGS, ring occultations, irregular "
-    "satellites (small icy moons), Cassini ISS/UVIS/VIMS ring observations → RMS\n"
-    "  - Comets, asteroids, KBOs, interplanetary dust, mission targets like "
-    "Bennu/Itokawa/Ryugu/67P/Eros, Lucy Trojans, DART → SBN\n"
-    "  - Planetary atmospheres (temperature/composition/aerosols/clouds), "
-    "surface meteorology (wind, pressure, RH, dust opacity), atmospheric "
-    "occultations, Mars Climate Sounder, Huygens Titan descent, Cassini CIRS "
-    "thermal spectra (Saturn/Titan/icy satellites), Cassini RSS occultations → ATM\n"
-    "  - SPICE kernels, spacecraft trajectory/ephemerides, instrument pointing, "
-    "frames, leapseconds, spacecraft clocks → NAIF (only when the query is about "
-    "geometry/pointing/timing — not measured science data)\n\n"
-    # ---- NOTE ON SBN ----
-    "NOTE ON SBN:\n"
-    "  SBN's holdings index may intermittently return HTTP 403. Use the normal tool "
-    "workflow for SBN. If list_dataset_dirs returns status='forbidden', fall back to "
-    "the abbreviation table (call pds_select_node + pds_list_missions, synthesise "
-    "candidates, and flag in reasoning that the ID is inferred, not verified).\n\n"
-    # ---- PDS3 vs PDS4 ----
-    "PDS3 vs PDS4:\n"
-    "  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers "
-    "(e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n"
-    "  - PDS4 bundle directories begin with `urn-nasa-pds-`. "
-    "Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n"
-    "  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\n"
-    # ---- CRITICAL RULES ----
-    "CRITICAL RULES:\n"
-    "  1. EVERY query requires you to return dataset candidates. Queries come from "
-    "published scientific papers and always imply specific PDS datasets. NEVER "
-    "dismiss a query as 'interpretation' or 'conceptual'. Always return at "
-    "least one candidate.\n"
-    "  2. Prefer CALIBRATED and REDUCED data products over raw/EDR when the "
-    "query implies scientific analysis.\n"
-    "  3. For PDS4 datasets, use inspect_collections ONLY for the top 2-3 most "
-    "relevant bundles. Return the COLLECTION-level LID when a :data or "
-    ":calibrated collection exists.\n"
-    "  4. When the SAME data is available as both PDS3 and PDS4, return BOTH "
-    "identifiers — emit one candidate per identifier. Most published papers cite "
-    "the PDS3 dataset_id (e.g. MESS-E_V_H_SW-MAG-3-CDR-CALIBRATED-V1.0, "
-    "LRO-L-LROC-5-RDR-V1.0); the PDS4 collection LID is the modern equivalent. "
-    "Do NOT silently drop the PDS3 form.\n"
-    "  5. Stay under 8 tool calls per query.\n"
-    "  6. Only return paths you've actually probed — never guess.\n"
-    "  7. Always pass the correct node= parameter to every tool call.\n"
-)
 
 
 def _build_single_node_prompt(node: str) -> str:
@@ -458,10 +366,11 @@ STAGE_2_APPENDIX_TEMPLATE = (
     "===========================================================\n"
     "STAGE 2 — DEEPER NODE-SPECIFIC SEARCH (escalation only)\n"
     "===========================================================\n\n"
-    "Everything above is STAGE 1: the 4 live-HTTP tools "
+    "Everything above is STAGE 1: the 5 live-HTTP tools "
     "(pds_list_missions / pds_list_dataset_dirs / pds_probe_datasets / "
-    "pds_inspect_collections), the per-node workflow, and the Critical Rules "
-    "ALL belong to Stage 1. Stage 1 reaches bundle/collection level by "
+    "pds_inspect_collections / pds_resolve_volume), the per-node workflow, "
+    "and the Critical Rules ALL belong to Stage 1. Stage 1 reaches "
+    "bundle/collection level by "
     "walking the node's directory tree. Stage 2 below is a SECOND set of "
     "tools for refining or rescuing Stage 1 — do NOT call any Stage 2 tool "
     "unless one of the escalation triggers below fires.\n\n"
@@ -614,13 +523,13 @@ def build_layered_finder(
     node: str,
     *,
     model: str = "openai:gpt-5.2",
-    reasoning_effort: str = "high",
+    reasoning_effort: Literal["low", "medium", "high"] = "high",
     stage2_url: str | None = None,
     stage2_headers: dict[str, str] | None = None,
 ) -> Agent[None, "PDSLiveFindDatasetOutput"]:
     """Build a layered worker agent for a single node.
 
-    Stage 1 toolset: the existing stdio MCP (4 live HTTP tools).
+    Stage 1 toolset: the existing stdio MCP (5 live HTTP tools).
     Stage 2 toolset: the hosted FastMCP server, filtered to the per-node
     allow-list in ``LAYER3_ALLOWED_TOOLS``.
 
@@ -655,26 +564,175 @@ def build_router_agent(model: str = "openai:gpt-5.2") -> Agent[None, RouterDecis
 
 
 # ---------------------------------------------------------------------------
+# Layered runner — optimized batch path
+#
+# Naive use is `async with build_layered_finder(node):` per query, which
+# respawns the Stage 1 stdio subprocess AND opens a new HTTP MCP every
+# call. For batches that's N x subprocess startup + N x handshake.
+#
+# LayeredFinder opens MCP transports lazily and caches one worker per
+# touched node. A single `async with LayeredFinder()` covers any number of
+# `.run(q)` calls; only the first query that visits a node pays the MCP
+# spin-up cost.
+# ---------------------------------------------------------------------------
+
+
+class LayeredFinder:
+    """Reusable layered-mode runner with persistent MCP transports.
+
+    Use as an async context manager so MCP cleanup is deterministic:
+
+        async with LayeredFinder() as lf:
+            for q in queries:
+                decision, output = await lf.run(q)
+
+    The router is built once. Workers are built and entered lazily — the
+    first query that routes to a given node pays the MCP startup cost; all
+    subsequent queries for that node reuse the open transports.
+    """
+
+    def __init__(
+        self,
+        *,
+        model: str = "openai:gpt-5.2",
+        reasoning_effort: Literal["low", "medium", "high"] = "high",
+        stage2_url: str | None = None,
+        stage2_headers: dict[str, str] | None = None,
+        fallback_node: str = "geo",
+    ) -> None:
+        self._model = model
+        self._effort = reasoning_effort
+        self._stage2_url = stage2_url
+        self._stage2_headers = stage2_headers
+        self._fallback = fallback_node
+        self._router: Agent[None, RouterDecision] | None = None
+        self._workers: dict[str, Agent[None, PDSLiveFindDatasetOutput]] = {}
+        self._stack: AsyncExitStack | None = None
+
+    async def __aenter__(self) -> "LayeredFinder":
+        self._stack = AsyncExitStack()
+        await self._stack.__aenter__()
+        self._router = build_router_agent(model=self._model)
+        return self
+
+    async def __aexit__(self, exc_type, exc, tb) -> None:
+        assert self._stack is not None
+        try:
+            await self._stack.__aexit__(exc_type, exc, tb)
+        finally:
+            self._workers.clear()
+            self._router = None
+            self._stack = None
+
+    async def route(self, query: str) -> RouterDecision:
+        """Run the router only — no Stage 1 or Stage 2 MCPs touched."""
+        assert self._router is not None, "Use inside 'async with LayeredFinder()'"
+        return (await self._router.run(query)).output
+
+    async def _get_worker(self, node: str) -> Agent[None, PDSLiveFindDatasetOutput]:
+        node = node.lower()
+        if node not in self._workers:
+            assert self._stack is not None
+            agent = build_layered_finder(
+                node,
+                model=self._model,
+                reasoning_effort=self._effort,
+                stage2_url=self._stage2_url,
+                stage2_headers=self._stage2_headers,
+            )
+            await self._stack.enter_async_context(agent)
+            self._workers[node] = agent
+        return self._workers[node]
+
+    async def run(
+        self,
+        query: str,
+    ) -> tuple[RouterDecision, PDSLiveFindDatasetOutput]:
+        """Route then run the worker. Returns (decision, output)."""
+        decision = await self.route(query)
+        node = decision.primary_node or self._fallback
+        worker = await self._get_worker(node)
+        result = await worker.run(query)
+        return decision, result.output
+
+
+async def run_layered_query(
+    query: str,
+    *,
+    model: str = "openai:gpt-5.2",
+    reasoning_effort: Literal["low", "medium", "high"] = "high",
+    stage2_url: str | None = None,
+    stage2_headers: dict[str, str] | None = None,
+    fallback_node: str = "geo",
+) -> tuple[RouterDecision, PDSLiveFindDatasetOutput]:
+    """Single-shot layered query. Opens and closes one transport set.
+
+    For multiple queries, instantiate ``LayeredFinder`` directly so the
+    MCP transports are reused across queries.
+    """
+    async with LayeredFinder(
+        model=model,
+        reasoning_effort=reasoning_effort,
+        stage2_url=stage2_url,
+        stage2_headers=stage2_headers,
+        fallback_node=fallback_node,
+    ) as lf:
+        return await lf.run(query)
+
+
+async def run_layered_batch(
+    queries: list[str],
+    *,
+    model: str = "openai:gpt-5.2",
+    reasoning_effort: Literal["low", "medium", "high"] = "high",
+    stage2_url: str | None = None,
+    stage2_headers: dict[str, str] | None = None,
+    fallback_node: str = "geo",
+) -> list[tuple[RouterDecision, PDSLiveFindDatasetOutput]]:
+    """Run a batch of queries reusing one set of MCP transports.
+
+    Pays the MCP spin-up cost only for the first query that visits each
+    node — every subsequent query for the same node reuses the open
+    transports. For N queries spanning M unique nodes this drops you from
+    N subprocess spawns to M.
+    """
+    results: list[tuple[RouterDecision, PDSLiveFindDatasetOutput]] = []
+    async with LayeredFinder(
+        model=model,
+        reasoning_effort=reasoning_effort,
+        stage2_url=stage2_url,
+        stage2_headers=stage2_headers,
+        fallback_node=fallback_node,
+    ) as lf:
+        for q in queries:
+            results.append(await lf.run(q))
+    return results
+
+
+# ---------------------------------------------------------------------------
 # Finder config factory (used by finder.py dispatcher)
 # ---------------------------------------------------------------------------
 
 
-def get_finder_config(node: str | None = None):
+def get_finder_config(node: str):
     """Return the live mode configuration for the unified finder.
 
     Args:
-        node: If specified, builds a single-node agent with a focused prompt.
-            If None, builds a multi-node agent with routing via pds_select_node.
+        node: PDS node identifier. Required — there is no multi-node mode.
+            For runtime classification of an unknown-node query, use
+            ``LayeredFinder`` / ``run_layered_query`` which routes via the
+            tool-less ``build_router_agent()``.
     """
     from pydantic_code.finder import FinderConfig
 
-    if node:
-        system_prompt = _build_single_node_prompt(node)
-    else:
-        system_prompt = _MULTI_NODE_SYSTEM_PROMPT
+    if not node:
+        raise ValueError(
+            "get_finder_config requires a node. Multi-node mode was removed; "
+            "use LayeredFinder / run_layered_query for runtime node classification."
+        )
 
     return FinderConfig(
-        system_prompt=system_prompt,
+        system_prompt=_build_single_node_prompt(node),
         mcp_server=_build_mcp(),
         output_type=PDSLiveFindDatasetOutput,
     )

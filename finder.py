@@ -2,12 +2,12 @@
 
 Pick a configuration via the ``kind`` argument:
 
-    build_finder(kind="live")
-        → connects via stdio to ``pydantic_code.mcp_server`` (subprocess);
-          the served tools fetch directories from any supported PDS node live.
-
     build_finder(kind="live", node="ppi")
-        → same as above but with a PPI-focused system prompt (no routing step).
+        → connects via stdio to ``pydantic_code.mcp_server`` (subprocess);
+          system prompt is PPI-focused (single-node mode). ``node`` is
+          required for live mode — for runtime classification of an
+          unknown-node query, use ``LayeredFinder`` from
+          ``pydantic_code.live_finder.pds_finder`` instead.
 
     build_finder(kind="catalog")
         → connects via streamable HTTP to a FastMCP cloud server fronting
@@ -152,9 +152,11 @@ def build_finder(
 
     Args:
         kind: ``"live"`` or ``"catalog"``.
-        node: PDS node identifier (live mode only). When specified, builds a
-            single-node agent with a focused prompt. When None, builds a
-            multi-node agent that routes via ``pds_select_node``.
+        node: PDS node identifier. Required for live mode (single-node
+            prompt). Ignored for catalog mode. For runtime node
+            classification, use ``LayeredFinder`` in
+            ``pydantic_code.live_finder.pds_finder`` instead of passing
+            ``node=None`` here.
         model: pydantic-ai model string (kept identical between modes).
         reasoning_effort: For reasoning models. Kept identical between modes.
         catalog_url: Override ``$PDS_CATALOG_MCP_URL`` (catalog mode only).
