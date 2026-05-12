@@ -17,9 +17,6 @@ Tools (5):
 
 from __future__ import annotations
 
-import functools
-import inspect
-
 from fastmcp import FastMCP
 
 from pydantic_code.tools.inspect_collections import pds_inspect_collections
@@ -32,74 +29,14 @@ mcp = FastMCP("pds-tools")
 
 
 # ------------------------------------------------------------------
-# Cross-tool kwarg absorber
-# ------------------------------------------------------------------
-#
-# Calling agents (and the FastMCP Cloud inspector UI) sometimes leak
-# kwargs from one tool's call into the next — e.g. ``paths=[]`` from a
-# prior ``pds_probe_datasets`` call ends up forwarded to
-# ``pds_inspect_collections``. FastMCP's pydantic-backed validation
-# rejects those with ``Unexpected keyword argument`` 422s.
-#
-# Rather than patching each tool by hand whenever a new leak surfaces,
-# this decorator augments every tool's signature with the union of all
-# sibling-tool kwargs. Extras are accepted, silently dropped, and never
-# reach the underlying function. FastMCP's schema gen then advertises
-# the augmented surface, and pydantic's validate_call accepts the call.
-
-_CROSS_TOOL_KWARGS: dict[str, tuple[type, object]] = {
-    "path":            (str | None, None),
-    "paths":           (list[str] | None, None),
-    "filter":          (str | None, None),
-    "max_subdirs":     (int | None, None),
-    "volume_set_path": (str | None, None),
-    "dataset_id_hint": (str | None, None),
-    "sample":          (int | None, None),
-}
-
-
-def _absorb_cross_tool_kwargs(fn):
-    """Add every kwarg in _CROSS_TOOL_KWARGS that fn doesn't natively take.
-
-    Real parameters keep their original types / defaults. Extras become
-    keyword-only with default None and are dropped before fn runs.
-    """
-    sig = inspect.signature(fn)
-    have = set(sig.parameters)
-    new_params = list(sig.parameters.values())
-    extra_anns: dict[str, type] = {}
-    for name, (ann, default) in _CROSS_TOOL_KWARGS.items():
-        if name not in have:
-            new_params.append(inspect.Parameter(
-                name, inspect.Parameter.KEYWORD_ONLY,
-                default=default, annotation=ann,
-            ))
-            extra_anns[name] = ann
-    new_sig = sig.replace(parameters=new_params)
-
-    if inspect.iscoroutinefunction(fn):
-        @functools.wraps(fn)
-        async def wrapper(**kwargs):
-            return await fn(**{k: v for k, v in kwargs.items() if k in have})
-    else:
-        @functools.wraps(fn)
-        def wrapper(**kwargs):
-            return fn(**{k: v for k, v in kwargs.items() if k in have})
-
-    wrapper.__signature__ = new_sig
-    # Pydantic reads __annotations__ via typing.get_type_hints — keep them
-    # in sync with the augmented signature.
-    wrapper.__annotations__ = {**fn.__annotations__, **extra_anns}
-    return wrapper
-
-
-# ------------------------------------------------------------------
 # Tool 1: list missions (hardcoded, instant)
 # ------------------------------------------------------------------
 
 @mcp.tool(name="pds_list_missions")
-@_absorb_cross_tool_kwargs
-def pds_list_missions_tool(node: str = "geo") -> dict:
+def pds_list_missions_tool(
+    node: str = "geo",
+    filter: str | None = None,  # noqa: A002,ARG001 — absorbed, see note
+) -> dict:
     """List all known missions on a PDS node with descriptions.
 
     Returns mission names and their instruments. No HTTP call needed.
@@ -113,7 +50,11 @@ def pds_list_missions_tool(node: str = "geo") -> dict:
 
     Args:
         node: PDS node identifier ("geo", "ppi", "lroc", "rms", "sbn", "atm"). Default "geo".
+        filter: Accepted but IGNORED on this tool — only ``pds_list_dataset_dirs``
+            actually filters. Present here so agents that mechanically forward
+            a ``filter=`` kwarg from a previous call don't 422 the request.
     """
+    del filter  # absorbed
     result = pds_list_missions(node=node)
     return result.model_dump()
 
@@ -123,7 +64,6 @@ def pds_list_missions_tool(node: str = "geo") -> dict:
 # ------------------------------------------------------------------
 
 @mcp.tool(name="pds_list_dataset_dirs")
-@_absorb_cross_tool_kwargs
 async def pds_list_dataset_dirs_tool(
     path: str,
     node: str = "geo",
@@ -161,8 +101,11 @@ async def pds_list_dataset_dirs_tool(
 # ------------------------------------------------------------------
 
 @mcp.tool(name="pds_probe_datasets")
-@_absorb_cross_tool_kwargs
-async def pds_probe_datasets_tool(paths: list[str], node: str = "geo") -> dict:
+async def pds_probe_datasets_tool(
+    paths: list[str],
+    node: str = "geo",
+    filter: str | None = None,  # noqa: A002,ARG001 — absorbed, see note
+) -> dict:
     """Probe specific dataset directories for PDS labels.
 
     For each path, finds the leaf node containing voldesc.cat/sfd (PDS3) or
@@ -177,7 +120,11 @@ async def pds_probe_datasets_tool(paths: list[str], node: str = "geo") -> dict:
                (e.g. ["mex/mex-m-hrsc-5-refdr-dtm-v1/"] for GEO,
                 ["data/cassini-caps-calibrated/"] for PPI).
         node: PDS node identifier ("geo", "ppi", "lroc", "rms", "sbn", "atm"). Default "geo".
+        filter: Accepted but IGNORED. Present so agents that mechanically
+            forward a ``filter=`` kwarg from a previous call don't 422 the
+            request. Use ``pds_list_dataset_dirs`` for actual filtering.
     """
+    del filter  # absorbed
     result = await pds_probe_datasets(paths=paths, node=node)
     return result.model_dump()
 
@@ -187,11 +134,11 @@ async def pds_probe_datasets_tool(paths: list[str], node: str = "geo") -> dict:
 # ------------------------------------------------------------------
 
 @mcp.tool(name="pds_inspect_collections")
-@_absorb_cross_tool_kwargs
 async def pds_inspect_collections_tool(
     path: str,
     node: str = "geo",
     max_subdirs: int = 20,
+    filter: str | None = None,  # noqa: A002,ARG001 — absorbed, see note
 ) -> dict:
     """Scan subdirs of a PDS4 bundle for collection labels.
 
@@ -206,7 +153,11 @@ async def pds_inspect_collections_tool(
         path: PDS4 bundle directory path on the node.
         node: PDS node identifier ("geo", "ppi", "lroc", "rms", "sbn", "atm"). Default "geo".
         max_subdirs: Cap on sub-dirs to walk for collections (default 20).
+        filter: Accepted but IGNORED. Present so agents that mechanically
+            forward a ``filter=`` kwarg from a previous call don't 422 the
+            request. Use ``pds_list_dataset_dirs`` for actual filtering.
     """
+    del filter  # absorbed
     result = await pds_inspect_collections(path=path, max_subdirs=max_subdirs, node=node)
     return result.model_dump()
 
@@ -216,12 +167,12 @@ async def pds_inspect_collections_tool(
 # ------------------------------------------------------------------
 
 @mcp.tool(name="pds_resolve_volume")
-@_absorb_cross_tool_kwargs
 async def pds_resolve_volume_tool(
     volume_set_path: str,
     node: str = "rms",
     dataset_id_hint: str | None = None,
     sample: int = 8,
+    filter: str | None = None,  # noqa: A002,ARG001 — absorbed, see pds_list_missions docstring
 ) -> dict:
     """Probe a volume-set's children to find which one carries which DATA_SET_ID.
 
@@ -239,7 +190,9 @@ async def pds_resolve_volume_tool(
             case-insensitive match). When provided, child ordering and `best_match`
             both use this.
         sample: Maximum number of children to probe (default 8, max 20).
+        filter: Accepted but IGNORED. See pds_list_missions docstring.
     """
+    del filter  # absorbed
     result = await pds_resolve_volume(
         volume_set_path=volume_set_path,
         node=node,
