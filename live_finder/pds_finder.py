@@ -22,14 +22,12 @@ status='forbidden', the agent falls back to the abbreviation table.
 from __future__ import annotations
 
 import os
-import sys
 from contextlib import AsyncExitStack
-from pathlib import Path
 from typing import Literal
 
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
-from pydantic_ai.mcp import MCPServerStdio, MCPServerStreamableHTTP
+from pydantic_ai.mcp import MCPServerStreamableHTTP
 from pydantic_ai.settings import ModelSettings
 
 from pydantic_code.tools.node_registry import SUPPORTED_NODES, get_node_config
@@ -466,20 +464,34 @@ class PDSLiveFindDatasetOutput(BaseModel):
 
 
 # ---------------------------------------------------------------------------
-# MCP server (stdio subprocess)
+# Stage 1 MCP server (hosted streamable HTTP)
 # ---------------------------------------------------------------------------
+#
+# Stage 1 = the deployed pds-node-mcp instance, which exposes the 5 live
+# directory-walking tools (pds_list_missions, pds_list_dataset_dirs,
+# pds_probe_datasets, pds_inspect_collections, pds_resolve_volume).
+# Previously a local stdio subprocess; now hosted so every consumer hits
+# the same canonical instance.
 
-_PACKAGE_ROOT = str(Path(__file__).resolve().parent.parent.parent)
+_DEFAULT_STAGE1_URL = "https://fuzzy-aquamarine-swordtail.fastmcp.app/mcp"
 
 
-def _build_mcp() -> MCPServerStdio:
-    """Spawn ``pydantic_code.tools.mcp_server`` as a stdio subprocess."""
-    return MCPServerStdio(
-        sys.executable,
-        args=["-m", "pydantic_code.tools.mcp_server"],
-        env={**os.environ, "PYTHONPATH": _PACKAGE_ROOT + os.pathsep + os.environ.get("PYTHONPATH", "")},
-        timeout=30,
-    )
+def _build_mcp(
+    *,
+    url: str | None = None,
+    headers: dict[str, str] | None = None,
+) -> MCPServerStreamableHTTP:
+    """Connect to the hosted Stage 1 MCP server over streamable HTTP.
+
+    Auth: ``Authorization: Bearer <FAST_MCP_AUTH>`` is set automatically
+    when that env var is present. Override via ``PDS_STAGE1_MCP_URL`` for
+    staging / local mirrors, or pass ``url`` / ``headers`` directly.
+    """
+    resolved_url = url or os.environ.get("PDS_STAGE1_MCP_URL") or _DEFAULT_STAGE1_URL
+    if headers is None:
+        token = os.environ.get("FAST_MCP_AUTH")
+        headers = {"Authorization": f"Bearer {token}"} if token else None
+    return MCPServerStreamableHTTP(url=resolved_url, headers=headers)
 
 
 # Hosted FastMCP server that exposes the Stage 2 deeper-search tools
