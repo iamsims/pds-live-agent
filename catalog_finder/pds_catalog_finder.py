@@ -289,16 +289,13 @@ class PDSCatalogFindDatasetOutput(BaseModel):
 # ---------------------------------------------------------------------------
 
 
+_DEFAULT_CATALOG_MCP_URL = "https://natural-bronze-stingray.fastmcp.app/mcp"
+
+
 def _resolve_url(url: str | None) -> str:
     if url:
         return url
-    env = os.environ.get("PDS_CATALOG_MCP_URL")
-    if env:
-        return env
-    raise RuntimeError(
-        "PDS catalog MCP URL not configured. Pass url=... to "
-        "build_pds_catalog_finder() or set PDS_CATALOG_MCP_URL in the environment."
-    )
+    return os.environ.get("PDS_CATALOG_MCP_URL") or _DEFAULT_CATALOG_MCP_URL
 
 
 def _resolve_headers(headers: dict[str, str] | None) -> dict[str, str] | None:
@@ -326,7 +323,7 @@ def build_pds_catalog_finder(
     the whole batch in a single ``async with``.
 
     Args:
-        url: FastMCP server URL. Defaults to ``$PDS_CATALOG_MCP_URL``.
+        url: FastMCP server URL. Defaults to the hosted production instance.
         model: pydantic-ai model string. Mirrors ``pds_geo_finder`` so the
             two legs of the comparator share an identical run config.
         reasoning_effort: 'low', 'medium', or 'high' for reasoning models.
