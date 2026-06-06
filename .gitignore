@@ -3,3 +3,8 @@ __pycache__/
 *.py[cod]
 *.pyo
 .DS_Store
+*.bak
+.claude
+CLAUDE.md
+docs/
+output/

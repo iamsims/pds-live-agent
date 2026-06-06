@@ -21,6 +21,7 @@ status='forbidden', the agent falls back to the abbreviation table.
 
 from __future__ import annotations
 
+import asyncio
 import os
 from contextlib import AsyncExitStack
 from typing import Literal
@@ -121,7 +122,7 @@ def _build_single_node_prompt(node: str) -> str:
         "cite the PDS3 dataset_id (e.g. MESS-E_V_H_SW-MAG-3-CDR-CALIBRATED-V1.0, "
         "LRO-L-LROC-5-RDR-V1.0); the PDS4 collection LID is the modern equivalent. "
         "Do NOT silently drop the PDS3 form.\n"
-        "  5. Stay under 8 tool calls per query. Soft cap: 6. Hard cap: 8.\n"
+        "  5. Stay under 20 tool calls per query. Soft cap: 15. Hard cap: 20.\n"
         "  6. Only return paths you've actually probed — never guess.\n"
         "  7. ANTI-THRASHING. Never re-issue a tool call with the same name and the\n"
         "     same key arguments (path, paths, filter) that you've already issued in\n"
@@ -135,10 +136,10 @@ def _build_single_node_prompt(node: str) -> str:
         "     Feature-level retrieval (a specific image of a specific crater) is\n"
         "     out of scope for this finder; return the dataset and explain in\n"
         "     `reasoning` how it covers the feature.\n"
-        "  9. After 6 tool calls without converging, ALWAYS prefer emitting your\n"
+        "  9. After 15 tool calls without converging, ALWAYS prefer emitting your\n"
         "     current best candidate(s) over running another exploratory call.\n"
         "     A grounded near-match with a clear reasoning note is more useful\n"
-        "     than a 12-call trace that times out with no `final_result`.\n"
+        "     than a 20-call trace that times out with no `final_result`.\n"
     )
 
 
@@ -396,7 +397,7 @@ STAGE_2_APPENDIX_TEMPLATE = (
     "  3. If Stage 2 finds nothing or errors out, FALL BACK to the Stage 1 "
     "candidates and note in `reasoning` that Stage 2 was attempted and "
     "returned no refinement.\n"
-    "  4. The 8-tool-call budget from Stage 1's Critical Rule 5 is the "
+    "  4. The 20-tool-call budget from Stage 1's Critical Rule 5 is the "
     "budget for BOTH stages combined. Do NOT reset the counter when entering "
     "Stage 2.\n"
     "  5. Every candidate's `reasoning` field must explicitly name which "
@@ -425,7 +426,7 @@ def _build_layered_prompt(node: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Schemas (same as pds_geo_finder for compatibility)
+# Schemas
 # ---------------------------------------------------------------------------
 
 
@@ -486,12 +487,17 @@ def _build_mcp(
     Auth: ``Authorization: Bearer <FAST_MCP_AUTH>`` is set automatically
     when that env var is present. Override via ``PDS_STAGE1_MCP_URL`` for
     staging / local mirrors, or pass ``url`` / ``headers`` directly.
+
+    timeout=30: pydantic-ai's default of 5s is too aggressive for FastMCP
+    Cloud cold starts. A serverless instance that's been idle can take
+    20-30s to boot on the first request; with the 5s default the first
+    queries of a batch reliably time out before the server is ready.
     """
     resolved_url = url or os.environ.get("PDS_STAGE1_MCP_URL") or _DEFAULT_STAGE1_URL
     if headers is None:
         token = os.environ.get("FAST_MCP_AUTH")
         headers = {"Authorization": f"Bearer {token}"} if token else None
-    return MCPServerStreamableHTTP(url=resolved_url, headers=headers)
+    return MCPServerStreamableHTTP(url=resolved_url, headers=headers, timeout=30)
 
 
 # Hosted FastMCP server that exposes the Stage 2 deeper-search tools
@@ -509,13 +515,13 @@ def _build_stage2_mcp(
 
     Auth: ``Authorization: Bearer <FAST_MCP_AUTH>`` is set automatically when
     that env var is present (same convention as catalog mode). Pass ``headers``
-    explicitly to override.
+    explicitly to override. See ``_build_mcp`` for the timeout rationale.
     """
     resolved_url = url or os.environ.get("PDS_STAGE2_MCP_URL") or _DEFAULT_STAGE2_URL
     if headers is None:
         token = os.environ.get("FAST_MCP_AUTH")
         headers = {"Authorization": f"Bearer {token}"} if token else None
-    return MCPServerStreamableHTTP(url=resolved_url, headers=headers)
+    return MCPServerStreamableHTTP(url=resolved_url, headers=headers, timeout=30)
 
 
 def _build_stage2_toolset_for(node: str, **stage2_kwargs):
@@ -656,6 +662,50 @@ class LayeredFinder:
             self._workers[node] = agent
         return self._workers[node]
 
+    async def warm(self, nodes: list[str] | None = None) -> None:
+        """Pre-build workers and hit each MCP transport with a no-op RPC.
+
+        Stage 1 (sequential): ``_get_worker(node)`` for every node. The
+        MCP transport's ``__aenter__`` registers anyio cancel scopes that
+        MUST be exited from the SAME task that entered them — so we
+        enter them one at a time from the caller's task (the same task
+        that will eventually run ``__aexit__``). Parallelizing this with
+        ``asyncio.gather`` triggers a "cancel scope in different task"
+        RuntimeError at shutdown.
+
+        Stage 2 (parallel): ``list_tools()`` against every transport. These
+        are pure HTTP requests with no scope ownership, so we can fire
+        them in parallel for a real ``tools/list`` RPC that confirms each
+        FastMCP Cloud container is awake.
+
+        FastMCP cold-start is per-container, not per-transport, so even
+        sequential entry only pays the cold start once per server (~20-30s
+        each for stage1 + stage2); the remaining 14 transports reuse the
+        warm container and open in <1s.
+
+        ``nodes=None`` warms every node in the registry.
+        """
+        assert self._stack is not None, "Use inside 'async with LayeredFinder()'"
+        targets = [n.lower() for n in (nodes if nodes is not None else SUPPORTED_NODES)]
+        for node in targets:
+            await self._get_worker(node)
+
+        async def _list(ts):
+            list_fn = getattr(ts, "list_tools", None)
+            if callable(list_fn):
+                try:
+                    await list_fn()
+                except Exception:  # noqa: BLE001
+                    pass
+
+        pings = []
+        for node in targets:
+            worker = self._workers[node]
+            for ts in getattr(worker, "toolsets", ()) or ():
+                pings.append(_list(ts))
+        if pings:
+            await asyncio.gather(*pings)
+
     async def run(
         self,
         query: str,
@@ -670,18 +720,42 @@ class LayeredFinder:
     async def run_traced(
         self,
         query: str,
-    ) -> tuple[RouterDecision, PDSLiveFindDatasetOutput, list]:
-        """Like ``run()`` but also returns the worker's full message history.
+        *,
+        router_usage=None,
+        worker_usage=None,
+    ) -> tuple[RouterDecision, PDSLiveFindDatasetOutput, list, list]:
+        """Like ``run()`` but also returns the worker's full message history
+        plus per-call usage objects.
 
-        The third element is whatever ``Agent.run().all_messages()`` returns
-        for the worker — feed it into ``run_eval._extract_tool_calls`` to
-        get a tidy list of (tool_name, tool_input, tool_output) triples.
+        If ``router_usage`` / ``worker_usage`` are passed in (instances of
+        pydantic-ai's ``RunUsage``), pydantic-ai accumulates into them in
+        place — so the caller still sees tokens spent before a mid-run
+        failure (e.g. context overflow). The same instances are also
+        returned in the result tuple's last element.
+
+        Returns:
+            ``(decision, output, worker_messages, [router_usage, worker_usage])``.
+            Convert each with ``run_eval._usage_to_dict`` and combine with
+            ``run_eval._sum_usage``.
         """
-        decision = await self.route(query)
+        from pydantic_ai.usage import RunUsage
+
+        assert self._router is not None, "Use inside 'async with LayeredFinder()'"
+        if router_usage is None:
+            router_usage = RunUsage()
+        if worker_usage is None:
+            worker_usage = RunUsage()
+        router_result = await self._router.run(query, usage=router_usage)
+        decision = router_result.output
         node = decision.primary_node or self._fallback
         worker = await self._get_worker(node)
-        result = await worker.run(query)
-        return decision, result.output, list(result.all_messages())
+        worker_result = await worker.run(query, usage=worker_usage)
+        return (
+            decision,
+            worker_result.output,
+            list(worker_result.all_messages()),
+            [router_usage, worker_usage],
+        )
 
 
 async def run_layered_query(

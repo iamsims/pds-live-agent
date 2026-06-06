@@ -1,1 +1,1 @@
-"""Live PDS finder subpackage (GEO, PPI, LROC, and multi-node)."""
+"""Live PDS finder subpackage — router + per-node worker agents."""

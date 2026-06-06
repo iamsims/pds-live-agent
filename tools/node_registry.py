@@ -420,7 +420,7 @@ _RMS_WORKFLOW_STEPS = (
     "Step 5: For PDS4 bundles, call pds_inspect_collections on top 2-3 to get collection LIDs.\n"
     "Step 6: When the same instrument has BOTH a PDS3 volume-set and a PDS4 bundle, return BOTH "
     "candidates. Always scan `dataset_ids` (not only `dataset_id`) since Cassini voldescs "
-    "ship many ids per volume. Do NOT silently drop the PDS3 form. Stay under 8 tool calls total.\n"
+    "ship many ids per volume. Do NOT silently drop the PDS3 form. Stay under 20 tool calls total.\n"
 )
 
 # ---------------------------------------------------------------------------
