@@ -34,7 +34,9 @@ See [live_finder/README.md](live_finder/README.md) for detailed usage and batch 
 
 ### MCP tools (`tools/`)
 
-Stage 1 tools — live HTTP directory walking, served via `tools/mcp_server.py`:
+All tools are **already hosted on remote MCP servers** (FastMCP Cloud, streamable HTTP) — nothing to deploy locally. The agent connects at runtime; you only need `FAST_MCP_AUTH`.
+
+Stage 1 tools — live HTTP directory walking:
 
 | File | Tool |
 |---|---|
