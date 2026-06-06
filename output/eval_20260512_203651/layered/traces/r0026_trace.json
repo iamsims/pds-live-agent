@@ -1,0 +1,3652 @@
+{
+  "row_index": 26,
+  "query": "How are the visible jet features seen in ISS images consistent with the plume structure inferred from UVIS occlusion observations?",
+  "row": {
+    "row_index": 26,
+    "paper": "Dong, Y., et al., 2011. The water vapor plumes of Enceladus. JGR Space Physics, 116(A10). DOI:10.1029/2011JA016693",
+    "query": "How are the visible jet features seen in ISS images consistent with the plume structure inferred from UVIS occlusion observations?",
+    "expected_ids_raw": "CO-S-ISSNA/ISSWA-2-EDR-V1.0\nCO-S-UVIS-2-SSB-V1.0",
+    "expected_ids": [
+      "CO-S-ISSNA/ISSWA-2-EDR-V1.0",
+      "CO-S-UVIS-2-SSB-V1.0"
+    ]
+  },
+  "elapsed_s": 582.76,
+  "router_node": "atm",
+  "n_candidates": 3,
+  "n_tool_calls": 25,
+  "usage": {
+    "input_tokens": 414343,
+    "output_tokens": 33496,
+    "cache_read_tokens": 373888,
+    "cache_write_tokens": 0,
+    "total_tokens": 447839,
+    "requests": 21
+  },
+  "tool_calls": [
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "PDS/data/",
+        "node": "atm",
+        "filter": "coiss"
+      },
+      "tool_output": "{'status': 'success', 'path': 'PDS/data/', 'total': 2018, 'filtered_total': 1, 'dirs': [{'name': 'coiss_0011', 'path': 'PDS/data/coiss_0011/', 'pds_hint': 'PDS3'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "PDS/data/",
+        "node": "atm",
+        "filter": "uvis"
+      },
+      "tool_output": "{'status': 'success', 'path': 'PDS/data/', 'total': 2018, 'filtered_total': 60, 'dirs': [{'name': 'couvis_0001', 'path': 'PDS/data/couvis_0001/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0002', 'path': 'PDS/data/couvis_0002/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0003', 'path': 'PDS/data/couvis_0003/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0004', 'path': 'PDS/data/couvis_0004/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0005', 'path': 'PDS/data/couvis_0005/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0006', 'path': 'PDS/data/couvis_0006/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0007', 'path': 'PDS/data/couvis_0007/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0008', 'path': 'PDS/data/couvis_0008/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0009', 'path': 'PDS/data/couvis_0009/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0010', 'path': 'PDS/data/couvis_0010/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0011', 'path': 'PDS/data/couvis_0011/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0012', 'path': 'PDS/data/couvis_0012/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0013', 'path': 'PDS/data/couvis_0013/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0014', 'path': 'PDS/data/couvis_0014/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0015', 'path': 'PDS/data/couvis_0015/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0016', 'path': 'PDS/data/couvis_0016/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0017', 'path': 'PDS/data/couvis_0017/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0018', 'path': 'PDS/data/couvis_0018/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0019', 'path': 'PDS/data/couvis_0019/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0020', 'path': 'PDS/data/couvis_0020/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0021', 'path': 'PDS/data/couvis_0021/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0022', 'path': 'PDS/data/couvis_0022/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0023', 'path': 'PDS/data/couvis_0023/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0024', 'path': 'PDS/data/couvis_0024/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0025', 'path': 'PDS/data/couvis_0025/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0026', 'path': 'PDS/data/couvis_0026/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0027', 'path': 'PDS/data/couvis_0027/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0028', 'path': 'PDS/data/couvis_0028/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0029', 'path': 'PDS/data/couvis_0029/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0030', 'path': 'PDS/data/couvis_0030/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0031', 'path': 'PDS/data/couvis_0031/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0032', 'path': 'PDS/data/couvis_0032/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0033', 'path': 'PDS/data/couvis_0033/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0034', 'path': 'PDS/data/couvis_0034/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0035', 'path': 'PDS/data/couvis_0035/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0036', 'path': 'PDS/data/couvis_0036/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0037', 'path': 'PDS/data/couvis_0037/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0038', 'path': 'PDS/data/couvis_0038/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0039', 'path': 'PDS/data/couvis_0039/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0040', 'path': 'PDS/data/couvis_0040/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0041', 'path': 'PDS/data/couvis_0041/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0042', 'path': 'PDS/data/couvis_0042/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0043', 'path': 'PDS/data/couvis_0043/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0044', 'path': 'PDS/data/couvis_0044/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0045', 'path': 'PDS/data/couvis_0045/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0046', 'path': 'PDS/data/couvis_0046/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0047', 'path': 'PDS/data/couvis_0047/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0048', 'path': 'PDS/data/couvis_0048/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0049', 'path': 'PDS/data/couvis_0049/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0050', 'path': 'PDS/data/couvis_0050/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0051', 'path': 'PDS/data/couvis_0051/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0052', 'path': 'PDS/data/couvis_0052/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0053', 'path': 'PDS/data/couvis_0053/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0054', 'path': 'PDS/data/couvis_0054/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0055', 'path': 'PDS/data/couvis_0055/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0056', 'path': 'PDS/data/couvis_0056/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0057', 'path': 'PDS/data/couvis_0057/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0058', 'path': 'PDS/data/couvis_0058/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0059', 'path': 'PDS/data/couvis_0059/', 'pds_hint': 'PDS3'}, {'name': 'couvis_0060', 'path': 'PDS/data/couvis_0060/', 'pds_hint': 'PDS3'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "PDS/data/PDS4/",
+        "node": "atm"
+      },
+      "tool_output": "{'status': 'success', 'path': 'PDS/data/PDS4/', 'total': 60, 'filtered_total': None, 'dirs': [{'name': 'Huygens', 'path': 'PDS/data/PDS4/Huygens/', 'pds_hint': None}, {'name': 'InSight', 'path': 'PDS/data/PDS4/InSight/', 'pds_hint': None}, {'name': 'InSight_vortex_bundle', 'path': 'PDS/data/PDS4/InSight_vortex_bundle/', 'pds_hint': None}, {'name': 'LADEE', 'path': 'PDS/data/PDS4/LADEE/', 'pds_hint': None}, {'name': 'MAVEN', 'path': 'PDS/data/PDS4/MAVEN/', 'pds_hint': None}, {'name': 'Mars2020', 'path': 'PDS/data/PDS4/Mars2020/', 'pds_hint': None}, {'name': 'PHX', 'path': 'PDS/data/PDS4/PHX/', 'pds_hint': None}, {'name': 'cassini-rss-raw-gwe', 'path': 'PDS/data/PDS4/cassini-rss-raw-gwe/', 'pds_hint': 'PDS4'}, {'name': 'cassini-rss-raw-sagr', 'path': 'PDS/data/PDS4/cassini-rss-raw-sagr/', 'pds_hint': 'PDS4'}, {'name': 'cassini-rss-raw-sce', 'path': 'PDS/data/PDS4/cassini-rss-raw-sce/', 'pds_hint': 'PDS4'}, {'name': 'cassini-rss-raw-sroc', 'path': 'PDS/data/PDS4/cassini-rss-raw-sroc/', 'pds_hint': 'PDS4'}, {'name': 'cassini-rss-raw-ssa', 'path': 'PDS/data/PDS4/cassini-rss-raw-ssa/', 'pds_hint': 'PDS4'}, {'name': 'cassini-rss-raw-titan', 'path': 'PDS/data/PDS4/cassini-rss-raw-titan/', 'pds_hint': 'PDS4'}, {'name': 'cassini-uvis_titan-library', 'path': 'PDS/data/PDS4/cassini-uvis_titan-library/', 'pds_hint': 'PDS4'}, {'name': 'cassini_saturn_radar_maps', 'path': 'PDS/data/PDS4/cassini_saturn_radar_maps/', 'pds_hint': 'PDS4'}, {'name': 'co-rss_slepian-grav-coeff', 'path': 'PDS/data/PDS4/co-rss_slepian-grav-coeff/', 'pds_hint': 'PDS4'}, {'name': 'co_iss_global-maps', 'path': 'PDS/data/PDS4/co_iss_global-maps/', 'pds_hint': 'PDS4'}, {'name': 'cocirs_c2h4abund', 'path': 'PDS/data/PDS4/cocirs_c2h4abund/', 'pds_hint': 'PDS3'}, {'name': 'coiss_zonal_winds', 'path': 'PDS/data/PDS4/coiss_zonal_winds/', 'pds_hint': 'PDS4'}, {'name': 'corss_occul_el_dens', 'path': 'PDS/data/PDS4/corss_occul_el_dens/', 'pds_hint': 'PDS4'}, {'name': 'dd_nnss-nv', 'path': 'PDS/data/PDS4/dd_nnss-nv/', 'pds_hint': 'PDS4'}, {'name': 'eldorado_nv_dd_ptv', 'path': 'PDS/data/PDS4/eldorado_nv_dd_ptv/', 'pds_hint': 'PDS4'}, {'name': 'galileo_probe_bundle', 'path': 'PDS/data/PDS4/galileo_probe_bundle/', 'pds_hint': 'PDS4'}, {'name': 'go_nims_io_rad', 'path': 'PDS/data/PDS4/go_nims_io_rad/', 'pds_hint': 'PDS4'}, {'name': 'go_ppr_bundle', 'path': 'PDS/data/PDS4/go_ppr_bundle/', 'pds_hint': 'PDS4'}, {'name': 'go_uvs_bundle', 'path': 'PDS/data/PDS4/go_uvs_bundle/', 'pds_hint': 'PDS4'}, {'name': 'hot_ion_atmos_escape', 'path': 'PDS/data/PDS4/hot_ion_atmos_escape/', 'pds_hint': 'PDS4'}, {'name': 'insight_edl_bundle', 'path': 'PDS/data/PDS4/insight_edl_bundle/', 'pds_hint': 'PDS4'}, {'name': 'irtf_io_photometry', 'path': 'PDS/data/PDS4/irtf_io_photometry/', 'pds_hint': 'PDS4'}, {'name': 'juno_jiram_bundle', 'path': 'PDS/data/PDS4/juno_jiram_bundle/', 'pds_hint': 'PDS4'}, {'name': 'juno_jiram_derived_bundle', 'path': 'PDS/data/PDS4/juno_jiram_derived_bundle/', 'pds_hint': 'PDS4'}, {'name': 'junocam_atm-ml-calib', 'path': 'PDS/data/PDS4/junocam_atm-ml-calib/', 'pds_hint': 'PDS4'}, {'name': 'lab.hydrocarbon_spectra', 'path': 'PDS/data/PDS4/lab.hydrocarbon_spectra/', 'pds_hint': None}, {'name': 'lowell_uranus-neptune-photometry', 'path': 'PDS/data/PDS4/lowell_uranus-neptune-photometry/', 'pds_hint': 'PDS4'}, {'name': 'mcmath-pierce_mercury', 'path': 'PDS/data/PDS4/mcmath-pierce_mercury/', 'pds_hint': 'PDS4'}, {'name': 'merimu_bundle', 'path': 'PDS/data/PDS4/merimu_bundle/', 'pds_hint': 'PDS4'}, {'name': 'mgn-atm-profile', 'path': 'PDS/data/PDS4/mgn-atm-profile/', 'pds_hint': 'PDS4'}, {'name': 'mgs-rss_nocturnal-mixed-layers', 'path': 'PDS/data/PDS4/mgs-rss_nocturnal-mixed-layers/', 'pds_hint': 'PDS4'}, {'name': 'mgs_tes_atmos_dust-ice', 'path': 'PDS/data/PDS4/mgs_tes_atmos_dust-ice/', 'pds_hint': 'PDS4'}, {'name': 'mgs_tes_recalib_atmos', 'path': 'PDS/data/PDS4/mgs_tes_recalib_atmos/', 'pds_hint': 'PDS4'}, {'name': 'mgsa_bundle', 'path': 'PDS/data/PDS4/mgsa_bundle/', 'pds_hint': 'PDS4'}, {'name': 'mpf_mpim_bundle', 'path': 'PDS/data/PDS4/mpf_mpim_bundle/', 'pds_hint': 'PDS4'}, {'name': 'mr9_iris', 'path': 'PDS/data/PDS4/mr9_iris/', 'pds_hint': 'PDS3'}, {'name': 'mro-crism_atmos-db', 'path': 'PDS/data/PDS4/mro-crism_atmos-db/', 'pds_hint': 'PDS4'}, {'name': 'mroa_bundle', 'path': 'PDS/data/PDS4/mroa_bundle/', 'pds_hint': 'PDS4'}, {'name': 'msl_ice-dust', 'path': 'PDS/data/PDS4/msl_ice-dust/', 'pds_hint': 'PDS4'}, {'name': 'msledl_bundle', 'path': 'PDS/data/PDS4/msledl_bundle/', 'pds_hint': 'PDS4'}, {'name': 'odya_bundle', 'path': 'PDS/data/PDS4/odya_bundle/', 'pds_hint': 'PDS4'}, {'name': 'pitms_bundle', 'path': 'PDS/data/PDS4/pitms_bundle/', 'pds_hint': 'PDS4'}, {'name': 'pv_lnms_gas_samples', 'path': 'PDS/data/PDS4/pv_lnms_gas_samples/', 'pds_hint': 'PDS4'}, {'name': 'pv_sed_bundle', 'path': 'PDS/data/PDS4/pv_sed_bundle/', 'pds_hint': 'PDS4'}, {'name': 'pvmp_dlbi', 'path': 'PDS/data/PDS4/pvmp_dlbi/', 'pds_hint': 'PDS4'}, {'name': 'pvoro_bundle', 'path': 'PDS/data/PDS4/pvoro_bundle/', 'pds_hint': 'PDS4'}, {'name': 'saturn_iono', 'path': 'PDS/data/PDS4/saturn_iono/', 'pds_hint': 'PDS4'}, {'name': 'saturn_thermosphere', 'path': 'PDS/data/PDS4/saturn_thermosphere/', 'pds_hint': 'PDS4'}, {'name': 'titan_iono', 'path': 'PDS/data/PDS4/titan_iono/', 'pds_hint': 'PDS4'}, {'name': 'titan_profiles_bundle', 'path': 'PDS/data/PDS4/titan_profiles_bundle/', 'pds_hint': 'PDS4'}, {'name': 'vg_uvs_bundle', 'path': 'PDS/data/PDS4/vg_uvs_bundle/', 'pds_hint': 'PDS4'}, {'name': 'voroelden', 'path': 'PDS/data/PDS4/voroelden/', 'pds_hint': None}, {'name': 'wt_threshold_speed', 'path': 'PDS/data/PDS4/wt_threshold_speed/', 'pds_hint': 'PDS4'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "PDS/data/coiss_0011/"
+        ],
+        "node": "atm"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'PDS/data/coiss_0011', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'CO_CAL_ISSNA/ISSWA_2_EDR_V4.2', 'dataset_ids': ['CO_CAL_ISSNA/ISSWA_2_EDR_V4.2'], 'title': 'CASSINI ISS EXPERIMENT DATA RECORDS AND CALIBRATION FILES', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'CASSINI ISS EXPERIMENT DATA RECORDS AND CALIBRATION FILES', 'VOLUME_NAME': 'CASSINI ISS CALIBRATION FILES', 'VOLUME_ID': 'COISS_0011', 'PUBLICATION_DATE': '2019-7-10', 'DESCRIPTION': \"This volume contains the calibration data and calibration software files, algorithms, sample calibrated images and related calibration documentation for Cassini's Imaging Science Subsystem cameras.\", 'DATA_SET_ID': 'CO_CAL_ISSNA/ISSWA_2_EDR_V4.2'}}, 'volume_count': 1}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_resolve_volume",
+      "tool_input": {
+        "volume_set_path": "PDS/data/",
+        "node": "atm",
+        "dataset_id_hint": "COUVIS occultation SSB",
+        "sample": 12
+      },
+      "tool_output": "{'status': 'success', 'volume_set_path': 'PDS/data/', 'total_children': 2018, 'sampled': 12, 'children': [{'name': 'couvis_0001', 'path': 'PDS/data/couvis_0001', 'pds_version': 'PDS3', 'dataset_ids': ['CO-J-UVIS-2-SSB-V1.2', 'CO-J-UVIS-2-SPEC-V1.2', 'CO-J-UVIS-2-CUBE-V1.2', 'CO-J-UVIS-2-WAV-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0002', 'path': 'PDS/data/couvis_0002', 'pds_version': 'PDS3', 'dataset_ids': ['CO-J-UVIS-2-CUBE-V1.2', 'CO-J-UVIS-2-SSB-V1.2', 'CO-J-UVIS-2-SPEC-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0003', 'path': 'PDS/data/couvis_0003', 'pds_version': 'PDS3', 'dataset_ids': ['CO-J-UVIS-2-SSB-V1.2', 'CO-X-UVIS-2-SSB-V1.2', 'CO-J-UVIS-2-SPEC-V1.2', 'CO-X-UVIS-2-SPEC-V1.2', 'CO-X-UVIS-2-CUBE-V1.2', 'CO-X-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-SPEC-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0004', 'path': 'PDS/data/couvis_0004', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-WAV-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0005', 'path': 'PDS/data/couvis_0005', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0006', 'path': 'PDS/data/couvis_0006', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0007', 'path': 'PDS/data/couvis_0007', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0008', 'path': 'PDS/data/couvis_0008', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0009', 'path': 'PDS/data/couvis_0009', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2', 'CO-S-UVIS-2-SSB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0010', 'path': 'PDS/data/couvis_0010', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0011', 'path': 'PDS/data/couvis_0011', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-CALIB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0012', 'path': 'PDS/data/couvis_0012', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-CALIB-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}], 'best_match': None, 'error': None}"
+    },
+    {
+      "tool_name": "pds4search_bundles_tool",
+      "tool_input": {
+        "lid_query": "cassini_iss",
+        "limit": 5
+      },
+      "tool_output": "{'total_hits': 0, 'query_time_ms': None, 'query': None, 'limit': 5, 'bundles': [], 'facets': {}, '_response': ''}"
+    },
+    {
+      "tool_name": "pds4search_bundles_tool",
+      "tool_input": {
+        "lid_query": "cassini_uvis",
+        "limit": 5
+      },
+      "tool_output": "{'total_hits': 0, 'query_time_ms': None, 'query': None, 'limit': 5, 'bundles': [], 'facets': {}, '_response': ''}"
+    },
+    {
+      "tool_name": "pds4search_bundles_tool",
+      "tool_input": {
+        "lid_query": "co_iss",
+        "limit": 10
+      },
+      "tool_output": "{'total_hits': 0, 'query_time_ms': None, 'query': None, 'limit': 10, 'bundles': [], 'facets': {}, '_response': ''}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "PDS/data/couvis_0020/",
+          "PDS/data/couvis_0030/",
+          "PDS/data/couvis_0040/",
+          "PDS/data/couvis_0050/",
+          "PDS/data/couvis_0060/"
+        ],
+        "node": "atm"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'PDS/data/couvis_0020', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'CO-S-UVIS-2-CUBE-V1.2', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'title': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'VOLUME_NAME': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE', 'VOLUME_ID': 'COUVIS_0020', 'PUBLICATION_DATE': '2011-09-12', 'DESCRIPTION': 'This volume contains a collection of observations taken by the UVIS instrument during the 2007-182...2007-274 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.', 'DATA_SET_ID': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2']}}, 'volume_count': 1}, {'path': 'PDS/data/couvis_0030', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'CO-S-UVIS-2-SSB-V1.2', 'dataset_ids': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'title': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'VOLUME_NAME': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE', 'VOLUME_ID': 'COUVIS_0030', 'PUBLICATION_DATE': '2011-07-16', 'DESCRIPTION': 'This volume contains a collection of observations taken by the UVIS instrument during the 2010-002...2010-090 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.', 'DATA_SET_ID': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2']}}, 'volume_count': 2}, {'path': 'PDS/data/couvis_0050', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'CO-S-UVIS-2-CUBE-V1.4', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.4', 'CO-S-UVIS-2-SSB-V1.4', 'CO-S-UVIS-2-SPEC-V1.4', 'CO-S-UVIS-2-CALIB-V1.4'], 'title': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'VOLUME_NAME': 'CASSINI UVIS SATURN RAW DATA ARCHIVE', 'VOLUME_ID': 'COUVIS_0050', 'PUBLICATION_DATE': '2018-11-05', 'DESCRIPTION': 'This volume contains a collection of observations taken by the UVIS instrument during the Jan 1, 2015...Apr 1, 2015 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.', 'DATA_SET_ID': ['CO-S-UVIS-2-CUBE-V1.4', 'CO-S-UVIS-2-SSB-V1.4', 'CO-S-UVIS-2-SPEC-V1.4', 'CO-S-UVIS-2-CALIB-V1.4']}}, 'volume_count': 2}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "PDS/data/PDS4/co_iss_global-maps/",
+          "PDS/data/PDS4/coiss_zonal_winds/"
+        ],
+        "node": "atm"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'PDS/data/PDS4/co_iss_global-maps', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:co_iss_global-maps', 'dataset_ids': ['urn:nasa:pds:co_iss_global-maps'], 'title': 'Cassini ISS Global Maps of Jupiter and Saturn', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:co_iss_global-maps', 'version_id': '1.0', 'title': 'Cassini ISS Global Maps of Jupiter and Saturn', 'information_model_version': '1.15.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Li, Liming; West, Robert; Jiang, Xun; Knowles, Benjamin', 'editor_list': 'Neakrase, L., Huber, L.', 'publication_year': '2023', 'doi': '10.17189/rkkb-6y30', 'keyword': 'Cassini,ISS, Jupiter, Saturn, global maps', 'description': 'description'}}}, 'volume_count': 1}, {'path': 'PDS/data/PDS4/coiss_zonal_winds', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:coiss_zonal_winds', 'dataset_ids': ['urn:nasa:pds:coiss_zonal_winds'], 'title': 'Saturn Zonal Winds Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:coiss_zonal_winds', 'version_id': '1.0', 'title': 'Saturn Zonal Winds Bundle', 'information_model_version': '1.11.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Garc\u00eda-Melendo, E. and S\u00e1nchez-Lavega, A.', 'publication_year': '2011', 'doi': '10.17189/1518962', 'keyword': 'Cassini Orbiter, ISS, Saturn', 'description': \"Saturn's zonal wind profile in 2004-2009 from Cassini ISS images\"}}}, 'volume_count': 1}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds4search_bundles_tool",
+      "tool_input": {
+        "title_query": "Cassini ISS",
+        "limit": 10
+      },
+      "tool_output": "{'total_hits': 26, 'query_time_ms': None, 'query': None, 'limit': 10, 'bundles': [{'id': 'urn:nasa:pds:cassini_high_rate_detector::1.0', 'lid': 'urn:nasa:pds:cassini_high_rate_detector', 'lidvid': 'urn:nasa:pds:cassini_high_rate_detector::1.0', 'title': 'CASSINI HIGH RATE DETECTOR', 'investigation_area': {'name': 'CASSINI-HUYGENS', 'type': 'Mission'}, 'identification_area': {'title': 'CASSINI HIGH RATE DETECTOR', 'logical_identifier': 'urn:nasa:pds:cassini_high_rate_detector', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Calibration Target', 'type': 'Calibration'}, 'time_coordinates': {'start_date_time': '1999-03-25T06:00:00Z', 'stop_date_time': '2017-09-15T11:55:46Z'}, 'harvest_info': {'node_name': 'PDS_SBN', 'harvest_date_time': '2022-08-07T16:11:25.623684Z'}}, {'id': 'urn:nasa:pds:co_iss_global-maps::1.0', 'lid': 'urn:nasa:pds:co_iss_global-maps', 'lidvid': 'urn:nasa:pds:co_iss_global-maps::1.0', 'title': 'Cassini ISS Global Maps of Jupiter and Saturn', 'investigation_area': {'name': 'Name', 'type': 'Observing Campaign'}, 'identification_area': {'title': 'Cassini ISS Global Maps of Jupiter and Saturn', 'logical_identifier': 'urn:nasa:pds:co_iss_global-maps', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Jupiter', 'type': 'Planet'}, 'time_coordinates': {'start_date_time': '2000-12-06T00:00:00Z', 'stop_date_time': '2011-08-11T00:00:00Z'}, 'harvest_info': {'node_name': 'PDS_ATM', 'harvest_date_time': '2023-12-12T22:06:00.268020Z'}}, {'id': 'urn:nasa:pds:cassini-uvis_titan-library::1.0', 'lid': 'urn:nasa:pds:cassini-uvis_titan-library', 'lidvid': 'urn:nasa:pds:cassini-uvis_titan-library::1.0', 'title': 'Cassini UVIS Titan Library Bundle', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'Cassini UVIS Titan Library Bundle', 'logical_identifier': 'urn:nasa:pds:cassini-uvis_titan-library', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Titan', 'type': 'Satellite'}, 'time_coordinates': None, 'harvest_info': {'node_name': 'PDS_ATM', 'harvest_date_time': '2024-04-22T21:49:56.335072Z'}}, {'id': 'urn:nasa:pds:corss_occul_el_dens::1.0', 'lid': 'urn:nasa:pds:corss_occul_el_dens', 'lidvid': 'urn:nasa:pds:corss_occul_el_dens::1.0', 'title': 'Cassini Orbiter Radio Science Subsystem Occultation and Electron Density', 'investigation_area': {'name': 'Cassini', 'type': 'Mission'}, 'identification_area': {'title': 'Cassini Orbiter Radio Science Subsystem Occultation and Electron Density', 'logical_identifier': 'urn:nasa:pds:corss_occul_el_dens', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Titan', 'type': 'Satellite'}, 'time_coordinates': {'start_date_time': '2005-05-03T02:30:00.500000Z', 'stop_date_time': '2016-06-30T11:15:00.500000Z'}, 'harvest_info': {'node_name': 'PDS_ATM', 'harvest_date_time': '2024-04-02T15:34:27.884036Z'}}, {'id': 'urn:nasa:pds:cassini_saturn_radar_maps::1.0', 'lid': 'urn:nasa:pds:cassini_saturn_radar_maps', 'lidvid': 'urn:nasa:pds:cassini_saturn_radar_maps::1.0', 'title': \"Saturn's Thermal Emission at 2.2-cm from Cassini RADAR Radiometry Bundle\", 'investigation_area': {'name': 'Cassini', 'type': 'Mission'}, 'identification_area': {'title': \"Saturn's Thermal Emission at 2.2-cm from Cassini RADAR Radiometry Bundle\", 'logical_identifier': 'urn:nasa:pds:cassini_saturn_radar_maps', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Saturn', 'type': 'Planet'}, 'time_coordinates': {'start_date_time': '2005-09-23T11:15:49Z', 'stop_date_time': '2011-03-20T18:08:44Z'}, 'harvest_info': {'node_name': 'PDS_ATM', 'harvest_date_time': '2022-03-11T21:01:36.391863Z'}}, {'id': 'urn:nasa:pds:corsstpp::2.0', 'lid': 'urn:nasa:pds:corsstpp', 'lidvid': 'urn:nasa:pds:corsstpp::2.0', 'title': 'Cassini Orbiter RSS Neutral Atmosphere T-P profiles for Titan Bundle', 'investigation_area': {'name': 'Cassini', 'type': 'Mission'}, 'identification_area': {'title': 'Cassini Orbiter RSS Neutral Atmosphere T-P profiles for Titan Bundle', 'logical_identifier': 'urn:nasa:pds:corsstpp', 'version_id': '2.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Titan', 'type': 'Satellite'}, 'time_coordinates': {'start_date_time': '2006-03-19T00:05:16Z', 'stop_date_time': '2009-06-22T18:10:59Z'}, 'harvest_info': {'node_name': 'PDS_ATM', 'harvest_date_time': '2022-07-11T14:53:27.840375Z'}}, {'id': 'urn:nasa:pds:co-rss_slepian-grav-coeff::1.0', 'lid': 'urn:nasa:pds:co-rss_slepian-grav-coeff', 'lidvid': 'urn:nasa:pds:co-rss_slepian-grav-coeff::1.0', 'title': 'Cassini Orbiter Radio Science Subsystem (RSS) Small-Scale Atmospheric Features with Slepian Functions Bundle', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'Cassini Orbiter Radio Science Subsystem (RSS) Small-Scale Atmospheric Features with Slepian Functions Bundle', 'logical_identifier': 'urn:nasa:pds:co-rss_slepian-grav-coeff', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Saturn', 'type': 'Planet'}, 'time_coordinates': {'start_date_time': '2022-06-14T00:00:00Z', 'stop_date_time': '2024-09-29T00:00:00Z'}, 'harvest_info': {'node_name': 'PDS_ATM', 'harvest_date_time': '2025-03-27T16:37:32.674375Z'}}, {'id': 'urn:nasa:pds:cassini_iss_cruise::1.0', 'lid': 'urn:nasa:pds:cassini_iss_cruise', 'lidvid': 'urn:nasa:pds:cassini_iss_cruise::1.0', 'title': 'ISS Observations from the Cassini Cruise to Saturn', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'ISS Observations from the Cassini Cruise to Saturn', 'logical_identifier': 'urn:nasa:pds:cassini_iss_cruise', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': '78 Tauri', 'type': 'Star'}, 'time_coordinates': {'start_date_time': '2004-01-01T00:00:00Z', 'stop_date_time': '2017-09-14T20:00:00Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2022-07-22T19:01:24.212255Z'}}, {'id': 'urn:nasa:pds:cassini_iss_saturn::1.0', 'lid': 'urn:nasa:pds:cassini_iss_saturn', 'lidvid': 'urn:nasa:pds:cassini_iss_saturn::1.0', 'title': 'ISS Observations from the Cassini Tour of the Saturn System', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'ISS Observations from the Cassini Tour of the Saturn System', 'logical_identifier': 'urn:nasa:pds:cassini_iss_saturn', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': '(134340) Pluto', 'type': 'Dwarf Planet'}, 'time_coordinates': {'start_date_time': '2004-01-01T00:00:00Z', 'stop_date_time': '2017-09-14T20:00:00Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2022-06-28T17:31:31.160511Z'}}, {'id': 'urn:nasa:pds:cassini-mag-raw::1.0', 'lid': 'urn:nasa:pds:cassini-mag-raw', 'lidvid': 'urn:nasa:pds:cassini-mag-raw::1.0', 'title': 'Cassini Magnetometer Raw Bundle', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'Cassini Magnetometer Raw Bundle', 'logical_identifier': 'urn:nasa:pds:cassini-mag-raw', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Earth', 'type': 'Planet'}, 'time_coordinates': {'start_date_time': '1997-10-28T00:00:00Z', 'stop_date_time': '2017-09-15T10:31:49.073000Z'}, 'harvest_info': {'node_name': 'PDS_PPI', 'harvest_date_time': '2025-01-10T18:35:38.389121Z'}}], 'facets': {}, '_response': ''}"
+    },
+    {
+      "tool_name": "pds4search_bundles_tool",
+      "tool_input": {
+        "title_query": "Enceladus UVIS occultation",
+        "limit": 10
+      },
+      "tool_output": "{'total_hits': 66, 'query_time_ms': None, 'query': None, 'limit': 10, 'bundles': [{'id': 'urn:nasa:pds:cassini-uvis_titan-library::1.0', 'lid': 'urn:nasa:pds:cassini-uvis_titan-library', 'lidvid': 'urn:nasa:pds:cassini-uvis_titan-library::1.0', 'title': 'Cassini UVIS Titan Library Bundle', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'Cassini UVIS Titan Library Bundle', 'logical_identifier': 'urn:nasa:pds:cassini-uvis_titan-library', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Titan', 'type': 'Satellite'}, 'time_coordinates': None, 'harvest_info': {'node_name': 'PDS_ATM', 'harvest_date_time': '2024-04-22T21:49:56.335072Z'}}, {'id': 'urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023::1.1', 'lid': 'urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023', 'lidvid': 'urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023::1.1', 'title': 'Saturn Ring System Solar Occultations Observed by Cassini UVIS', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'Saturn Ring System Solar Occultations Observed by Cassini UVIS', 'logical_identifier': 'urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023', 'version_id': '1.1', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Saturn Rings', 'type': 'Ring'}, 'time_coordinates': {'start_date_time': '2005-06-08T00:00:00Z', 'stop_date_time': '2017-06-18T00:00:00Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2024-02-01T00:06:29.290204Z'}}, {'id': 'urn:nasa:pds:gbo.pluto.benecchi-etal.occultation::1.0', 'lid': 'urn:nasa:pds:gbo.pluto.benecchi-etal.occultation', 'lidvid': 'urn:nasa:pds:gbo.pluto.benecchi-etal.occultation::1.0', 'title': 'Occultation of star P445.3 by Pluto', 'investigation_area': {'name': 'No Specific Investigation', 'type': 'Individual Investigation'}, 'identification_area': {'title': 'Occultation of star P445.3 by Pluto', 'logical_identifier': 'urn:nasa:pds:gbo.pluto.benecchi-etal.occultation', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': '(134340) Pluto', 'type': 'Dwarf Planet'}, 'time_coordinates': {'start_date_time': '2007-03-18T10:10:00Z', 'stop_date_time': '2007-03-18T11:30:14.910000Z'}, 'harvest_info': {'node_name': 'PDS_SBN', 'harvest_date_time': '2026-01-16T19:02:13.302330Z'}}, {'id': 'urn:nasa:pds:smallbodiesoccultations::4.0', 'lid': 'urn:nasa:pds:smallbodiesoccultations', 'lidvid': 'urn:nasa:pds:smallbodiesoccultations::4.0', 'title': 'Small Bodies Occultations V4.0', 'investigation_area': {'name': 'None', 'type': 'Other Investigation'}, 'identification_area': {'title': 'Small Bodies Occultations V4.0', 'logical_identifier': 'urn:nasa:pds:smallbodiesoccultations', 'version_id': '4.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Multiple Asteroids', 'type': 'Asteroid'}, 'time_coordinates': {'start_date_time': '1911-08-14T00:00:00Z', 'stop_date_time': '2024-01-31T00:00:00Z'}, 'harvest_info': {'node_name': 'PDS_SBN', 'harvest_date_time': '2025-02-10T23:59:37.582140Z'}}, {'id': 'urn:nasa:pds:ast.shevchenko-tedesco.occultation-albedos::1.0', 'lid': 'urn:nasa:pds:ast.shevchenko-tedesco.occultation-albedos', 'lidvid': 'urn:nasa:pds:ast.shevchenko-tedesco.occultation-albedos::1.0', 'title': 'ASTEROID ALBEDOS FROM STELLAR OCCULTATIONS', 'investigation_area': {'name': 'None', 'type': 'Individual Investigation'}, 'identification_area': {'title': 'ASTEROID ALBEDOS FROM STELLAR OCCULTATIONS', 'logical_identifier': 'urn:nasa:pds:ast.shevchenko-tedesco.occultation-albedos', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Multiple Asteroids', 'type': 'Asteroid'}, 'time_coordinates': {'start_date_time': '1958-02-19T00:00:00Z', 'stop_date_time': '2005-02-23T00:00:00Z'}, 'harvest_info': {'node_name': 'PDS_SBN', 'harvest_date_time': '2022-07-20T22:21:22.800781Z'}}, {'id': 'urn:nasa:pds:uranus_occ_support::1.0', 'lid': 'urn:nasa:pds:uranus_occ_support', 'lidvid': 'urn:nasa:pds:uranus_occ_support::1.0', 'title': 'Uranus Occultation Support Bundle', 'investigation_area': None, 'identification_area': {'title': 'Uranus Occultation Support Bundle', 'logical_identifier': 'urn:nasa:pds:uranus_occ_support', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Uranus', 'type': 'Planet'}, 'time_coordinates': None, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2023-03-27T21:29:18.057965Z'}}, {'id': 'urn:nasa:pds:uranus_occ_u138_palomar_508cm::1.0', 'lid': 'urn:nasa:pds:uranus_occ_u138_palomar_508cm', 'lidvid': 'urn:nasa:pds:uranus_occ_u138_palomar_508cm::1.0', 'title': 'Uranus System Occultation of Star u138 (UCAC2 24243463) Observed from the Palomar 508cm Telescope', 'investigation_area': {'name': 'Earth-based Observations of Uranus System Stellar Occultations', 'type': 'Observing Campaign'}, 'identification_area': {'title': 'Uranus System Occultation of Star u138 (UCAC2 24243463) Observed from the Palomar 508cm Telescope', 'logical_identifier': 'urn:nasa:pds:uranus_occ_u138_palomar_508cm', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Uranus', 'type': 'Planet'}, 'time_coordinates': {'start_date_time': '1996-04-10T11:47:35.879700Z', 'stop_date_time': '1996-04-10T12:25:20.913900Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2022-07-27T15:03:21.866427Z'}}, {'id': 'urn:nasa:pds:uranus_occ_u103_palomar_508cm::1.0', 'lid': 'urn:nasa:pds:uranus_occ_u103_palomar_508cm', 'lidvid': 'urn:nasa:pds:uranus_occ_u103_palomar_508cm::1.0', 'title': 'Uranus System Occultation of Star u103 (UCAC2 22794421) Observed from the Palomar 508cm Telescope', 'investigation_area': {'name': 'Earth-based Observations of Uranus System Stellar Occultations', 'type': 'Observing Campaign'}, 'identification_area': {'title': 'Uranus System Occultation of Star u103 (UCAC2 22794421) Observed from the Palomar 508cm Telescope', 'logical_identifier': 'urn:nasa:pds:uranus_occ_u103_palomar_508cm', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Uranus Rings', 'type': 'Ring'}, 'time_coordinates': {'start_date_time': '1992-07-11T07:41:04.530700Z', 'stop_date_time': '1992-07-11T08:47:51.180700Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2022-07-27T15:00:51.315942Z'}}, {'id': 'urn:nasa:pds:voyager1_rss_jupiter_raw::1.0', 'lid': 'urn:nasa:pds:voyager1_rss_jupiter_raw', 'lidvid': 'urn:nasa:pds:voyager1_rss_jupiter_raw::1.0', 'title': 'Voyager 1 Jupiter Radio Occultation - Raw Data Bundle', 'investigation_area': {'name': 'Voyager Mission', 'type': 'Mission'}, 'identification_area': {'title': 'Voyager 1 Jupiter Radio Occultation - Raw Data Bundle', 'logical_identifier': 'urn:nasa:pds:voyager1_rss_jupiter_raw', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Jupiter', 'type': 'Planet'}, 'time_coordinates': {'start_date_time': '1979-03-05T12:33:21Z', 'stop_date_time': '1979-03-05T19:06:20Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2024-03-13T20:13:11.743479Z'}}, {'id': 'urn:nasa:pds:uranus_occ_u149_lowell_180cm::1.0', 'lid': 'urn:nasa:pds:uranus_occ_u149_lowell_180cm', 'lidvid': 'urn:nasa:pds:uranus_occ_u149_lowell_180cm::1.0', 'title': 'Uranus System Occultation of Star u149 (2MASS 20462044-1838345) Observed from the Lowell 180cm Telescope', 'investigation_area': {'name': 'Earth-based Observations of Uranus System Stellar Occultations', 'type': 'Observing Campaign'}, 'identification_area': {'title': 'Uranus System Occultation of Star u149 (2MASS 20462044-1838345) Observed from the Lowell 180cm Telescope', 'logical_identifier': 'urn:nasa:pds:uranus_occ_u149_lowell_180cm', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Uranus', 'type': 'Planet'}, 'time_coordinates': {'start_date_time': '1998-11-06T03:30:01Z', 'stop_date_time': '1998-11-06T05:47:00.250000Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2022-07-27T15:04:14.102165Z'}}], 'facets': {}, '_response': ''}"
+    },
+    {
+      "tool_name": "pds4search_bundles_tool",
+      "tool_input": {
+        "title_query": "Enceladus ISS plume",
+        "limit": 10
+      },
+      "tool_output": "{'total_hits': 3, 'query_time_ms': None, 'query': None, 'limit': 10, 'bundles': [{'id': 'urn:nasa:pds:co_iss_global-maps::1.0', 'lid': 'urn:nasa:pds:co_iss_global-maps', 'lidvid': 'urn:nasa:pds:co_iss_global-maps::1.0', 'title': 'Cassini ISS Global Maps of Jupiter and Saturn', 'investigation_area': {'name': 'Name', 'type': 'Observing Campaign'}, 'identification_area': {'title': 'Cassini ISS Global Maps of Jupiter and Saturn', 'logical_identifier': 'urn:nasa:pds:co_iss_global-maps', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Jupiter', 'type': 'Planet'}, 'time_coordinates': {'start_date_time': '2000-12-06T00:00:00Z', 'stop_date_time': '2011-08-11T00:00:00Z'}, 'harvest_info': {'node_name': 'PDS_ATM', 'harvest_date_time': '2023-12-12T22:06:00.268020Z'}}, {'id': 'urn:nasa:pds:cassini_iss_cruise::1.0', 'lid': 'urn:nasa:pds:cassini_iss_cruise', 'lidvid': 'urn:nasa:pds:cassini_iss_cruise::1.0', 'title': 'ISS Observations from the Cassini Cruise to Saturn', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'ISS Observations from the Cassini Cruise to Saturn', 'logical_identifier': 'urn:nasa:pds:cassini_iss_cruise', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': '78 Tauri', 'type': 'Star'}, 'time_coordinates': {'start_date_time': '2004-01-01T00:00:00Z', 'stop_date_time': '2017-09-14T20:00:00Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2022-07-22T19:01:24.212255Z'}}, {'id': 'urn:nasa:pds:cassini_iss_saturn::1.0', 'lid': 'urn:nasa:pds:cassini_iss_saturn', 'lidvid': 'urn:nasa:pds:cassini_iss_saturn::1.0', 'title': 'ISS Observations from the Cassini Tour of the Saturn System', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'ISS Observations from the Cassini Tour of the Saturn System', 'logical_identifier': 'urn:nasa:pds:cassini_iss_saturn', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': '(134340) Pluto', 'type': 'Dwarf Planet'}, 'time_coordinates': {'start_date_time': '2004-01-01T00:00:00Z', 'stop_date_time': '2017-09-14T20:00:00Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2022-06-28T17:31:31.160511Z'}}], 'facets': {}, '_response': ''}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "PDS/data/PDS4/",
+        "node": "atm",
+        "filter": "encel"
+      },
+      "tool_output": "{'status': 'success', 'path': 'PDS/data/PDS4/', 'total': 60, 'filtered_total': 0, 'dirs': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds4search_bundles_tool",
+      "tool_input": {
+        "lid_query": "cassini_iss_saturn",
+        "limit": 5
+      },
+      "tool_output": "{'total_hits': 0, 'query_time_ms': None, 'query': None, 'limit': 5, 'bundles': [], 'facets': {}, '_response': ''}"
+    },
+    {
+      "tool_name": "pds4search_bundles_tool",
+      "tool_input": {
+        "title_query": "Enceladus UVIS",
+        "limit": 10
+      },
+      "tool_output": "{'total_hits': 2, 'query_time_ms': None, 'query': None, 'limit': 10, 'bundles': [{'id': 'urn:nasa:pds:cassini-uvis_titan-library::1.0', 'lid': 'urn:nasa:pds:cassini-uvis_titan-library', 'lidvid': 'urn:nasa:pds:cassini-uvis_titan-library::1.0', 'title': 'Cassini UVIS Titan Library Bundle', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'Cassini UVIS Titan Library Bundle', 'logical_identifier': 'urn:nasa:pds:cassini-uvis_titan-library', 'version_id': '1.0', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Titan', 'type': 'Satellite'}, 'time_coordinates': None, 'harvest_info': {'node_name': 'PDS_ATM', 'harvest_date_time': '2024-04-22T21:49:56.335072Z'}}, {'id': 'urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023::1.1', 'lid': 'urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023', 'lidvid': 'urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023::1.1', 'title': 'Saturn Ring System Solar Occultations Observed by Cassini UVIS', 'investigation_area': {'name': 'Cassini-Huygens', 'type': 'Mission'}, 'identification_area': {'title': 'Saturn Ring System Solar Occultations Observed by Cassini UVIS', 'logical_identifier': 'urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023', 'version_id': '1.1', 'product_class': 'Product_Bundle'}, 'target_identification': {'name': 'Saturn Rings', 'type': 'Ring'}, 'time_coordinates': {'start_date_time': '2005-06-08T00:00:00Z', 'stop_date_time': '2017-06-18T00:00:00Z'}, 'harvest_info': {'node_name': 'PDS_RMS', 'harvest_date_time': '2024-02-01T00:06:29.290204Z'}}], 'facets': {}, '_response': ''}"
+    },
+    {
+      "tool_name": "pds4search_targets_tool",
+      "tool_input": {
+        "keywords": "Enceladus",
+        "limit": 10
+      },
+      "tool_output": "{'total_hits': 1, 'query_time_ms': None, 'query': None, 'limit': 10, 'targets': [{'id': 'urn:nasa:pds:context:target:satellite.saturn.enceladus::1.2', 'lid': 'urn:nasa:pds:context:target:satellite.saturn.enceladus', 'lidvid': None, 'title': 'Enceladus', 'target': {'type': 'Satellite'}, 'alias': {'alternate_title': 'Saturn II (Enceladus)'}}], '_response': ''}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "PDS/data/",
+        "node": "atm",
+        "filter": "encel"
+      },
+      "tool_output": "{'status': 'success', 'path': 'PDS/data/', 'total': 2018, 'filtered_total': 0, 'dirs': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "PDS/data/couvis_0059/",
+          "PDS/data/couvis_0060/"
+        ],
+        "node": "atm"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'PDS/data/couvis_0059', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'CO-S-UVIS-2-CUBE-V1.4', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.4', 'CO-S-UVIS-2-SSB-V1.4', 'CO-S-UVIS-2-SPEC-V1.4', 'CO-S-UVIS-2-CALIB-V1.4'], 'title': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'VOLUME_NAME': 'CASSINI UVIS SATURN RAW DATA ARCHIVE', 'VOLUME_ID': 'COUVIS_0059', 'PUBLICATION_DATE': '2018-11-05', 'DESCRIPTION': 'This volume contains a collection of observations taken by the UVIS instrument during the 2017-091...2017-182 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.', 'DATA_SET_ID': ['CO-S-UVIS-2-CUBE-V1.4', 'CO-S-UVIS-2-SSB-V1.4', 'CO-S-UVIS-2-SPEC-V1.4', 'CO-S-UVIS-2-CALIB-V1.4']}}, 'volume_count': 2}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_resolve_volume",
+      "tool_input": {
+        "volume_set_path": "PDS/data/",
+        "node": "atm",
+        "dataset_id_hint": "CO-S-UVIS-2-SSB-V1.4",
+        "sample": 10
+      },
+      "tool_output": "{'status': 'success', 'volume_set_path': 'PDS/data/', 'total_children': 2018, 'sampled': 10, 'children': [{'name': 'couvis_0001', 'path': 'PDS/data/couvis_0001', 'pds_version': 'PDS3', 'dataset_ids': ['CO-J-UVIS-2-SSB-V1.2', 'CO-J-UVIS-2-SPEC-V1.2', 'CO-J-UVIS-2-CUBE-V1.2', 'CO-J-UVIS-2-WAV-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0002', 'path': 'PDS/data/couvis_0002', 'pds_version': 'PDS3', 'dataset_ids': ['CO-J-UVIS-2-CUBE-V1.2', 'CO-J-UVIS-2-SSB-V1.2', 'CO-J-UVIS-2-SPEC-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0003', 'path': 'PDS/data/couvis_0003', 'pds_version': 'PDS3', 'dataset_ids': ['CO-J-UVIS-2-SSB-V1.2', 'CO-X-UVIS-2-SSB-V1.2', 'CO-J-UVIS-2-SPEC-V1.2', 'CO-X-UVIS-2-SPEC-V1.2', 'CO-X-UVIS-2-CUBE-V1.2', 'CO-X-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-SPEC-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0004', 'path': 'PDS/data/couvis_0004', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-WAV-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0005', 'path': 'PDS/data/couvis_0005', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0006', 'path': 'PDS/data/couvis_0006', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0007', 'path': 'PDS/data/couvis_0007', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0008', 'path': 'PDS/data/couvis_0008', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0009', 'path': 'PDS/data/couvis_0009', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2', 'CO-S-UVIS-2-SSB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'couvis_0010', 'path': 'PDS/data/couvis_0010', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}], 'best_match': None, 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "PDS/data/PDS4/",
+        "node": "atm",
+        "filter": "plume"
+      },
+      "tool_output": "{'status': 'success', 'path': 'PDS/data/PDS4/', 'total': 60, 'filtered_total': 0, 'dirs': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds4search_instruments_tool",
+      "tool_input": {
+        "keywords": "Cassini UVIS",
+        "limit": 10
+      },
+      "tool_output": "{'total_hits': 19, 'query_time_ms': None, 'query': None, 'limit': 10, 'instruments': [{'id': 'urn:nasa:pds:context:instrument:uvis.co::1.3', 'lid': None, 'lidvid': None, 'title': 'Cassini Oribiter Ultraviolet Imaging Spectrograph', 'instrument': {'type': 'null'}}, {'id': 'urn:nasa:pds:context:instrument:eng.co::1.2', 'lid': None, 'lidvid': None, 'title': 'Cassini Orbiter Spacecraft Sensors', 'instrument': {'type': 'null'}}, {'id': 'urn:nasa:pds:context:instrument:mimi-inca.co::1.2', 'lid': None, 'lidvid': None, 'title': 'MIMI Ion Neutral Camera for Cassini Orbiter', 'instrument': {'type': 'null'}}, {'id': 'urn:nasa:pds:context:instrument:rss.co::2.3', 'lid': None, 'lidvid': None, 'title': 'Cassini Orbiter Radio Science Subsystem', 'instrument': {'type': 'null'}}, {'id': 'urn:nasa:pds:context:instrument:mimi-lemms.co::1.2', 'lid': None, 'lidvid': None, 'title': 'MIMI Low Energy Magnetospheric Measurement Sensor for Cassini Orbiter', 'instrument': {'type': 'null'}}, {'id': 'urn:nasa:pds:context:instrument:caps.co::1.2', 'lid': None, 'lidvid': None, 'title': 'Cassini Plasma Spectrometer for CO', 'instrument': {'type': 'null'}}, {'id': 'urn:nasa:pds:context:instrument:radar.co::1.3', 'lid': None, 'lidvid': None, 'title': 'The Cassini Radar (RADAR)', 'instrument': {'type': 'null'}}, {'id': 'urn:nasa:pds:context:instrument:mimi-chems.co::1.2', 'lid': None, 'lidvid': None, 'title': 'MIMI Charge/Energy Mass Spectrometer for Cassini Orbiter', 'instrument': {'type': 'null'}}, {'id': 'urn:nasa:pds:context:instrument:cirs.co::1.2', 'lid': None, 'lidvid': None, 'title': 'Cassini Oribiter Composite Infrared Spectrometer', 'instrument': {'type': 'null'}}, {'id': 'urn:nasa:pds:context:instrument:isswa.co::1.2', 'lid': None, 'lidvid': None, 'title': 'Imaging Science Subsystem - Wide Angle for CO', 'instrument': {'type': 'null'}}], '_response': ''}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "PDS/data/",
+        "node": "atm",
+        "filter": "iss_saturn"
+      },
+      "tool_output": "{'status': 'success', 'path': 'PDS/data/', 'total': 2018, 'filtered_total': 0, 'dirs': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "PDS/data/couvis_0051/"
+        ],
+        "node": "atm"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'PDS/data/couvis_0051', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'CO-S-UVIS-2-CUBE-V1.4', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.4', 'CO-S-UVIS-2-SSB-V1.4', 'CO-S-UVIS-2-SPEC-V1.4', 'CO-S-UVIS-2-CALIB-V1.4'], 'title': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'VOLUME_NAME': 'CASSINI UVIS SATURN RAW DATA ARCHIVE', 'VOLUME_ID': 'COUVIS_0051', 'PUBLICATION_DATE': '2018-11-05', 'DESCRIPTION': 'This volume contains a collection of observations taken by the UVIS instrument during the Apr 1, 2015...Jul 1, 2015 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.', 'DATA_SET_ID': ['CO-S-UVIS-2-CUBE-V1.4', 'CO-S-UVIS-2-SSB-V1.4', 'CO-S-UVIS-2-SPEC-V1.4', 'CO-S-UVIS-2-CALIB-V1.4']}}, 'volume_count': 1}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "final_result",
+      "tool_input": {
+        "summary": "Located Cassini UVIS occultation-capable products (SSB brightness time series, plus calibrated UVIS products) in the COUVIS PDS3 volume series on the ATM node. The only Cassini ISS content on the ATM node is an ISS calibration/support volume (COISS_0011); primary ISS images used to see Enceladus jets are normally archived on PDS RMS, not ATM.",
+        "candidates": [
+          {
+            "path": "PDS/data/couvis_0050",
+            "dataset_id": "CO-S-UVIS-2-SSB-V1.4",
+            "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+            "pds_version": "PDS3",
+            "mission": "Cassini-Huygens",
+            "node": "atm",
+            "reasoning": "Stage 1 (ATM directory walk + label probe): COUVIS volumes include the UVIS Solar and Stellar Brightness Time Series (SSB) products used for occultation analyses. The plume structure inferred from UVIS stellar/solar occultations (line-of-sight optical depth vs time/altitude) is derived directly from these SSB time series; localized opacity enhancements correspond to discrete, narrow plume components that can be compared to the multiple collimated jet features seen by ISS."
+          },
+          {
+            "path": "PDS/data/couvis_0050",
+            "dataset_id": "CO-S-UVIS-2-CALIB-V1.4",
+            "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+            "pds_version": "PDS3",
+            "mission": "Cassini-Huygens",
+            "node": "atm",
+            "reasoning": "Stage 1: Same probed COUVIS Saturn-archive volume also declares the UVIS calibrated data set ID. Calibrated UVIS products are often used alongside SSB occultation time series to interpret plume column densities/opacity structure in physical units, which provides the quantitative plume morphology that ISS jet imaging is tested against."
+          },
+          {
+            "path": "PDS/data/coiss_0011",
+            "dataset_id": "CO_CAL_ISSNA/ISSWA_2_EDR_V4.2",
+            "title": "CASSINI ISS EXPERIMENT DATA RECORDS AND CALIBRATION FILES",
+            "pds_version": "PDS3",
+            "mission": "Cassini-Huygens",
+            "node": "atm",
+            "reasoning": "Stage 1: This is the only Cassini ISS-related volume present on the ATM node. It contains ISS calibration files/software and sample calibrated images needed to turn raw ISS plume/jet images into physically meaningful brightness and to compare jet morphology with UVIS-derived plume opacity structure. (Note: the bulk ISS image archive itself is typically held under the PDS Rings-Moons Systems node rather than ATM.)"
+          }
+        ]
+      },
+      "tool_output": "Final result processed."
+    }
+  ],
+  "matched": false,
+  "matched_expected": [],
+  "full_trace": [
+    {
+      "parts": [
+        {
+          "content": "You are a dataset-discovery assistant for the NASA PDS Atmospheres (ATM) node at https://pds-atmospheres.nmsu.edu/\n\nDirectory layout and workflow:\nTwo parallel trees:\n  PDS3 \u2192 PDS/data/<VOLUME>/  (note: PDS/data/ also contains a `PDS4/` subdir \u2014 skip it for PDS3)\n  PDS4 \u2192 PDS/data/PDS4/<bundle>/  (Huygens, InSight, MAVEN, etc.)\nFor PDS3: pds_list_dataset_dirs(path='PDS/data/', node='atm', filter='<key>') with the abbreviation prefix.\nFor PDS4: pds_list_dataset_dirs(path='PDS/data/PDS4/', node='atm') \u2014 flat list of bundle dirs.\nMany ATM directories are HYBRID \u2014 they ship BOTH a PDS3 voldesc.cat in subdirs and a PDS4 bundle XML.\npds_probe_datasets returns one entry per label; expect duplicates with different pds_version values.\n\n\nNaming conventions on ATM:\n  PDS3 volumes use lowercase prefixes on ATM: cocirs_0401, cors_0001, mrom_0001, etc.\n  Each prefix typically maps to one mission/instrument; volumes are numbered sequentially.\n  PDS4 bundles live under PDS/data/PDS4/ with mission-named directories (Huygens, InSight, MAVEN, etc.).\n  IMPORTANT \u2014 many PDS4 bundles are ALSO co-located INSIDE their PDS3 mirror volume\n  under PDS/data/<VOLNAME>/ (hybrid layout). When the target id is a urn:nasa:pds:<mission>\n  identifier and the top-level PDS/data/PDS4/<mission>/ directory does not exist or does\n  not contain it, always re-check the matching PDS3 volume series \u2014 the bundle XML may be\n  shipped inside one of those numbered volumes rather than under PDS/data/PDS4/.\nMission/instrument keys (use as filter on PDS/data/):\n  Cassini CIRS (thermal IR spectra) \u2192 cocirs  (~84 volumes named cocirs_<YYMM>).\n        Later/higher-numbered volumes carry the latest TSDR / CUBES revisions; use\n        pds_resolve_volume with a dataset_id_hint to land on the right one in one call.\n  Cassini Radio Science (RSS) \u2192 cors  (~430 volumes: cors_0001 \u2026 cors_04xx)\n  Cassini ISS (imaging, limited) \u2192 coiss\n  Cassini RADAR (Titan) \u2192 coradr\n  Cassini-Huygens cruise \u2192 CO_HUYGENS\n  Mars Climate Sounder (MRO) \u2192 MROM  \u2014 volume-number convention:\n        MROM_0xxx = EDR (raw, level-2),  MROM_2xxx = DDR (derived, level-5).\n        For a derived/level-5 target, resolve inside the MROM_2xxx series\n        (pds_resolve_volume with dataset_id_hint='DDR' or 'level 5').\n  Juno MWR \u2192 jnomwr  \u2014 volume-number convention:\n        jnomwr_0xxx = EDR (raw),  jnomwr_1xxx = RDR / calibrated.\n        The PDS4 bundle urn:nasa:pds:juno_mwr ships INSIDE the PDS3 hybrid tree (not\n        under PDS/data/PDS4/); the :data_calibrated collection lives inside one of the\n        jnomwr_1xxx volumes \u2014 use pds_resolve_volume(volume_set_path='PDS/data/',\n        dataset_id_hint='juno_mwr calibrated', node='atm') to find which one.\n  MAVEN \u2192 MAVENM (PDS3) or look in PDS/data/PDS4/MAVEN/ (PDS4)\n  Mars Express SPICAM \u2192 MEXSPI\n  Pioneer Venus \u2192 PVO (orbiter), PVP (probes)\n  Galileo Probe \u2192 GP\n  Voyager IRIS \u2192 VG_IRIS\n  Huygens Probe \u2192 HP (PDS3) or PDS/data/PDS4/Huygens/ (PDS4 \u2014 has ACP, DISR, DWE, GCMS, HASI, SSP, HK)\n  Mars rover weather \u2192 MSL_REMS, M2020_MEDA, PHX\n\n\nPDS3 vs PDS4:\n  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers (e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n  - PDS4 bundle directories begin with `urn-nasa-pds-`. Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\nYOUR TOOLS (5 tools \u2014 always pass node='atm'):\n  1. pds_list_missions(node='atm') \u2014 returns mission directories with descriptions. No HTTP.\n  2. pds_list_dataset_dirs(path, node='atm', filter=...) \u2014 lists sub-directory names under a path. Cheap HTTP, no label parsing.\n  3. pds_probe_datasets(paths, node='atm') \u2014 probes specific directories for PDS labels. Accepts a list of paths (max 20).\n  4. pds_inspect_collections(path, node='atm') \u2014 scans PDS4 bundle subdirs for collection labels.\n  5. pds_resolve_volume(volume_set_path, node='atm', dataset_id_hint=..., sample=8) \u2014 when a parent directory contains many\n     numbered sibling volumes (RMS COISS_2xxx, COUVIS_0xxx, ATM\n     MROM_*, jnomwr_*, cocirs_*, IMG mrox_*, MSGRMDS_*), this probes\n     hint-ranked children in one call and returns per-child\n     dataset_ids plus a `best_match` field. Use it instead of\n     probing volumes one at a time when you know the target id or\n     a discriminating substring of it.\n\nWORKFLOW:\nStep 1: Decide PDS3 vs PDS4 based on the query.\nStep 2 (PDS3): Call pds_list_dataset_dirs(path='PDS/data/', node='atm', filter='<KEY>') with a volume prefix from the abbreviation table (MROM, MAVENM, MEXSPI, PVO, GP, HP, VG_IRIS, MSL_REMS, M2020_MEDA, PHX, EARTH_, jnomwr, cocirs, cors, \u2026). Filter is mandatory \u2014 ~2000 entries. Ignore the `PDS4/` subdirectory at this level.\nStep 2 (PDS4 \u2014 top-level bundles): Call pds_list_dataset_dirs(path='PDS/data/PDS4/', node='atm') \u2014 flat list of mission-named bundle dirs (Huygens/, InSight/, MAVEN/, \u2026).\nStep 2-bis (PDS4 hybrids \u2014 IMPORTANT): If the target is a urn:nasa:pds:<mission> identifier and Step 2 (PDS4) didn't find a matching bundle, the bundle is most likely co-located inside the PDS3 mirror volume under PDS/data/<VOLNAME>/. Run Step 3 there.\nStep 3: When a mission spans many numbered volumes that differ by product level (e.g. jnomwr_0xxx=raw / jnomwr_1xxx=calibrated; MROM_0xxx=EDR / MROM_2xxx=DDR), call pds_resolve_volume(volume_set_path='PDS/data/', node='atm', dataset_id_hint='<target dataset_id or product type>', sample=8) instead of probing volumes one by one. The hint can be a partial DATA_SET_ID, product keyword ('calibrated', 'DDR', 'RDR'), or instrument code; the tool ranks children by hint similarity and probes the top `sample` of them in one call, returning per-child dataset_ids and a `best_match` path.\nStep 4: For PDS4 bundles (top-level OR hybrid), call pds_inspect_collections on the matched bundle path. Many bundles ship per-product collections (e.g. urn:\u2026:juno_mwr:data_calibrated, urn:\u2026:juno_mwr:data_raw); pick the one whose logical_identifier matches the query.\nStep 5: Use pds_probe_datasets only when you already know the specific volume path. It returns `dataset_id` (first id, scalar) AND `dataset_ids` (full list); some Cassini\nvoldescs (cocirs, cors, COVIMS, COUVIS) declare multiple ids per volume (TSDR + CUBES,\ncalibrated + raw, etc.). Always scan `dataset_ids` when matching the target id, not\nonly the scalar `dataset_id` field.\nStep 6: Return BOTH PDS3 and PDS4 IDs when the directory is hybrid.\n\nCRITICAL RULES:\n  1. EVERY query requires at least one candidate. Never dismiss a query as 'not a dataset request' \u2014 every paper-derived query has at least one\n     supporting PDS dataset somewhere in this node's archive, and your job\n     is to surface the closest match (with `reasoning` explaining the link).\n  2. Prefer CALIBRATED/REDUCED data over raw/EDR for science queries.\n     When a probed voldesc exposes `dataset_ids` with multiple entries,\n     match the question's data need to the PRODUCT-TYPE token inside each\n     id (typically the third or fourth dash-separated token). Common ones:\n         EDR / RAW     = raw observations\n         CDR / CALIB   = generic calibrated data\n         RDR / TRDR / MRDR / MTRDR / BDR / SCVDR = reduced / derived imagery or spectra\n         DDR / LDR     = derived / digital terrain / level-5 products\n         SSB           = solar / stellar occultation (Cassini UVIS)\n         SPEC / CUBE / WAV = spectra / spectral cubes / waveforms\n         QUBE          = VIMS spectral data cube (the VIMS-flavoured \"EDR\")\n     If the query mentions 'occultation' return the SSB id; 'spectra' \u2192\n     SPEC; 'calibrated radiance' \u2192 CALIB/CDR; 'mosaic / map / derived' \u2192\n     DDR/MRDR/MTRDR. When two product types both fit the question (e.g.\n     SPEC + SSB for an occultation spectra query), return both candidates.\n     Do NOT just return the scalar `dataset_id` and drop the rest \u2014 that\n     field is only the first id in the voldesc and is often the wrong\n     product type for a given query.\n  3. For PDS4, use inspect_collections ONLY for top 2-3 bundles. Return COLLECTION-level LID when :data or :calibrated exists.\n  4. When the SAME data is available as both PDS3 and PDS4, return BOTH identifiers \u2014 emit one candidate per identifier. Most published papers cite the PDS3 dataset_id (e.g. MESS-E_V_H_SW-MAG-3-CDR-CALIBRATED-V1.0, LRO-L-LROC-5-RDR-V1.0); the PDS4 collection LID is the modern equivalent. Do NOT silently drop the PDS3 form.\n  5. Stay under 20 tool calls per query. Soft cap: 15. Hard cap: 20.\n  6. Only return paths you've actually probed \u2014 never guess.\n  7. ANTI-THRASHING. Never re-issue a tool call with the same name and the\n     same key arguments (path, paths, filter) that you've already issued in\n     this trace. The result will be identical \u2014 it wastes the budget and\n     blocks progress. If you're tempted to re-probe the same set of paths,\n     either move to a different tool (inspect_collections, resolve_volume)\n     or commit to `final_result` with the best candidate you have so far.\n  8. STOP-AT-LEVEL. The output `path` field should point at a dataset or\n     bundle directory (containing voldesc.cat or bundle*.xml), NOT at a\n     deeper product / DATA / EXTRAS / BROWSE / SHAPEFILE / DTM sub-folder.\n     Feature-level retrieval (a specific image of a specific crater) is\n     out of scope for this finder; return the dataset and explain in\n     `reasoning` how it covers the feature.\n  9. After 15 tool calls without converging, ALWAYS prefer emitting your\n     current best candidate(s) over running another exploratory call.\n     A grounded near-match with a clear reasoning note is more useful\n     than a 20-call trace that times out with no `final_result`.\n\n===========================================================\nSTAGE 2 \u2014 DEEPER NODE-SPECIFIC SEARCH (escalation only)\n===========================================================\n\nEverything above is STAGE 1: the 5 live-HTTP tools (pds_list_missions / pds_list_dataset_dirs / pds_probe_datasets / pds_inspect_collections / pds_resolve_volume), the per-node workflow, and the Critical Rules ALL belong to Stage 1. Stage 1 reaches bundle/collection level by walking the node's directory tree. Stage 2 below is a SECOND set of tools for refining or rescuing Stage 1 \u2014 do NOT call any Stage 2 tool unless one of the escalation triggers below fires.\n\nWHEN TO ESCALATE TO STAGE 2 (any one is enough):\n  (a) The query asks for SPECIFIC observations, granules, or product IDs \u2014 not just a dataset. Example: 'Cassini ISS images of Mimas between 2009 and 2010' needs per-observation filtering.\n  (b) Stage 1 has located the right bundle/collection but you still need to narrow by GEOMETRY, TIME, or a SPATIAL filter (bbox, lat/lon, ring longitude, target body, observation type).\n  (c) Stage 1 produced AMBIGUOUS candidates that a faceted query can disambiguate (e.g. multiple instruments with similar names, multiple processing levels).\n  (d) Stage 1 cannot reach the node's holdings index (e.g. SBN returns HTTP 403, a directory listing is unavailable). Use the Stage 2 API as a fallback path to candidates.\n\nSTAGE 2 TOOLS (this node):\n  - pds4search_bundles_tool(keywords=..., investigation=..., instrument=..., target=...): cross-node PDS4 registry bundle search.\n  - pds4search_collections_tool(bundle_lid=..., keywords=..., ...): collection search; reuse the Stage 1 bundle LID as a filter when possible.\n  - pds4search_products_tool(collection_lid=..., keywords=..., ...): product-level search inside a collection.\n  - pds4search_investigations_tool / pds4search_instruments_tool / pds4search_instrument_hosts_tool / pds4search_targets_tool: context-product lookups when user-facing names need to be resolved to LIDs.\n  - pds4get_product_tool(lid=...): fetch one product label by LID.\n  - pds4crawl_context_product_tool(lid=...): walk a context product's associations to find related bundles/collections.\n\nSTAGE 2 RULES:\n  1. When you already have a bundle/collection LID from Stage 1, REUSE it as a filter in the Stage 2 call. Stage 2 is refinement, not a fresh search.\n  2. Spend the MINIMUM number of additional calls. If a single faceted call answers the question, stop.\n  3. If Stage 2 finds nothing or errors out, FALL BACK to the Stage 1 candidates and note in `reasoning` that Stage 2 was attempted and returned no refinement.\n  4. The 20-tool-call budget from Stage 1's Critical Rule 5 is the budget for BOTH stages combined. Do NOT reset the counter when entering Stage 2.\n  5. Every candidate's `reasoning` field must explicitly name which stage produced it (e.g. 'Stage 1: located bundle X by directory walk' or 'Stage 2: narrowed to product Y via ODE_search_products bbox filter').\n",
+          "timestamp": "2026-05-12 22:38:17.641099+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "How are the visible jet features seen in ISS images consistent with the plume structure inferred from UVIS occlusion observations?",
+          "timestamp": "2026-05-12 22:38:17.641108+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-05-12 22:38:17.641341+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\": \"PDS/data/\", \"node\": \"atm\", \"filter\": \"coiss\"}",
+          "tool_call_id": "call_rBK9T4laiNZHAUj6cjeDCaSy",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\": \"PDS/data/\", \"node\": \"atm\", \"filter\": \"uvis\"}",
+          "tool_call_id": "call_y8yRcUtZwELg0gbzJh7hrUjN",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\": \"PDS/data/PDS4/\", \"node\": \"atm\"}",
+          "tool_call_id": "call_lgx87HTtLTpUYSEPwIWH2pSD",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8515,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 655,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 545,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:38:30.363790+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:38:18+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq1ygpHiEV8rmkeerrZzBIwSab5v",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "PDS/data/",
+            "total": 2018,
+            "filtered_total": 1,
+            "dirs": [
+              {
+                "name": "coiss_0011",
+                "path": "PDS/data/coiss_0011/",
+                "pds_hint": "PDS3"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_rBK9T4laiNZHAUj6cjeDCaSy",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:38:34.764533+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "PDS/data/",
+            "total": 2018,
+            "filtered_total": 60,
+            "dirs": [
+              {
+                "name": "couvis_0001",
+                "path": "PDS/data/couvis_0001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0002",
+                "path": "PDS/data/couvis_0002/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0003",
+                "path": "PDS/data/couvis_0003/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0004",
+                "path": "PDS/data/couvis_0004/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0005",
+                "path": "PDS/data/couvis_0005/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0006",
+                "path": "PDS/data/couvis_0006/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0007",
+                "path": "PDS/data/couvis_0007/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0008",
+                "path": "PDS/data/couvis_0008/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0009",
+                "path": "PDS/data/couvis_0009/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0010",
+                "path": "PDS/data/couvis_0010/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0011",
+                "path": "PDS/data/couvis_0011/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0012",
+                "path": "PDS/data/couvis_0012/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0013",
+                "path": "PDS/data/couvis_0013/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0014",
+                "path": "PDS/data/couvis_0014/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0015",
+                "path": "PDS/data/couvis_0015/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0016",
+                "path": "PDS/data/couvis_0016/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0017",
+                "path": "PDS/data/couvis_0017/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0018",
+                "path": "PDS/data/couvis_0018/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0019",
+                "path": "PDS/data/couvis_0019/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0020",
+                "path": "PDS/data/couvis_0020/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0021",
+                "path": "PDS/data/couvis_0021/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0022",
+                "path": "PDS/data/couvis_0022/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0023",
+                "path": "PDS/data/couvis_0023/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0024",
+                "path": "PDS/data/couvis_0024/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0025",
+                "path": "PDS/data/couvis_0025/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0026",
+                "path": "PDS/data/couvis_0026/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0027",
+                "path": "PDS/data/couvis_0027/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0028",
+                "path": "PDS/data/couvis_0028/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0029",
+                "path": "PDS/data/couvis_0029/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0030",
+                "path": "PDS/data/couvis_0030/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0031",
+                "path": "PDS/data/couvis_0031/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0032",
+                "path": "PDS/data/couvis_0032/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0033",
+                "path": "PDS/data/couvis_0033/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0034",
+                "path": "PDS/data/couvis_0034/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0035",
+                "path": "PDS/data/couvis_0035/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0036",
+                "path": "PDS/data/couvis_0036/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0037",
+                "path": "PDS/data/couvis_0037/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0038",
+                "path": "PDS/data/couvis_0038/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0039",
+                "path": "PDS/data/couvis_0039/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0040",
+                "path": "PDS/data/couvis_0040/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0041",
+                "path": "PDS/data/couvis_0041/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0042",
+                "path": "PDS/data/couvis_0042/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0043",
+                "path": "PDS/data/couvis_0043/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0044",
+                "path": "PDS/data/couvis_0044/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0045",
+                "path": "PDS/data/couvis_0045/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0046",
+                "path": "PDS/data/couvis_0046/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0047",
+                "path": "PDS/data/couvis_0047/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0048",
+                "path": "PDS/data/couvis_0048/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0049",
+                "path": "PDS/data/couvis_0049/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0050",
+                "path": "PDS/data/couvis_0050/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0051",
+                "path": "PDS/data/couvis_0051/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0052",
+                "path": "PDS/data/couvis_0052/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0053",
+                "path": "PDS/data/couvis_0053/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0054",
+                "path": "PDS/data/couvis_0054/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0055",
+                "path": "PDS/data/couvis_0055/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0056",
+                "path": "PDS/data/couvis_0056/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0057",
+                "path": "PDS/data/couvis_0057/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0058",
+                "path": "PDS/data/couvis_0058/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0059",
+                "path": "PDS/data/couvis_0059/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "couvis_0060",
+                "path": "PDS/data/couvis_0060/",
+                "pds_hint": "PDS3"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_y8yRcUtZwELg0gbzJh7hrUjN",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:38:34.859504+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "PDS/data/PDS4/",
+            "total": 60,
+            "filtered_total": null,
+            "dirs": [
+              {
+                "name": "Huygens",
+                "path": "PDS/data/PDS4/Huygens/",
+                "pds_hint": null
+              },
+              {
+                "name": "InSight",
+                "path": "PDS/data/PDS4/InSight/",
+                "pds_hint": null
+              },
+              {
+                "name": "InSight_vortex_bundle",
+                "path": "PDS/data/PDS4/InSight_vortex_bundle/",
+                "pds_hint": null
+              },
+              {
+                "name": "LADEE",
+                "path": "PDS/data/PDS4/LADEE/",
+                "pds_hint": null
+              },
+              {
+                "name": "MAVEN",
+                "path": "PDS/data/PDS4/MAVEN/",
+                "pds_hint": null
+              },
+              {
+                "name": "Mars2020",
+                "path": "PDS/data/PDS4/Mars2020/",
+                "pds_hint": null
+              },
+              {
+                "name": "PHX",
+                "path": "PDS/data/PDS4/PHX/",
+                "pds_hint": null
+              },
+              {
+                "name": "cassini-rss-raw-gwe",
+                "path": "PDS/data/PDS4/cassini-rss-raw-gwe/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "cassini-rss-raw-sagr",
+                "path": "PDS/data/PDS4/cassini-rss-raw-sagr/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "cassini-rss-raw-sce",
+                "path": "PDS/data/PDS4/cassini-rss-raw-sce/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "cassini-rss-raw-sroc",
+                "path": "PDS/data/PDS4/cassini-rss-raw-sroc/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "cassini-rss-raw-ssa",
+                "path": "PDS/data/PDS4/cassini-rss-raw-ssa/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "cassini-rss-raw-titan",
+                "path": "PDS/data/PDS4/cassini-rss-raw-titan/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "cassini-uvis_titan-library",
+                "path": "PDS/data/PDS4/cassini-uvis_titan-library/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "cassini_saturn_radar_maps",
+                "path": "PDS/data/PDS4/cassini_saturn_radar_maps/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "co-rss_slepian-grav-coeff",
+                "path": "PDS/data/PDS4/co-rss_slepian-grav-coeff/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "co_iss_global-maps",
+                "path": "PDS/data/PDS4/co_iss_global-maps/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "cocirs_c2h4abund",
+                "path": "PDS/data/PDS4/cocirs_c2h4abund/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "coiss_zonal_winds",
+                "path": "PDS/data/PDS4/coiss_zonal_winds/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "corss_occul_el_dens",
+                "path": "PDS/data/PDS4/corss_occul_el_dens/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "dd_nnss-nv",
+                "path": "PDS/data/PDS4/dd_nnss-nv/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "eldorado_nv_dd_ptv",
+                "path": "PDS/data/PDS4/eldorado_nv_dd_ptv/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo_probe_bundle",
+                "path": "PDS/data/PDS4/galileo_probe_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "go_nims_io_rad",
+                "path": "PDS/data/PDS4/go_nims_io_rad/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "go_ppr_bundle",
+                "path": "PDS/data/PDS4/go_ppr_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "go_uvs_bundle",
+                "path": "PDS/data/PDS4/go_uvs_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "hot_ion_atmos_escape",
+                "path": "PDS/data/PDS4/hot_ion_atmos_escape/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "insight_edl_bundle",
+                "path": "PDS/data/PDS4/insight_edl_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "irtf_io_photometry",
+                "path": "PDS/data/PDS4/irtf_io_photometry/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "juno_jiram_bundle",
+                "path": "PDS/data/PDS4/juno_jiram_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "juno_jiram_derived_bundle",
+                "path": "PDS/data/PDS4/juno_jiram_derived_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "junocam_atm-ml-calib",
+                "path": "PDS/data/PDS4/junocam_atm-ml-calib/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "lab.hydrocarbon_spectra",
+                "path": "PDS/data/PDS4/lab.hydrocarbon_spectra/",
+                "pds_hint": null
+              },
+              {
+                "name": "lowell_uranus-neptune-photometry",
+                "path": "PDS/data/PDS4/lowell_uranus-neptune-photometry/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "mcmath-pierce_mercury",
+                "path": "PDS/data/PDS4/mcmath-pierce_mercury/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "merimu_bundle",
+                "path": "PDS/data/PDS4/merimu_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "mgn-atm-profile",
+                "path": "PDS/data/PDS4/mgn-atm-profile/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "mgs-rss_nocturnal-mixed-layers",
+                "path": "PDS/data/PDS4/mgs-rss_nocturnal-mixed-layers/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "mgs_tes_atmos_dust-ice",
+                "path": "PDS/data/PDS4/mgs_tes_atmos_dust-ice/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "mgs_tes_recalib_atmos",
+                "path": "PDS/data/PDS4/mgs_tes_recalib_atmos/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "mgsa_bundle",
+                "path": "PDS/data/PDS4/mgsa_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "mpf_mpim_bundle",
+                "path": "PDS/data/PDS4/mpf_mpim_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "mr9_iris",
+                "path": "PDS/data/PDS4/mr9_iris/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "mro-crism_atmos-db",
+                "path": "PDS/data/PDS4/mro-crism_atmos-db/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "mroa_bundle",
+                "path": "PDS/data/PDS4/mroa_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "msl_ice-dust",
+                "path": "PDS/data/PDS4/msl_ice-dust/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "msledl_bundle",
+                "path": "PDS/data/PDS4/msledl_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "odya_bundle",
+                "path": "PDS/data/PDS4/odya_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "pitms_bundle",
+                "path": "PDS/data/PDS4/pitms_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "pv_lnms_gas_samples",
+                "path": "PDS/data/PDS4/pv_lnms_gas_samples/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "pv_sed_bundle",
+                "path": "PDS/data/PDS4/pv_sed_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "pvmp_dlbi",
+                "path": "PDS/data/PDS4/pvmp_dlbi/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "pvoro_bundle",
+                "path": "PDS/data/PDS4/pvoro_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "saturn_iono",
+                "path": "PDS/data/PDS4/saturn_iono/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "saturn_thermosphere",
+                "path": "PDS/data/PDS4/saturn_thermosphere/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "titan_iono",
+                "path": "PDS/data/PDS4/titan_iono/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "titan_profiles_bundle",
+                "path": "PDS/data/PDS4/titan_profiles_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "vg_uvs_bundle",
+                "path": "PDS/data/PDS4/vg_uvs_bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "voroelden",
+                "path": "PDS/data/PDS4/voroelden/",
+                "pds_hint": null
+              },
+              {
+                "name": "wt_threshold_speed",
+                "path": "PDS/data/PDS4/wt_threshold_speed/",
+                "pds_hint": "PDS4"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_lgx87HTtLTpUYSEPwIWH2pSD",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:38:31.314654+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:38:34.860043+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\": [\"PDS/data/coiss_0011/\"], \"node\": \"atm\"}",
+          "tool_call_id": "call_CCsjkKdMRejBeePvJb5BikBe",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_resolve_volume",
+          "args": "{\"volume_set_path\": \"PDS/data/\", \"node\": \"atm\", \"dataset_id_hint\": \"COUVIS occultation SSB\", \"sample\": 12}",
+          "tool_call_id": "call_R9QSIki5Sf6bibZF4uFE9fq4",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 13050,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 7552,
+        "output_tokens": 998,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 901,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:38:52.587997+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:38:35+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq2FOOHSwjZsR87vwvARcIpt90gX",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "PDS/data/coiss_0011",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "CO_CAL_ISSNA/ISSWA_2_EDR_V4.2",
+                "dataset_ids": [
+                  "CO_CAL_ISSNA/ISSWA_2_EDR_V4.2"
+                ],
+                "title": "CASSINI ISS EXPERIMENT DATA RECORDS AND CALIBRATION FILES",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "CASSINI ISS EXPERIMENT DATA RECORDS AND CALIBRATION FILES",
+                    "VOLUME_NAME": "CASSINI ISS CALIBRATION FILES",
+                    "VOLUME_ID": "COISS_0011",
+                    "PUBLICATION_DATE": "2019-7-10",
+                    "DESCRIPTION": "This volume contains the calibration data and calibration software files, algorithms, sample calibrated images and related calibration documentation for Cassini's Imaging Science Subsystem cameras.",
+                    "DATA_SET_ID": "CO_CAL_ISSNA/ISSWA_2_EDR_V4.2"
+                  }
+                },
+                "volume_count": 1
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_CCsjkKdMRejBeePvJb5BikBe",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:38:53.465049+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_resolve_volume",
+          "content": {
+            "status": "success",
+            "volume_set_path": "PDS/data/",
+            "total_children": 2018,
+            "sampled": 12,
+            "children": [
+              {
+                "name": "couvis_0001",
+                "path": "PDS/data/couvis_0001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-J-UVIS-2-SSB-V1.2",
+                  "CO-J-UVIS-2-SPEC-V1.2",
+                  "CO-J-UVIS-2-CUBE-V1.2",
+                  "CO-J-UVIS-2-WAV-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0002",
+                "path": "PDS/data/couvis_0002",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-J-UVIS-2-CUBE-V1.2",
+                  "CO-J-UVIS-2-SSB-V1.2",
+                  "CO-J-UVIS-2-SPEC-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0003",
+                "path": "PDS/data/couvis_0003",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-J-UVIS-2-SSB-V1.2",
+                  "CO-X-UVIS-2-SSB-V1.2",
+                  "CO-J-UVIS-2-SPEC-V1.2",
+                  "CO-X-UVIS-2-SPEC-V1.2",
+                  "CO-X-UVIS-2-CUBE-V1.2",
+                  "CO-X-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0004",
+                "path": "PDS/data/couvis_0004",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0005",
+                "path": "PDS/data/couvis_0005",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0006",
+                "path": "PDS/data/couvis_0006",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0007",
+                "path": "PDS/data/couvis_0007",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0008",
+                "path": "PDS/data/couvis_0008",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0009",
+                "path": "PDS/data/couvis_0009",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0010",
+                "path": "PDS/data/couvis_0010",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0011",
+                "path": "PDS/data/couvis_0011",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0012",
+                "path": "PDS/data/couvis_0012",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              }
+            ],
+            "best_match": null,
+            "error": null
+          },
+          "tool_call_id": "call_R9QSIki5Sf6bibZF4uFE9fq4",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:38:55.860397+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:38:55.861330+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "args": "{\"lid_query\": \"cassini_iss\", \"limit\": 5}",
+          "tool_call_id": "call_nckB7On20Bo9LjlzrFGSmnvV",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "args": "{\"lid_query\": \"cassini_uvis\", \"limit\": 5}",
+          "tool_call_id": "call_ZNuYBPv2IiqHyFmiaNd3t9NJ",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 14953,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 12672,
+        "output_tokens": 1475,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1394,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:39:19.721856+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:38:56+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq2aqDLAVCI0k0rc8swNb9YvHgSb",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "content": {
+            "total_hits": 0,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 5,
+            "bundles": [],
+            "facets": {},
+            "_response": ""
+          },
+          "tool_call_id": "call_nckB7On20Bo9LjlzrFGSmnvV",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:39:20.538905+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "content": {
+            "total_hits": 0,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 5,
+            "bundles": [],
+            "facets": {},
+            "_response": ""
+          },
+          "tool_call_id": "call_ZNuYBPv2IiqHyFmiaNd3t9NJ",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:39:20.539312+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:39:20.540082+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "args": "{\"lid_query\":\"co_iss\",\"limit\":10}",
+          "tool_call_id": "call_7Zu0Kr6dLbIHUhhXyJSGTdeV",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 15122,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 14720,
+        "output_tokens": 570,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 534,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:39:30.676804+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:39:20+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq2ydo8JdJc5xVgLVxuiSdeJveZ6",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "content": {
+            "total_hits": 0,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 10,
+            "bundles": [],
+            "facets": {},
+            "_response": ""
+          },
+          "tool_call_id": "call_7Zu0Kr6dLbIHUhhXyJSGTdeV",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:39:31.391691+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:39:31.392611+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\":[\"PDS/data/couvis_0020/\",\"PDS/data/couvis_0030/\",\"PDS/data/couvis_0040/\",\"PDS/data/couvis_0050/\",\"PDS/data/couvis_0060/\"],\"node\":\"atm\"}",
+          "tool_call_id": "call_blviu7Qg5smfSUglxZVCEGHJ",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 15203,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 14720,
+        "output_tokens": 1784,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1700,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:40:02.302860+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:39:31+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq39oKPr6k49uJq3XlMqbvEOXYmr",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "PDS/data/couvis_0020",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "CO-S-UVIS-2-CUBE-V1.2",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                    "VOLUME_NAME": "CASSINI UVIS JUPITER RAW DATA ARCHIVE",
+                    "VOLUME_ID": "COUVIS_0020",
+                    "PUBLICATION_DATE": "2011-09-12",
+                    "DESCRIPTION": "This volume contains a collection of observations taken by the UVIS instrument during the 2007-182...2007-274 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.",
+                    "DATA_SET_ID": [
+                      "CO-S-UVIS-2-CUBE-V1.2",
+                      "CO-S-UVIS-2-SSB-V1.2",
+                      "CO-S-UVIS-2-SPEC-V1.2",
+                      "CO-S-UVIS-2-CALIB-V1.2"
+                    ]
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "PDS/data/couvis_0030",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "CO-S-UVIS-2-SSB-V1.2",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                    "VOLUME_NAME": "CASSINI UVIS JUPITER RAW DATA ARCHIVE",
+                    "VOLUME_ID": "COUVIS_0030",
+                    "PUBLICATION_DATE": "2011-07-16",
+                    "DESCRIPTION": "This volume contains a collection of observations taken by the UVIS instrument during the 2010-002...2010-090 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.",
+                    "DATA_SET_ID": [
+                      "CO-S-UVIS-2-SSB-V1.2",
+                      "CO-S-UVIS-2-CUBE-V1.2",
+                      "CO-S-UVIS-2-SPEC-V1.2",
+                      "CO-S-UVIS-2-CALIB-V1.2"
+                    ]
+                  }
+                },
+                "volume_count": 2
+              },
+              {
+                "path": "PDS/data/couvis_0050",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "CO-S-UVIS-2-CUBE-V1.4",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.4",
+                  "CO-S-UVIS-2-SSB-V1.4",
+                  "CO-S-UVIS-2-SPEC-V1.4",
+                  "CO-S-UVIS-2-CALIB-V1.4"
+                ],
+                "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                    "VOLUME_NAME": "CASSINI UVIS SATURN RAW DATA ARCHIVE",
+                    "VOLUME_ID": "COUVIS_0050",
+                    "PUBLICATION_DATE": "2018-11-05",
+                    "DESCRIPTION": "This volume contains a collection of observations taken by the UVIS instrument during the Jan 1, 2015...Apr 1, 2015 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.",
+                    "DATA_SET_ID": [
+                      "CO-S-UVIS-2-CUBE-V1.4",
+                      "CO-S-UVIS-2-SSB-V1.4",
+                      "CO-S-UVIS-2-SPEC-V1.4",
+                      "CO-S-UVIS-2-CALIB-V1.4"
+                    ]
+                  }
+                },
+                "volume_count": 2
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_blviu7Qg5smfSUglxZVCEGHJ",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:40:03.854852+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:40:03.855814+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\":[\"PDS/data/PDS4/co_iss_global-maps/\",\"PDS/data/PDS4/coiss_zonal_winds/\"],\"node\":\"atm\"}",
+          "tool_call_id": "call_RbD9FAOQdOW0KvpLeeXQXoHV",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 16336,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 14720,
+        "output_tokens": 1514,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1457,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:40:25.772998+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:40:04+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq3gCKXBX0JxNMFybWqPJH5v3m5A",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "PDS/data/PDS4/co_iss_global-maps",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:co_iss_global-maps",
+                "dataset_ids": [
+                  "urn:nasa:pds:co_iss_global-maps"
+                ],
+                "title": "Cassini ISS Global Maps of Jupiter and Saturn",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:co_iss_global-maps",
+                    "version_id": "1.0",
+                    "title": "Cassini ISS Global Maps of Jupiter and Saturn",
+                    "information_model_version": "1.15.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Li, Liming; West, Robert; Jiang, Xun; Knowles, Benjamin",
+                      "editor_list": "Neakrase, L., Huber, L.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/rkkb-6y30",
+                      "keyword": "Cassini,ISS, Jupiter, Saturn, global maps",
+                      "description": "description"
+                    }
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "PDS/data/PDS4/coiss_zonal_winds",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:coiss_zonal_winds",
+                "dataset_ids": [
+                  "urn:nasa:pds:coiss_zonal_winds"
+                ],
+                "title": "Saturn Zonal Winds Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:coiss_zonal_winds",
+                    "version_id": "1.0",
+                    "title": "Saturn Zonal Winds Bundle",
+                    "information_model_version": "1.11.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Garc\u00eda-Melendo, E. and S\u00e1nchez-Lavega, A.",
+                      "publication_year": "2011",
+                      "doi": "10.17189/1518962",
+                      "keyword": "Cassini Orbiter, ISS, Saturn",
+                      "description": "Saturn's zonal wind profile in 2004-2009 from Cassini ISS images"
+                    }
+                  }
+                },
+                "volume_count": 1
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_RbD9FAOQdOW0KvpLeeXQXoHV",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:40:26.895507+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:40:26.896742+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "args": "{\"title_query\":\"Cassini ISS\",\"limit\":10}",
+          "tool_call_id": "call_fkPxL9nXJAGxzSbh4vWS2sJD",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 16843,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 15744,
+        "output_tokens": 573,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 537,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:40:35.860806+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:40:27+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq43ng5houFk3Bv0JXXI5TwgLUMc",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "content": {
+            "total_hits": 26,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 10,
+            "bundles": [
+              {
+                "id": "urn:nasa:pds:cassini_high_rate_detector::1.0",
+                "lid": "urn:nasa:pds:cassini_high_rate_detector",
+                "lidvid": "urn:nasa:pds:cassini_high_rate_detector::1.0",
+                "title": "CASSINI HIGH RATE DETECTOR",
+                "investigation_area": {
+                  "name": "CASSINI-HUYGENS",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "CASSINI HIGH RATE DETECTOR",
+                  "logical_identifier": "urn:nasa:pds:cassini_high_rate_detector",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Calibration Target",
+                  "type": "Calibration"
+                },
+                "time_coordinates": {
+                  "start_date_time": "1999-03-25T06:00:00Z",
+                  "stop_date_time": "2017-09-15T11:55:46Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_SBN",
+                  "harvest_date_time": "2022-08-07T16:11:25.623684Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:co_iss_global-maps::1.0",
+                "lid": "urn:nasa:pds:co_iss_global-maps",
+                "lidvid": "urn:nasa:pds:co_iss_global-maps::1.0",
+                "title": "Cassini ISS Global Maps of Jupiter and Saturn",
+                "investigation_area": {
+                  "name": "Name",
+                  "type": "Observing Campaign"
+                },
+                "identification_area": {
+                  "title": "Cassini ISS Global Maps of Jupiter and Saturn",
+                  "logical_identifier": "urn:nasa:pds:co_iss_global-maps",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Jupiter",
+                  "type": "Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2000-12-06T00:00:00Z",
+                  "stop_date_time": "2011-08-11T00:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_ATM",
+                  "harvest_date_time": "2023-12-12T22:06:00.268020Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:cassini-uvis_titan-library::1.0",
+                "lid": "urn:nasa:pds:cassini-uvis_titan-library",
+                "lidvid": "urn:nasa:pds:cassini-uvis_titan-library::1.0",
+                "title": "Cassini UVIS Titan Library Bundle",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Cassini UVIS Titan Library Bundle",
+                  "logical_identifier": "urn:nasa:pds:cassini-uvis_titan-library",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Titan",
+                  "type": "Satellite"
+                },
+                "time_coordinates": null,
+                "harvest_info": {
+                  "node_name": "PDS_ATM",
+                  "harvest_date_time": "2024-04-22T21:49:56.335072Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:corss_occul_el_dens::1.0",
+                "lid": "urn:nasa:pds:corss_occul_el_dens",
+                "lidvid": "urn:nasa:pds:corss_occul_el_dens::1.0",
+                "title": "Cassini Orbiter Radio Science Subsystem Occultation and Electron Density",
+                "investigation_area": {
+                  "name": "Cassini",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Cassini Orbiter Radio Science Subsystem Occultation and Electron Density",
+                  "logical_identifier": "urn:nasa:pds:corss_occul_el_dens",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Titan",
+                  "type": "Satellite"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2005-05-03T02:30:00.500000Z",
+                  "stop_date_time": "2016-06-30T11:15:00.500000Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_ATM",
+                  "harvest_date_time": "2024-04-02T15:34:27.884036Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:cassini_saturn_radar_maps::1.0",
+                "lid": "urn:nasa:pds:cassini_saturn_radar_maps",
+                "lidvid": "urn:nasa:pds:cassini_saturn_radar_maps::1.0",
+                "title": "Saturn's Thermal Emission at 2.2-cm from Cassini RADAR Radiometry Bundle",
+                "investigation_area": {
+                  "name": "Cassini",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Saturn's Thermal Emission at 2.2-cm from Cassini RADAR Radiometry Bundle",
+                  "logical_identifier": "urn:nasa:pds:cassini_saturn_radar_maps",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Saturn",
+                  "type": "Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2005-09-23T11:15:49Z",
+                  "stop_date_time": "2011-03-20T18:08:44Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_ATM",
+                  "harvest_date_time": "2022-03-11T21:01:36.391863Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:corsstpp::2.0",
+                "lid": "urn:nasa:pds:corsstpp",
+                "lidvid": "urn:nasa:pds:corsstpp::2.0",
+                "title": "Cassini Orbiter RSS Neutral Atmosphere T-P profiles for Titan Bundle",
+                "investigation_area": {
+                  "name": "Cassini",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Cassini Orbiter RSS Neutral Atmosphere T-P profiles for Titan Bundle",
+                  "logical_identifier": "urn:nasa:pds:corsstpp",
+                  "version_id": "2.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Titan",
+                  "type": "Satellite"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2006-03-19T00:05:16Z",
+                  "stop_date_time": "2009-06-22T18:10:59Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_ATM",
+                  "harvest_date_time": "2022-07-11T14:53:27.840375Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:co-rss_slepian-grav-coeff::1.0",
+                "lid": "urn:nasa:pds:co-rss_slepian-grav-coeff",
+                "lidvid": "urn:nasa:pds:co-rss_slepian-grav-coeff::1.0",
+                "title": "Cassini Orbiter Radio Science Subsystem (RSS) Small-Scale Atmospheric Features with Slepian Functions Bundle",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Cassini Orbiter Radio Science Subsystem (RSS) Small-Scale Atmospheric Features with Slepian Functions Bundle",
+                  "logical_identifier": "urn:nasa:pds:co-rss_slepian-grav-coeff",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Saturn",
+                  "type": "Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2022-06-14T00:00:00Z",
+                  "stop_date_time": "2024-09-29T00:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_ATM",
+                  "harvest_date_time": "2025-03-27T16:37:32.674375Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:cassini_iss_cruise::1.0",
+                "lid": "urn:nasa:pds:cassini_iss_cruise",
+                "lidvid": "urn:nasa:pds:cassini_iss_cruise::1.0",
+                "title": "ISS Observations from the Cassini Cruise to Saturn",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "ISS Observations from the Cassini Cruise to Saturn",
+                  "logical_identifier": "urn:nasa:pds:cassini_iss_cruise",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "78 Tauri",
+                  "type": "Star"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2004-01-01T00:00:00Z",
+                  "stop_date_time": "2017-09-14T20:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2022-07-22T19:01:24.212255Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:cassini_iss_saturn::1.0",
+                "lid": "urn:nasa:pds:cassini_iss_saturn",
+                "lidvid": "urn:nasa:pds:cassini_iss_saturn::1.0",
+                "title": "ISS Observations from the Cassini Tour of the Saturn System",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "ISS Observations from the Cassini Tour of the Saturn System",
+                  "logical_identifier": "urn:nasa:pds:cassini_iss_saturn",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "(134340) Pluto",
+                  "type": "Dwarf Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2004-01-01T00:00:00Z",
+                  "stop_date_time": "2017-09-14T20:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2022-06-28T17:31:31.160511Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:cassini-mag-raw::1.0",
+                "lid": "urn:nasa:pds:cassini-mag-raw",
+                "lidvid": "urn:nasa:pds:cassini-mag-raw::1.0",
+                "title": "Cassini Magnetometer Raw Bundle",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Cassini Magnetometer Raw Bundle",
+                  "logical_identifier": "urn:nasa:pds:cassini-mag-raw",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Earth",
+                  "type": "Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "1997-10-28T00:00:00Z",
+                  "stop_date_time": "2017-09-15T10:31:49.073000Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_PPI",
+                  "harvest_date_time": "2025-01-10T18:35:38.389121Z"
+                }
+              }
+            ],
+            "facets": {},
+            "_response": ""
+          },
+          "tool_call_id": "call_fkPxL9nXJAGxzSbh4vWS2sJD",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:40:36.747553+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:40:36.748485+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "args": "{\"title_query\": \"Enceladus UVIS occultation\", \"limit\": 10}",
+          "tool_call_id": "call_pgh2KOUABH9TygrHz0gYcuFy",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "args": "{\"title_query\": \"Enceladus ISS plume\", \"limit\": 10}",
+          "tool_call_id": "call_2ltEXN0RzUxoZeQMyXfnpeas",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 19157,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 15744,
+        "output_tokens": 1411,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1324,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:41:02.849519+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:40:37+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq4DSGZoBESTf0gerBsnyfKlHVri",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "content": {
+            "total_hits": 66,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 10,
+            "bundles": [
+              {
+                "id": "urn:nasa:pds:cassini-uvis_titan-library::1.0",
+                "lid": "urn:nasa:pds:cassini-uvis_titan-library",
+                "lidvid": "urn:nasa:pds:cassini-uvis_titan-library::1.0",
+                "title": "Cassini UVIS Titan Library Bundle",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Cassini UVIS Titan Library Bundle",
+                  "logical_identifier": "urn:nasa:pds:cassini-uvis_titan-library",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Titan",
+                  "type": "Satellite"
+                },
+                "time_coordinates": null,
+                "harvest_info": {
+                  "node_name": "PDS_ATM",
+                  "harvest_date_time": "2024-04-22T21:49:56.335072Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023::1.1",
+                "lid": "urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023",
+                "lidvid": "urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023::1.1",
+                "title": "Saturn Ring System Solar Occultations Observed by Cassini UVIS",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Saturn Ring System Solar Occultations Observed by Cassini UVIS",
+                  "logical_identifier": "urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023",
+                  "version_id": "1.1",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Saturn Rings",
+                  "type": "Ring"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2005-06-08T00:00:00Z",
+                  "stop_date_time": "2017-06-18T00:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2024-02-01T00:06:29.290204Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:gbo.pluto.benecchi-etal.occultation::1.0",
+                "lid": "urn:nasa:pds:gbo.pluto.benecchi-etal.occultation",
+                "lidvid": "urn:nasa:pds:gbo.pluto.benecchi-etal.occultation::1.0",
+                "title": "Occultation of star P445.3 by Pluto",
+                "investigation_area": {
+                  "name": "No Specific Investigation",
+                  "type": "Individual Investigation"
+                },
+                "identification_area": {
+                  "title": "Occultation of star P445.3 by Pluto",
+                  "logical_identifier": "urn:nasa:pds:gbo.pluto.benecchi-etal.occultation",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "(134340) Pluto",
+                  "type": "Dwarf Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2007-03-18T10:10:00Z",
+                  "stop_date_time": "2007-03-18T11:30:14.910000Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_SBN",
+                  "harvest_date_time": "2026-01-16T19:02:13.302330Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:smallbodiesoccultations::4.0",
+                "lid": "urn:nasa:pds:smallbodiesoccultations",
+                "lidvid": "urn:nasa:pds:smallbodiesoccultations::4.0",
+                "title": "Small Bodies Occultations V4.0",
+                "investigation_area": {
+                  "name": "None",
+                  "type": "Other Investigation"
+                },
+                "identification_area": {
+                  "title": "Small Bodies Occultations V4.0",
+                  "logical_identifier": "urn:nasa:pds:smallbodiesoccultations",
+                  "version_id": "4.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Multiple Asteroids",
+                  "type": "Asteroid"
+                },
+                "time_coordinates": {
+                  "start_date_time": "1911-08-14T00:00:00Z",
+                  "stop_date_time": "2024-01-31T00:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_SBN",
+                  "harvest_date_time": "2025-02-10T23:59:37.582140Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:ast.shevchenko-tedesco.occultation-albedos::1.0",
+                "lid": "urn:nasa:pds:ast.shevchenko-tedesco.occultation-albedos",
+                "lidvid": "urn:nasa:pds:ast.shevchenko-tedesco.occultation-albedos::1.0",
+                "title": "ASTEROID ALBEDOS FROM STELLAR OCCULTATIONS",
+                "investigation_area": {
+                  "name": "None",
+                  "type": "Individual Investigation"
+                },
+                "identification_area": {
+                  "title": "ASTEROID ALBEDOS FROM STELLAR OCCULTATIONS",
+                  "logical_identifier": "urn:nasa:pds:ast.shevchenko-tedesco.occultation-albedos",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Multiple Asteroids",
+                  "type": "Asteroid"
+                },
+                "time_coordinates": {
+                  "start_date_time": "1958-02-19T00:00:00Z",
+                  "stop_date_time": "2005-02-23T00:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_SBN",
+                  "harvest_date_time": "2022-07-20T22:21:22.800781Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:uranus_occ_support::1.0",
+                "lid": "urn:nasa:pds:uranus_occ_support",
+                "lidvid": "urn:nasa:pds:uranus_occ_support::1.0",
+                "title": "Uranus Occultation Support Bundle",
+                "investigation_area": null,
+                "identification_area": {
+                  "title": "Uranus Occultation Support Bundle",
+                  "logical_identifier": "urn:nasa:pds:uranus_occ_support",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Uranus",
+                  "type": "Planet"
+                },
+                "time_coordinates": null,
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2023-03-27T21:29:18.057965Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:uranus_occ_u138_palomar_508cm::1.0",
+                "lid": "urn:nasa:pds:uranus_occ_u138_palomar_508cm",
+                "lidvid": "urn:nasa:pds:uranus_occ_u138_palomar_508cm::1.0",
+                "title": "Uranus System Occultation of Star u138 (UCAC2 24243463) Observed from the Palomar 508cm Telescope",
+                "investigation_area": {
+                  "name": "Earth-based Observations of Uranus System Stellar Occultations",
+                  "type": "Observing Campaign"
+                },
+                "identification_area": {
+                  "title": "Uranus System Occultation of Star u138 (UCAC2 24243463) Observed from the Palomar 508cm Telescope",
+                  "logical_identifier": "urn:nasa:pds:uranus_occ_u138_palomar_508cm",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Uranus",
+                  "type": "Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "1996-04-10T11:47:35.879700Z",
+                  "stop_date_time": "1996-04-10T12:25:20.913900Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2022-07-27T15:03:21.866427Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:uranus_occ_u103_palomar_508cm::1.0",
+                "lid": "urn:nasa:pds:uranus_occ_u103_palomar_508cm",
+                "lidvid": "urn:nasa:pds:uranus_occ_u103_palomar_508cm::1.0",
+                "title": "Uranus System Occultation of Star u103 (UCAC2 22794421) Observed from the Palomar 508cm Telescope",
+                "investigation_area": {
+                  "name": "Earth-based Observations of Uranus System Stellar Occultations",
+                  "type": "Observing Campaign"
+                },
+                "identification_area": {
+                  "title": "Uranus System Occultation of Star u103 (UCAC2 22794421) Observed from the Palomar 508cm Telescope",
+                  "logical_identifier": "urn:nasa:pds:uranus_occ_u103_palomar_508cm",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Uranus Rings",
+                  "type": "Ring"
+                },
+                "time_coordinates": {
+                  "start_date_time": "1992-07-11T07:41:04.530700Z",
+                  "stop_date_time": "1992-07-11T08:47:51.180700Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2022-07-27T15:00:51.315942Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:voyager1_rss_jupiter_raw::1.0",
+                "lid": "urn:nasa:pds:voyager1_rss_jupiter_raw",
+                "lidvid": "urn:nasa:pds:voyager1_rss_jupiter_raw::1.0",
+                "title": "Voyager 1 Jupiter Radio Occultation - Raw Data Bundle",
+                "investigation_area": {
+                  "name": "Voyager Mission",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Voyager 1 Jupiter Radio Occultation - Raw Data Bundle",
+                  "logical_identifier": "urn:nasa:pds:voyager1_rss_jupiter_raw",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Jupiter",
+                  "type": "Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "1979-03-05T12:33:21Z",
+                  "stop_date_time": "1979-03-05T19:06:20Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2024-03-13T20:13:11.743479Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:uranus_occ_u149_lowell_180cm::1.0",
+                "lid": "urn:nasa:pds:uranus_occ_u149_lowell_180cm",
+                "lidvid": "urn:nasa:pds:uranus_occ_u149_lowell_180cm::1.0",
+                "title": "Uranus System Occultation of Star u149 (2MASS 20462044-1838345) Observed from the Lowell 180cm Telescope",
+                "investigation_area": {
+                  "name": "Earth-based Observations of Uranus System Stellar Occultations",
+                  "type": "Observing Campaign"
+                },
+                "identification_area": {
+                  "title": "Uranus System Occultation of Star u149 (2MASS 20462044-1838345) Observed from the Lowell 180cm Telescope",
+                  "logical_identifier": "urn:nasa:pds:uranus_occ_u149_lowell_180cm",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Uranus",
+                  "type": "Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "1998-11-06T03:30:01Z",
+                  "stop_date_time": "1998-11-06T05:47:00.250000Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2022-07-27T15:04:14.102165Z"
+                }
+              }
+            ],
+            "facets": {},
+            "_response": ""
+          },
+          "tool_call_id": "call_pgh2KOUABH9TygrHz0gYcuFy",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:41:03.761115+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "content": {
+            "total_hits": 3,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 10,
+            "bundles": [
+              {
+                "id": "urn:nasa:pds:co_iss_global-maps::1.0",
+                "lid": "urn:nasa:pds:co_iss_global-maps",
+                "lidvid": "urn:nasa:pds:co_iss_global-maps::1.0",
+                "title": "Cassini ISS Global Maps of Jupiter and Saturn",
+                "investigation_area": {
+                  "name": "Name",
+                  "type": "Observing Campaign"
+                },
+                "identification_area": {
+                  "title": "Cassini ISS Global Maps of Jupiter and Saturn",
+                  "logical_identifier": "urn:nasa:pds:co_iss_global-maps",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Jupiter",
+                  "type": "Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2000-12-06T00:00:00Z",
+                  "stop_date_time": "2011-08-11T00:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_ATM",
+                  "harvest_date_time": "2023-12-12T22:06:00.268020Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:cassini_iss_cruise::1.0",
+                "lid": "urn:nasa:pds:cassini_iss_cruise",
+                "lidvid": "urn:nasa:pds:cassini_iss_cruise::1.0",
+                "title": "ISS Observations from the Cassini Cruise to Saturn",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "ISS Observations from the Cassini Cruise to Saturn",
+                  "logical_identifier": "urn:nasa:pds:cassini_iss_cruise",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "78 Tauri",
+                  "type": "Star"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2004-01-01T00:00:00Z",
+                  "stop_date_time": "2017-09-14T20:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2022-07-22T19:01:24.212255Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:cassini_iss_saturn::1.0",
+                "lid": "urn:nasa:pds:cassini_iss_saturn",
+                "lidvid": "urn:nasa:pds:cassini_iss_saturn::1.0",
+                "title": "ISS Observations from the Cassini Tour of the Saturn System",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "ISS Observations from the Cassini Tour of the Saturn System",
+                  "logical_identifier": "urn:nasa:pds:cassini_iss_saturn",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "(134340) Pluto",
+                  "type": "Dwarf Planet"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2004-01-01T00:00:00Z",
+                  "stop_date_time": "2017-09-14T20:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2022-06-28T17:31:31.160511Z"
+                }
+              }
+            ],
+            "facets": {},
+            "_response": ""
+          },
+          "tool_call_id": "call_2ltEXN0RzUxoZeQMyXfnpeas",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:41:03.555507+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:41:03.762017+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"PDS/data/PDS4/\",\"node\":\"atm\",\"filter\":\"encel\"}",
+          "tool_call_id": "call_AiyR7fUwalTTZjycqGBCNep8",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 22894,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 18816,
+        "output_tokens": 1207,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1166,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:41:24.956707+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:41:04+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq4eiJyWSMq550JdUdfgtrHhHMk3",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "PDS/data/PDS4/",
+            "total": 60,
+            "filtered_total": 0,
+            "dirs": [],
+            "error": null
+          },
+          "tool_call_id": "call_AiyR7fUwalTTZjycqGBCNep8",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:41:25.624311+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:41:25.625978+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "args": "{\"lid_query\":\"cassini_iss_saturn\",\"limit\":5}",
+          "tool_call_id": "call_AfWJiQ9fk3jDylau4G3X5m1T",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 22974,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 21888,
+        "output_tokens": 1500,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1461,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:41:49.944480+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:41:26+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq50inlgwdLeMKaGLZZcPBeSQuJE",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "content": {
+            "total_hits": 0,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 5,
+            "bundles": [],
+            "facets": {},
+            "_response": ""
+          },
+          "tool_call_id": "call_AfWJiQ9fk3jDylau4G3X5m1T",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:41:50.662351+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:41:50.663424+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "args": "{\"title_query\":\"Enceladus UVIS\",\"limit\":10}",
+          "tool_call_id": "call_Z3SXE1ZqMlmlq5WZGGNpluEN",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 23058,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 21888,
+        "output_tokens": 948,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 909,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:42:06.373393+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:41:51+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq5PmRFm8Mj32qpYkYCkaGkMoMFM",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_bundles_tool",
+          "content": {
+            "total_hits": 2,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 10,
+            "bundles": [
+              {
+                "id": "urn:nasa:pds:cassini-uvis_titan-library::1.0",
+                "lid": "urn:nasa:pds:cassini-uvis_titan-library",
+                "lidvid": "urn:nasa:pds:cassini-uvis_titan-library::1.0",
+                "title": "Cassini UVIS Titan Library Bundle",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Cassini UVIS Titan Library Bundle",
+                  "logical_identifier": "urn:nasa:pds:cassini-uvis_titan-library",
+                  "version_id": "1.0",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Titan",
+                  "type": "Satellite"
+                },
+                "time_coordinates": null,
+                "harvest_info": {
+                  "node_name": "PDS_ATM",
+                  "harvest_date_time": "2024-04-22T21:49:56.335072Z"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023::1.1",
+                "lid": "urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023",
+                "lidvid": "urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023::1.1",
+                "title": "Saturn Ring System Solar Occultations Observed by Cassini UVIS",
+                "investigation_area": {
+                  "name": "Cassini-Huygens",
+                  "type": "Mission"
+                },
+                "identification_area": {
+                  "title": "Saturn Ring System Solar Occultations Observed by Cassini UVIS",
+                  "logical_identifier": "urn:nasa:pds:cassini_uvis_solarocc_beckerjarmak2023",
+                  "version_id": "1.1",
+                  "product_class": "Product_Bundle"
+                },
+                "target_identification": {
+                  "name": "Saturn Rings",
+                  "type": "Ring"
+                },
+                "time_coordinates": {
+                  "start_date_time": "2005-06-08T00:00:00Z",
+                  "stop_date_time": "2017-06-18T00:00:00Z"
+                },
+                "harvest_info": {
+                  "node_name": "PDS_RMS",
+                  "harvest_date_time": "2024-02-01T00:06:29.290204Z"
+                }
+              }
+            ],
+            "facets": {},
+            "_response": ""
+          },
+          "tool_call_id": "call_Z3SXE1ZqMlmlq5WZGGNpluEN",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:42:07.045191+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:42:07.046083+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_targets_tool",
+          "args": "{\"keywords\":\"Enceladus\",\"limit\":10}",
+          "tool_call_id": "call_Qz3aMmUq6C7b8fnEoYvfbMDb",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 23589,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 21888,
+        "output_tokens": 2867,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 2833,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:42:58.146030+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:42:07+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq5fuVSFowUMbD3BvTgs0qGCU2LB",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_targets_tool",
+          "content": {
+            "total_hits": 1,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 10,
+            "targets": [
+              {
+                "id": "urn:nasa:pds:context:target:satellite.saturn.enceladus::1.2",
+                "lid": "urn:nasa:pds:context:target:satellite.saturn.enceladus",
+                "lidvid": null,
+                "title": "Enceladus",
+                "target": {
+                  "type": "Satellite"
+                },
+                "alias": {
+                  "alternate_title": "Saturn II (Enceladus)"
+                }
+              }
+            ],
+            "_response": ""
+          },
+          "tool_call_id": "call_Qz3aMmUq6C7b8fnEoYvfbMDb",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:42:59.169000+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:42:59.169955+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"PDS/data/\",\"node\":\"atm\",\"filter\":\"encel\"}",
+          "tool_call_id": "call_kxrrAZcAyZiefge6h2N2Wozt",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 23741,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 22912,
+        "output_tokens": 4269,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 4231,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:44:13.413244+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:42:59+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq6V682yftoXgxQHSiLRdOG4WE38",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "PDS/data/",
+            "total": 2018,
+            "filtered_total": 0,
+            "dirs": [],
+            "error": null
+          },
+          "tool_call_id": "call_kxrrAZcAyZiefge6h2N2Wozt",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:44:15.295614+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:44:15.297039+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\":[\"PDS/data/couvis_0059/\",\"PDS/data/couvis_0060/\"],\"node\":\"atm\"}",
+          "tool_call_id": "call_wNERNMaC2XwA9uHmwib27RkF",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 23816,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 22912,
+        "output_tokens": 1506,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1455,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:44:38.703698+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:44:15+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq7jtHdWsbnQwGNqm0jgbrCdHCHp",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "PDS/data/couvis_0059",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "CO-S-UVIS-2-CUBE-V1.4",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.4",
+                  "CO-S-UVIS-2-SSB-V1.4",
+                  "CO-S-UVIS-2-SPEC-V1.4",
+                  "CO-S-UVIS-2-CALIB-V1.4"
+                ],
+                "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                    "VOLUME_NAME": "CASSINI UVIS SATURN RAW DATA ARCHIVE",
+                    "VOLUME_ID": "COUVIS_0059",
+                    "PUBLICATION_DATE": "2018-11-05",
+                    "DESCRIPTION": "This volume contains a collection of observations taken by the UVIS instrument during the 2017-091...2017-182 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.",
+                    "DATA_SET_ID": [
+                      "CO-S-UVIS-2-CUBE-V1.4",
+                      "CO-S-UVIS-2-SSB-V1.4",
+                      "CO-S-UVIS-2-SPEC-V1.4",
+                      "CO-S-UVIS-2-CALIB-V1.4"
+                    ]
+                  }
+                },
+                "volume_count": 2
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_wNERNMaC2XwA9uHmwib27RkF",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:44:39.748468+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:44:39.749423+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_resolve_volume",
+          "args": "{\"volume_set_path\":\"PDS/data/\",\"node\":\"atm\",\"dataset_id_hint\":\"CO-S-UVIS-2-SSB-V1.4\",\"sample\":10}",
+          "tool_call_id": "call_oNI3rKDPYLPqp05YWSc6d8BJ",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 24236,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 22912,
+        "output_tokens": 2452,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 2394,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:45:16.976246+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:44:40+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq88CjA7iLIccWrJhE1jzTyjpK9Y",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_resolve_volume",
+          "content": {
+            "status": "success",
+            "volume_set_path": "PDS/data/",
+            "total_children": 2018,
+            "sampled": 10,
+            "children": [
+              {
+                "name": "couvis_0001",
+                "path": "PDS/data/couvis_0001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-J-UVIS-2-SSB-V1.2",
+                  "CO-J-UVIS-2-SPEC-V1.2",
+                  "CO-J-UVIS-2-CUBE-V1.2",
+                  "CO-J-UVIS-2-WAV-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0002",
+                "path": "PDS/data/couvis_0002",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-J-UVIS-2-CUBE-V1.2",
+                  "CO-J-UVIS-2-SSB-V1.2",
+                  "CO-J-UVIS-2-SPEC-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0003",
+                "path": "PDS/data/couvis_0003",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-J-UVIS-2-SSB-V1.2",
+                  "CO-X-UVIS-2-SSB-V1.2",
+                  "CO-J-UVIS-2-SPEC-V1.2",
+                  "CO-X-UVIS-2-SPEC-V1.2",
+                  "CO-X-UVIS-2-CUBE-V1.2",
+                  "CO-X-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0004",
+                "path": "PDS/data/couvis_0004",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0005",
+                "path": "PDS/data/couvis_0005",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0006",
+                "path": "PDS/data/couvis_0006",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0007",
+                "path": "PDS/data/couvis_0007",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0008",
+                "path": "PDS/data/couvis_0008",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0009",
+                "path": "PDS/data/couvis_0009",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "couvis_0010",
+                "path": "PDS/data/couvis_0010",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              }
+            ],
+            "best_match": null,
+            "error": null
+          },
+          "tool_call_id": "call_oNI3rKDPYLPqp05YWSc6d8BJ",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:45:19.872994+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:45:19.874380+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"PDS/data/PDS4/\",\"node\":\"atm\",\"filter\":\"plume\"}",
+          "tool_call_id": "call_GmUc0RlcjA2mWQemMv2tSMM9",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 25467,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 23936,
+        "output_tokens": 1497,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1456,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:45:44.241284+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:45:20+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq8m1AP2EdFTCkgJKAp1wmjsjDqa",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "PDS/data/PDS4/",
+            "total": 60,
+            "filtered_total": 0,
+            "dirs": [],
+            "error": null
+          },
+          "tool_call_id": "call_GmUc0RlcjA2mWQemMv2tSMM9",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:45:45.060488+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:45:45.061420+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_instruments_tool",
+          "args": "{\"keywords\":\"Cassini UVIS\",\"limit\":10}",
+          "tool_call_id": "call_K7dE5RB5IAVwXFdmr2RsI4aB",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 25547,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 24960,
+        "output_tokens": 1393,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1358,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:46:06.339100+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:45:45+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq9BuW5tv6encQL32L85nox8PPos",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds4search_instruments_tool",
+          "content": {
+            "total_hits": 19,
+            "query_time_ms": null,
+            "query": null,
+            "limit": 10,
+            "instruments": [
+              {
+                "id": "urn:nasa:pds:context:instrument:uvis.co::1.3",
+                "lid": null,
+                "lidvid": null,
+                "title": "Cassini Oribiter Ultraviolet Imaging Spectrograph",
+                "instrument": {
+                  "type": "null"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:context:instrument:eng.co::1.2",
+                "lid": null,
+                "lidvid": null,
+                "title": "Cassini Orbiter Spacecraft Sensors",
+                "instrument": {
+                  "type": "null"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:context:instrument:mimi-inca.co::1.2",
+                "lid": null,
+                "lidvid": null,
+                "title": "MIMI Ion Neutral Camera for Cassini Orbiter",
+                "instrument": {
+                  "type": "null"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:context:instrument:rss.co::2.3",
+                "lid": null,
+                "lidvid": null,
+                "title": "Cassini Orbiter Radio Science Subsystem",
+                "instrument": {
+                  "type": "null"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:context:instrument:mimi-lemms.co::1.2",
+                "lid": null,
+                "lidvid": null,
+                "title": "MIMI Low Energy Magnetospheric Measurement Sensor for Cassini Orbiter",
+                "instrument": {
+                  "type": "null"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:context:instrument:caps.co::1.2",
+                "lid": null,
+                "lidvid": null,
+                "title": "Cassini Plasma Spectrometer for CO",
+                "instrument": {
+                  "type": "null"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:context:instrument:radar.co::1.3",
+                "lid": null,
+                "lidvid": null,
+                "title": "The Cassini Radar (RADAR)",
+                "instrument": {
+                  "type": "null"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:context:instrument:mimi-chems.co::1.2",
+                "lid": null,
+                "lidvid": null,
+                "title": "MIMI Charge/Energy Mass Spectrometer for Cassini Orbiter",
+                "instrument": {
+                  "type": "null"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:context:instrument:cirs.co::1.2",
+                "lid": null,
+                "lidvid": null,
+                "title": "Cassini Oribiter Composite Infrared Spectrometer",
+                "instrument": {
+                  "type": "null"
+                }
+              },
+              {
+                "id": "urn:nasa:pds:context:instrument:isswa.co::1.2",
+                "lid": null,
+                "lidvid": null,
+                "title": "Imaging Science Subsystem - Wide Angle for CO",
+                "instrument": {
+                  "type": "null"
+                }
+              }
+            ],
+            "_response": ""
+          },
+          "tool_call_id": "call_K7dE5RB5IAVwXFdmr2RsI4aB",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:46:06.957739+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:46:06.958928+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"PDS/data/\",\"node\":\"atm\",\"filter\":\"iss_saturn\"}",
+          "tool_call_id": "call_Uvtw3pXQbfLnBMVvxTh1AsTI",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 26112,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 24960,
+        "output_tokens": 1954,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1915,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:46:37.185295+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:46:07+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deq9XaY1e3H5AtsWOs2lZe2AbpqgZ",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "PDS/data/",
+            "total": 2018,
+            "filtered_total": 0,
+            "dirs": [],
+            "error": null
+          },
+          "tool_call_id": "call_Uvtw3pXQbfLnBMVvxTh1AsTI",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:46:39.025475+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:46:39.026382+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\":[\"PDS/data/couvis_0051/\"],\"node\":\"atm\"}",
+          "tool_call_id": "call_1jgvJdsDXgLMravAc7YePy3k",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 26188,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 24960,
+        "output_tokens": 1742,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1702,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:47:07.288072+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:46:39+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqA3oADbrPa4Nd1HUPmFtp07PhrI",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "PDS/data/couvis_0051",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "CO-S-UVIS-2-CUBE-V1.4",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.4",
+                  "CO-S-UVIS-2-SSB-V1.4",
+                  "CO-S-UVIS-2-SPEC-V1.4",
+                  "CO-S-UVIS-2-CALIB-V1.4"
+                ],
+                "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                    "VOLUME_NAME": "CASSINI UVIS SATURN RAW DATA ARCHIVE",
+                    "VOLUME_ID": "COUVIS_0051",
+                    "PUBLICATION_DATE": "2018-11-05",
+                    "DESCRIPTION": "This volume contains a collection of observations taken by the UVIS instrument during the Apr 1, 2015...Jul 1, 2015 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.",
+                    "DATA_SET_ID": [
+                      "CO-S-UVIS-2-CUBE-V1.4",
+                      "CO-S-UVIS-2-SSB-V1.4",
+                      "CO-S-UVIS-2-SPEC-V1.4",
+                      "CO-S-UVIS-2-CALIB-V1.4"
+                    ]
+                  }
+                },
+                "volume_count": 1
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_1jgvJdsDXgLMravAc7YePy3k",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:47:08.123075+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:47:08.124026+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "args": "{\"summary\":\"Located Cassini UVIS occultation-capable products (SSB brightness time series, plus calibrated UVIS products) in the COUVIS PDS3 volume series on the ATM node. The only Cassini ISS content on the ATM node is an ISS calibration/support volume (COISS_0011); primary ISS images used to see Enceladus jets are normally archived on PDS RMS, not ATM.\",\"candidates\":[{\"path\":\"PDS/data/couvis_0050\",\"dataset_id\":\"CO-S-UVIS-2-SSB-V1.4\",\"title\":\"CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA\",\"pds_version\":\"PDS3\",\"mission\":\"Cassini-Huygens\",\"node\":\"atm\",\"reasoning\":\"Stage 1 (ATM directory walk + label probe): COUVIS volumes include the UVIS Solar and Stellar Brightness Time Series (SSB) products used for occultation analyses. The plume structure inferred from UVIS stellar/solar occultations (line-of-sight optical depth vs time/altitude) is derived directly from these SSB time series; localized opacity enhancements correspond to discrete, narrow plume components that can be compared to the multiple collimated jet features seen by ISS.\"},{\"path\":\"PDS/data/couvis_0050\",\"dataset_id\":\"CO-S-UVIS-2-CALIB-V1.4\",\"title\":\"CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA\",\"pds_version\":\"PDS3\",\"mission\":\"Cassini-Huygens\",\"node\":\"atm\",\"reasoning\":\"Stage 1: Same probed COUVIS Saturn-archive volume also declares the UVIS calibrated data set ID. Calibrated UVIS products are often used alongside SSB occultation time series to interpret plume column densities/opacity structure in physical units, which provides the quantitative plume morphology that ISS jet imaging is tested against.\"},{\"path\":\"PDS/data/coiss_0011\",\"dataset_id\":\"CO_CAL_ISSNA/ISSWA_2_EDR_V4.2\",\"title\":\"CASSINI ISS EXPERIMENT DATA RECORDS AND CALIBRATION FILES\",\"pds_version\":\"PDS3\",\"mission\":\"Cassini-Huygens\",\"node\":\"atm\",\"reasoning\":\"Stage 1: This is the only Cassini ISS-related volume present on the ATM node. It contains ISS calibration files/software and sample calibrated images needed to turn raw ISS plume/jet images into physically meaningful brightness and to compare jet morphology with UVIS-derived plume opacity structure. (Note: the bulk ISS image archive itself is typically held under the PDS Rings-Moons Systems node rather than ATM.)\"}]}",
+          "tool_call_id": "call_a4QYriU0FU5OYhR8XpqapINT",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 26602,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 25984,
+        "output_tokens": 3101,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 2530,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 22:47:58.286719+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 22:47:08+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqAWTnNb2W3IPnYEYeKzQdKhwZpY",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "content": "Final result processed.",
+          "tool_call_id": "call_a4QYriU0FU5OYhR8XpqapINT",
+          "metadata": null,
+          "timestamp": "2026-05-12 22:47:58.289133+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 22:47:58.289165+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e57-4a27-757d-8e97-22c933f734ac",
+      "metadata": null
+    }
+  ],
+  "error": null
+}

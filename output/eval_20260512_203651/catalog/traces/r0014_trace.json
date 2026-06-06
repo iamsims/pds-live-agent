@@ -1,0 +1,27 @@
+{
+  "query": "Compared with neighboring dunes, do polar megaripples contribute a similar, greater, or smaller fraction of the total sand flux, and by how much?",
+  "row": {
+    "row_index": 14,
+    "paper": "Chojnacki, M., et al., 2021. Widespread megaripple activity across the north polar ergs of Mars. JGR Planets, 126(12), e2021JE006970. DOI:10.1029/2021JE006970",
+    "query": "Compared with neighboring dunes, do polar megaripples contribute a similar, greater, or smaller fraction of the total sand flux, and by how much?",
+    "expected_ids": "MRO-M-HIRISE-3-RDR-V1.1\nMRO-M-CTX-2-EDR-L0-V1.0"
+  },
+  "elapsed_s": 1005.28,
+  "n_candidates": 0,
+  "n_tool_calls": 0,
+  "tool_call_histogram": {},
+  "usage": {
+    "input_tokens": 4885682,
+    "output_tokens": 50885,
+    "cache_read_tokens": 4719360,
+    "cache_write_tokens": 0,
+    "total_tokens": 4936567,
+    "requests": 50
+  },
+  "tool_calls": [],
+  "full_trace": [
+    {
+      "error": "UsageLimitExceeded: The next request would exceed the request_limit of 50"
+    }
+  ]
+}

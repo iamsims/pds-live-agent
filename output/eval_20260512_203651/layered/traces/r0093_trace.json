@@ -1,0 +1,1626 @@
+{
+  "row_index": 93,
+  "query": "What wavelength range of the UVIS/FUV data was used for geochemical analysis of Rhea's surface?",
+  "row": {
+    "row_index": 93,
+    "paper": "Elowitz, M., et al., 2021. Possible detection of hydrazine on Saturn's moon Rhea. Science Advances, 7(4), eaba5749. DOI:10.1126/sciadv.aba5749",
+    "query": "What wavelength range of the UVIS/FUV data was used for geochemical analysis of Rhea's surface?",
+    "expected_ids_raw": "CO-S-UVIS-2-SPEC-V1.2",
+    "expected_ids": [
+      "CO-S-UVIS-2-SPEC-V1.2"
+    ]
+  },
+  "elapsed_s": 149.15,
+  "router_node": "rms",
+  "n_candidates": 2,
+  "n_tool_calls": 11,
+  "usage": {
+    "input_tokens": 101527,
+    "output_tokens": 7283,
+    "cache_read_tokens": 82688,
+    "cache_write_tokens": 0,
+    "total_tokens": 108810,
+    "requests": 11
+  },
+  "tool_calls": [
+    {
+      "tool_name": "pds_list_missions",
+      "tool_input": {
+        "node": "rms"
+      },
+      "tool_output": "{'missions': [{'name': 'COISS', 'description': 'Cassini ISS \u2014 Imaging Science Subsystem (NAC + WAC). Saturn rings, satellites, atmosphere.'}, {'name': 'COUVIS', 'description': 'Cassini UVIS \u2014 Ultraviolet Imaging Spectrograph. UV spectroscopy (SPEC), stellar/solar occultations (SSB), calibrated products (CALIB). Covers rings AND satellite surfaces (Rhea, Enceladus, etc.).'}, {'name': 'COVIMS', 'description': 'Cassini VIMS \u2014 Visual and Infrared Mapping Spectrometer. Rings + satellites.'}, {'name': 'COCIRS', 'description': 'Cassini CIRS \u2014 Composite InfraRed Spectrometer. Saturn/satellite atmospheres.'}, {'name': 'CORSS', 'description': 'Cassini Radio Science Subsystem ring/atmosphere occultations.'}, {'name': 'COSP', 'description': 'Cassini SPICE kernels (RMS mirror).'}, {'name': 'VG_28xx', 'description': 'Voyager 1/2 ring occultations (PPS/UVS/RSS).'}, {'name': 'VG_2xxx', 'description': 'Voyager 1/2 imaging (ISS) \u2014 Jupiter, Saturn, Uranus, Neptune.'}, {'name': 'VGISS', 'description': 'Voyager 1/2 ISS PDS4 calibrated/raw images.'}, {'name': 'GO_00xx', 'description': 'Galileo SSI imaging \u2014 Jupiter/satellites/ring system.'}, {'name': 'EBROCC', 'description': 'Earth-Based Ring Occultations (1989 Saturn, 1980s/90s Uranus).'}, {'name': 'ESO_xxxx', 'description': 'European Southern Observatory ground-based ring observations.'}, {'name': 'RES_xxxx', 'description': 'Reduced Earth-based stellar occultation results.'}, {'name': 'HSTI', 'description': 'Hubble WFPC2 imaging of rings/satellites.'}, {'name': 'HSTJ', 'description': 'Hubble ACS imaging of rings/satellites.'}, {'name': 'HSTU', 'description': 'Hubble WFC3/STIS imaging of rings/satellites.'}, {'name': 'HSTN', 'description': 'Hubble NICMOS imaging of rings/satellites.'}, {'name': 'NHxxLO', 'description': 'New Horizons LORRI imaging \u2014 Pluto, KBOs, ring search.'}, {'name': 'NHxxMV', 'description': 'New Horizons MVIC (Ralph) imaging.'}, {'name': 'ASTROM', 'description': 'Ground/HST astrometric measurements of irregular satellites.'}, {'name': 'cassini_iss', 'description': 'PDS4 bundle: Cassini ISS observations (cruise + Saturn tour).'}, {'name': 'cassini_vims', 'description': 'PDS4 bundle: Cassini VIMS observations.'}, {'name': 'cassini_uvis', 'description': 'PDS4 bundle: Cassini UVIS occultations.'}], 'count': 23, 'note': \"Node 'rms' has no mission sub-directories. Use each mission 'name' as the filter keyword: pds_list_dataset_dirs(path='holdings/volumes/', node='rms', filter='<name>').\"}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "holdings/volumes/",
+        "node": "rms",
+        "filter": "COUVIS"
+      },
+      "tool_output": "{'status': 'success', 'path': 'holdings/volumes/', 'total': 84, 'filtered_total': 6, 'dirs': [{'name': 'COUVIS_0xxx', 'path': 'holdings/volumes/COUVIS_0xxx/', 'pds_hint': 'PDS3'}, {'name': 'COUVIS_0xxx_v1', 'path': 'holdings/volumes/COUVIS_0xxx_v1/', 'pds_hint': 'PDS3'}, {'name': 'COUVIS_8xxx', 'path': 'holdings/volumes/COUVIS_8xxx/', 'pds_hint': 'PDS3'}, {'name': 'COUVIS_8xxx_v1', 'path': 'holdings/volumes/COUVIS_8xxx_v1/', 'pds_hint': 'PDS3'}, {'name': 'COUVIS_8xxx_v2.0', 'path': 'holdings/volumes/COUVIS_8xxx_v2.0/', 'pds_hint': 'PDS3'}, {'name': 'COUVIS_8xxx_v2.1', 'path': 'holdings/volumes/COUVIS_8xxx_v2.1/', 'pds_hint': 'PDS3'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "pds4/bundles/",
+        "node": "rms",
+        "filter": "uvis"
+      },
+      "tool_output": "{'status': 'success', 'path': 'pds4/bundles/', 'total': 6, 'filtered_total': 1, 'dirs': [{'name': 'cassini_uvis_solarocc_beckerjarmak2023', 'path': 'pds4/bundles/cassini_uvis_solarocc_beckerjarmak2023/', 'pds_hint': 'PDS3'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_resolve_volume",
+      "tool_input": {
+        "volume_set_path": "holdings/volumes/COUVIS_0xxx/",
+        "node": "rms",
+        "dataset_id_hint": "CO-S-UVIS-2-SPEC",
+        "sample": 8
+      },
+      "tool_output": "{'status': 'success', 'volume_set_path': 'holdings/volumes/COUVIS_0xxx/', 'total_children': 60, 'sampled': 8, 'children': [{'name': 'COUVIS_0001', 'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0001', 'pds_version': 'PDS3', 'dataset_ids': ['CO-J-UVIS-2-SSB-V1.2', 'CO-J-UVIS-2-SPEC-V1.2', 'CO-J-UVIS-2-CUBE-V1.2', 'CO-J-UVIS-2-WAV-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'COUVIS_0002', 'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0002', 'pds_version': 'PDS3', 'dataset_ids': ['CO-J-UVIS-2-CUBE-V1.2', 'CO-J-UVIS-2-SSB-V1.2', 'CO-J-UVIS-2-SPEC-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER RAW DATA ARCHIVE'}, {'name': 'COUVIS_0003', 'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0003', 'pds_version': 'PDS3', 'dataset_ids': ['CO-J-UVIS-2-SSB-V1.2', 'CO-X-UVIS-2-SSB-V1.2', 'CO-J-UVIS-2-SPEC-V1.2', 'CO-X-UVIS-2-SPEC-V1.2', 'CO-X-UVIS-2-CUBE-V1.2', 'CO-X-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-SPEC-V1.2'], 'volume_name': 'CASSINI UVIS JUPITER AND SATURN RAW DATA ARCHIVE'}, {'name': 'COUVIS_0004', 'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0004', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-WAV-V1.2'], 'volume_name': 'CASSINI UVIS SATURN RAW DATA ARCHIVE'}, {'name': 'COUVIS_0005', 'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0005', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS SATURN RAW DATA ARCHIVE'}, {'name': 'COUVIS_0006', 'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0006', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS SATURN RAW DATA ARCHIVE'}, {'name': 'COUVIS_0007', 'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0007', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-SPEC-V1.5', 'CO-S-UVIS-2-CUBE-V1.5', 'CO-S-UVIS-2-SSB-V1.2'], 'volume_name': 'CASSINI UVIS SATURN RAW DATA ARCHIVE'}, {'name': 'COUVIS_0008', 'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0008', 'pds_version': 'PDS3', 'dataset_ids': ['CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'volume_name': 'CASSINI UVIS SATURN RAW DATA ARCHIVE'}], 'best_match': 'holdings/volumes/COUVIS_0xxx/COUVIS_0003', 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "holdings/volumes/COUVIS_0xxx/COUVIS_0005/"
+        ],
+        "node": "rms"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0005', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'CO-S-UVIS-2-SSB-V1.2', 'dataset_ids': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-CALIB-V1.2'], 'title': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'VOLUME_NAME': 'CASSINI UVIS SATURN RAW DATA ARCHIVE', 'VOLUME_ID': 'COUVIS_0005', 'PUBLICATION_DATE': '2012-01-25', 'DESCRIPTION': 'This volume contains a collection of observations taken by the UVIS instrument during the 2003-001...2003-359 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.', 'DATA_SET_ID': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.2', 'CO-S-UVIS-2-SPEC-V1.2', 'CO-S-UVIS-2-WAV-V1.2', 'CO-S-UVIS-2-CALIB-V1.2']}}, 'volume_count': 1}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "opus_search_tool",
+      "tool_input": {
+        "target": "Rhea",
+        "mission": "Cassini",
+        "instrument": "Cassini UVIS",
+        "planet": "Saturn",
+        "limit": 5,
+        "startobs": 1
+      },
+      "tool_output": "{'status': 'success', 'available': 2291, 'start_obs': 1, 'limit': 5, 'count': 5, 'observations': [{'opusid': 'co-uvis-fuv2005_016_00_31', 'instrument': 'Cassini UVIS', 'target': 'Rhea', 'mission': None, 'planet': 'Saturn', 'time_start': '2005-01-16T00:31:01.377', 'time_end': None, 'duration_seconds': 600.0}, {'opusid': 'co-uvis-fuv2005_016_16_11', 'instrument': 'Cassini UVIS', 'target': 'Rhea', 'mission': None, 'planet': 'Saturn', 'time_start': '2005-01-16T16:11:23.260', 'time_end': None, 'duration_seconds': 840.0}, {'opusid': 'co-uvis-fuv2005_016_16_28', 'instrument': 'Cassini UVIS', 'target': 'Rhea', 'mission': None, 'planet': 'Saturn', 'time_start': '2005-01-16T16:28:53.128', 'time_end': None, 'duration_seconds': 600.0}, {'opusid': 'co-uvis-hdac2005_016_16_39', 'instrument': 'Cassini UVIS', 'target': 'Rhea', 'mission': None, 'planet': 'Saturn', 'time_start': '2005-01-16T16:39:06.999', 'time_end': None, 'duration_seconds': 128.0}, {'opusid': 'co-uvis-fuv2005_016_16_41', 'instrument': 'Cassini UVIS', 'target': 'Rhea', 'mission': None, 'planet': 'Saturn', 'time_start': '2005-01-16T16:41:03.123', 'time_end': None, 'duration_seconds': 2880.0}], '_response': ''}"
+    },
+    {
+      "tool_name": "opus_get_metadata_tool",
+      "tool_input": {
+        "opusid": "co-uvis-fuv2005_016_00_31"
+      },
+      "tool_output": "{'status': 'success', 'opusid': 'co-uvis-fuv2005_016_00_31', 'general': {'planet': 'Saturn', 'target': 'Rhea', 'targetclass': 'Regular Satellite', 'mission': 'Cassini', 'insthost': 'Cassini', 'instrument': 'Cassini UVIS', 'observationtype': 'Spectral Cube', 'time1': '2005-01-16T00:31:01.377', 'time2': '2005-01-16T00:41:01.377', 'observationduration': '600', 'quantity': 'Emission', 'rightasc1': '95.033442', 'rightasc2': '96.589022', 'declination1': '-7.464803', 'declination2': '-7.339305'}, 'pds': {'bundleid': 'COUVIS_0010', 'datasetid': 'CO-S-UVIS-2-CUBE-V1.2', 'productid': 'FUV2005_016_00_31', 'primarylid': None, 'productcreationtime': '2011-09-19T00:00:00.000', 'primaryfilespec': 'COUVIS_0010/DATA/D2005_016/FUV2005_016_00_31.LBL', 'opusid': 'co-uvis-fuv2005_016_00_31', 'note': 'to acquire moderate distance data in order to determine UV albedo at a range of longitude and phase angles. FUV and EUV use low resolution slit. EUV spectra are binned spectrally and edited spatially. FUV data are at full spectral, spatial resolution.'}, 'image': {'duration': '120', 'greaterpixelsize': '24', 'lesserpixelsize': '5', 'levels': '65536', 'imagetype': 'Pushbroom'}, 'wavelength': {'wavelength1': '0.11', 'wavelength2': '0.19', 'waveres1': '0.000078', 'waveres2': '0.000078', 'waveno1': '52631.5789474', 'waveno2': '90909.0909091', 'wavenores1': '21.641274238', 'wavenores2': '64.566115702', 'specflag': 'Yes', 'specsize': '1024', 'polarizationtype': 'None'}, 'ring_geometry': {'RINGGEOringradius1': '512864.419', 'RINGGEOringradius2': '520578.822', 'RINGGEOascendinglongitude1': '281.844', 'RINGGEOascendinglongitude2': '283.231', 'RINGGEOsubsolarringascendinglong1': '167.728', 'RINGGEOsubsolarringascendinglong2': '167.728', 'RINGGEOsubobserverringascendinglong1': '218.663', 'RINGGEOsubobserverringascendinglong2': '218.663', 'RINGGEOJ2000longitude1': '52.434', 'RINGGEOJ2000longitude2': '53.821', 'RINGGEOsubsolarringlong1': '298.318', 'RINGGEOsubsolarringlong2': '298.318', 'RINGGEOsubobserverringlong1': '349.253', 'RINGGEOsubobserverringlong2': '349.253', 'RINGGEOsolarhourangle1': '294.117', 'RINGGEOsolarhourangle2': '295.504', 'RINGGEOlongitudeWRTobserver1': '63.18', 'RINGGEOlongitudeWRTobserver2': '64.572', 'RINGGEOringazimuthWRTobserver1': '137.508', 'RINGGEOringazimuthWRTobserver2': '138.156', 'RINGGEOrangetoringintercept1': '481991.644', 'RINGGEOrangetoringintercept2': '485518.976', 'RINGGEOringcenterdistance1': '362296.868', 'RINGGEOringcenterdistance2': '362296.868', 'RINGGEOresolution1': '481.95885', 'RINGGEOresolution2': '485.48562', 'RINGGEOprojectedradialresolution1': '8301.61172', 'RINGGEOprojectedradialresolution2': '8423.86264', 'RINGGEOprojectedlongitudinalresolutionangle1': None, 'RINGGEOprojectedlongitudinalresolutionangle2': None, 'RINGGEOprojectedlongitudinalresolution1': None, 'RINGGEOprojectedlongitudinalresolution2': None, 'RINGGEOphase1': '34.287', 'RINGGEOphase2': '35.249', 'RINGGEOincidence1': '67.148', 'RINGGEOincidence2': '67.148', 'RINGGEOemission1': '93.682', 'RINGGEOemission2': '93.7', 'RINGGEOnorthbasedincidence1': '112.852', 'RINGGEOnorthbasedincidence2': '112.852', 'RINGGEOnorthbasedemission1': '86.3', 'RINGGEOnorthbasedemission2': '86.318', 'RINGGEOsolarringelevation1': '-22.852', 'RINGGEOsolarringelevation2': '-22.852', 'RINGGEOobserverringelevation1': '3.682', 'RINGGEOobserverringelevation2': '3.7', 'RINGGEOringcenterphase1': '56.962', 'RINGGEOringcenterphase2': '56.962', 'RINGGEOringcenterincidence1': '67.146', 'RINGGEOringcenterincidence2': '67.146', 'RINGGEOringcenteremission1': '94.93', 'RINGGEOringcenteremission2': '94.93', 'RINGGEOringcenternorthbasedincidence1': '112.854', 'RINGGEOringcenternorthbasedincidence2': '112.854', 'RINGGEOringcenternorthbasedemission1': '85.07', 'RINGGEOringcenternorthbasedemission2': '85.07', 'RINGGEOsolarringopeningangle1': '-22.855', 'RINGGEOsolarringopeningangle2': '-22.855', 'RINGGEOobserverringopeningangle1': '4.931', 'RINGGEOobserverringopeningangle2': '4.931', 'RINGGEOedgeonradius1': '345030.847', 'RINGGEOedgeonradius2': '348785.523', 'RINGGEOedgeonascendinglongitude1': '233.929', 'RINGGEOedgeonascendinglongitude2': '235.48', 'RINGGEOedgeonJ2000longitude1': '4.519', 'RINGGEOedgeonJ2000longitude2': '6.07', 'RINGGEOedgeonsolarhourangle1': '246.202', 'RINGGEOedgeonsolarhourangle2': '247.752', 'RINGGEOrangetoedgeonpoint1': '93378.68', 'RINGGEOrangetoedgeonpoint2': '106542.662', 'RINGGEOedgeonradialresolution1': '93.36637', 'RINGGEOedgeonradialresolution2': '106.52861', 'RINGGEOedgeonaltitude1': '24334.767', 'RINGGEOedgeonaltitude2': '25077.228', 'RINGGEOringpoleclockangle': None, 'RINGGEOringdiameterpixels': None, 'RINGGEOringpolepositionangle': None, 'RINGGEOcenterxcoordinate': None, 'RINGGEOcenterycoordinate': None, 'RINGGEOringintercepttime1': None, 'RINGGEOringintercepttime2': None}, 'surface_geometry': {'surfacegeometrytargetlist': None}, 'instrument_specific': {'COUVISchannel': 'FUV', 'COUVISobservationtype': 'None', 'COUVISoccultationportstate': 'N/A', 'COUVISslitstate': 'Low Resolution', 'COUVISline1': '20', 'COUVISline2': '43', 'COUVISlinebin': '1', 'COUVISband1': '0', 'COUVISband2': '1023', 'COUVISbandbin': '1', 'COUVISsamples': '5', 'COUVIScompressiontype': 'SQRT_9', 'COUVISintegrationduration': '120', 'COUVISdwelltime': None, 'COUVIStestpulsestate': 'Off'}, '_response': ''}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "holdings/volumes/COUVIS_0xxx/COUVIS_0010/"
+        ],
+        "node": "rms"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'holdings/volumes/COUVIS_0xxx/COUVIS_0010', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'CO-S-UVIS-2-SSB-V1.2', 'dataset_ids': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.5', 'CO-S-UVIS-2-SPEC-V1.5', 'CO-S-UVIS-2-CALIB-V1.2'], 'title': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'fields': {'VOLUME': {'VOLUME_SET_NAME': 'CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA', 'VOLUME_NAME': 'CASSINI UVIS SATURN RAW DATA ARCHIVE', 'VOLUME_ID': 'COUVIS_0010', 'PUBLICATION_DATE': '2019-11-14', 'DESCRIPTION': 'This volume contains a collection of observations taken by the UVIS instrument during the 2005-001...2005-091 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.', 'DATA_SET_ID': ['CO-S-UVIS-2-SSB-V1.2', 'CO-S-UVIS-2-CUBE-V1.5', 'CO-S-UVIS-2-SPEC-V1.5', 'CO-S-UVIS-2-CALIB-V1.2']}}, 'volume_count': 1}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "opus_get_metadata_tool",
+      "tool_input": {
+        "opusid": "co-uvis-fuv2005_016_16_11"
+      },
+      "tool_output": "{'status': 'success', 'opusid': 'co-uvis-fuv2005_016_16_11', 'general': {'planet': 'Saturn', 'target': 'Rhea', 'targetclass': 'Regular Satellite', 'mission': 'Cassini', 'insthost': 'Cassini', 'instrument': 'Cassini UVIS', 'observationtype': 'Spectral Cube', 'time1': '2005-01-16T16:11:23.260', 'time2': '2005-01-16T16:25:23.260', 'observationduration': '840', 'quantity': 'Emission', 'rightasc1': '50.246884', 'rightasc2': '51.400981', 'declination1': '-1.153533', 'declination2': '2.854474'}, 'pds': {'bundleid': 'COUVIS_0010', 'datasetid': 'CO-S-UVIS-2-CUBE-V1.2', 'productid': 'FUV2005_016_16_11', 'primarylid': None, 'productcreationtime': '2011-09-19T00:00:00.000', 'primaryfilespec': 'COUVIS_0010/DATA/D2005_016/FUV2005_016_16_11.LBL', 'opusid': 'co-uvis-fuv2005_016_16_11', 'note': 'to acquire moderate distance data in order to determine UV albedo at a range of longitude and phase angles. FUV and EUV use low resolution slit. EUV spectra are binned spectrally and edited spatially. FUV data are at full spectral, spatial resolution.'}, 'image': {'duration': '120', 'greaterpixelsize': '64', 'lesserpixelsize': '7', 'levels': '65536', 'imagetype': 'Pushbroom'}, 'wavelength': {'wavelength1': '0.11', 'wavelength2': '0.19', 'waveres1': '0.000078', 'waveres2': '0.000078', 'waveno1': '52631.5789474', 'waveno2': '90909.0909091', 'wavenores1': '21.641274238', 'wavenores2': '64.566115702', 'specflag': 'Yes', 'specsize': '1024', 'polarizationtype': 'None'}, 'ring_geometry': {'RINGGEOringradius1': '501404.53', 'RINGGEOringradius2': '547767.292', 'RINGGEOascendinglongitude1': '332.346', 'RINGGEOascendinglongitude2': '340.129', 'RINGGEOsubsolarringascendinglong1': '167.753', 'RINGGEOsubsolarringascendinglong2': '167.753', 'RINGGEOsubobserverringascendinglong1': '351.721', 'RINGGEOsubobserverringascendinglong2': '351.721', 'RINGGEOJ2000longitude1': '102.936', 'RINGGEOJ2000longitude2': '110.719', 'RINGGEOsubsolarringlong1': '298.343', 'RINGGEOsubsolarringlong2': '298.343', 'RINGGEOsubobserverringlong1': '122.311', 'RINGGEOsubobserverringlong2': '122.311', 'RINGGEOsolarhourangle1': '344.593', 'RINGGEOsolarhourangle2': '352.375', 'RINGGEOlongitudeWRTobserver1': '-19.001', 'RINGGEOlongitudeWRTobserver2': '-11.656', 'RINGGEOringazimuthWRTobserver1': '231.493', 'RINGGEOringazimuthWRTobserver2': '240.357', 'RINGGEOrangetoringintercept1': '108657.617', 'RINGGEOrangetoringintercept2': '189388.474', 'RINGGEOringcenterdistance1': '457783.99', 'RINGGEOringcenterdistance2': '457783.99', 'RINGGEOresolution1': '108.54991', 'RINGGEOresolution2': '189.20074', 'RINGGEOprojectedradialresolution1': '374.06806', 'RINGGEOprojectedradialresolution2': '1319.8163', 'RINGGEOprojectedlongitudinalresolutionangle1': None, 'RINGGEOprojectedlongitudinalresolutionangle2': None, 'RINGGEOprojectedlongitudinalresolution1': None, 'RINGGEOprojectedlongitudinalresolution2': None, 'RINGGEOphase1': '65.341', 'RINGGEOphase2': '67.545', 'RINGGEOincidence1': '67.159', 'RINGGEOincidence2': '67.16', 'RINGGEOemission1': '80.775', 'RINGGEOemission2': '84.806', 'RINGGEOnorthbasedincidence1': '112.84', 'RINGGEOnorthbasedincidence2': '112.841', 'RINGGEOnorthbasedemission1': '95.194', 'RINGGEOnorthbasedemission2': '99.225', 'RINGGEOsolarringelevation1': '-22.841', 'RINGGEOsolarringelevation2': '-22.84', 'RINGGEOobserverringelevation1': '-9.225', 'RINGGEOobserverringelevation2': '-5.194', 'RINGGEOringcenterphase1': '154.658', 'RINGGEOringcenterphase2': '154.658', 'RINGGEOringcenterincidence1': '67.152', 'RINGGEOringcenterincidence2': '67.152', 'RINGGEOringcenteremission1': '87.805', 'RINGGEOringcenteremission2': '87.805', 'RINGGEOringcenternorthbasedincidence1': '112.848', 'RINGGEOringcenternorthbasedincidence2': '112.848', 'RINGGEOringcenternorthbasedemission1': '92.195', 'RINGGEOringcenternorthbasedemission2': '92.195', 'RINGGEOsolarringopeningangle1': '-22.849', 'RINGGEOsolarringopeningangle2': '-22.849', 'RINGGEOobserverringopeningangle1': '-2.195', 'RINGGEOobserverringopeningangle2': '-2.195', 'RINGGEOedgeonradius1': None, 'RINGGEOedgeonradius2': None, 'RINGGEOedgeonascendinglongitude1': None, 'RINGGEOedgeonascendinglongitude2': None, 'RINGGEOedgeonJ2000longitude1': None, 'RINGGEOedgeonJ2000longitude2': None, 'RINGGEOedgeonsolarhourangle1': None, 'RINGGEOedgeonsolarhourangle2': None, 'RINGGEOrangetoedgeonpoint1': None, 'RINGGEOrangetoedgeonpoint2': None, 'RINGGEOedgeonradialresolution1': None, 'RINGGEOedgeonradialresolution2': None, 'RINGGEOedgeonaltitude1': None, 'RINGGEOedgeonaltitude2': None, 'RINGGEOringpoleclockangle': None, 'RINGGEOringdiameterpixels': None, 'RINGGEOringpolepositionangle': None, 'RINGGEOcenterxcoordinate': None, 'RINGGEOcenterycoordinate': None, 'RINGGEOringintercepttime1': None, 'RINGGEOringintercepttime2': None}, 'surface_geometry': {'surfacegeometrytargetlist': None}, 'instrument_specific': {'COUVISchannel': 'FUV', 'COUVISobservationtype': 'None', 'COUVISoccultationportstate': 'N/A', 'COUVISslitstate': 'Low Resolution', 'COUVISline1': '0', 'COUVISline2': '63', 'COUVISlinebin': '1', 'COUVISband1': '0', 'COUVISband2': '1023', 'COUVISbandbin': '1', 'COUVISsamples': '7', 'COUVIScompressiontype': 'SQRT_9', 'COUVISintegrationduration': '120', 'COUVISdwelltime': None, 'COUVIStestpulsestate': 'Off'}, '_response': ''}"
+    },
+    {
+      "tool_name": "opus_get_metadata_tool",
+      "tool_input": {
+        "opusid": "co-uvis-fuv2005_016_16_28"
+      },
+      "tool_output": "{'status': 'success', 'opusid': 'co-uvis-fuv2005_016_16_28', 'general': {'planet': 'Saturn', 'target': 'Rhea', 'targetclass': 'Regular Satellite', 'mission': 'Cassini', 'insthost': 'Cassini', 'instrument': 'Cassini UVIS', 'observationtype': 'Spectral Cube', 'time1': '2005-01-16T16:28:53.128', 'time2': '2005-01-16T16:38:53.128', 'observationduration': '600', 'quantity': 'Emission', 'rightasc1': '47.999731', 'rightasc2': '49.734383', 'declination1': '-0.777175', 'declination2': '3.112749'}, 'pds': {'bundleid': 'COUVIS_0010', 'datasetid': 'CO-S-UVIS-2-CUBE-V1.2', 'productid': 'FUV2005_016_16_28', 'primarylid': None, 'productcreationtime': '2011-09-19T00:00:00.000', 'primaryfilespec': 'COUVIS_0010/DATA/D2005_016/FUV2005_016_16_28.LBL', 'opusid': 'co-uvis-fuv2005_016_16_28', 'note': 'to acquire moderate distance data in order to determine UV albedo at a range of longitude and phase angles. FUV and EUV use low resolution slit. EUV spectra are binned spectrally and edited spatially. FUV data are at full spectral, spatial resolution.'}, 'image': {'duration': '120', 'greaterpixelsize': '64', 'lesserpixelsize': '5', 'levels': '65536', 'imagetype': 'Pushbroom'}, 'wavelength': {'wavelength1': '0.11', 'wavelength2': '0.19', 'waveres1': '0.000078', 'waveres2': '0.000078', 'waveno1': '52631.5789474', 'waveno2': '90909.0909091', 'wavenores1': '21.641274238', 'wavenores2': '64.566115702', 'specflag': 'Yes', 'specsize': '1024', 'polarizationtype': 'None'}, 'ring_geometry': {'RINGGEOringradius1': '503025.388', 'RINGGEOringradius2': '547742.203', 'RINGGEOascendinglongitude1': '333.396', 'RINGGEOascendinglongitude2': '340.595', 'RINGGEOsubsolarringascendinglong1': '167.753', 'RINGGEOsubsolarringascendinglong2': '167.753', 'RINGGEOsubobserverringascendinglong1': '352.852', 'RINGGEOsubobserverringascendinglong2': '352.852', 'RINGGEOJ2000longitude1': '103.986', 'RINGGEOJ2000longitude2': '111.185', 'RINGGEOsubsolarringlong1': '298.343', 'RINGGEOsubsolarringlong2': '298.343', 'RINGGEOsubobserverringlong1': '123.442', 'RINGGEOsubobserverringlong2': '123.442', 'RINGGEOsolarhourangle1': '345.642', 'RINGGEOsolarhourangle2': '352.841', 'RINGGEOlongitudeWRTobserver1': '-19.743', 'RINGGEOlongitudeWRTobserver2': '-12.047', 'RINGGEOringazimuthWRTobserver1': '234.742', 'RINGGEOringazimuthWRTobserver2': '242.908', 'RINGGEOrangetoringintercept1': '110633.705', 'RINGGEOrangetoringintercept2': '190881.664', 'RINGGEOringcenterdistance1': '464282.895', 'RINGGEOringcenterdistance2': '464282.895', 'RINGGEOresolution1': '110.52404', 'RINGGEOresolution2': '190.69245', 'RINGGEOprojectedradialresolution1': '345.03272', 'RINGGEOprojectedradialresolution2': '1149.7734', 'RINGGEOprojectedlongitudinalresolutionangle1': None, 'RINGGEOprojectedlongitudinalresolutionangle2': None, 'RINGGEOprojectedlongitudinalresolution1': None, 'RINGGEOprojectedlongitudinalresolution2': None, 'RINGGEOphase1': '66.67', 'RINGGEOphase2': '69.619', 'RINGGEOincidence1': '67.159', 'RINGGEOincidence2': '67.16', 'RINGGEOemission1': '80.492', 'RINGGEOemission2': '84.389', 'RINGGEOnorthbasedincidence1': '112.84', 'RINGGEOnorthbasedincidence2': '112.841', 'RINGGEOnorthbasedemission1': '95.611', 'RINGGEOnorthbasedemission2': '99.508', 'RINGGEOsolarringelevation1': '-22.841', 'RINGGEOsolarringelevation2': '-22.84', 'RINGGEOobserverringelevation1': '-9.508', 'RINGGEOobserverringelevation2': '-5.611', 'RINGGEOringcenterphase1': '154.376', 'RINGGEOringcenterphase2': '154.376', 'RINGGEOringcenterincidence1': '67.152', 'RINGGEOringcenterincidence2': '67.152', 'RINGGEOringcenteremission1': '87.712', 'RINGGEOringcenteremission2': '87.712', 'RINGGEOringcenternorthbasedincidence1': '112.848', 'RINGGEOringcenternorthbasedincidence2': '112.848', 'RINGGEOringcenternorthbasedemission1': '92.288', 'RINGGEOringcenternorthbasedemission2': '92.288', 'RINGGEOsolarringopeningangle1': '-22.849', 'RINGGEOsolarringopeningangle2': '-22.849', 'RINGGEOobserverringopeningangle1': '-2.287', 'RINGGEOobserverringopeningangle2': '-2.287', 'RINGGEOedgeonradius1': None, 'RINGGEOedgeonradius2': None, 'RINGGEOedgeonascendinglongitude1': None, 'RINGGEOedgeonascendinglongitude2': None, 'RINGGEOedgeonJ2000longitude1': None, 'RINGGEOedgeonJ2000longitude2': None, 'RINGGEOedgeonsolarhourangle1': None, 'RINGGEOedgeonsolarhourangle2': None, 'RINGGEOrangetoedgeonpoint1': None, 'RINGGEOrangetoedgeonpoint2': None, 'RINGGEOedgeonradialresolution1': None, 'RINGGEOedgeonradialresolution2': None, 'RINGGEOedgeonaltitude1': None, 'RINGGEOedgeonaltitude2': None, 'RINGGEOringpoleclockangle': None, 'RINGGEOringdiameterpixels': None, 'RINGGEOringpolepositionangle': None, 'RINGGEOcenterxcoordinate': None, 'RINGGEOcenterycoordinate': None, 'RINGGEOringintercepttime1': None, 'RINGGEOringintercepttime2': None}, 'surface_geometry': {'surfacegeometrytargetlist': None}, 'instrument_specific': {'COUVISchannel': 'FUV', 'COUVISobservationtype': 'None', 'COUVISoccultationportstate': 'N/A', 'COUVISslitstate': 'Low Resolution', 'COUVISline1': '0', 'COUVISline2': '63', 'COUVISlinebin': '1', 'COUVISband1': '0', 'COUVISband2': '1023', 'COUVISbandbin': '1', 'COUVISsamples': '5', 'COUVIScompressiontype': 'SQRT_9', 'COUVISintegrationduration': '120', 'COUVISdwelltime': None, 'COUVIStestpulsestate': 'Off'}, '_response': ''}"
+    },
+    {
+      "tool_name": "final_result",
+      "tool_input": {
+        "candidates": [
+          {
+            "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0010/",
+            "dataset_id": "CO-S-UVIS-2-CUBE-V1.5",
+            "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+            "pds_version": "PDS3",
+            "mission": "Cassini",
+            "node": "rms",
+            "reasoning": "Stage 1: This COUVIS volume\u2019s voldesc.cat lists the Saturn-tour UVIS spectral-cube dataset (CUBE). Stage 2 (OPUS): Rhea FUV surface observations in this dataset (e.g., productid FUV2005_016_00_31) report wavelength1=0.11 and wavelength2=0.19 (microns), i.e., 110\u2013190 nm, which is the UVIS/FUV wavelength span used for surface/geochemical analysis."
+          },
+          {
+            "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0010/",
+            "dataset_id": "CO-S-UVIS-2-SPEC-V1.5",
+            "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+            "pds_version": "PDS3",
+            "mission": "Cassini",
+            "node": "rms",
+            "reasoning": "Stage 1: Same archive volume also carries the UVIS extracted spectra dataset (SPEC), which is another common form used for surface composition analysis. The associated Rhea FUV products in OPUS show the same FUV spectral coverage of 0.11\u20130.19 microns (110\u2013190 nm)."
+          }
+        ],
+        "summary": "From OPUS metadata for Cassini UVIS FUV Rhea surface observations archived in COUVIS_0010 (PDS3 CO-S-UVIS-2-CUBE/SPEC), the FUV wavelength range is 0.11\u20130.19 \u00b5m, i.e., 110\u2013190 nm."
+      },
+      "tool_output": "Final result processed."
+    }
+  ],
+  "matched": false,
+  "matched_expected": [],
+  "full_trace": [
+    {
+      "parts": [
+        {
+          "content": "You are a dataset-discovery assistant for the NASA PDS Ring-Moon Systems (RMS) node at https://pds-rings.seti.org/\n\nDirectory layout and workflow:\nTwo parallel trees:\n  PDS3 \u2192 holdings/volumes/<VOLUME_SET>/<VOLUME>/  (volume-set wraps multiple numbered volumes)\n  PDS4 \u2192 pds4/bundles/<bundle>/                   (flat list of bundles)\n\nCRITICAL \u2014 volume-set explosion warning:\n  Volume-sets (e.g. COISS_2xxx, COUVIS_0xxx_v1, HSTUx_xxxx_v1.0) contain many numbered\n  volumes (often 30-100+). Do NOT probe a volume-set directory directly \u2014 pds_probe_datasets\n  will recurse into ALL volumes and produce massive redundant output (100+ near-identical results).\n  Instead, probe a SINGLE representative volume inside the set, e.g.:\n    pds_probe_datasets(paths=['holdings/volumes/COUVIS_0xxx_v1/COUVIS_0009/'], node='rms')\n  All volumes in a set share the same dataset_id, so one probe is enough.\n  HST volumes are the exception \u2014 each volume has a unique dataset_id per HST program,\n  but you still should NOT probe the entire set. Pick 1-2 representative volumes.\n\n\nNaming conventions on RMS:\n  PDS3 volumes use uppercase prefixes ending in _xxxx or numbered: COISS_1xxx, COVIMS_0xxx, GO_0017, EBROCC_xxxx.\n  Each prefix groups many numbered volumes (e.g. COISS_1xxx contains COISS_1001, COISS_1002, ...).\n  PDS4 bundles use lowercase descriptive names: cassini_iss, cassini_uvis, cassini_vims, etc.\nMission/instrument keys (use as filter):\n  Cassini \u2192 CO* (COISS, COUVIS, COVIMS, COCIRS, CORSS) for PDS3; cassini_* for PDS4\n  Voyager \u2192 VG_2xxx (imaging), VG_28xx (occultations), VGISS (PDS4)\n  Galileo \u2192 GO_*\n  New Horizons \u2192 NHxxLO, NHxxMV\n  Hubble \u2192 HSTI/HSTJ/HSTU/HSTN (camera era \u2014 each volume is a unique HST program)\n  Earth-based \u2192 EBROCC, ESO_*, RES_*\nCassini UVIS data types (COUVIS volumes):\n  COUVIS_0xxx     = raw + calibrated spectra/images (SPEC, SSB, CALIB, CUBE, etc.)\n  COUVIS_0xxx_v1  = older v1 publication of the same archive (V1.0 and V1.2 DATA_SET_IDs\n                    live in this tree)\n  COUVIS_8xxx     = ring stellar/solar occultation profiles\n  For UV spectroscopy of surfaces (Rhea, Enceladus, etc.), use COUVIS_0xxx (not _8xxx).\n  Early volumes in a COUVIS set can span mission-phase boundaries (Jupiter approach \u2192\n  Saturn tour), so the first volume hosting a given DATA_SET_ID is not necessarily\n  volume _0001. Use pds_resolve_volume with a dataset_id_hint to find it automatically\n  rather than guessing.\nCassini ISS volume-sets:\n  COISS_1xxx = cruise-phase EDRs (Earth/Venus/Jupiter; DATA_SET_ID prefixed CO-J/V/E-\u2026)\n  COISS_2xxx = Saturn-tour EDRs (the main science dataset; DATA_SET_ID CO-S-ISSNA/ISSWA-\u2026)\n  COISS_3xxx = cartographic map products (MIDR)\n  COISS_0xxx = calibration files/software\nCassini VIMS volume-sets:\n  COVIMS_0xxx = raw image/spectral cubes. DATA_SET_ID convention uses 'QUBE' rather than\n    'EDR' in the product-level slot \u2014 canonical id is CO-E/V/J/S-VIMS-2-QUBE-V<x>.<y>.\n    If a target id uses 'EDR' for VIMS, treat the QUBE form as the equivalent dataset\n    hosted at this node.\n  COVIMS_8xxx = ring stellar/solar occultation profiles.\nMulti-DATA_SET_ID voldescs (common on Cassini):\n  COUVIS_*, COCIRS_*, COVIMS_* voldesc.cat files declare DATA_SET_ID as a list (one id per\n  product type on the volume \u2014 SSB/SPEC/CUBE/CALIB/WAV etc.). pds_probe_datasets now\n  exposes the full list in `dataset_ids`. Match the target DATA_SET_ID against this list,\n  not only the scalar `dataset_id` field (which is just the first one).\n\n\nPDS3 vs PDS4:\n  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers (e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n  - PDS4 bundle directories begin with `urn-nasa-pds-`. Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\nYOUR TOOLS (5 tools \u2014 always pass node='rms'):\n  1. pds_list_missions(node='rms') \u2014 returns mission directories with descriptions. No HTTP.\n  2. pds_list_dataset_dirs(path, node='rms', filter=...) \u2014 lists sub-directory names under a path. Cheap HTTP, no label parsing.\n  3. pds_probe_datasets(paths, node='rms') \u2014 probes specific directories for PDS labels. Accepts a list of paths (max 20).\n  4. pds_inspect_collections(path, node='rms') \u2014 scans PDS4 bundle subdirs for collection labels.\n  5. pds_resolve_volume(volume_set_path, node='rms', dataset_id_hint=..., sample=8) \u2014 when a parent directory contains many\n     numbered sibling volumes (RMS COISS_2xxx, COUVIS_0xxx, ATM\n     MROM_*, jnomwr_*, cocirs_*, IMG mrox_*, MSGRMDS_*), this probes\n     hint-ranked children in one call and returns per-child\n     dataset_ids plus a `best_match` field. Use it instead of\n     probing volumes one at a time when you know the target id or\n     a discriminating substring of it.\n\nWORKFLOW:\nStep 1: Call pds_list_missions(node='rms') to see the 23 instrument/mission filter keys.\nStep 2: Identify the SPECIFIC instrument(s) relevant to the query from the mission list:\n          - UV spectroscopy/absorption on surfaces \u2192 COUVIS (not COISS or HST)\n          - Visible imaging of rings/satellites \u2192 COISS\n          - IR spectral mapping \u2192 COVIMS\n          - Thermal spectra \u2192 COCIRS\n        Do NOT explore instruments not mentioned or implied by the query.\nStep 3 (PDS3): Call pds_list_dataset_dirs(path='holdings/volumes/', node='rms', filter='<KEY>') with a volume-set prefix from the abbreviation table (e.g. COISS, COVIMS, GO_00, VG_28, NHxxLO).\nStep 3 (PDS4): Call pds_list_dataset_dirs(path='pds4/bundles/', node='rms', filter='<key>') \u2014 flat list of named bundles (cassini_iss, cassini_uvis, cassini_vims, \u2026).\nStep 4: Pick ONE representative volume from each relevant volume-set and probe it. Do NOT probe the volume-set directory itself \u2014 see the volume-set explosion warning above. Example: pds_probe_datasets(paths=['holdings/volumes/COISS_2xxx/COISS_2001/'], node='rms')\nStep 4b (search by DATA_SET_ID substring inside a large volume-set): When you are\ntargeting a specific DATA_SET_ID inside a volume-set with many numbered volumes, call\npds_resolve_volume(volume_set_path='holdings/volumes/<VOLUME_SET>/', node='rms',\n  dataset_id_hint='<DATA_SET_ID fragment>', sample=4) instead of probing volumes one by\none. It probes a hint-ranked sample and returns a `best_match` pointing at the first\nchild whose `dataset_ids` list contains the requested id. Useful when the first volume\nhosting a given id is not _0001 (early volumes can fall in a different mission phase).\nStep 5: For PDS4 bundles, call pds_inspect_collections on top 2-3 to get collection LIDs.\nStep 6: When the same instrument has BOTH a PDS3 volume-set and a PDS4 bundle, return BOTH candidates. Always scan `dataset_ids` (not only `dataset_id`) since Cassini voldescs ship many ids per volume. Do NOT silently drop the PDS3 form. Stay under 20 tool calls total.\n\nCRITICAL RULES:\n  1. EVERY query requires at least one candidate. Never dismiss a query as 'not a dataset request' \u2014 every paper-derived query has at least one\n     supporting PDS dataset somewhere in this node's archive, and your job\n     is to surface the closest match (with `reasoning` explaining the link).\n  2. Prefer CALIBRATED/REDUCED data over raw/EDR for science queries.\n     When a probed voldesc exposes `dataset_ids` with multiple entries,\n     match the question's data need to the PRODUCT-TYPE token inside each\n     id (typically the third or fourth dash-separated token). Common ones:\n         EDR / RAW     = raw observations\n         CDR / CALIB   = generic calibrated data\n         RDR / TRDR / MRDR / MTRDR / BDR / SCVDR = reduced / derived imagery or spectra\n         DDR / LDR     = derived / digital terrain / level-5 products\n         SSB           = solar / stellar occultation (Cassini UVIS)\n         SPEC / CUBE / WAV = spectra / spectral cubes / waveforms\n         QUBE          = VIMS spectral data cube (the VIMS-flavoured \"EDR\")\n     If the query mentions 'occultation' return the SSB id; 'spectra' \u2192\n     SPEC; 'calibrated radiance' \u2192 CALIB/CDR; 'mosaic / map / derived' \u2192\n     DDR/MRDR/MTRDR. When two product types both fit the question (e.g.\n     SPEC + SSB for an occultation spectra query), return both candidates.\n     Do NOT just return the scalar `dataset_id` and drop the rest \u2014 that\n     field is only the first id in the voldesc and is often the wrong\n     product type for a given query.\n  3. For PDS4, use inspect_collections ONLY for top 2-3 bundles. Return COLLECTION-level LID when :data or :calibrated exists.\n  4. When the SAME data is available as both PDS3 and PDS4, return BOTH identifiers \u2014 emit one candidate per identifier. Most published papers cite the PDS3 dataset_id (e.g. MESS-E_V_H_SW-MAG-3-CDR-CALIBRATED-V1.0, LRO-L-LROC-5-RDR-V1.0); the PDS4 collection LID is the modern equivalent. Do NOT silently drop the PDS3 form.\n  5. Stay under 20 tool calls per query. Soft cap: 15. Hard cap: 20.\n  6. Only return paths you've actually probed \u2014 never guess.\n  7. ANTI-THRASHING. Never re-issue a tool call with the same name and the\n     same key arguments (path, paths, filter) that you've already issued in\n     this trace. The result will be identical \u2014 it wastes the budget and\n     blocks progress. If you're tempted to re-probe the same set of paths,\n     either move to a different tool (inspect_collections, resolve_volume)\n     or commit to `final_result` with the best candidate you have so far.\n  8. STOP-AT-LEVEL. The output `path` field should point at a dataset or\n     bundle directory (containing voldesc.cat or bundle*.xml), NOT at a\n     deeper product / DATA / EXTRAS / BROWSE / SHAPEFILE / DTM sub-folder.\n     Feature-level retrieval (a specific image of a specific crater) is\n     out of scope for this finder; return the dataset and explain in\n     `reasoning` how it covers the feature.\n  9. After 15 tool calls without converging, ALWAYS prefer emitting your\n     current best candidate(s) over running another exploratory call.\n     A grounded near-match with a clear reasoning note is more useful\n     than a 20-call trace that times out with no `final_result`.\n\n===========================================================\nSTAGE 2 \u2014 DEEPER NODE-SPECIFIC SEARCH (escalation only)\n===========================================================\n\nEverything above is STAGE 1: the 5 live-HTTP tools (pds_list_missions / pds_list_dataset_dirs / pds_probe_datasets / pds_inspect_collections / pds_resolve_volume), the per-node workflow, and the Critical Rules ALL belong to Stage 1. Stage 1 reaches bundle/collection level by walking the node's directory tree. Stage 2 below is a SECOND set of tools for refining or rescuing Stage 1 \u2014 do NOT call any Stage 2 tool unless one of the escalation triggers below fires.\n\nWHEN TO ESCALATE TO STAGE 2 (any one is enough):\n  (a) The query asks for SPECIFIC observations, granules, or product IDs \u2014 not just a dataset. Example: 'Cassini ISS images of Mimas between 2009 and 2010' needs per-observation filtering.\n  (b) Stage 1 has located the right bundle/collection but you still need to narrow by GEOMETRY, TIME, or a SPATIAL filter (bbox, lat/lon, ring longitude, target body, observation type).\n  (c) Stage 1 produced AMBIGUOUS candidates that a faceted query can disambiguate (e.g. multiple instruments with similar names, multiple processing levels).\n  (d) Stage 1 cannot reach the node's holdings index (e.g. SBN returns HTTP 403, a directory listing is unavailable). Use the Stage 2 API as a fallback path to candidates.\n\nSTAGE 2 TOOLS (this node):\n  - opus_search_tool(target=..., instrument=..., time_range=..., ring_geometry=..., observation_type=...): RMS OPUS faceted product search at the observation/granule level.\n  - opus_count_tool(...): count results before pulling them.\n  - opus_get_metadata_tool(opus_id=...): metadata for one observation.\n  - opus_get_files_tool(opus_id=..., product_type=...): file list for one observation, optionally filtered by product type (raw / calibrated / preview / geometry).\n\nSTAGE 2 RULES:\n  1. When you already have a bundle/collection LID from Stage 1, REUSE it as a filter in the Stage 2 call. Stage 2 is refinement, not a fresh search.\n  2. Spend the MINIMUM number of additional calls. If a single faceted call answers the question, stop.\n  3. If Stage 2 finds nothing or errors out, FALL BACK to the Stage 1 candidates and note in `reasoning` that Stage 2 was attempted and returned no refinement.\n  4. The 20-tool-call budget from Stage 1's Critical Rule 5 is the budget for BOTH stages combined. Do NOT reset the counter when entering Stage 2.\n  5. Every candidate's `reasoning` field must explicitly name which stage produced it (e.g. 'Stage 1: located bundle X by directory walk' or 'Stage 2: narrowed to product Y via ODE_search_products bbox filter').\n",
+          "timestamp": "2026-05-13 00:33:17.963050+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "What wavelength range of the UVIS/FUV data was used for geochemical analysis of Rhea's surface?",
+          "timestamp": "2026-05-13 00:33:17.963056+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-05-13 00:33:17.963313+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_missions",
+          "args": "{\"node\":\"rms\"}",
+          "tool_call_id": "call_m3X6AwQWE0ES9IMzczTamaew",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 6420,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 5504,
+        "output_tokens": 441,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 414,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:33:25.831890+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:33:18+00:00"
+      },
+      "provider_response_id": "chatcmpl-DerpGvf2CwMAaWZN6rjOe6mnIwo83",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_missions",
+          "content": {
+            "missions": [
+              {
+                "name": "COISS",
+                "description": "Cassini ISS \u2014 Imaging Science Subsystem (NAC + WAC). Saturn rings, satellites, atmosphere."
+              },
+              {
+                "name": "COUVIS",
+                "description": "Cassini UVIS \u2014 Ultraviolet Imaging Spectrograph. UV spectroscopy (SPEC), stellar/solar occultations (SSB), calibrated products (CALIB). Covers rings AND satellite surfaces (Rhea, Enceladus, etc.)."
+              },
+              {
+                "name": "COVIMS",
+                "description": "Cassini VIMS \u2014 Visual and Infrared Mapping Spectrometer. Rings + satellites."
+              },
+              {
+                "name": "COCIRS",
+                "description": "Cassini CIRS \u2014 Composite InfraRed Spectrometer. Saturn/satellite atmospheres."
+              },
+              {
+                "name": "CORSS",
+                "description": "Cassini Radio Science Subsystem ring/atmosphere occultations."
+              },
+              {
+                "name": "COSP",
+                "description": "Cassini SPICE kernels (RMS mirror)."
+              },
+              {
+                "name": "VG_28xx",
+                "description": "Voyager 1/2 ring occultations (PPS/UVS/RSS)."
+              },
+              {
+                "name": "VG_2xxx",
+                "description": "Voyager 1/2 imaging (ISS) \u2014 Jupiter, Saturn, Uranus, Neptune."
+              },
+              {
+                "name": "VGISS",
+                "description": "Voyager 1/2 ISS PDS4 calibrated/raw images."
+              },
+              {
+                "name": "GO_00xx",
+                "description": "Galileo SSI imaging \u2014 Jupiter/satellites/ring system."
+              },
+              {
+                "name": "EBROCC",
+                "description": "Earth-Based Ring Occultations (1989 Saturn, 1980s/90s Uranus)."
+              },
+              {
+                "name": "ESO_xxxx",
+                "description": "European Southern Observatory ground-based ring observations."
+              },
+              {
+                "name": "RES_xxxx",
+                "description": "Reduced Earth-based stellar occultation results."
+              },
+              {
+                "name": "HSTI",
+                "description": "Hubble WFPC2 imaging of rings/satellites."
+              },
+              {
+                "name": "HSTJ",
+                "description": "Hubble ACS imaging of rings/satellites."
+              },
+              {
+                "name": "HSTU",
+                "description": "Hubble WFC3/STIS imaging of rings/satellites."
+              },
+              {
+                "name": "HSTN",
+                "description": "Hubble NICMOS imaging of rings/satellites."
+              },
+              {
+                "name": "NHxxLO",
+                "description": "New Horizons LORRI imaging \u2014 Pluto, KBOs, ring search."
+              },
+              {
+                "name": "NHxxMV",
+                "description": "New Horizons MVIC (Ralph) imaging."
+              },
+              {
+                "name": "ASTROM",
+                "description": "Ground/HST astrometric measurements of irregular satellites."
+              },
+              {
+                "name": "cassini_iss",
+                "description": "PDS4 bundle: Cassini ISS observations (cruise + Saturn tour)."
+              },
+              {
+                "name": "cassini_vims",
+                "description": "PDS4 bundle: Cassini VIMS observations."
+              },
+              {
+                "name": "cassini_uvis",
+                "description": "PDS4 bundle: Cassini UVIS occultations."
+              }
+            ],
+            "count": 23,
+            "note": "Node 'rms' has no mission sub-directories. Use each mission 'name' as the filter keyword: pds_list_dataset_dirs(path='holdings/volumes/', node='rms', filter='<name>')."
+          },
+          "tool_call_id": "call_m3X6AwQWE0ES9IMzczTamaew",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:33:26.226167+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:33:26.227084+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\": \"holdings/volumes/\", \"node\": \"rms\", \"filter\": \"COUVIS\"}",
+          "tool_call_id": "call_m2gV6po7WctsdEdfdT9aIO2g",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\": \"pds4/bundles/\", \"node\": \"rms\", \"filter\": \"uvis\"}",
+          "tool_call_id": "call_HUweiJ39bB3alWmDQV03r3qL",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 7080,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 5504,
+        "output_tokens": 1215,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1124,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:33:49.929174+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:33:26+00:00"
+      },
+      "provider_response_id": "chatcmpl-DerpOk2KAC21HHKWLPQd5sY0CCpOn",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "holdings/volumes/",
+            "total": 84,
+            "filtered_total": 6,
+            "dirs": [
+              {
+                "name": "COUVIS_0xxx",
+                "path": "holdings/volumes/COUVIS_0xxx/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "COUVIS_0xxx_v1",
+                "path": "holdings/volumes/COUVIS_0xxx_v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "COUVIS_8xxx",
+                "path": "holdings/volumes/COUVIS_8xxx/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "COUVIS_8xxx_v1",
+                "path": "holdings/volumes/COUVIS_8xxx_v1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "COUVIS_8xxx_v2.0",
+                "path": "holdings/volumes/COUVIS_8xxx_v2.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "COUVIS_8xxx_v2.1",
+                "path": "holdings/volumes/COUVIS_8xxx_v2.1/",
+                "pds_hint": "PDS3"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_m2gV6po7WctsdEdfdT9aIO2g",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:33:51.025964+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "pds4/bundles/",
+            "total": 6,
+            "filtered_total": 1,
+            "dirs": [
+              {
+                "name": "cassini_uvis_solarocc_beckerjarmak2023",
+                "path": "pds4/bundles/cassini_uvis_solarocc_beckerjarmak2023/",
+                "pds_hint": "PDS3"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_HUweiJ39bB3alWmDQV03r3qL",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:33:51.025409+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:33:51.027049+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_resolve_volume",
+          "args": "{\"volume_set_path\":\"holdings/volumes/COUVIS_0xxx/\",\"node\":\"rms\",\"dataset_id_hint\":\"CO-S-UVIS-2-SPEC\",\"sample\":8}",
+          "tool_call_id": "call_3JlLk8kgBuppMqfh80O0YKhh",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 7563,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 6528,
+        "output_tokens": 920,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 857,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:34:04.647628+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:33:51+00:00"
+      },
+      "provider_response_id": "chatcmpl-Derpnjc4RA3uo0nbKAc9wjGfVzWJN",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_resolve_volume",
+          "content": {
+            "status": "success",
+            "volume_set_path": "holdings/volumes/COUVIS_0xxx/",
+            "total_children": 60,
+            "sampled": 8,
+            "children": [
+              {
+                "name": "COUVIS_0001",
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-J-UVIS-2-SSB-V1.2",
+                  "CO-J-UVIS-2-SPEC-V1.2",
+                  "CO-J-UVIS-2-CUBE-V1.2",
+                  "CO-J-UVIS-2-WAV-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "COUVIS_0002",
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0002",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-J-UVIS-2-CUBE-V1.2",
+                  "CO-J-UVIS-2-SSB-V1.2",
+                  "CO-J-UVIS-2-SPEC-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER RAW DATA ARCHIVE"
+              },
+              {
+                "name": "COUVIS_0003",
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0003",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-J-UVIS-2-SSB-V1.2",
+                  "CO-X-UVIS-2-SSB-V1.2",
+                  "CO-J-UVIS-2-SPEC-V1.2",
+                  "CO-X-UVIS-2-SPEC-V1.2",
+                  "CO-X-UVIS-2-CUBE-V1.2",
+                  "CO-X-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS JUPITER AND SATURN RAW DATA ARCHIVE"
+              },
+              {
+                "name": "COUVIS_0004",
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0004",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS SATURN RAW DATA ARCHIVE"
+              },
+              {
+                "name": "COUVIS_0005",
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0005",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS SATURN RAW DATA ARCHIVE"
+              },
+              {
+                "name": "COUVIS_0006",
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0006",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS SATURN RAW DATA ARCHIVE"
+              },
+              {
+                "name": "COUVIS_0007",
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0007",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SPEC-V1.5",
+                  "CO-S-UVIS-2-CUBE-V1.5",
+                  "CO-S-UVIS-2-SSB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS SATURN RAW DATA ARCHIVE"
+              },
+              {
+                "name": "COUVIS_0008",
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0008",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "volume_name": "CASSINI UVIS SATURN RAW DATA ARCHIVE"
+              }
+            ],
+            "best_match": "holdings/volumes/COUVIS_0xxx/COUVIS_0003",
+            "error": null
+          },
+          "tool_call_id": "call_3JlLk8kgBuppMqfh80O0YKhh",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:34:08.026382+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:34:08.027508+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\":[\"holdings/volumes/COUVIS_0xxx/COUVIS_0005/\"],\"node\":\"rms\"}",
+          "tool_call_id": "call_lph7U61lf8ZyAeP5jl7nzhOJ",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8699,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 6528,
+        "output_tokens": 591,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 540,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:34:17.264356+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:34:08+00:00"
+      },
+      "provider_response_id": "chatcmpl-Derq41Dq7oucKCEK6U3ybf1zJlyjF",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0005",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "CO-S-UVIS-2-SSB-V1.2",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.2",
+                  "CO-S-UVIS-2-SPEC-V1.2",
+                  "CO-S-UVIS-2-WAV-V1.2",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                    "VOLUME_NAME": "CASSINI UVIS SATURN RAW DATA ARCHIVE",
+                    "VOLUME_ID": "COUVIS_0005",
+                    "PUBLICATION_DATE": "2012-01-25",
+                    "DESCRIPTION": "This volume contains a collection of observations taken by the UVIS instrument during the 2003-001...2003-359 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.",
+                    "DATA_SET_ID": [
+                      "CO-S-UVIS-2-SSB-V1.2",
+                      "CO-S-UVIS-2-CUBE-V1.2",
+                      "CO-S-UVIS-2-SPEC-V1.2",
+                      "CO-S-UVIS-2-WAV-V1.2",
+                      "CO-S-UVIS-2-CALIB-V1.2"
+                    ]
+                  }
+                },
+                "volume_count": 1
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_lph7U61lf8ZyAeP5jl7nzhOJ",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:34:18.264483+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:34:18.265537+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "opus_search_tool",
+          "args": "{\"target\":\"Rhea\",\"mission\":\"Cassini\",\"instrument\":\"Cassini UVIS\",\"planet\":\"Saturn\",\"limit\":5,\"startobs\":1}",
+          "tool_call_id": "call_8Ogy9RNEuzYgsb76PfDpwbvk",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 9149,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 7552,
+        "output_tokens": 692,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 640,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:34:30.446830+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:34:18+00:00"
+      },
+      "provider_response_id": "chatcmpl-DerqEwsbutY4RPNvYrX5Elh7LDpkD",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "opus_search_tool",
+          "content": {
+            "status": "success",
+            "available": 2291,
+            "start_obs": 1,
+            "limit": 5,
+            "count": 5,
+            "observations": [
+              {
+                "opusid": "co-uvis-fuv2005_016_00_31",
+                "instrument": "Cassini UVIS",
+                "target": "Rhea",
+                "mission": null,
+                "planet": "Saturn",
+                "time_start": "2005-01-16T00:31:01.377",
+                "time_end": null,
+                "duration_seconds": 600.0
+              },
+              {
+                "opusid": "co-uvis-fuv2005_016_16_11",
+                "instrument": "Cassini UVIS",
+                "target": "Rhea",
+                "mission": null,
+                "planet": "Saturn",
+                "time_start": "2005-01-16T16:11:23.260",
+                "time_end": null,
+                "duration_seconds": 840.0
+              },
+              {
+                "opusid": "co-uvis-fuv2005_016_16_28",
+                "instrument": "Cassini UVIS",
+                "target": "Rhea",
+                "mission": null,
+                "planet": "Saturn",
+                "time_start": "2005-01-16T16:28:53.128",
+                "time_end": null,
+                "duration_seconds": 600.0
+              },
+              {
+                "opusid": "co-uvis-hdac2005_016_16_39",
+                "instrument": "Cassini UVIS",
+                "target": "Rhea",
+                "mission": null,
+                "planet": "Saturn",
+                "time_start": "2005-01-16T16:39:06.999",
+                "time_end": null,
+                "duration_seconds": 128.0
+              },
+              {
+                "opusid": "co-uvis-fuv2005_016_16_41",
+                "instrument": "Cassini UVIS",
+                "target": "Rhea",
+                "mission": null,
+                "planet": "Saturn",
+                "time_start": "2005-01-16T16:41:03.123",
+                "time_end": null,
+                "duration_seconds": 2880.0
+              }
+            ],
+            "_response": ""
+          },
+          "tool_call_id": "call_8Ogy9RNEuzYgsb76PfDpwbvk",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:34:42.460016+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:34:42.460501+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "opus_get_metadata_tool",
+          "args": "{\"opusid\":\"co-uvis-fuv2005_016_00_31\"}",
+          "tool_call_id": "call_L0QJPm79IepPqE0UMVwEne9U",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 9580,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 8576,
+        "output_tokens": 228,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 189,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:34:47.610584+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:34:43+00:00"
+      },
+      "provider_response_id": "chatcmpl-DerqdxFZUlvKeunSJ8fN8aoPdiObG",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "opus_get_metadata_tool",
+          "content": {
+            "status": "success",
+            "opusid": "co-uvis-fuv2005_016_00_31",
+            "general": {
+              "planet": "Saturn",
+              "target": "Rhea",
+              "targetclass": "Regular Satellite",
+              "mission": "Cassini",
+              "insthost": "Cassini",
+              "instrument": "Cassini UVIS",
+              "observationtype": "Spectral Cube",
+              "time1": "2005-01-16T00:31:01.377",
+              "time2": "2005-01-16T00:41:01.377",
+              "observationduration": "600",
+              "quantity": "Emission",
+              "rightasc1": "95.033442",
+              "rightasc2": "96.589022",
+              "declination1": "-7.464803",
+              "declination2": "-7.339305"
+            },
+            "pds": {
+              "bundleid": "COUVIS_0010",
+              "datasetid": "CO-S-UVIS-2-CUBE-V1.2",
+              "productid": "FUV2005_016_00_31",
+              "primarylid": null,
+              "productcreationtime": "2011-09-19T00:00:00.000",
+              "primaryfilespec": "COUVIS_0010/DATA/D2005_016/FUV2005_016_00_31.LBL",
+              "opusid": "co-uvis-fuv2005_016_00_31",
+              "note": "to acquire moderate distance data in order to determine UV albedo at a range of longitude and phase angles. FUV and EUV use low resolution slit. EUV spectra are binned spectrally and edited spatially. FUV data are at full spectral, spatial resolution."
+            },
+            "image": {
+              "duration": "120",
+              "greaterpixelsize": "24",
+              "lesserpixelsize": "5",
+              "levels": "65536",
+              "imagetype": "Pushbroom"
+            },
+            "wavelength": {
+              "wavelength1": "0.11",
+              "wavelength2": "0.19",
+              "waveres1": "0.000078",
+              "waveres2": "0.000078",
+              "waveno1": "52631.5789474",
+              "waveno2": "90909.0909091",
+              "wavenores1": "21.641274238",
+              "wavenores2": "64.566115702",
+              "specflag": "Yes",
+              "specsize": "1024",
+              "polarizationtype": "None"
+            },
+            "ring_geometry": {
+              "RINGGEOringradius1": "512864.419",
+              "RINGGEOringradius2": "520578.822",
+              "RINGGEOascendinglongitude1": "281.844",
+              "RINGGEOascendinglongitude2": "283.231",
+              "RINGGEOsubsolarringascendinglong1": "167.728",
+              "RINGGEOsubsolarringascendinglong2": "167.728",
+              "RINGGEOsubobserverringascendinglong1": "218.663",
+              "RINGGEOsubobserverringascendinglong2": "218.663",
+              "RINGGEOJ2000longitude1": "52.434",
+              "RINGGEOJ2000longitude2": "53.821",
+              "RINGGEOsubsolarringlong1": "298.318",
+              "RINGGEOsubsolarringlong2": "298.318",
+              "RINGGEOsubobserverringlong1": "349.253",
+              "RINGGEOsubobserverringlong2": "349.253",
+              "RINGGEOsolarhourangle1": "294.117",
+              "RINGGEOsolarhourangle2": "295.504",
+              "RINGGEOlongitudeWRTobserver1": "63.18",
+              "RINGGEOlongitudeWRTobserver2": "64.572",
+              "RINGGEOringazimuthWRTobserver1": "137.508",
+              "RINGGEOringazimuthWRTobserver2": "138.156",
+              "RINGGEOrangetoringintercept1": "481991.644",
+              "RINGGEOrangetoringintercept2": "485518.976",
+              "RINGGEOringcenterdistance1": "362296.868",
+              "RINGGEOringcenterdistance2": "362296.868",
+              "RINGGEOresolution1": "481.95885",
+              "RINGGEOresolution2": "485.48562",
+              "RINGGEOprojectedradialresolution1": "8301.61172",
+              "RINGGEOprojectedradialresolution2": "8423.86264",
+              "RINGGEOprojectedlongitudinalresolutionangle1": null,
+              "RINGGEOprojectedlongitudinalresolutionangle2": null,
+              "RINGGEOprojectedlongitudinalresolution1": null,
+              "RINGGEOprojectedlongitudinalresolution2": null,
+              "RINGGEOphase1": "34.287",
+              "RINGGEOphase2": "35.249",
+              "RINGGEOincidence1": "67.148",
+              "RINGGEOincidence2": "67.148",
+              "RINGGEOemission1": "93.682",
+              "RINGGEOemission2": "93.7",
+              "RINGGEOnorthbasedincidence1": "112.852",
+              "RINGGEOnorthbasedincidence2": "112.852",
+              "RINGGEOnorthbasedemission1": "86.3",
+              "RINGGEOnorthbasedemission2": "86.318",
+              "RINGGEOsolarringelevation1": "-22.852",
+              "RINGGEOsolarringelevation2": "-22.852",
+              "RINGGEOobserverringelevation1": "3.682",
+              "RINGGEOobserverringelevation2": "3.7",
+              "RINGGEOringcenterphase1": "56.962",
+              "RINGGEOringcenterphase2": "56.962",
+              "RINGGEOringcenterincidence1": "67.146",
+              "RINGGEOringcenterincidence2": "67.146",
+              "RINGGEOringcenteremission1": "94.93",
+              "RINGGEOringcenteremission2": "94.93",
+              "RINGGEOringcenternorthbasedincidence1": "112.854",
+              "RINGGEOringcenternorthbasedincidence2": "112.854",
+              "RINGGEOringcenternorthbasedemission1": "85.07",
+              "RINGGEOringcenternorthbasedemission2": "85.07",
+              "RINGGEOsolarringopeningangle1": "-22.855",
+              "RINGGEOsolarringopeningangle2": "-22.855",
+              "RINGGEOobserverringopeningangle1": "4.931",
+              "RINGGEOobserverringopeningangle2": "4.931",
+              "RINGGEOedgeonradius1": "345030.847",
+              "RINGGEOedgeonradius2": "348785.523",
+              "RINGGEOedgeonascendinglongitude1": "233.929",
+              "RINGGEOedgeonascendinglongitude2": "235.48",
+              "RINGGEOedgeonJ2000longitude1": "4.519",
+              "RINGGEOedgeonJ2000longitude2": "6.07",
+              "RINGGEOedgeonsolarhourangle1": "246.202",
+              "RINGGEOedgeonsolarhourangle2": "247.752",
+              "RINGGEOrangetoedgeonpoint1": "93378.68",
+              "RINGGEOrangetoedgeonpoint2": "106542.662",
+              "RINGGEOedgeonradialresolution1": "93.36637",
+              "RINGGEOedgeonradialresolution2": "106.52861",
+              "RINGGEOedgeonaltitude1": "24334.767",
+              "RINGGEOedgeonaltitude2": "25077.228",
+              "RINGGEOringpoleclockangle": null,
+              "RINGGEOringdiameterpixels": null,
+              "RINGGEOringpolepositionangle": null,
+              "RINGGEOcenterxcoordinate": null,
+              "RINGGEOcenterycoordinate": null,
+              "RINGGEOringintercepttime1": null,
+              "RINGGEOringintercepttime2": null
+            },
+            "surface_geometry": {
+              "surfacegeometrytargetlist": null
+            },
+            "instrument_specific": {
+              "COUVISchannel": "FUV",
+              "COUVISobservationtype": "None",
+              "COUVISoccultationportstate": "N/A",
+              "COUVISslitstate": "Low Resolution",
+              "COUVISline1": "20",
+              "COUVISline2": "43",
+              "COUVISlinebin": "1",
+              "COUVISband1": "0",
+              "COUVISband2": "1023",
+              "COUVISbandbin": "1",
+              "COUVISsamples": "5",
+              "COUVIScompressiontype": "SQRT_9",
+              "COUVISintegrationduration": "120",
+              "COUVISdwelltime": null,
+              "COUVIStestpulsestate": "Off"
+            },
+            "_response": ""
+          },
+          "tool_call_id": "call_L0QJPm79IepPqE0UMVwEne9U",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:34:49.396107+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:34:49.397039+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\":[\"holdings/volumes/COUVIS_0xxx/COUVIS_0010/\"],\"node\":\"rms\"}",
+          "tool_call_id": "call_N6RDx4SEfXYVE7E1yckes54u",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 11381,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 8576,
+        "output_tokens": 664,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 613,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:35:00.249765+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:34:49+00:00"
+      },
+      "provider_response_id": "chatcmpl-DerqjZZxGBXr3dgs1sqI1n4a5khis",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "holdings/volumes/COUVIS_0xxx/COUVIS_0010",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "CO-S-UVIS-2-SSB-V1.2",
+                "dataset_ids": [
+                  "CO-S-UVIS-2-SSB-V1.2",
+                  "CO-S-UVIS-2-CUBE-V1.5",
+                  "CO-S-UVIS-2-SPEC-V1.5",
+                  "CO-S-UVIS-2-CALIB-V1.2"
+                ],
+                "title": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                "fields": {
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA",
+                    "VOLUME_NAME": "CASSINI UVIS SATURN RAW DATA ARCHIVE",
+                    "VOLUME_ID": "COUVIS_0010",
+                    "PUBLICATION_DATE": "2019-11-14",
+                    "DESCRIPTION": "This volume contains a collection of observations taken by the UVIS instrument during the 2005-001...2005-091 time period. UVIS data products include the Spatial-Spectral-Image Cube the Image at One Wavelength, the Solar and Stellar Brightness Time Series and the Spectra data products. The DATA_SET_ID value below specifies the data products on this volume.",
+                    "DATA_SET_ID": [
+                      "CO-S-UVIS-2-SSB-V1.2",
+                      "CO-S-UVIS-2-CUBE-V1.5",
+                      "CO-S-UVIS-2-SPEC-V1.5",
+                      "CO-S-UVIS-2-CALIB-V1.2"
+                    ]
+                  }
+                },
+                "volume_count": 1
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_N6RDx4SEfXYVE7E1yckes54u",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:35:01.377231+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:35:01.378051+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "opus_get_metadata_tool",
+          "args": "{\"opusid\":\"co-uvis-fuv2005_016_16_11\"}",
+          "tool_call_id": "call_66DuAHh49ND2ELxtBEjqFK21",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 11803,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 10624,
+        "output_tokens": 466,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 427,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:35:09.361204+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:35:01+00:00"
+      },
+      "provider_response_id": "chatcmpl-DerqvaZIzbRSyaODPIb5rpHzdTVQU",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "opus_get_metadata_tool",
+          "content": {
+            "status": "success",
+            "opusid": "co-uvis-fuv2005_016_16_11",
+            "general": {
+              "planet": "Saturn",
+              "target": "Rhea",
+              "targetclass": "Regular Satellite",
+              "mission": "Cassini",
+              "insthost": "Cassini",
+              "instrument": "Cassini UVIS",
+              "observationtype": "Spectral Cube",
+              "time1": "2005-01-16T16:11:23.260",
+              "time2": "2005-01-16T16:25:23.260",
+              "observationduration": "840",
+              "quantity": "Emission",
+              "rightasc1": "50.246884",
+              "rightasc2": "51.400981",
+              "declination1": "-1.153533",
+              "declination2": "2.854474"
+            },
+            "pds": {
+              "bundleid": "COUVIS_0010",
+              "datasetid": "CO-S-UVIS-2-CUBE-V1.2",
+              "productid": "FUV2005_016_16_11",
+              "primarylid": null,
+              "productcreationtime": "2011-09-19T00:00:00.000",
+              "primaryfilespec": "COUVIS_0010/DATA/D2005_016/FUV2005_016_16_11.LBL",
+              "opusid": "co-uvis-fuv2005_016_16_11",
+              "note": "to acquire moderate distance data in order to determine UV albedo at a range of longitude and phase angles. FUV and EUV use low resolution slit. EUV spectra are binned spectrally and edited spatially. FUV data are at full spectral, spatial resolution."
+            },
+            "image": {
+              "duration": "120",
+              "greaterpixelsize": "64",
+              "lesserpixelsize": "7",
+              "levels": "65536",
+              "imagetype": "Pushbroom"
+            },
+            "wavelength": {
+              "wavelength1": "0.11",
+              "wavelength2": "0.19",
+              "waveres1": "0.000078",
+              "waveres2": "0.000078",
+              "waveno1": "52631.5789474",
+              "waveno2": "90909.0909091",
+              "wavenores1": "21.641274238",
+              "wavenores2": "64.566115702",
+              "specflag": "Yes",
+              "specsize": "1024",
+              "polarizationtype": "None"
+            },
+            "ring_geometry": {
+              "RINGGEOringradius1": "501404.53",
+              "RINGGEOringradius2": "547767.292",
+              "RINGGEOascendinglongitude1": "332.346",
+              "RINGGEOascendinglongitude2": "340.129",
+              "RINGGEOsubsolarringascendinglong1": "167.753",
+              "RINGGEOsubsolarringascendinglong2": "167.753",
+              "RINGGEOsubobserverringascendinglong1": "351.721",
+              "RINGGEOsubobserverringascendinglong2": "351.721",
+              "RINGGEOJ2000longitude1": "102.936",
+              "RINGGEOJ2000longitude2": "110.719",
+              "RINGGEOsubsolarringlong1": "298.343",
+              "RINGGEOsubsolarringlong2": "298.343",
+              "RINGGEOsubobserverringlong1": "122.311",
+              "RINGGEOsubobserverringlong2": "122.311",
+              "RINGGEOsolarhourangle1": "344.593",
+              "RINGGEOsolarhourangle2": "352.375",
+              "RINGGEOlongitudeWRTobserver1": "-19.001",
+              "RINGGEOlongitudeWRTobserver2": "-11.656",
+              "RINGGEOringazimuthWRTobserver1": "231.493",
+              "RINGGEOringazimuthWRTobserver2": "240.357",
+              "RINGGEOrangetoringintercept1": "108657.617",
+              "RINGGEOrangetoringintercept2": "189388.474",
+              "RINGGEOringcenterdistance1": "457783.99",
+              "RINGGEOringcenterdistance2": "457783.99",
+              "RINGGEOresolution1": "108.54991",
+              "RINGGEOresolution2": "189.20074",
+              "RINGGEOprojectedradialresolution1": "374.06806",
+              "RINGGEOprojectedradialresolution2": "1319.8163",
+              "RINGGEOprojectedlongitudinalresolutionangle1": null,
+              "RINGGEOprojectedlongitudinalresolutionangle2": null,
+              "RINGGEOprojectedlongitudinalresolution1": null,
+              "RINGGEOprojectedlongitudinalresolution2": null,
+              "RINGGEOphase1": "65.341",
+              "RINGGEOphase2": "67.545",
+              "RINGGEOincidence1": "67.159",
+              "RINGGEOincidence2": "67.16",
+              "RINGGEOemission1": "80.775",
+              "RINGGEOemission2": "84.806",
+              "RINGGEOnorthbasedincidence1": "112.84",
+              "RINGGEOnorthbasedincidence2": "112.841",
+              "RINGGEOnorthbasedemission1": "95.194",
+              "RINGGEOnorthbasedemission2": "99.225",
+              "RINGGEOsolarringelevation1": "-22.841",
+              "RINGGEOsolarringelevation2": "-22.84",
+              "RINGGEOobserverringelevation1": "-9.225",
+              "RINGGEOobserverringelevation2": "-5.194",
+              "RINGGEOringcenterphase1": "154.658",
+              "RINGGEOringcenterphase2": "154.658",
+              "RINGGEOringcenterincidence1": "67.152",
+              "RINGGEOringcenterincidence2": "67.152",
+              "RINGGEOringcenteremission1": "87.805",
+              "RINGGEOringcenteremission2": "87.805",
+              "RINGGEOringcenternorthbasedincidence1": "112.848",
+              "RINGGEOringcenternorthbasedincidence2": "112.848",
+              "RINGGEOringcenternorthbasedemission1": "92.195",
+              "RINGGEOringcenternorthbasedemission2": "92.195",
+              "RINGGEOsolarringopeningangle1": "-22.849",
+              "RINGGEOsolarringopeningangle2": "-22.849",
+              "RINGGEOobserverringopeningangle1": "-2.195",
+              "RINGGEOobserverringopeningangle2": "-2.195",
+              "RINGGEOedgeonradius1": null,
+              "RINGGEOedgeonradius2": null,
+              "RINGGEOedgeonascendinglongitude1": null,
+              "RINGGEOedgeonascendinglongitude2": null,
+              "RINGGEOedgeonJ2000longitude1": null,
+              "RINGGEOedgeonJ2000longitude2": null,
+              "RINGGEOedgeonsolarhourangle1": null,
+              "RINGGEOedgeonsolarhourangle2": null,
+              "RINGGEOrangetoedgeonpoint1": null,
+              "RINGGEOrangetoedgeonpoint2": null,
+              "RINGGEOedgeonradialresolution1": null,
+              "RINGGEOedgeonradialresolution2": null,
+              "RINGGEOedgeonaltitude1": null,
+              "RINGGEOedgeonaltitude2": null,
+              "RINGGEOringpoleclockangle": null,
+              "RINGGEOringdiameterpixels": null,
+              "RINGGEOringpolepositionangle": null,
+              "RINGGEOcenterxcoordinate": null,
+              "RINGGEOcenterycoordinate": null,
+              "RINGGEOringintercepttime1": null,
+              "RINGGEOringintercepttime2": null
+            },
+            "surface_geometry": {
+              "surfacegeometrytargetlist": null
+            },
+            "instrument_specific": {
+              "COUVISchannel": "FUV",
+              "COUVISobservationtype": "None",
+              "COUVISoccultationportstate": "N/A",
+              "COUVISslitstate": "Low Resolution",
+              "COUVISline1": "0",
+              "COUVISline2": "63",
+              "COUVISlinebin": "1",
+              "COUVISband1": "0",
+              "COUVISband2": "1023",
+              "COUVISbandbin": "1",
+              "COUVISsamples": "7",
+              "COUVIScompressiontype": "SQRT_9",
+              "COUVISintegrationduration": "120",
+              "COUVISdwelltime": null,
+              "COUVIStestpulsestate": "Off"
+            },
+            "_response": ""
+          },
+          "tool_call_id": "call_66DuAHh49ND2ELxtBEjqFK21",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:35:11.002077+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:35:11.002944+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "opus_get_metadata_tool",
+          "args": "{\"opusid\":\"co-uvis-fuv2005_016_16_28\"}",
+          "tool_call_id": "call_7yjJFlOx1jmDIVvmtf1kOeWZ",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 13572,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 10624,
+        "output_tokens": 623,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 584,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:35:20.219274+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:35:11+00:00"
+      },
+      "provider_response_id": "chatcmpl-Derr5B4zcu9BgQVLL1hedrlt9Y5dx",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "opus_get_metadata_tool",
+          "content": {
+            "status": "success",
+            "opusid": "co-uvis-fuv2005_016_16_28",
+            "general": {
+              "planet": "Saturn",
+              "target": "Rhea",
+              "targetclass": "Regular Satellite",
+              "mission": "Cassini",
+              "insthost": "Cassini",
+              "instrument": "Cassini UVIS",
+              "observationtype": "Spectral Cube",
+              "time1": "2005-01-16T16:28:53.128",
+              "time2": "2005-01-16T16:38:53.128",
+              "observationduration": "600",
+              "quantity": "Emission",
+              "rightasc1": "47.999731",
+              "rightasc2": "49.734383",
+              "declination1": "-0.777175",
+              "declination2": "3.112749"
+            },
+            "pds": {
+              "bundleid": "COUVIS_0010",
+              "datasetid": "CO-S-UVIS-2-CUBE-V1.2",
+              "productid": "FUV2005_016_16_28",
+              "primarylid": null,
+              "productcreationtime": "2011-09-19T00:00:00.000",
+              "primaryfilespec": "COUVIS_0010/DATA/D2005_016/FUV2005_016_16_28.LBL",
+              "opusid": "co-uvis-fuv2005_016_16_28",
+              "note": "to acquire moderate distance data in order to determine UV albedo at a range of longitude and phase angles. FUV and EUV use low resolution slit. EUV spectra are binned spectrally and edited spatially. FUV data are at full spectral, spatial resolution."
+            },
+            "image": {
+              "duration": "120",
+              "greaterpixelsize": "64",
+              "lesserpixelsize": "5",
+              "levels": "65536",
+              "imagetype": "Pushbroom"
+            },
+            "wavelength": {
+              "wavelength1": "0.11",
+              "wavelength2": "0.19",
+              "waveres1": "0.000078",
+              "waveres2": "0.000078",
+              "waveno1": "52631.5789474",
+              "waveno2": "90909.0909091",
+              "wavenores1": "21.641274238",
+              "wavenores2": "64.566115702",
+              "specflag": "Yes",
+              "specsize": "1024",
+              "polarizationtype": "None"
+            },
+            "ring_geometry": {
+              "RINGGEOringradius1": "503025.388",
+              "RINGGEOringradius2": "547742.203",
+              "RINGGEOascendinglongitude1": "333.396",
+              "RINGGEOascendinglongitude2": "340.595",
+              "RINGGEOsubsolarringascendinglong1": "167.753",
+              "RINGGEOsubsolarringascendinglong2": "167.753",
+              "RINGGEOsubobserverringascendinglong1": "352.852",
+              "RINGGEOsubobserverringascendinglong2": "352.852",
+              "RINGGEOJ2000longitude1": "103.986",
+              "RINGGEOJ2000longitude2": "111.185",
+              "RINGGEOsubsolarringlong1": "298.343",
+              "RINGGEOsubsolarringlong2": "298.343",
+              "RINGGEOsubobserverringlong1": "123.442",
+              "RINGGEOsubobserverringlong2": "123.442",
+              "RINGGEOsolarhourangle1": "345.642",
+              "RINGGEOsolarhourangle2": "352.841",
+              "RINGGEOlongitudeWRTobserver1": "-19.743",
+              "RINGGEOlongitudeWRTobserver2": "-12.047",
+              "RINGGEOringazimuthWRTobserver1": "234.742",
+              "RINGGEOringazimuthWRTobserver2": "242.908",
+              "RINGGEOrangetoringintercept1": "110633.705",
+              "RINGGEOrangetoringintercept2": "190881.664",
+              "RINGGEOringcenterdistance1": "464282.895",
+              "RINGGEOringcenterdistance2": "464282.895",
+              "RINGGEOresolution1": "110.52404",
+              "RINGGEOresolution2": "190.69245",
+              "RINGGEOprojectedradialresolution1": "345.03272",
+              "RINGGEOprojectedradialresolution2": "1149.7734",
+              "RINGGEOprojectedlongitudinalresolutionangle1": null,
+              "RINGGEOprojectedlongitudinalresolutionangle2": null,
+              "RINGGEOprojectedlongitudinalresolution1": null,
+              "RINGGEOprojectedlongitudinalresolution2": null,
+              "RINGGEOphase1": "66.67",
+              "RINGGEOphase2": "69.619",
+              "RINGGEOincidence1": "67.159",
+              "RINGGEOincidence2": "67.16",
+              "RINGGEOemission1": "80.492",
+              "RINGGEOemission2": "84.389",
+              "RINGGEOnorthbasedincidence1": "112.84",
+              "RINGGEOnorthbasedincidence2": "112.841",
+              "RINGGEOnorthbasedemission1": "95.611",
+              "RINGGEOnorthbasedemission2": "99.508",
+              "RINGGEOsolarringelevation1": "-22.841",
+              "RINGGEOsolarringelevation2": "-22.84",
+              "RINGGEOobserverringelevation1": "-9.508",
+              "RINGGEOobserverringelevation2": "-5.611",
+              "RINGGEOringcenterphase1": "154.376",
+              "RINGGEOringcenterphase2": "154.376",
+              "RINGGEOringcenterincidence1": "67.152",
+              "RINGGEOringcenterincidence2": "67.152",
+              "RINGGEOringcenteremission1": "87.712",
+              "RINGGEOringcenteremission2": "87.712",
+              "RINGGEOringcenternorthbasedincidence1": "112.848",
+              "RINGGEOringcenternorthbasedincidence2": "112.848",
+              "RINGGEOringcenternorthbasedemission1": "92.288",
+              "RINGGEOringcenternorthbasedemission2": "92.288",
+              "RINGGEOsolarringopeningangle1": "-22.849",
+              "RINGGEOsolarringopeningangle2": "-22.849",
+              "RINGGEOobserverringopeningangle1": "-2.287",
+              "RINGGEOobserverringopeningangle2": "-2.287",
+              "RINGGEOedgeonradius1": null,
+              "RINGGEOedgeonradius2": null,
+              "RINGGEOedgeonascendinglongitude1": null,
+              "RINGGEOedgeonascendinglongitude2": null,
+              "RINGGEOedgeonJ2000longitude1": null,
+              "RINGGEOedgeonJ2000longitude2": null,
+              "RINGGEOedgeonsolarhourangle1": null,
+              "RINGGEOedgeonsolarhourangle2": null,
+              "RINGGEOrangetoedgeonpoint1": null,
+              "RINGGEOrangetoedgeonpoint2": null,
+              "RINGGEOedgeonradialresolution1": null,
+              "RINGGEOedgeonradialresolution2": null,
+              "RINGGEOedgeonaltitude1": null,
+              "RINGGEOedgeonaltitude2": null,
+              "RINGGEOringpoleclockangle": null,
+              "RINGGEOringdiameterpixels": null,
+              "RINGGEOringpolepositionangle": null,
+              "RINGGEOcenterxcoordinate": null,
+              "RINGGEOcenterycoordinate": null,
+              "RINGGEOringintercepttime1": null,
+              "RINGGEOringintercepttime2": null
+            },
+            "surface_geometry": {
+              "surfacegeometrytargetlist": null
+            },
+            "instrument_specific": {
+              "COUVISchannel": "FUV",
+              "COUVISobservationtype": "None",
+              "COUVISoccultationportstate": "N/A",
+              "COUVISslitstate": "Low Resolution",
+              "COUVISline1": "0",
+              "COUVISline2": "63",
+              "COUVISlinebin": "1",
+              "COUVISband1": "0",
+              "COUVISband2": "1023",
+              "COUVISbandbin": "1",
+              "COUVISsamples": "5",
+              "COUVIScompressiontype": "SQRT_9",
+              "COUVISintegrationduration": "120",
+              "COUVISdwelltime": null,
+              "COUVIStestpulsestate": "Off"
+            },
+            "_response": ""
+          },
+          "tool_call_id": "call_7yjJFlOx1jmDIVvmtf1kOeWZ",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:35:21.937188+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:35:21.938073+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "args": "{\"candidates\":[{\"path\":\"holdings/volumes/COUVIS_0xxx/COUVIS_0010/\",\"dataset_id\":\"CO-S-UVIS-2-CUBE-V1.5\",\"title\":\"CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA\",\"pds_version\":\"PDS3\",\"mission\":\"Cassini\",\"node\":\"rms\",\"reasoning\":\"Stage 1: This COUVIS volume\u2019s voldesc.cat lists the Saturn-tour UVIS spectral-cube dataset (CUBE). Stage 2 (OPUS): Rhea FUV surface observations in this dataset (e.g., productid FUV2005_016_00_31) report wavelength1=0.11 and wavelength2=0.19 (microns), i.e., 110\u2013190 nm, which is the UVIS/FUV wavelength span used for surface/geochemical analysis.\"},{\"path\":\"holdings/volumes/COUVIS_0xxx/COUVIS_0010/\",\"dataset_id\":\"CO-S-UVIS-2-SPEC-V1.5\",\"title\":\"CASSINI ULTRAVIOLET IMAGING SPECTROGRAPH DATA\",\"pds_version\":\"PDS3\",\"mission\":\"Cassini\",\"node\":\"rms\",\"reasoning\":\"Stage 1: Same archive volume also carries the UVIS extracted spectra dataset (SPEC), which is another common form used for surface composition analysis. The associated Rhea FUV products in OPUS show the same FUV spectral coverage of 0.11\u20130.19 microns (110\u2013190 nm).\"}],\"summary\":\"From OPUS metadata for Cassini UVIS FUV Rhea surface observations archived in COUVIS_0010 (PDS3 CO-S-UVIS-2-CUBE/SPEC), the FUV wavelength range is 0.11\u20130.19 \u00b5m, i.e., 110\u2013190 nm.\"}",
+          "tool_call_id": "call_TUhxYxA9nHP2LCofx566JXDv",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 15341,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 12672,
+        "output_tokens": 1369,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 951,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-13 00:35:45.355817+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-13 00:35:22+00:00"
+      },
+      "provider_response_id": "chatcmpl-DerrGrq0ehKgVIcL9IbWiou21JcS9",
+      "finish_reason": "tool_call",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "content": "Final result processed.",
+          "tool_call_id": "call_TUhxYxA9nHP2LCofx566JXDv",
+          "metadata": null,
+          "timestamp": "2026-05-13 00:35:45.357056+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-13 00:35:45.357079+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1ec0-9489-7541-be9d-627066f69766",
+      "metadata": null
+    }
+  ],
+  "error": null
+}
