@@ -16,8 +16,21 @@ dependencies = [
     "openpyxl",
 ]
 
-[tool.setuptools.package-dir]
-pydantic_code = "."
+[tool.setuptools]
+packages = [
+    "pydantic_code",
+    "pydantic_code.live_finder",
+    "pydantic_code.catalog_finder",
+    "pydantic_code.tools",
+    "pydantic_code.scripts",
+]
 
-[tool.setuptools.packages]
-find = {include = ["pydantic_code", "pydantic_code.*"], where = [".."]}
+[tool.setuptools.package-dir]
+"pydantic_code" = "."
+"pydantic_code.live_finder" = "live_finder"
+"pydantic_code.catalog_finder" = "catalog_finder"
+"pydantic_code.tools" = "tools"
+"pydantic_code.scripts" = "scripts"
+
+[tool.setuptools.package-data]
+"pydantic_code" = ["data/*.xlsx"]
