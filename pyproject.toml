@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pds-dataset-finder"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = [
+    "pydantic-ai>=0.0.13",
+    "fastmcp>=2.0.0",
+    "httpx>=0.27",
+    "rapidfuzz>=3.0",
+    "loguru>=0.7",
+    "python-dotenv",
+    "openpyxl",
+]
+
+[tool.setuptools.package-dir]
+pydantic_code = "."
+
+[tool.setuptools.packages]
+find = {include = ["pydantic_code", "pydantic_code.*"], where = [".."]}

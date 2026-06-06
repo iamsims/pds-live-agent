@@ -2,7 +2,24 @@
 
 Agentic system for finding NASA Planetary Data System (PDS) datasets from natural-language research questions. Uses pydantic-ai agents with hosted MCP tool servers to navigate live PDS archive trees and faceted search APIs.
 
-See [live_finder/README.md](live_finder/README.md) for setup and usage instructions.
+## Setup
+
+```bash
+git clone <repo-url> pydantic_code
+cd pydantic_code
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+cp .env.example .env   # then add your API keys
+```
+
+## Run
+
+```bash
+python demo.py
+```
+
+See [live_finder/README.md](live_finder/README.md) for detailed usage and batch mode.
 
 ## Codebase structure
 
