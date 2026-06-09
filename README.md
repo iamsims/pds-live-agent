@@ -27,8 +27,11 @@ See [live_finder/README.md](live_finder/README.md) for detailed usage and batch 
 
 | File | Purpose |
 |---|---|
-| `finder.py` | Unified agent factory — builds a pydantic-ai agent in `live` or `catalog` mode with shared output schema |
-| `live_finder/pds_finder.py` | Live finder: router agent, worker agent, `LayeredFinder`, system prompt builder, MCP wiring |
+| `finder.py` | Catalog-mode agent factory (`build_finder`) with the shared output schema; live discovery lives in `live_finder/` |
+| `live_finder/pds_finder.py` | Live finder: `LiveFinder` (router + per-node layered worker) and the `run_live_query` / `run_live_batch` wrappers |
+| `live_finder/prompts.py` | Router prompt + Stage 1 / Stage 2 worker prompt builders |
+| `live_finder/stage2.py` | Per-node Stage 2 toolset specs (prompt block + MCP allow-list) |
+| `live_finder/transports.py` | Hosted Stage 1 / Stage 2 MCP transport builders |
 | `catalog_finder/pds_catalog_finder.py` | Catalog finder: single-agent mode using pre-scraped catalog search (alpha/akd-labs approach) |
 | `tools/node_registry.py` | Per-node configuration: workflow steps, abbreviations, missions, base URLs for all PDS nodes |
 
@@ -55,7 +58,6 @@ Stage 1 tools — live HTTP directory walking:
 |---|---|
 | `scripts/run_eval.py` | Full eval harness: runs layered + catalog side-by-side, produces `comparison.json` |
 | `scripts/eval_helpers.py` | Shared helpers: trace extraction, match checking, usage normalization |
-| `scripts/test_nodes.py` | Per-node smoke tests and prompt tuning (blind eval against gold dataset) |
 
 ### Data
 
@@ -63,3 +65,6 @@ Stage 1 tools — live HTTP directory walking:
 |---|---|
 | `data/gold_datasets.xlsx` | Gold dataset: 96 queries with expected PDS identifiers |
 | `data/pds_node_classification.xlsx` | Node classification for queries across all PDS nodes |
+
+
+The final evaluation data exists in output/eval_20260512_203651. 

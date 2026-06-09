@@ -372,6 +372,6 @@ def get_finder_config(
     )
     return FinderConfig(
         system_prompt=PDS_CATALOG_FINDER_SYSTEM_PROMPT,
-        mcp_server=server.filtered(_catalog_tool_filter),
+        toolsets=[server.filtered(_catalog_tool_filter)],
         output_type=PDSCatalogFindDatasetOutput,
     )

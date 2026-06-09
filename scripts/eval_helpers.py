@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 from dataclasses import asdict
 
-from pydantic_code.finder import FindDatasetOutput, build_finder
+from pydantic_code.finder import FindDatasetOutput
 
 
 # ---------------------------------------------------------------------------
@@ -138,25 +138,6 @@ def print_tool_calls(tool_calls: list[dict], label: str) -> None:
             output_str = output_str[:500] + "... (truncated)"
         print(f"    tool_output: {output_str}")
         print()
-
-
-# ---------------------------------------------------------------------------
-# Single-query runner
-# ---------------------------------------------------------------------------
-
-
-async def run_query(kind: str, query: str, node: str | None = None, max_retries: int = 2) -> tuple[FindDatasetOutput, list]:
-    """Run one query through a finder and return (output, raw_messages)."""
-    for attempt in range(1, max_retries + 1):
-        agent = build_finder(kind=kind, node=node)  # type: ignore[arg-type]
-        async with agent:
-            result = await agent.run(query)
-        output = result.output
-        messages = list(result.all_messages())
-        if output.candidates or attempt == max_retries:
-            return output, messages
-        print(f"  [{kind}] Attempt {attempt}: 0 candidates, retrying...")
-    return output, messages
 
 
 # ---------------------------------------------------------------------------

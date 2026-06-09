@@ -6,14 +6,14 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from pydantic_code.live_finder.pds_finder import run_layered_query
+from pydantic_code.live_finder.pds_finder import run_live_query
 
 
 async def main():
     query = "What calibrated spectral data exists for Saturn's rings from Cassini UVIS?"
 
     print(f"Query: {query}\n")
-    decision, output = await run_layered_query(query)
+    decision, output = await run_live_query(query)
 
     print(f"Routed to: {decision.primary_node} ({decision.confidence})")
     print(f"Router reasoning: {decision.reasoning}\n")

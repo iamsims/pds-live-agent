@@ -61,10 +61,10 @@ export FAST_MCP_AUTH="your-token"      # Bearer token for the hosted MCP servers
 
 ```python
 import asyncio
-from pydantic_code.live_finder.pds_finder import run_layered_query
+from pydantic_code.live_finder.pds_finder import run_live_query
 
 async def main():
-    decision, output = await run_layered_query(
+    decision, output = await run_live_query(
         "What calibrated spectral data exists for Saturn's rings from Cassini UVIS?"
     )
     print(f"Routed to: {decision.primary_node} ({decision.confidence})")
@@ -77,12 +77,12 @@ asyncio.run(main())
 
 The layered mode handles routing automatically — no need to specify a node. The router classifies the query, then the worker navigates the appropriate archive with Stage 1 + Stage 2 tools.
 
-For batch usage, use `LayeredFinder` as an async context manager to reuse MCP connections across queries:
+For batch usage, use `LiveFinder` as an async context manager to reuse MCP connections across queries:
 
 ```python
-from pydantic_code.live_finder.pds_finder import LayeredFinder
+from pydantic_code.live_finder.pds_finder import LiveFinder
 
-async with LayeredFinder() as lf:
+async with LiveFinder() as lf:
     for q in queries:
         decision, output = await lf.run(q)
 ```

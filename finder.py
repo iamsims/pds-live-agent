@@ -1,27 +1,18 @@
-"""Unified pydantic-ai PDS dataset finder — live or catalog mode.
-
-Pick a configuration via the ``kind`` argument:
-
-    build_finder(kind="live", node="ppi")
-        → connects via stdio to ``pydantic_code.mcp_server`` (subprocess);
-          system prompt is PPI-focused (single-node mode). ``node`` is
-          required for live mode — for runtime classification of an
-          unknown-node query, use ``LayeredFinder`` from
-          ``pydantic_code.live_finder.pds_finder`` instead.
+"""Unified pydantic-ai PDS dataset finder — catalog mode.
 
     build_finder(kind="catalog")
         → connects via streamable HTTP to a FastMCP cloud server fronting
           ``akd_ext.tools.pds.pds_catalog`` (uses
           ``PDS_CATALOG_MCP_URL`` + ``FAST_MCP_AUTH`` from the environment).
 
-Both modes share the same model, output schema, and run settings — only the
-system prompt and MCP server differ, so any difference in eval results comes
-from the tool layer (live HTTP vs pre-scraped catalog) rather than the agent
-harness.
+For **live** dataset discovery use the layered (Stage 1 + Stage 2) finder in
+``pydantic_code.live_finder.pds_finder`` — a router-driven ``LiveFinder``
+that classifies the query to a node and runs that node's layered worker. See
+``LiveFinder`` / ``run_live_query`` / ``run_live_batch``.
 
 Usage:
     >>> from pydantic_code.finder import build_finder
-    >>> agent = build_finder(kind="live", node="ppi")
+    >>> agent = build_finder(kind="catalog")
     >>> async with agent:
     ...     result = await agent.run("Cassini magnetospheric plasma data")
     >>> for c in result.output.candidates:
@@ -35,11 +26,10 @@ from typing import Literal
 
 from pydantic import BaseModel, Field
 from pydantic_ai import Agent
-from pydantic_ai.mcp import MCPServerStdio, MCPServerStreamableHTTP
 from pydantic_ai.settings import ModelSettings
 
 
-FinderKind = Literal["live", "catalog"]
+FinderKind = Literal["catalog"]
 
 
 # ---------------------------------------------------------------------------
@@ -49,20 +39,19 @@ FinderKind = Literal["live", "catalog"]
 
 @dataclass(frozen=True)
 class FinderConfig:
-    """Everything a finder mode must supply."""
+    """Everything a finder mode must supply.
+
+    ``toolsets`` is a list so the agent can be given one or more MCP toolsets.
+    """
 
     system_prompt: str
-    mcp_server: MCPServerStdio | MCPServerStreamableHTTP
+    toolsets: list
     output_type: type[BaseModel]
 
 
 def _get_config(kind: FinderKind, **kwargs) -> FinderConfig:
     """Lazy-import the config from the appropriate mode module."""
-    if kind == "live":
-        from pydantic_code.live_finder.pds_finder import get_finder_config
-
-        return get_finder_config(node=kwargs.get("node"))
-    elif kind == "catalog":
+    if kind == "catalog":
         from pydantic_code.catalog_finder.pds_catalog_finder import get_finder_config
 
         return get_finder_config(
@@ -134,40 +123,38 @@ class FindDatasetOutput(BaseModel):
 
 
 def build_finder(
-    kind: FinderKind,
+    kind: FinderKind = "catalog",
     *,
-    node: str | None = None,
     model: str = "openai:gpt-5.2",
     reasoning_effort: Literal["low", "medium", "high"] = "high",
     catalog_url: str | None = None,
     catalog_headers: dict[str, str] | None = None,
 ) -> Agent[None, FindDatasetOutput]:
-    """Build a pydantic-ai Agent in live or catalog mode.
-
-    The two modes share model, output schema, and run settings; only the
-    system prompt and MCP server are swapped.
+    """Build a pydantic-ai Agent in catalog mode.
 
     Use inside ``async with agent:`` — that context starts the MCP transport
     once and reuses it for every ``agent.run(...)`` call inside the block.
 
+    For live dataset discovery use the router-driven ``LiveFinder`` /
+    ``run_live_query`` in ``pydantic_code.live_finder.pds_finder`` instead.
+
     Args:
-        kind: ``"live"`` or ``"catalog"``.
-        node: PDS node identifier. Required for live mode (single-node
-            prompt). Ignored for catalog mode. For runtime node
-            classification, use ``LayeredFinder`` in
-            ``pydantic_code.live_finder.pds_finder`` instead of passing
-            ``node=None`` here.
-        model: pydantic-ai model string (kept identical between modes).
-        reasoning_effort: For reasoning models. Kept identical between modes.
-        catalog_url: Override ``$PDS_CATALOG_MCP_URL`` (catalog mode only).
-        catalog_headers: Override the default Bearer-from-env header
-            (catalog mode only).
+        kind: Only ``"catalog"`` is supported. Live discovery is handled by
+            the layered finder in ``pydantic_code.live_finder.pds_finder``.
+        model: pydantic-ai model string.
+        reasoning_effort: For reasoning models.
+        catalog_url: Override ``$PDS_CATALOG_MCP_URL``.
+        catalog_headers: Override the default Bearer-from-env header.
     """
-    config = _get_config(kind, node=node, catalog_url=catalog_url, catalog_headers=catalog_headers)
+    config = _get_config(
+        kind,
+        catalog_url=catalog_url,
+        catalog_headers=catalog_headers,
+    )
 
     return Agent(
         model,
-        toolsets=[config.mcp_server],
+        toolsets=config.toolsets,
         output_type=FindDatasetOutput,
         system_prompt=config.system_prompt,
         model_settings=ModelSettings(extra_body={"reasoning_effort": reasoning_effort}),

@@ -51,7 +51,7 @@ load_dotenv()
 
 from pydantic_ai.usage import RunUsage  # noqa: E402
 from pydantic_code.finder import FindDatasetOutput, build_finder  # noqa: E402
-from pydantic_code.live_finder.pds_finder import LayeredFinder  # noqa: E402
+from pydantic_code.live_finder.pds_finder import LiveFinder  # noqa: E402
 from pydantic_code.scripts.eval_helpers import (  # noqa: E402
     check_match,
     extract_tool_calls,
@@ -119,7 +119,7 @@ def _load_jsonl_results(path: Path) -> list[dict[str, Any]]:
 
 
 async def _process_layered(
-    lf: LayeredFinder,
+    lf: LiveFinder,
     row: dict[str, Any],
     sem: asyncio.Semaphore,
     idx: int,
@@ -257,7 +257,7 @@ async def run_layered(
     sem = asyncio.Semaphore(max(1, concurrency))
     jsonl_lock = asyncio.Lock() if jsonl_path is not None else None
 
-    async with LayeredFinder(model=model, reasoning_effort=effort) as lf:
+    async with LiveFinder(model=model, reasoning_effort=effort) as lf:
         t_warm = time.monotonic()
         await lf.warm()
         warm_elapsed = time.monotonic() - t_warm
