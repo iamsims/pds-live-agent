@@ -1,0 +1,27 @@
+{
+  "query": "What is the dominant carbonate type across most of Ceres, and where are sodium carbonates concentrated?",
+  "row": {
+    "row_index": 71,
+    "paper": "De Sanctis, M.C., et al., 2018. Ceres's global and localized mineralogical composition determined by Dawn's VIR. Meteoritics & Planetary Science, 53(9), pp.1844-1865. DOI:10.1111/maps.13104",
+    "query": "What is the dominant carbonate type across most of Ceres, and where are sodium carbonates concentrated?",
+    "expected_ids": "DAWN-A-VIR-3-RDR-IR-CERES-SPECTRA-V1.0"
+  },
+  "elapsed_s": 807.11,
+  "n_candidates": 0,
+  "n_tool_calls": 0,
+  "tool_call_histogram": {},
+  "usage": {
+    "input_tokens": 6420060,
+    "output_tokens": 38372,
+    "cache_read_tokens": 6133888,
+    "cache_write_tokens": 0,
+    "total_tokens": 6458432,
+    "requests": 43
+  },
+  "tool_calls": [],
+  "full_trace": [
+    {
+      "error": "ModelHTTPError: status_code: 400, model_name: gpt-5.2, body: {'message': 'Input tokens exceed the configured limit of 272000 tokens. Your messages resulted in 274871 tokens. Please reduce the length of the messages.', 'type': 'invalid_request_error', 'param': 'messages', 'code': 'context_length_exceeded'}"
+    }
+  ]
+}

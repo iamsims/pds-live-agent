@@ -1,0 +1,2521 @@
+{
+  "row_index": 40,
+  "query": "Is Jupiter's dawnside magnetodisk approximately in radial force balance between 20 and 80 R_J?",
+  "row": {
+    "row_index": 40,
+    "paper": "Liu, Z.Y., et al., 2024. Juno observations of Jupiter's magnetodisk plasma: Implications for equilibrium and dynamics. JGR Space Physics, 129(11), e2024JA032976. DOI:10.1029/2024JA032976",
+    "query": "Is Jupiter's dawnside magnetodisk approximately in radial force balance between 20 and 80 R_J?",
+    "expected_ids_raw": "JNO-J-3-FGM-CAL-V1.0\nJNO-J/SW-JAD-5-CALIBRATED-V1.0\nJNO-J-JED-3-CDR-V1.0",
+    "expected_ids": [
+      "JNO-J-3-FGM-CAL-V1.0",
+      "JNO-J/SW-JAD-5-CALIBRATED-V1.0",
+      "JNO-J-JED-3-CDR-V1.0"
+    ]
+  },
+  "elapsed_s": 89.6,
+  "router_node": "ppi",
+  "n_candidates": 8,
+  "n_tool_calls": 12,
+  "usage": {
+    "input_tokens": 107578,
+    "output_tokens": 5274,
+    "cache_read_tokens": 80128,
+    "cache_write_tokens": 0,
+    "total_tokens": 112852,
+    "requests": 7
+  },
+  "tool_calls": [
+    {
+      "tool_name": "pds_list_missions",
+      "tool_input": {
+        "node": "ppi"
+      },
+      "tool_output": "{'missions': [{'name': 'cassini', 'description': \"Cassini at Saturn (CAPS, MAG, MIMI-CHEMS/INCA/LEMMS, RPWS, INMS). Also filter 'CO' for PDS3 IDs.\"}, {'name': 'galileo', 'description': \"Galileo at Jupiter + flybys of Earth/Venus/asteroids (EPD, MAG, PLS, PWS, PPR, HIC, SSD, RSS). Also filter 'GO' for PDS3 IDs.\"}, {'name': 'juno', 'description': \"Juno at Jupiter (Waves, JADE/JAD, JEDI/JED, FGM, ASC). Also filter 'JNO' for PDS3 IDs.\"}, {'name': 'VG1', 'description': \"Voyager 1 at Jupiter, Saturn, and interplanetary (CRS, LECP, MAG, PLS, PWS, PRA, RSS). Also filter 'vg1' for PDS4.\"}, {'name': 'VG2', 'description': \"Voyager 2 at Jupiter, Saturn, Uranus, Neptune, and interplanetary (CRS, LECP, MAG, PLS, PWS, PRA, RSS). Also filter 'vg2' for PDS4.\"}, {'name': 'MESS', 'description': \"MESSENGER at Mercury (EPPS incl. FIPS & EPS, MAG). Also filter 'messenger' for PDS4 bundle. Target: Mercury.\"}, {'name': 'MEX', 'description': 'Mars Express (ASPERA-3 incl. ELS/IMA/NPI, MARSIS). Target: Mars.'}, {'name': 'maven', 'description': 'MAVEN at Mars (MAG, LPW, SEP, STATIC, SWEA, SWIA, EUV, ROSE). Target: Mars.'}, {'name': 'P10', 'description': \"Pioneer 10 at Jupiter (CPI, CRT, GTT, HVM, PA, TRD, UV). Also filter 'p10' for PDS4.\"}, {'name': 'P11', 'description': \"Pioneer 11 at Jupiter and Saturn (CPI, CRT, FGM, GTT, HVM, PA, TRD, UV). Also filter 'p11' for PDS4.\"}, {'name': 'ULY', 'description': \"Ulysses at Jupiter and interplanetary (COSPIN, EPAC, HISCALE, SWOOPS, VHM-FGM, URAP, GAS, GRB, SCE, SWICS). Also filter 'ulysses' for PDS4.\"}, {'name': 'NH', 'description': 'New Horizons at Jupiter and Pluto (PEPSSI, SWAP). Target: Jupiter, Pluto.'}, {'name': 'PVO', 'description': \"Pioneer Venus Orbiter (OEFD, OETP, OIMS, OMAG, ONMS, ORPA, ORSE). Also filter 'pvo' for PDS4. Target: Venus.\"}, {'name': 'LP', 'description': \"Lunar Prospector (MAG, ER \u2014 electron reflectometer). Also filter 'lp' for PDS4. Target: Moon.\"}, {'name': 'MGS', 'description': \"Mars Global Surveyor (MAG/ER, RSS). Also filter 'mgs' for PDS4. Target: Mars.\"}, {'name': 'NEAR', 'description': 'NEAR Shoemaker (MAG). Target: Eros, Earth flyby.'}, {'name': 'M10', 'description': 'Mariner 10 (MAG, PLS). Target: Mercury.'}, {'name': 'LRO', 'description': \"Lunar Reconnaissance Orbiter (CRaTER). Also filter 'lro' for PDS4. Target: Moon.\"}, {'name': 'ODY', 'description': 'Mars Odyssey (MARIE \u2014 radiation). Target: Mars.'}, {'name': 'MSL', 'description': 'Mars Science Laboratory / Curiosity (RAD \u2014 radiation). Target: Mars.'}, {'name': 'insight', 'description': 'InSight (IFG \u2014 fluxgate magnetometer). Target: Mars.'}, {'name': 'vex', 'description': 'Venus Express (ASPERA-4 ELS, MAG). Target: Venus.'}, {'name': 'ICE', 'description': 'International Cometary Explorer (EPAS, MAG, PLAWAV, RADWAV, SWPLAS). Target: Giacobini-Zinner.'}, {'name': 'GIO', 'description': 'Giotto (IMS incl. HERS/HIS, JPA, MAG). Target: Halley.'}, {'name': 'VEGA', 'description': 'Vega 1 & 2 (MISCHA, PM1, TNM). Target: Halley.'}, {'name': 'DS1', 'description': 'Deep Space 1 (PEPE). Target: Borrelly.'}, {'name': 'radiojove', 'description': 'Radio JOVE ground-based radio observations of Jupiter.'}], 'count': 27, 'note': \"Node 'ppi' has no mission sub-directories. Use each mission 'name' as the filter keyword: pds_list_dataset_dirs(path='data/', node='ppi', filter='<name>').\"}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/",
+        "node": "ppi",
+        "filter": "juno"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/', 'total': 781, 'filtered_total': 1, 'dirs': [{'name': 'juno-waves-electron-density', 'path': 'data/juno-waves-electron-density/', 'pds_hint': 'PDS4'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/",
+        "node": "ppi",
+        "filter": "JNO"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/', 'total': 781, 'filtered_total': 14, 'dirs': [{'name': 'JNO-E_J_SS-WAV-2-EDR-V1.0', 'path': 'data/JNO-E_J_SS-WAV-2-EDR-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-E_J_SS-WAV-3-CDR-BSTFULL-V2.0', 'path': 'data/JNO-E_J_SS-WAV-3-CDR-BSTFULL-V2.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-E_J_SS-WAV-3-CDR-SRVFULL-V2.0', 'path': 'data/JNO-E_J_SS-WAV-3-CDR-SRVFULL-V2.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-J-3-FGM-CAL-V1.0', 'path': 'data/JNO-J-3-FGM-CAL-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-J-ASC-2-IMG-V1.0', 'path': 'data/JNO-J-ASC-2-IMG-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-J-ASC-3-RAD-V1.0', 'path': 'data/JNO-J-ASC-3-RAD-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-J-JAD-5-MOMENTS-V1.0', 'path': 'data/JNO-J-JAD-5-MOMENTS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-J-JED-2-EDR-V1.0', 'path': 'data/JNO-J-JED-2-EDR-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-J-JED-3-CDR-V1.0', 'path': 'data/JNO-J-JED-3-CDR-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-J_SW-JAD-2-UNCALIBRATED-V1.0', 'path': 'data/JNO-J_SW-JAD-2-UNCALIBRATED-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-J_SW-JAD-3-CALIBRATED-V1.0', 'path': 'data/JNO-J_SW-JAD-3-CALIBRATED-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-J_SW-JAD-5-CALIBRATED-V1.0', 'path': 'data/JNO-J_SW-JAD-5-CALIBRATED-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-SS-3-FGM-CAL-V1.0', 'path': 'data/JNO-SS-3-FGM-CAL-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'JNO-SW-JAD-2-UNCALIBRATED-V1.0', 'path': 'data/JNO-SW-JAD-2-UNCALIBRATED-V1.0/', 'pds_hint': 'PDS3'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/",
+        "node": "ppi",
+        "filter": "galileo"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/', 'total': 781, 'filtered_total': 20, 'dirs': [{'name': 'galileo-bundle', 'path': 'data/galileo-bundle/', 'pds_hint': 'PDS4'}, {'name': 'galileo-epd-cal-corrected', 'path': 'data/galileo-epd-cal-corrected/', 'pds_hint': 'PDS4'}, {'name': 'galileo-epd-prejup-raw', 'path': 'data/galileo-epd-prejup-raw/', 'pds_hint': 'PDS4'}, {'name': 'galileo-hic-jup-calibrated', 'path': 'data/galileo-hic-jup-calibrated/', 'pds_hint': 'PDS4'}, {'name': 'galileo-hic-jup-derived', 'path': 'data/galileo-hic-jup-derived/', 'pds_hint': 'PDS4'}, {'name': 'galileo-hic-jup-raw', 'path': 'data/galileo-hic-jup-raw/', 'pds_hint': 'PDS4'}, {'name': 'galileo-hic-prejup-derived', 'path': 'data/galileo-hic-prejup-derived/', 'pds_hint': 'PDS4'}, {'name': 'galileo-mag-jup-calibrated', 'path': 'data/galileo-mag-jup-calibrated/', 'pds_hint': 'PDS4'}, {'name': 'galileo-mag-jup-raw', 'path': 'data/galileo-mag-jup-raw/', 'pds_hint': 'PDS4'}, {'name': 'galileo-mag-prejupiter-calibrated', 'path': 'data/galileo-mag-prejupiter-calibrated/', 'pds_hint': 'PDS4'}, {'name': 'galileo-pls-jup-cal', 'path': 'data/galileo-pls-jup-cal/', 'pds_hint': 'PDS4'}, {'name': 'galileo-pls-jup-derived', 'path': 'data/galileo-pls-jup-derived/', 'pds_hint': 'PDS4'}, {'name': 'galileo-pls-prejup-cal', 'path': 'data/galileo-pls-prejup-cal/', 'pds_hint': 'PDS4'}, {'name': 'galileo-ppr-prejup-derived', 'path': 'data/galileo-ppr-prejup-derived/', 'pds_hint': 'PDS4'}, {'name': 'galileo-ppr-prejup-raw', 'path': 'data/galileo-ppr-prejup-raw/', 'pds_hint': 'PDS4'}, {'name': 'galileo-pws-jup-der', 'path': 'data/galileo-pws-jup-der/', 'pds_hint': 'PDS4'}, {'name': 'galileo-rss-jup-der', 'path': 'data/galileo-rss-jup-der/', 'pds_hint': 'PDS4'}, {'name': 'galileo-ssd-jup-derived', 'path': 'data/galileo-ssd-jup-derived/', 'pds_hint': 'PDS4'}, {'name': 'galileo-traj-jup', 'path': 'data/galileo-traj-jup/', 'pds_hint': 'PDS4'}, {'name': 'galileo-traj-prejup', 'path': 'data/galileo-traj-prejup/', 'pds_hint': 'PDS4'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "data/",
+        "node": "ppi",
+        "filter": "GO"
+      },
+      "tool_output": "{'status': 'success', 'path': 'data/', 'total': 781, 'filtered_total': 92, 'dirs': [{'name': 'GO-A-MAG-3-RDR-GASPRA-HIGH-RES-V1.0', 'path': 'data/GO-A-MAG-3-RDR-GASPRA-HIGH-RES-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-MAG-3-RDR-IDA-HIGH-RES-V1.0', 'path': 'data/GO-A-MAG-3-RDR-IDA-HIGH-RES-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-MAG-4-SUMM-GASPRA-SUMMARY-V1.0', 'path': 'data/GO-A-MAG-4-SUMM-GASPRA-SUMMARY-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-MAG-4-SUMM-IDA-SUMMARY-V1.0', 'path': 'data/GO-A-MAG-4-SUMM-IDA-SUMMARY-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PLS-4-SUMM-GET-V1.0', 'path': 'data/GO-A-PLS-4-SUMM-GET-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PLS-4-SUMM-IET-V1.0', 'path': 'data/GO-A-PLS-4-SUMM-IET-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-POS-6-GASPRA-FLYBY-TRAJ-V1.0', 'path': 'data/GO-A-POS-6-GASPRA-FLYBY-TRAJ-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-POS-6-IDA-FLYBY-TRAJ-V1.0', 'path': 'data/GO-A-POS-6-IDA-FLYBY-TRAJ-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PPR-2-EDR-GASPRA-V1.0', 'path': 'data/GO-A-PPR-2-EDR-GASPRA-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PPR-2-EDR-IDA-V1.0', 'path': 'data/GO-A-PPR-2-EDR-IDA-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PPR-3-RDR-GASPRA-V1.0', 'path': 'data/GO-A-PPR-3-RDR-GASPRA-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PPR-3-RDR-IDA-V1.0', 'path': 'data/GO-A-PPR-3-RDR-IDA-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PWS-2-REFDR-GSAFULL-V1.0', 'path': 'data/GO-A-PWS-2-REFDR-GSAFULL-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PWS-2-REFDR-ISAFULL-V1.0', 'path': 'data/GO-A-PWS-2-REFDR-ISAFULL-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PWS-4-SUMM-GSA60S-V1.0', 'path': 'data/GO-A-PWS-4-SUMM-GSA60S-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-A-PWS-4-SUMM-ISA60S-V1.0', 'path': 'data/GO-A-PWS-4-SUMM-ISA60S-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-CAL-PPR-2-EDR-EARTH1-CALIBRATION-V1.0', 'path': 'data/GO-CAL-PPR-2-EDR-EARTH1-CALIBRATION-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-CAL-PPR-2-EDR-EARTH2-CALIBRATION-V1.0', 'path': 'data/GO-CAL-PPR-2-EDR-EARTH2-CALIBRATION-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-CAL-PPR-2-EDR-VENUS-CALIBRATION-V1.0', 'path': 'data/GO-CAL-PPR-2-EDR-VENUS-CALIBRATION-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-D-GDDS-5-DUST-V4.1', 'path': 'data/GO-D-GDDS-5-DUST-V4.1/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-EPD-2-SAMP-EARTH1-PAD-V1.0', 'path': 'data/GO-E-EPD-2-SAMP-EARTH1-PAD-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-EPD-2-SAMP-EARTH2-PAD-V1.0', 'path': 'data/GO-E-EPD-2-SAMP-EARTH2-PAD-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-EPD-4-SUMM-EARTH1-15MIN-V1.0', 'path': 'data/GO-E-EPD-4-SUMM-EARTH1-15MIN-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-EPD-4-SUMM-EARTH2-15MIN-V1.0', 'path': 'data/GO-E-EPD-4-SUMM-EARTH2-15MIN-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-MAG-3-RDR-EARTH1-HIGHRES-V1.0', 'path': 'data/GO-E-MAG-3-RDR-EARTH1-HIGHRES-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-MAG-3-RDR-EARTH2-HIGHRES-V1.0', 'path': 'data/GO-E-MAG-3-RDR-EARTH2-HIGHRES-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-MAG-4-SUMM-E1-GSE_GSM-COORDS-V1.0', 'path': 'data/GO-E-MAG-4-SUMM-E1-GSE_GSM-COORDS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-MAG-4-SUMM-EARTH1-SUMMARY-V1.0', 'path': 'data/GO-E-MAG-4-SUMM-EARTH1-SUMMARY-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-MAG-4-SUMM-EARTH2-SUMMARY-V1.0', 'path': 'data/GO-E-MAG-4-SUMM-EARTH2-SUMMARY-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-PLS-4-SUMM-EARTH1-ET-V1.0', 'path': 'data/GO-E-PLS-4-SUMM-EARTH1-ET-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-PLS-4-SUMM-EARTH2-ET-V1.0', 'path': 'data/GO-E-PLS-4-SUMM-EARTH2-ET-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-POS-6-EARTH1-FLYBY-TRAJ-V1.0', 'path': 'data/GO-E-POS-6-EARTH1-FLYBY-TRAJ-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-POS-6-EARTH2-FLYBY-TRAJ-V1.0', 'path': 'data/GO-E-POS-6-EARTH2-FLYBY-TRAJ-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-POS-6-SUMM-E1-GSE_GSM-COORDS-V1.0', 'path': 'data/GO-E-POS-6-SUMM-E1-GSE_GSM-COORDS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-POS-6-SUMM-E2-GSE_GSM-COORDS-V1.0', 'path': 'data/GO-E-POS-6-SUMM-E2-GSE_GSM-COORDS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-PPR-2-EDR-EARTH1-V1.0', 'path': 'data/GO-E-PPR-2-EDR-EARTH1-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-PPR-2-EDR-EARTH2-V1.0', 'path': 'data/GO-E-PPR-2-EDR-EARTH2-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-PWS-2-EDR-E1WFRM-V1.0', 'path': 'data/GO-E-PWS-2-EDR-E1WFRM-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-PWS-2-EDR-E2WFRM-V1.0', 'path': 'data/GO-E-PWS-2-EDR-E2WFRM-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-PWS-4-SUMM-EARTH1-SA-60S-V1.0', 'path': 'data/GO-E-PWS-4-SUMM-EARTH1-SA-60S-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E-PWS-4-SUMM-EARTH2-SA-60S-V1.0', 'path': 'data/GO-E-PWS-4-SUMM-EARTH2-SA-60S-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E_L_CAL-PPR-3-RDR-EARTH1-V1.0', 'path': 'data/GO-E_L_CAL-PPR-3-RDR-EARTH1-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-E_L_CAL-PPR-3-RDR-EARTH2-V1.0', 'path': 'data/GO-E_L_CAL-PPR-3-RDR-EARTH2-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-EPD-2-REDR-HIGHRES-SECTOR-V1.0', 'path': 'data/GO-J-EPD-2-REDR-HIGHRES-SECTOR-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-EPD-2-REDR-RTS-SCAN-AVG-V1.0', 'path': 'data/GO-J-EPD-2-REDR-RTS-SCAN-AVG-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-HIC-2-EDR-RAW-V1.0', 'path': 'data/GO-J-HIC-2-EDR-RAW-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-HIC-3-RDR-HIGHRES-COUNTRATE-V1.0', 'path': 'data/GO-J-HIC-3-RDR-HIGHRES-COUNTRATE-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-HIC-3-RDR-SURVEY-COUNTRATE-V1.0', 'path': 'data/GO-J-HIC-3-RDR-SURVEY-COUNTRATE-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-HIC-5-DDR-ENERGETIC-ION-COMP-V1.0', 'path': 'data/GO-J-HIC-5-DDR-ENERGETIC-ION-COMP-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-MAG-2-REDR-RAW-DATA-V1.0', 'path': 'data/GO-J-MAG-2-REDR-RAW-DATA-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-MAG-3-RDR-HIGHRES-V1.0', 'path': 'data/GO-J-MAG-3-RDR-HIGHRES-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0', 'path': 'data/GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PLS-2-EDR-RAW-TELEM-PACKETS-V1.0', 'path': 'data/GO-J-PLS-2-EDR-RAW-TELEM-PACKETS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PLS-3-RDR-FULLRES-V1.0', 'path': 'data/GO-J-PLS-3-RDR-FULLRES-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PLS-4-SUMM-AVG-COUNTS-V1.0', 'path': 'data/GO-J-PLS-4-SUMM-AVG-COUNTS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PLS-4-SUMM-BROWSE-V1.0', 'path': 'data/GO-J-PLS-4-SUMM-BROWSE-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PLS-5-RTS-MOMENTS-V1.0', 'path': 'data/GO-J-PLS-5-RTS-MOMENTS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0', 'path': 'data/GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-POS-6-REDR-ROTOR-ATTITUDE-V1.0', 'path': 'data/GO-J-POS-6-REDR-ROTOR-ATTITUDE-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0', 'path': 'data/GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-POS-6-SC-TRAJ-MOON-COORDS-V1.0', 'path': 'data/GO-J-POS-6-SC-TRAJ-MOON-COORDS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PWS-2-EDR-WAVEFORM-10KHZ-V1.0', 'path': 'data/GO-J-PWS-2-EDR-WAVEFORM-10KHZ-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PWS-2-EDR-WAVEFORM-1KHZ-V1.0', 'path': 'data/GO-J-PWS-2-EDR-WAVEFORM-1KHZ-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PWS-2-EDR-WAVEFORM-80KHZ-V1.0', 'path': 'data/GO-J-PWS-2-EDR-WAVEFORM-80KHZ-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PWS-2-REDR-LPW-SA-FULL-V1.0', 'path': 'data/GO-J-PWS-2-REDR-LPW-SA-FULL-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PWS-2-REDR-RTS-SA-FULL-V1.0', 'path': 'data/GO-J-PWS-2-REDR-RTS-SA-FULL-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PWS-4-SUMM-SA60S-V1.0', 'path': 'data/GO-J-PWS-4-SUMM-SA60S-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-PWS-5-DDR-PLASMA-DENSITY-FULL-V1.0', 'path': 'data/GO-J-PWS-5-DDR-PLASMA-DENSITY-FULL-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-RSS-5-ROCC-V1.0', 'path': 'data/GO-J-RSS-5-ROCC-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J-SSD-5-DDR-STAR-SENSOR-V1.0', 'path': 'data/GO-J-SSD-5-DDR-STAR-SENSOR-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J_C-PPR-3-RDR-SL9-IMPACT-V1.0', 'path': 'data/GO-J_C-PPR-3-RDR-SL9-IMPACT-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-J_JSA_X_V_E_A_C-UPL-V1.0', 'path': 'data/GO-J_JSA_X_V_E_A_C-UPL-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-L-PPR-2-EDR-MOON1-V1.0', 'path': 'data/GO-L-PPR-2-EDR-MOON1-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-L-PPR-2-EDR-MOON2-V1.0', 'path': 'data/GO-L-PPR-2-EDR-MOON2-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'go-pls-jup-fitted-parameters', 'path': 'data/go-pls-jup-fitted-parameters/', 'pds_hint': 'PDS4'}, {'name': 'GO-SS-HIC-5-IONFLUXES-OCT89-FLARE-V1.0', 'path': 'data/GO-SS-HIC-5-IONFLUXES-OCT89-FLARE-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-SS-MAG-2-EDR-CRUISE-V1.0', 'path': 'data/GO-SS-MAG-2-EDR-CRUISE-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-SS-MAG-4-SUMM-CRUISE-IRC-V1.0', 'path': 'data/GO-SS-MAG-4-SUMM-CRUISE-IRC-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-SS-MAG-4-SUMM-CRUISE-RTN-V1.0', 'path': 'data/GO-SS-MAG-4-SUMM-CRUISE-RTN-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-SS-POS-6-SUMM-CRUISE-RTN-V1.0', 'path': 'data/GO-SS-POS-6-SUMM-CRUISE-RTN-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-V-EPD-2-SAMP-PAD-V1.0', 'path': 'data/GO-V-EPD-2-SAMP-PAD-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-V-EPD-4-SUMM-5.0MIN-V1.0', 'path': 'data/GO-V-EPD-4-SUMM-5.0MIN-V1.0/', 'pds_hint': None}, {'name': 'GO-V-MAG-3-RDR-VENUS-HIGH-RES-V1.0', 'path': 'data/GO-V-MAG-3-RDR-VENUS-HIGH-RES-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-V-MAG-4-SUMM-VENUS-SUMMARY-V1.0', 'path': 'data/GO-V-MAG-4-SUMM-VENUS-SUMMARY-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-V-PLS-4-SUMM-VET-V1.0', 'path': 'data/GO-V-PLS-4-SUMM-VET-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-V-POS-6-VENUS-TRAJECTORY-V1.0', 'path': 'data/GO-V-POS-6-VENUS-TRAJECTORY-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-V-PPR-2-EDR-VENUS-V1.0', 'path': 'data/GO-V-PPR-2-EDR-VENUS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-V-PPR-3-RDR-VENUS-V1.0', 'path': 'data/GO-V-PPR-3-RDR-VENUS-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-V-PWS-2-REFDR-VSAFULL-V1.0', 'path': 'data/GO-V-PWS-2-REFDR-VSAFULL-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-V-PWS-4-SUMM-VSA60S-V1.0', 'path': 'data/GO-V-PWS-4-SUMM-VSA60S-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-X-PPR-2-EDR-CHECKOUT-V1.0', 'path': 'data/GO-X-PPR-2-EDR-CHECKOUT-V1.0/', 'pds_hint': 'PDS3'}, {'name': 'GO-X-PPR-3-RDR-CHECKOUT-V1.0', 'path': 'data/GO-X-PPR-3-RDR-CHECKOUT-V1.0/', 'pds_hint': 'PDS3'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "node": "ppi",
+        "paths": [
+          "data/JNO-J-3-FGM-CAL-V1.0/",
+          "data/JNO-J-JAD-5-MOMENTS-V1.0/",
+          "data/JNO-J_SW-JAD-5-CALIBRATED-V1.0/",
+          "data/JNO-JED-3-CDR-V1.0/",
+          "data/GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0/",
+          "data/GO-J-MAG-3-RDR-HIGHRES-V1.0/",
+          "data/GO-J-PLS-3-RDR-FULLRES-V1.0/",
+          "data/GO-J-PLS-5-RTS-MOMENTS-V1.0/",
+          "data/galileo-mag-jup-calibrated/",
+          "data/galileo-pls-jup-derived/",
+          "data/galileo-traj-jup/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'data/JNO-J-3-FGM-CAL-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'JNO-J-3-FGM-CAL-V1.0', 'dataset_ids': ['JNO-J-3-FGM-CAL-V1.0'], 'title': 'JUNO MAGNETOMETER CALIBRATED DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'JUNO MAGNETOMETER CALIBRATED DATA', 'VOLUME_NAME': 'JUNO MAGNETOMETER JUPITER ARCHIVE', 'VOLUME_ID': 'JNOFGM_1001', 'PUBLICATION_DATE': '2026-05-01', 'DESCRIPTION': 'CERTIFIED This volume contains Juno Magntometer (FGM) calibrated data from the Juno Jupiter oribtal phases. These data have completed peer review and have been certified.', 'DATA_SET_ID': 'JNO-J-3-FGM-CAL-V1.0'}}, 'volume_count': 1}, {'path': 'data/JNO-J-JAD-5-MOMENTS-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'JNO-J-JAD-5-MOMENTS-V1.0', 'dataset_ids': ['JNO-J-JAD-5-MOMENTS-V1.0'], 'title': 'JUNO JADE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'JUNO JADE', 'VOLUME_NAME': 'JUNO JADE DERIVED MOMENTS SCIENCE DATA', 'VOLUME_ID': 'JNOJAD_5002', 'PUBLICATION_DATE': '2026-01-30', 'DESCRIPTION': 'CERTIFIED. This volume contains Juno JADE derived moments flight from the Jupiter Orbital Operations phases of the Juno mission. These data have completed PDS peer review and are certified.', 'DATA_SET_ID': 'JNO-J-JAD-5-MOMENTS-V1.0'}}, 'volume_count': 1}, {'path': 'data/JNO-J_SW-JAD-5-CALIBRATED-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'JNO-J/SW-JAD-5-CALIBRATED-V1.0', 'dataset_ids': ['JNO-J/SW-JAD-5-CALIBRATED-V1.0'], 'title': 'JUNO JADE', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'JUNO JADE', 'VOLUME_NAME': 'JUNO JADE DERIVED SCIENCE DATA', 'VOLUME_ID': 'JNOJAD_5001', 'PUBLICATION_DATE': '2026-01-30', 'DESCRIPTION': 'CERTIFIED. This volume contains Juno JADE calibrated data, Juno MAG data, and pitch angles from the entire Juno mission. These data have completed PDS peer review and are certified.', 'DATA_SET_ID': 'JNO-J/SW-JAD-5-CALIBRATED-V1.0'}}, 'volume_count': 1}, {'path': 'data/GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0', 'dataset_ids': ['GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0'], 'title': 'Galileo at Jupiter Fields and Particles Science Data', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'Galileo at Jupiter Fields and Particles Science Data', 'VOLUME_NAME': 'Galielo Orbiter Jupiter MAG Survey Magnetic-Field Data', 'VOLUME_ID': 'GOMAG_9002', 'PUBLICATION_DATE': '2012-06-19', 'DESCRIPTION': 'CERTIFIED This data set contains the Galielo Orbiter Jupiter MAG Survey Magnetic-Field Data. It includes Galileo Magnetometer data and browse plots from the Jovian magnetospheric survey for all orbits and satellite flybys (Io, Europa, Ganymede, Callisto, and Amalthea).', 'DATA_SET_ID': 'GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0'}}, 'volume_count': 1}, {'path': 'data/GO-J-MAG-3-RDR-HIGHRES-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'GO-J-MAG-3-RDR-HIGHRES-V1.0', 'dataset_ids': ['GO-J-MAG-3-RDR-HIGHRES-V1.0'], 'title': 'Galileo at Jupiter Fields and Particles Science Data', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'Galileo at Jupiter Fields and Particles Science Data', 'VOLUME_NAME': 'Galileo Orbiter Jupiter MAG High-Res. Magnetic-Field Data', 'VOLUME_ID': 'GOMAG_9001', 'PUBLICATION_DATE': '2022-08-02', 'DESCRIPTION': 'CERTIFIED This data set contains the Galileo Orbiter Jupiter MAG High-Res. Magnetic-Field Data High resolution (1/3 sec) Galileo Magnetometer data and browse plots from the Jovian satellite flybys (Io, Europa, Ganymede, Callisto, and Amalthea) and other points of interest in the magnetosphere.', 'DATA_SET_ID': 'GO-J-MAG-3-RDR-HIGHRES-V1.0'}}, 'volume_count': 1}, {'path': 'data/GO-J-PLS-3-RDR-FULLRES-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'GO-J-PLS-3-RDR-FULLRES-V1.0', 'dataset_ids': ['GO-J-PLS-3-RDR-FULLRES-V1.0'], 'title': 'Galileo at Jupiter Fields and Particles Science Data', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'Galileo at Jupiter Fields and Particles Science Data', 'VOLUME_NAME': 'Galileo Orbiter Jupiter PLS Full-Res. Raw Data', 'VOLUME_ID': 'GOPLS_9001', 'PUBLICATION_DATE': '2012-06-19', 'DESCRIPTION': 'CERTIFIED This data set contains PLS Full-Res. Raw Data from the Plasma Science instrument(PLS) on the Galileo spacecraft for all Jupiter orbits. These data have been reformatted into ASCII tables to facilitate data processing and analysis.', 'DATA_SET_ID': 'GO-J-PLS-3-RDR-FULLRES-V1.0'}}, 'volume_count': 1}, {'path': 'data/GO-J-PLS-5-RTS-MOMENTS-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'GO-J-PLS-5-RTS-MOMENTS-V1.0', 'dataset_ids': ['GO-J-PLS-5-RTS-MOMENTS-V1.0'], 'title': 'GALILEO JUPITER RTS MOMENT DATA V1.0', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'NULL', 'VOLUME_NAME': 'GALILEO JUPITER RTS MOMENT DATA V1.0', 'VOLUME_ID': 'GOPLS_9003', 'PUBLICATION_DATE': '2012-06-19', 'DESCRIPTION': 'CERTIFIED This data set contains PLS moments from 1996-177T17:00:33.400 to 2002-019T14:44:14.000.', 'DATA_SET_ID': 'GO-J-PLS-5-RTS-MOMENTS-V1.0'}}, 'volume_count': 1}, {'path': 'data/galileo-mag-jup-calibrated', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated', 'dataset_ids': ['urn:nasa:pds:galileo-mag-jup-calibrated'], 'title': 'Galileo Orbiter at Jupiter Magnetometer High Resolution Calibrated Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated', 'version_id': '1.1', 'title': 'Galileo Orbiter at Jupiter Magnetometer High Resolution Calibrated Bundle', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n                Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'doi': '10.17189/1gfw-1y75', 'description': 'This bundle contains magnetic field vectors acquired by the           \\n            Galileo magnetometer (MAG).\\n                \\n            This data was previously released as PDS3 data in the GO-J-MAG-3-RDR-HIGHRES-V1.0 (https://doi.org/10.17189/1519667) and \\n            GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 (https://doi.org/10.17189/1519668) data sets.'}}}, 'volume_count': 1}, {'path': 'data/galileo-pls-jup-derived', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:galileo-pls-jup-derived', 'dataset_ids': ['urn:nasa:pds:galileo-pls-jup-derived'], 'title': 'Galileo Plasma Science Instrument Jupiter RTS Moments Derived Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-pls-jup-derived', 'version_id': '1.0', 'title': 'Galileo Plasma Science Instrument Jupiter RTS Moments Derived Bundle', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Frank, L.A.; Paterson, W.R; Ackerson, K.L.', 'publication_year': '2023', 'doi': '10.17189/jbaw-bm37', 'description': 'This bundle contains data from the Plasma Science instrument               \\n                (PLS) on the Galileo spacecraft for all Jupiter orbits and Galileo plasma moments.'}}}, 'volume_count': 1}, {'path': 'data/galileo-traj-jup', 'pds_version': 'PDS4', 'file_type': 'bundle_xml', 'dataset_id': 'urn:nasa:pds:galileo-traj-jup', 'dataset_ids': ['urn:nasa:pds:galileo-traj-jup'], 'title': 'Galileo Trajectory Jupiter Bundle', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-traj-jup', 'version_id': '1.0', 'title': 'Galileo Trajectory Jupiter Bundle', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'author_list': 'Joy, Steven  P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/m100-p416', 'description': 'This bundle contains Galileo spacecraft trajectory data in three           \\n                coordinate systems commonly used in the analysis of Jovian magnetospheric \\n                data. These include System III (1965.0), Jupiter Solar Equatorial (JSE) and         \\n                Jupiter Solar Magnetospheric (JSM) coordinates from the Jupiter Orbital \\n                Operations phases of the Galileo Mission.'}}}, 'volume_count': 1}], 'errors': [{'path': 'data/JNO-JED-3-CDR-V1.0/', 'error': 'Not found: https://pds-ppi.igpp.ucla.edu/data/JNO-JED-3-CDR-V1.0/'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "node": "ppi",
+        "paths": [
+          "data/JNO-J-JED-3-CDR-V1.0/",
+          "data/juno-waves-electron-density/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'data/JNO-J-JED-3-CDR-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'JNO-J-JED-3-CDR-V1.0', 'dataset_ids': ['JNO-J-JED-3-CDR-V1.0'], 'title': 'JUNO JEDI', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'JUNO JEDI', 'VOLUME_NAME': 'JUNO JEDI JUPITER STANDARD CALIBRATED PRODUCTS', 'VOLUME_ID': 'JNOJED_3002', 'PUBLICATION_DATE': '2026-05-01', 'DESCRIPTION': 'CERTIFIED. This volume contains JUNO JEDI calibrated observations, consisting of energetic particle data collected by the JEDI instruments during the Jupiter Science Orbits phase of the Juno mission. These data have completed PDS peer review and have been certified.', 'DATA_SET_ID': 'JNO-J-JED-3-CDR-V1.0'}}, 'volume_count': 1}, {'path': 'data/juno-waves-electron-density', 'pds_version': 'PDS4', 'file_type': 'bundle_lblx', 'dataset_id': 'urn:nasa:pds:juno_waves_electron-density', 'dataset_ids': ['urn:nasa:pds:juno_waves_electron-density'], 'title': 'Juno Waves Electron Densities from Characteristic Plasma Wave Frequencies', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:juno_waves_electron-density', 'version_id': '1.0', 'title': 'Juno Waves Electron Densities from Characteristic Plasma Wave Frequencies', 'information_model_version': '1.22.0.0', 'product_class': 'Product_Bundle', 'Citation_Information': {'publication_year': '2024', 'doi': '10.17189/z95j-dn45', 'keyword': 'University of Iowa', 'description': 'This bundle contains electron density datasets from Waves team members\\n        throughout the Juno Mission. Measurements include, but are not limited\\n        to, Fpe, Flhr, Fuh, Fce.', 'List_Author': {'Person': [{'given_name': 'William', 'family_name': 'Kurth', 'person_orcid': '0000-0002-5471-6202', 'sequence_number': '1', 'Affiliation': {'organization_name': 'The University of Iowa', 'organization_rorid': 'https://ror.org/036jqmy94'}}, {'given_name': 'Chris', 'family_name': 'Piker', 'person_orcid': '0000-0002-0075-4705', 'sequence_number': '2', 'Affiliation': {'organization_name': 'The University of Iowa', 'organization_rorid': 'https://ror.org/036jqmy94'}}, {'given_name': 'Darrelle', 'family_name': 'Wilkinson', 'person_orcid': '0009-0000-9262-8775', 'sequence_number': '3', 'Affiliation': {'organization_name': 'The University of Iowa', 'organization_rorid': 'https://ror.org/036jqmy94'}}]}}}}, 'volume_count': 1}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_inspect_collections",
+      "tool_input": {
+        "node": "ppi",
+        "path": "data/galileo-mag-jup-calibrated/",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'data/galileo-mag-jup-calibrated', 'collections': [{'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-callisto', 'title': 'Galileo Jupiter Magnetometer High Resolution Callisto PHIO Coordinates Browse Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-callisto', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer High Resolution Callisto PHIO Coordinates Browse Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains Galileo high resolution magnetic-field browse \\n            data from the Callisto flyby in satellite centered Phi-Omega coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-22', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-europa', 'title': 'Galileo Jupiter Magnetometer High Resolution Europa PHIO Coordinates Browse Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-europa', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer High Resolution Europa PHIO Coordinates Browse Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains Galileo high resolution magnetic-field browse \\n            data from the Europa flyby in satellite centered Phi-Omega coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-22', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-ganymede', 'title': 'Galileo Jupiter Magnetometer High Resolution Ganymede PHIO Coordinates Browse Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-ganymede', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer High Resolution Ganymede PHIO Coordinates Browse Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains Galileo high resolution magnetic-field browse \\n            data from the Ganymede flyby in satellite centered Phi-Omega coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-17', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-io', 'title': 'Galileo Jupiter Magnetometer High Resolution Io PHIO Coordinates Browse Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-io', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer High Resolution Io PHIO Coordinates Browse Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains Galileo high resolution magnetic-field browse \\n            data from the Io flyby in satellite centered Phi-Omega coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-17', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres', 'title': 'Galileo Jupiter Magnetometer High Resolution SYS3 Coordinates Browse Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer High Resolution SYS3 Coordinates Browse Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains Galileo high resolution magnetic-field browse \\n            data in Jovicentric System III [1965] coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-17', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-callisto', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey Callisto PHIO Coordinates Browse Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-callisto', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey Callisto PHIO Coordinates Browse Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains Galileo Magnetospheric Survey magnetic-field browse \\n            data from the Callisto flyby in satellite centered Phi-Omega coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-17', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-europa', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey Europa PHIO Coordinates Browse Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-europa', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey Europa PHIO Coordinates Browse Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains Galileo Magnetospheric Survey magnetic-field browse \\n            data from the Europa flyby in satellite centered Phi-Omega coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-23', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-ganymede', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey Ganymede PHIO Coordinates Browse Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-ganymede', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey Ganymede PHIO Coordinates Browse Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains Galileo Magnetospheric Survey magnetic-field browse \\n            data from the Ganymede flyby in satellite centered Phi-Omega coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-23', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey SYS3 Coordinates Browse Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey SYS3 Coordinates Browse Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains Galileo Magnetospheric Survey magnetic-field browse \\n            data in Jovicentric System III [1965] coordinates.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-17', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:calibration', 'title': 'Galileo Jupiter Magnetometer Calibration Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:calibration', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Calibration Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n        Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'description': 'This collection contains a time history of spacecraft and instrument commands \\n        and mission events useful in understanding the operation of the Galileo \\n        magnetometer during Jupiter approach and continuing throughout Jupiter orbital                   \\n        operations. Most entries are taken from  the As-Run Spacecraft Event Files. \\n        Perijove, apojove, and solar conjunctions are calculated using SPICE kernels. \\n        Solar conjunction is defined as when the three-body (Sun-Earth-spacecraft) angle is less     \\n        than 7 degrees.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2025-03-18', 'version_id': '1.1', 'description': 'Originally from the PDS3 GO-J-MAG-3-RDR-HIGHRES-V1.0, \\n          GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.00 dataset, migrated to PDS4'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-callisto', 'title': 'Galileo Jupiter Magnetometer Highres Callisto Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-callisto', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Highres Callisto Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'doi': '10.17189/qpm7-p681', 'description': 'This data collection contains high time resolution magnetic field vectors        \\n            acquired by the Galileo magnetometer (MAG). It includes             \\n            satellite flyby Callisto data. These data were acquired in           \\n            order to characterize various portions of the Jovian magnetosphere        \\n            at high time resolution.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-18', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-europa', 'title': 'Galileo Jupiter Magnetometer Highres Europa Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-europa', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Highres Europa Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'doi': '10.17189/nyak-9259', 'description': 'This data collection contains high time resolution magnetic field vectors        \\n            acquired by the Galileo magnetometer (MAG). It includes             \\n            satellite flyby Europa data. These data were acquired in           \\n            order to characterize various portions of the Jovian magnetosphere        \\n            at high time resolution.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-17', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-ganymede', 'title': 'Galileo Jupiter Magnetometer Highres Ganymede Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-ganymede', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Highres Ganymede Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'doi': '10.17189/gch4-8w75', 'description': 'This data collection contains high time resolution magnetic field vectors        \\n            acquired by the Galileo magnetometer (MAG). It includes             \\n            satellite flyby Ganymede data. These data were acquired in           \\n            order to characterize various portions of the Jovian magnetosphere        \\n            at high time resolution.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-02-28', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-io', 'title': 'Galileo Jupiter Magnetometer Highres Io Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-io', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Highres Io Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'doi': '10.17189/cdb0-ny73', 'description': 'This data collection contains high time resolution magnetic field vectors        \\n            acquired by the Galileo magnetometer (MAG). It includes             \\n            satellite flyby Io data. These data were acquired in           \\n            order to characterize various portions of the Jovian magnetosphere        \\n            at high time resolution.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-02-28', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-magnetosphere', 'title': 'Galileo Jupiter Magnetometer Highres Magnetosphere Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-magnetosphere', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Highres Magnetosphere Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'doi': '10.17189/eq9q-3y30', 'description': 'This data collection contains high-resolution magnetic field\\n            and trajectory data in spherical Jupiter System III [1965]\\n            and Inertial Rotor coordinates (IRC) acquired by the Galileo magnetometer (MAG).\\n            It includes satellite flyby data. These data were acquired in           \\n            order to characterize various portions of the Jovian magnetosphere        \\n            at high time resolution.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-23', 'version_id': '1.1', 'description': 'This collection was originally released as part of the PDS3 \\n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \\n               The data themselves are unchanged.'}}}}}, {'path': 'data/galileo-mag-jup-calibrated', 'dataset_id': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-magspheric-survey', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-mag-jup-calibrated:data-magspheric-survey', 'version_id': '1.1', 'title': 'Galileo Jupiter Magnetometer Magnetospheric Survey Data Collection', 'information_model_version': '1.17.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.', 'publication_year': '2024', 'doi': '10.17189/fq45-wv97', 'description': 'This collection contains Galileo magnetospheric survey magnetic-field \\n            data in Jupiter Solar Equatorial, Inertial Rotor, Jupiter Solar Orbital,\\n            Jupiter Solar Magnetic and Jovicentric System III [1965] coordinates. \\n            The data cover 1995-11-01T00:06 to 2003-09-21T17:33.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2024-04-18', 'version_id': '1.1', 'description': 'This product, JUP_APP_IRC.TAB, was originally released \\n               as part of the PDS3 GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set.\\n               The metadata have been migrated to PDS4. The data themselves are unchanged.'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_inspect_collections",
+      "tool_input": {
+        "node": "ppi",
+        "path": "data/galileo-pls-jup-derived/",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'data/galileo-pls-jup-derived', 'collections': [{'path': 'data/galileo-pls-jup-derived', 'dataset_id': 'urn:nasa:pds:galileo-pls-jup-derived:data', 'title': 'Galileo PLS Jupiter RTS Moments Derived Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-pls-jup-derived:data', 'version_id': '1.0', 'title': 'Galileo PLS Jupiter RTS Moments Derived Data Collection', 'information_model_version': '1.19.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Frank, L.A.; Paterson, W.R; Ackerson, K.L.', 'publication_year': '2023', 'description': 'This collection contains data from the Plasma Science instrument               \\n        (PLS) on the Galileo spacecraft for all Jupiter orbits and Galileo plasma moments.\\n        These data have been reformatted into ASCII tables to facilitate data                   \\n        processing and analysis.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-04-19', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. \\n          It was migrated to PDS4 from the PDS3 data set GO-J-PLS-5-RTS-MOMENTS-V1.0.'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_inspect_collections",
+      "tool_input": {
+        "node": "ppi",
+        "path": "data/galileo-traj-jup/",
+        "max_subdirs": 20
+      },
+      "tool_output": "{'status': 'success', 'bundle_path': 'data/galileo-traj-jup', 'collections': [{'path': 'data/galileo-traj-jup', 'dataset_id': 'urn:nasa:pds:galileo-traj-jup:browse-sc-traj-jup-coords', 'title': 'Galileo Jupiter Trajectory Centered Coordinates Browse Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-traj-jup:browse-sc-traj-jup-coords', 'version_id': '1.0', 'title': 'Galileo Jupiter Trajectory Centered Coordinates Browse Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Joy, Steven  P.; Mafi, Joseph N.', 'publication_year': '2023', 'description': 'This collection contains browse plots of all 35 Galileo orbits, plus the       \\n        trajectories of the other spacecraft to visit Jupiter, projected into the     \\n        JSE X-Y plane (equatorial, X positive towards the Sun).'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-08-15', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. \\n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0.'}}}}}, {'path': 'data/galileo-traj-jup', 'dataset_id': 'urn:nasa:pds:galileo-traj-jup:browse-sc-traj-moon-coords', 'title': 'Galileo Jupiter Trajectory Moon Centered Coordinates Browse Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-traj-jup:browse-sc-traj-moon-coords', 'version_id': '1.0', 'title': 'Galileo Jupiter Trajectory Moon Centered Coordinates Browse Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Joy, Steven  P.; Mafi, Joseph N.', 'publication_year': '2023', 'description': 'This collection contains detailed Galileo plots\\n        of all the moon flyby trajectories from orbits.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-06-14', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. \\n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-SC-TRAJ-MOON-COORDS-V1.0'}}}}}, {'path': 'data/galileo-traj-jup', 'dataset_id': 'urn:nasa:pds:galileo-traj-jup:data-moon-traj', 'title': 'Galileo Jupiter Moon Trajectory Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-traj-jup:data-moon-traj', 'version_id': '1.0', 'title': 'Galileo Jupiter Moon Trajectory Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Joy, Steven  P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/mtm2-vb15', 'description': 'This collection contains data for System III (1965.0) trajectory and Sun and       \\n        Earth phase angles of Galileo and selected Jovian moons when Galileo was      \\n        inside 30 Jupiter radii from Jupiter. Trajectories are sampled every 20       \\n        seconds.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-08-11', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. \\n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-MOON-TRAJ-JUP-CRDS-V1.0.'}}}}}, {'path': 'data/galileo-traj-jup', 'dataset_id': 'urn:nasa:pds:galileo-traj-jup:data-rotor-attitude', 'title': 'Galileo Jupiter Trajectory Rotor Attitude Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-traj-jup:data-rotor-attitude', 'version_id': '1.0', 'title': 'Galileo Jupiter Trajectory Rotor Attitude Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Joy, Steven  P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/m2bz-tv64', 'description': 'This collection contains the attitude data for the rotor of the Galileo       \\n        spacecraft. The data provided are derived from the Attitude and               \\n        Articulation Control System (AACS) data downlink as provided by the           \\n        Galileo project to the magnetometer team. This collection covers              \\n        portions of the Jupiter Approach (JA) and all orbit operation mission         \\n        phases (J0-J35).'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-07-27', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. \\n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-REDR-ROTOR-ATTITUDE-V1.0.'}}}}}, {'path': 'data/galileo-traj-jup', 'dataset_id': 'urn:nasa:pds:galileo-traj-jup:data-sc-traj-jup-coords', 'title': 'Galileo Trajectory Jupiter Centered Coordinates Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-traj-jup:data-sc-traj-jup-coords', 'version_id': '1.0', 'title': 'Galileo Trajectory Jupiter Centered Coordinates Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Joy, Steven  P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/fyk9-zk63', 'description': 'This collection contains Galileo trajectory data in various\\n        Jupiter centered coordinate systems (System III 1965.0, Jupiter Solar\\n        Equatorial, Jupiter Solar Magnetospheric) for all orbit operation mission         \\n        phases.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-08-11', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. \\n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0.'}}}}}, {'path': 'data/galileo-traj-jup', 'dataset_id': 'urn:nasa:pds:galileo-traj-jup:data-sc-traj-moon-coords', 'title': 'Galileo Jupiter Trajectory Moon Centered Coordinates Data Collection', 'file_type': 'collection_xml', 'fields': {'Identification_Area': {'logical_identifier': 'urn:nasa:pds:galileo-traj-jup:data-sc-traj-moon-coords', 'version_id': '1.0', 'title': 'Galileo Jupiter Trajectory Moon Centered Coordinates Data Collection', 'information_model_version': '1.20.0.0', 'product_class': 'Product_Collection', 'Citation_Information': {'author_list': 'Joy, Steven  P.; Mafi, Joseph N.', 'publication_year': '2023', 'doi': '10.17189/ze49-v563', 'description': 'This collection contains Galileo trajectory data in moon (Amalthea, Io,       \\n        Europa, Ganymede, Callisto) centered coordinates for all of the near          \\n        satellite encounters. Ephemeris data are provided every two seconds for       \\n        approximately one hour about closest approach.'}, 'Modification_History': {'Modification_Detail': {'modification_date': '2023-07-27', 'version_id': '1.0', 'description': 'This is the original version of this collection in PDS4. \\n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-SC-TRAJ-MOON-COORDS-V1.0.'}}}}}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "node": "ppi",
+        "paths": [
+          "data/GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0/",
+          "data/GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0/"
+        ]
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'data/GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0', 'dataset_ids': ['GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0'], 'title': 'Galileo at Jupiter Fields and Particles Science Data', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'Galileo at Jupiter Fields and Particles Science Data', 'VOLUME_NAME': 'Galileo Orbiter Jupiter SC Traj. Jup.-Centered Coords. Data', 'VOLUME_ID': 'GOPOS_9001', 'PUBLICATION_DATE': '2012-06-19', 'DESCRIPTION': 'CERTIFIED This data set contains the Galileo Orbiter Jupiter SC Traj. Jup.-Centered Coords. data. It tabulates the Galileo spacecraft emphemeris in System III, Jupiter Solar Equatorial, and Jupiter Solar Magnetospheric coordinates. Data are sampled every minute near Jupiter (less frequently at large distances) for all Jupiter orbits.', 'DATA_SET_ID': 'GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0'}}, 'volume_count': 1}, {'path': 'data/GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0', 'dataset_ids': ['GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0'], 'title': 'Galileo at Jupiter Fields and Particles Science Data', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'Galileo at Jupiter Fields and Particles Science Data', 'VOLUME_NAME': 'Galileo Orbiter Jovian Moon Traj. Jup.-Centered Coords. Data', 'VOLUME_ID': 'GOPOS_9003', 'PUBLICATION_DATE': '2012-06-19', 'DESCRIPTION': 'CERTIFIED This data set contains the Galileo Orbiter Jovian Moon Traj.Jup.-Centered Coords. data. It includes the System III (1965.0) trajectory and Sun and Earth phase angles of Galileo and selected Jovian moons when Galileo was inside 30 Jupiter radii from Jupiter. Trajectories are sampled every 20 seconds.', 'DATA_SET_ID': 'GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0'}}, 'volume_count': 1}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "final_result",
+      "tool_input": {
+        "summary": "To assess whether Jupiter\u2019s dawnside magnetodisk is in approximate radial force balance from ~20\u201380 RJ, you typically need (1) magnetic field vectors, (2) plasma moments (density/temperature/flow for pressure and centrifugal terms), and (3) spacecraft trajectory/coordinates to select dawnside local times and the 20\u201380 RJ radial range. On PDS PPI, the closest match is Galileo MAG + PLS moments + trajectory (with both PDS3 and modern PDS4 identifiers available). Juno MAG/JADE can be used as a supplemental comparison dataset.",
+        "candidates": [
+          {
+            "path": "data/galileo-mag-jup-calibrated/",
+            "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:data-magspheric-survey",
+            "title": "Galileo Jupiter Magnetometer Magnetospheric Survey Data Collection",
+            "pds_version": "PDS4",
+            "mission": "galileo",
+            "node": "ppi",
+            "reasoning": "Stage 1: Located the PDS4 Galileo MAG calibrated bundle and its collections. This collection provides calibrated magnetic-field vectors in common Jovian coordinate systems over the Jupiter orbital mission; these are needed to compute magnetic pressure/tension terms in a radial force-balance analysis for the dawnside magnetodisk between 20\u201380 RJ."
+          },
+          {
+            "path": "data/GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0/",
+            "dataset_id": "GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0",
+            "title": "Galileo at Jupiter Fields and Particles Science Data",
+            "pds_version": "PDS3",
+            "mission": "galileo",
+            "node": "ppi",
+            "reasoning": "Stage 1: Probed the legacy PDS3 Galileo MAG magnetospheric survey RDR. This is the PDS3 dataset commonly cited in papers and contains the Galileo Jupiter magnetospheric survey magnetic-field data used for force-balance studies."
+          },
+          {
+            "path": "data/galileo-pls-jup-derived/",
+            "dataset_id": "urn:nasa:pds:galileo-pls-jup-derived:data",
+            "title": "Galileo PLS Jupiter RTS Moments Derived Data Collection",
+            "pds_version": "PDS4",
+            "mission": "galileo",
+            "node": "ppi",
+            "reasoning": "Stage 1: Located the PDS4 Galileo PLS derived (moments) collection. Plasma moments are required to estimate thermal pressure gradients and centrifugal/inertial contributions to radial force balance in the magnetodisk; combine with MAG and trajectory to isolate dawnside intervals at 20\u201380 RJ."
+          },
+          {
+            "path": "data/GO-J-PLS-5-RTS-MOMENTS-V1.0/",
+            "dataset_id": "GO-J-PLS-5-RTS-MOMENTS-V1.0",
+            "title": "GALILEO JUPITER RTS MOMENT DATA V1.0",
+            "pds_version": "PDS3",
+            "mission": "galileo",
+            "node": "ppi",
+            "reasoning": "Stage 1: Probed the legacy PDS3 Galileo PLS moments dataset (the PDS3 source for the PDS4 derived bundle). Provides the plasma moments needed for pressure/centrifugal terms in the force-balance calculation."
+          },
+          {
+            "path": "data/galileo-traj-jup/",
+            "dataset_id": "urn:nasa:pds:galileo-traj-jup:data-sc-traj-jup-coords",
+            "title": "Galileo Trajectory Jupiter Centered Coordinates Data Collection",
+            "pds_version": "PDS4",
+            "mission": "galileo",
+            "node": "ppi",
+            "reasoning": "Stage 1: Located the PDS4 Galileo trajectory collection (System III, JSE, JSM, etc.). Needed to compute radial distance (RJ) and select dawnside local time sectors, enabling you to filter measurements specifically to 20\u201380 RJ on the dawn flank."
+          },
+          {
+            "path": "data/GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0/",
+            "dataset_id": "GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0",
+            "title": "Galileo at Jupiter Fields and Particles Science Data",
+            "pds_version": "PDS3",
+            "mission": "galileo",
+            "node": "ppi",
+            "reasoning": "Stage 1: Probed the legacy PDS3 Galileo Jupiter-centered spacecraft ephemeris/trajectory dataset. This is the PDS3 form often used alongside GO-J-MAG-* and GO-J-PLS-* in published Jovian magnetosphere analyses to restrict to dawnside and 20\u201380 RJ."
+          },
+          {
+            "path": "data/JNO-J-3-FGM-CAL-V1.0/",
+            "dataset_id": "JNO-J-3-FGM-CAL-V1.0",
+            "title": "JUNO MAGNETOMETER CALIBRATED DATA",
+            "pds_version": "PDS3",
+            "mission": "juno",
+            "node": "ppi",
+            "reasoning": "Stage 1: Probed Juno calibrated magnetometer (FGM) vectors. While Juno\u2019s orbit sampling differs from Galileo\u2019s (often high-latitude), these calibrated B-field data can be used for comparison/extension of force-balance assessments where Juno covers relevant radial distances/local times."
+          },
+          {
+            "path": "data/JNO-J-JAD-5-MOMENTS-V1.0/",
+            "dataset_id": "JNO-J-JAD-5-MOMENTS-V1.0",
+            "title": "JUNO JADE",
+            "pds_version": "PDS3",
+            "mission": "juno",
+            "node": "ppi",
+            "reasoning": "Stage 1: Probed Juno JADE derived plasma moments, which can provide density/temperature/flow inputs for force-balance terms when Juno traverses the magnetodisk; best used in tandem with JNO-J-3-FGM-CAL-V1.0 and trajectory/SPICE (outside this node) to isolate dawnside 20\u201380 RJ intervals."
+          }
+        ]
+      },
+      "tool_output": "Final result processed."
+    }
+  ],
+  "matched": true,
+  "matched_expected": [
+    "JNO-J-3-FGM-CAL-V1.0"
+  ],
+  "full_trace": [
+    {
+      "parts": [
+        {
+          "content": "You are a dataset-discovery assistant for the NASA PDS Planetary Plasma Interactions (PPI) node at https://pds-ppi.igpp.ucla.edu/\n\nDirectory layout and workflow:\nAll ~781 datasets sit directly under data/ with no mission sub-directories.\nThe mission 'name' from pds_list_missions is the filter keyword to use with list_dataset_dirs.\n\n\nDataset naming conventions:\n  PDS3 dirs use uppercase mission codes: MESS-, CO-, GO-, JNO-, VG1-, VG2-, MEX-, P10-, P11-, ULY-, NH-, PVO-, etc.\n  PDS4 dirs use lowercase names: cassini-, galileo-, juno-, maven-, messenger-, ulysses-, etc.\n  Both conventions exist for many missions. Use pds_list_missions to see all available missions and filter keywords.\nSlash-encoding in DATA_SET_IDs: directory names cannot contain '/' so PPI replaces it\nwith '_'. The dir 'JNO-J_SW-JAD-5-CALIBRATED-V1.0' corresponds to DATA_SET_ID\n'JNO-J/SW-JAD-5-CALIBRATED-V1.0'. When a DATA_SET_ID contains '/', look for the\ndirectory with '_' in those positions \u2014 pds_probe_datasets will return the canonical\nDATA_SET_ID with the slashes restored.\n\n\nPDS3 vs PDS4:\n  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers (e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n  - PDS4 bundle directories begin with `urn-nasa-pds-`. Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\nYOUR TOOLS (5 tools \u2014 always pass node='ppi'):\n  1. pds_list_missions(node='ppi') \u2014 returns mission directories with descriptions. No HTTP.\n  2. pds_list_dataset_dirs(path, node='ppi', filter=...) \u2014 lists sub-directory names under a path. Cheap HTTP, no label parsing.\n  3. pds_probe_datasets(paths, node='ppi') \u2014 probes specific directories for PDS labels. Accepts a list of paths (max 20).\n  4. pds_inspect_collections(path, node='ppi') \u2014 scans PDS4 bundle subdirs for collection labels.\n  5. pds_resolve_volume(volume_set_path, node='ppi', dataset_id_hint=..., sample=8) \u2014 when a parent directory contains many\n     numbered sibling volumes (RMS COISS_2xxx, COUVIS_0xxx, ATM\n     MROM_*, jnomwr_*, cocirs_*, IMG mrox_*, MSGRMDS_*), this probes\n     hint-ranked children in one call and returns per-child\n     dataset_ids plus a `best_match` field. Use it instead of\n     probing volumes one at a time when you know the target id or\n     a discriminating substring of it.\n\nWORKFLOW:\nStep 1: Call pds_list_missions(node='ppi') to see all available missions and their filter keywords.\nStep 2: Identify which mission(s) are relevant to the query.\nStep 3: Call pds_list_dataset_dirs(path='data/', node='ppi', filter='<mission_name>') using a `name` field from the mission list as the filter keyword (e.g. filter='cassini'\nfor PDS4, filter='CO' for PDS3 Cassini, filter='MESS' for MESSENGER). Filter is\nmandatory \u2014 ~781 entries otherwise.\n  STICK TO MISSION KEYWORDS. The `name` and PDS3-prefix fields from pds_list_missions\n  are the supported filter values. Do NOT improvise free-text filters like\n  'saturn', 'plasmoid', 'magnetotail', 'recon' \u2014 those rarely appear in directory\n  names and just produce empty listings. Filter by mission, then by instrument prefix\n  if needed (CAPS, MAG, MIMI, RPWS, INMS).\nStep 4: Call pds_probe_datasets with the most relevant paths (batch up to 20).\nStep 5: If PDS4 bundles are found, call pds_inspect_collections on top 2-3.\nStep 6: Return candidates \u2014 emit BOTH PDS3 and PDS4 identifiers when a mission has\nboth (PDS3 dirs like 'CO-S-MAG-...' and PDS4 dirs like 'cassini-mag-cal' coexist\nfor most major missions on PPI).\n\nCRITICAL RULES:\n  1. EVERY query requires at least one candidate. Never dismiss a query as 'not a dataset request' \u2014 every paper-derived query has at least one\n     supporting PDS dataset somewhere in this node's archive, and your job\n     is to surface the closest match (with `reasoning` explaining the link).\n  2. Prefer CALIBRATED/REDUCED data over raw/EDR for science queries.\n     When a probed voldesc exposes `dataset_ids` with multiple entries,\n     match the question's data need to the PRODUCT-TYPE token inside each\n     id (typically the third or fourth dash-separated token). Common ones:\n         EDR / RAW     = raw observations\n         CDR / CALIB   = generic calibrated data\n         RDR / TRDR / MRDR / MTRDR / BDR / SCVDR = reduced / derived imagery or spectra\n         DDR / LDR     = derived / digital terrain / level-5 products\n         SSB           = solar / stellar occultation (Cassini UVIS)\n         SPEC / CUBE / WAV = spectra / spectral cubes / waveforms\n         QUBE          = VIMS spectral data cube (the VIMS-flavoured \"EDR\")\n     If the query mentions 'occultation' return the SSB id; 'spectra' \u2192\n     SPEC; 'calibrated radiance' \u2192 CALIB/CDR; 'mosaic / map / derived' \u2192\n     DDR/MRDR/MTRDR. When two product types both fit the question (e.g.\n     SPEC + SSB for an occultation spectra query), return both candidates.\n     Do NOT just return the scalar `dataset_id` and drop the rest \u2014 that\n     field is only the first id in the voldesc and is often the wrong\n     product type for a given query.\n  3. For PDS4, use inspect_collections ONLY for top 2-3 bundles. Return COLLECTION-level LID when :data or :calibrated exists.\n  4. When the SAME data is available as both PDS3 and PDS4, return BOTH identifiers \u2014 emit one candidate per identifier. Most published papers cite the PDS3 dataset_id (e.g. MESS-E_V_H_SW-MAG-3-CDR-CALIBRATED-V1.0, LRO-L-LROC-5-RDR-V1.0); the PDS4 collection LID is the modern equivalent. Do NOT silently drop the PDS3 form.\n  5. Stay under 20 tool calls per query. Soft cap: 15. Hard cap: 20.\n  6. Only return paths you've actually probed \u2014 never guess.\n  7. ANTI-THRASHING. Never re-issue a tool call with the same name and the\n     same key arguments (path, paths, filter) that you've already issued in\n     this trace. The result will be identical \u2014 it wastes the budget and\n     blocks progress. If you're tempted to re-probe the same set of paths,\n     either move to a different tool (inspect_collections, resolve_volume)\n     or commit to `final_result` with the best candidate you have so far.\n  8. STOP-AT-LEVEL. The output `path` field should point at a dataset or\n     bundle directory (containing voldesc.cat or bundle*.xml), NOT at a\n     deeper product / DATA / EXTRAS / BROWSE / SHAPEFILE / DTM sub-folder.\n     Feature-level retrieval (a specific image of a specific crater) is\n     out of scope for this finder; return the dataset and explain in\n     `reasoning` how it covers the feature.\n  9. After 15 tool calls without converging, ALWAYS prefer emitting your\n     current best candidate(s) over running another exploratory call.\n     A grounded near-match with a clear reasoning note is more useful\n     than a 20-call trace that times out with no `final_result`.\n\n===========================================================\nSTAGE 2 \u2014 DEEPER NODE-SPECIFIC SEARCH (escalation only)\n===========================================================\n\nEverything above is STAGE 1: the 5 live-HTTP tools (pds_list_missions / pds_list_dataset_dirs / pds_probe_datasets / pds_inspect_collections / pds_resolve_volume), the per-node workflow, and the Critical Rules ALL belong to Stage 1. Stage 1 reaches bundle/collection level by walking the node's directory tree. Stage 2 below is a SECOND set of tools for refining or rescuing Stage 1 \u2014 do NOT call any Stage 2 tool unless one of the escalation triggers below fires.\n\nWHEN TO ESCALATE TO STAGE 2 (any one is enough):\n  (a) The query asks for SPECIFIC observations, granules, or product IDs \u2014 not just a dataset. Example: 'Cassini ISS images of Mimas between 2009 and 2010' needs per-observation filtering.\n  (b) Stage 1 has located the right bundle/collection but you still need to narrow by GEOMETRY, TIME, or a SPATIAL filter (bbox, lat/lon, ring longitude, target body, observation type).\n  (c) Stage 1 produced AMBIGUOUS candidates that a faceted query can disambiguate (e.g. multiple instruments with similar names, multiple processing levels).\n  (d) Stage 1 cannot reach the node's holdings index (e.g. SBN returns HTTP 403, a directory listing is unavailable). Use the Stage 2 API as a fallback path to candidates.\n\nSTAGE 2 TOOLS (this node):\n  - pds4search_bundles_tool(keywords=..., investigation=..., instrument=..., target=...): cross-node PDS4 registry bundle search.\n  - pds4search_collections_tool(bundle_lid=..., keywords=..., ...): collection search; reuse the Stage 1 bundle LID as a filter when possible.\n  - pds4search_products_tool(collection_lid=..., keywords=..., ...): product-level search inside a collection.\n  - pds4search_investigations_tool / pds4search_instruments_tool / pds4search_instrument_hosts_tool / pds4search_targets_tool: context-product lookups when user-facing names need to be resolved to LIDs.\n  - pds4get_product_tool(lid=...): fetch one product label by LID.\n  - pds4crawl_context_product_tool(lid=...): walk a context product's associations to find related bundles/collections.\n\nSTAGE 2 RULES:\n  1. When you already have a bundle/collection LID from Stage 1, REUSE it as a filter in the Stage 2 call. Stage 2 is refinement, not a fresh search.\n  2. Spend the MINIMUM number of additional calls. If a single faceted call answers the question, stop.\n  3. If Stage 2 finds nothing or errors out, FALL BACK to the Stage 1 candidates and note in `reasoning` that Stage 2 was attempted and returned no refinement.\n  4. The 20-tool-call budget from Stage 1's Critical Rule 5 is the budget for BOTH stages combined. Do NOT reset the counter when entering Stage 2.\n  5. Every candidate's `reasoning` field must explicitly name which stage produced it (e.g. 'Stage 1: located bundle X by directory walk' or 'Stage 2: narrowed to product Y via ODE_search_products bbox filter').\n",
+          "timestamp": "2026-05-12 23:16:06.106581+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "Is Jupiter's dawnside magnetodisk approximately in radial force balance between 20 and 80 R_J?",
+          "timestamp": "2026-05-12 23:16:06.106588+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-05-12 23:16:06.106733+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_missions",
+          "args": "{\"node\":\"ppi\"}",
+          "tool_call_id": "call_ADI8IwkB8RP2HVZt6VlQqbtx",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 7600,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 6528,
+        "output_tokens": 313,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 287,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:16:12.869842+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:16:06+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqcYlshPV0nRWeOSrhnyirG68Uvo",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_missions",
+          "content": {
+            "missions": [
+              {
+                "name": "cassini",
+                "description": "Cassini at Saturn (CAPS, MAG, MIMI-CHEMS/INCA/LEMMS, RPWS, INMS). Also filter 'CO' for PDS3 IDs."
+              },
+              {
+                "name": "galileo",
+                "description": "Galileo at Jupiter + flybys of Earth/Venus/asteroids (EPD, MAG, PLS, PWS, PPR, HIC, SSD, RSS). Also filter 'GO' for PDS3 IDs."
+              },
+              {
+                "name": "juno",
+                "description": "Juno at Jupiter (Waves, JADE/JAD, JEDI/JED, FGM, ASC). Also filter 'JNO' for PDS3 IDs."
+              },
+              {
+                "name": "VG1",
+                "description": "Voyager 1 at Jupiter, Saturn, and interplanetary (CRS, LECP, MAG, PLS, PWS, PRA, RSS). Also filter 'vg1' for PDS4."
+              },
+              {
+                "name": "VG2",
+                "description": "Voyager 2 at Jupiter, Saturn, Uranus, Neptune, and interplanetary (CRS, LECP, MAG, PLS, PWS, PRA, RSS). Also filter 'vg2' for PDS4."
+              },
+              {
+                "name": "MESS",
+                "description": "MESSENGER at Mercury (EPPS incl. FIPS & EPS, MAG). Also filter 'messenger' for PDS4 bundle. Target: Mercury."
+              },
+              {
+                "name": "MEX",
+                "description": "Mars Express (ASPERA-3 incl. ELS/IMA/NPI, MARSIS). Target: Mars."
+              },
+              {
+                "name": "maven",
+                "description": "MAVEN at Mars (MAG, LPW, SEP, STATIC, SWEA, SWIA, EUV, ROSE). Target: Mars."
+              },
+              {
+                "name": "P10",
+                "description": "Pioneer 10 at Jupiter (CPI, CRT, GTT, HVM, PA, TRD, UV). Also filter 'p10' for PDS4."
+              },
+              {
+                "name": "P11",
+                "description": "Pioneer 11 at Jupiter and Saturn (CPI, CRT, FGM, GTT, HVM, PA, TRD, UV). Also filter 'p11' for PDS4."
+              },
+              {
+                "name": "ULY",
+                "description": "Ulysses at Jupiter and interplanetary (COSPIN, EPAC, HISCALE, SWOOPS, VHM-FGM, URAP, GAS, GRB, SCE, SWICS). Also filter 'ulysses' for PDS4."
+              },
+              {
+                "name": "NH",
+                "description": "New Horizons at Jupiter and Pluto (PEPSSI, SWAP). Target: Jupiter, Pluto."
+              },
+              {
+                "name": "PVO",
+                "description": "Pioneer Venus Orbiter (OEFD, OETP, OIMS, OMAG, ONMS, ORPA, ORSE). Also filter 'pvo' for PDS4. Target: Venus."
+              },
+              {
+                "name": "LP",
+                "description": "Lunar Prospector (MAG, ER \u2014 electron reflectometer). Also filter 'lp' for PDS4. Target: Moon."
+              },
+              {
+                "name": "MGS",
+                "description": "Mars Global Surveyor (MAG/ER, RSS). Also filter 'mgs' for PDS4. Target: Mars."
+              },
+              {
+                "name": "NEAR",
+                "description": "NEAR Shoemaker (MAG). Target: Eros, Earth flyby."
+              },
+              {
+                "name": "M10",
+                "description": "Mariner 10 (MAG, PLS). Target: Mercury."
+              },
+              {
+                "name": "LRO",
+                "description": "Lunar Reconnaissance Orbiter (CRaTER). Also filter 'lro' for PDS4. Target: Moon."
+              },
+              {
+                "name": "ODY",
+                "description": "Mars Odyssey (MARIE \u2014 radiation). Target: Mars."
+              },
+              {
+                "name": "MSL",
+                "description": "Mars Science Laboratory / Curiosity (RAD \u2014 radiation). Target: Mars."
+              },
+              {
+                "name": "insight",
+                "description": "InSight (IFG \u2014 fluxgate magnetometer). Target: Mars."
+              },
+              {
+                "name": "vex",
+                "description": "Venus Express (ASPERA-4 ELS, MAG). Target: Venus."
+              },
+              {
+                "name": "ICE",
+                "description": "International Cometary Explorer (EPAS, MAG, PLAWAV, RADWAV, SWPLAS). Target: Giacobini-Zinner."
+              },
+              {
+                "name": "GIO",
+                "description": "Giotto (IMS incl. HERS/HIS, JPA, MAG). Target: Halley."
+              },
+              {
+                "name": "VEGA",
+                "description": "Vega 1 & 2 (MISCHA, PM1, TNM). Target: Halley."
+              },
+              {
+                "name": "DS1",
+                "description": "Deep Space 1 (PEPE). Target: Borrelly."
+              },
+              {
+                "name": "radiojove",
+                "description": "Radio JOVE ground-based radio observations of Jupiter."
+              }
+            ],
+            "count": 27,
+            "note": "Node 'ppi' has no mission sub-directories. Use each mission 'name' as the filter keyword: pds_list_dataset_dirs(path='data/', node='ppi', filter='<name>')."
+          },
+          "tool_call_id": "call_ADI8IwkB8RP2HVZt6VlQqbtx",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:13.476062+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:16:13.477064+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\": \"data/\", \"node\": \"ppi\", \"filter\": \"juno\"}",
+          "tool_call_id": "call_JGguqZQ6RU6YPOVscXuR2Vev",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\": \"data/\", \"node\": \"ppi\", \"filter\": \"JNO\"}",
+          "tool_call_id": "call_nnmPRmI83oPbOiDt0qN7OTWj",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\": \"data/\", \"node\": \"ppi\", \"filter\": \"galileo\"}",
+          "tool_call_id": "call_HPbbkoL5VrxGUFkNrKvbTFJH",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\": \"data/\", \"node\": \"ppi\", \"filter\": \"GO\"}",
+          "tool_call_id": "call_MqdFLWXsPD8H8oyDMB7ncAA4",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8661,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 6528,
+        "output_tokens": 331,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 199,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:16:18.636940+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:16:13+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqcfzxkuqkaDjVfZPu54ZZjVMYOC",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/",
+            "total": 781,
+            "filtered_total": 1,
+            "dirs": [
+              {
+                "name": "juno-waves-electron-density",
+                "path": "data/juno-waves-electron-density/",
+                "pds_hint": "PDS4"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_JGguqZQ6RU6YPOVscXuR2Vev",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:23.112519+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/",
+            "total": 781,
+            "filtered_total": 14,
+            "dirs": [
+              {
+                "name": "JNO-E_J_SS-WAV-2-EDR-V1.0",
+                "path": "data/JNO-E_J_SS-WAV-2-EDR-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-E_J_SS-WAV-3-CDR-BSTFULL-V2.0",
+                "path": "data/JNO-E_J_SS-WAV-3-CDR-BSTFULL-V2.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-E_J_SS-WAV-3-CDR-SRVFULL-V2.0",
+                "path": "data/JNO-E_J_SS-WAV-3-CDR-SRVFULL-V2.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-J-3-FGM-CAL-V1.0",
+                "path": "data/JNO-J-3-FGM-CAL-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-J-ASC-2-IMG-V1.0",
+                "path": "data/JNO-J-ASC-2-IMG-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-J-ASC-3-RAD-V1.0",
+                "path": "data/JNO-J-ASC-3-RAD-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-J-JAD-5-MOMENTS-V1.0",
+                "path": "data/JNO-J-JAD-5-MOMENTS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-J-JED-2-EDR-V1.0",
+                "path": "data/JNO-J-JED-2-EDR-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-J-JED-3-CDR-V1.0",
+                "path": "data/JNO-J-JED-3-CDR-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-J_SW-JAD-2-UNCALIBRATED-V1.0",
+                "path": "data/JNO-J_SW-JAD-2-UNCALIBRATED-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-J_SW-JAD-3-CALIBRATED-V1.0",
+                "path": "data/JNO-J_SW-JAD-3-CALIBRATED-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-J_SW-JAD-5-CALIBRATED-V1.0",
+                "path": "data/JNO-J_SW-JAD-5-CALIBRATED-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-SS-3-FGM-CAL-V1.0",
+                "path": "data/JNO-SS-3-FGM-CAL-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "JNO-SW-JAD-2-UNCALIBRATED-V1.0",
+                "path": "data/JNO-SW-JAD-2-UNCALIBRATED-V1.0/",
+                "pds_hint": "PDS3"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_nnmPRmI83oPbOiDt0qN7OTWj",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:20.006963+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/",
+            "total": 781,
+            "filtered_total": 20,
+            "dirs": [
+              {
+                "name": "galileo-bundle",
+                "path": "data/galileo-bundle/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-epd-cal-corrected",
+                "path": "data/galileo-epd-cal-corrected/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-epd-prejup-raw",
+                "path": "data/galileo-epd-prejup-raw/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-hic-jup-calibrated",
+                "path": "data/galileo-hic-jup-calibrated/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-hic-jup-derived",
+                "path": "data/galileo-hic-jup-derived/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-hic-jup-raw",
+                "path": "data/galileo-hic-jup-raw/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-hic-prejup-derived",
+                "path": "data/galileo-hic-prejup-derived/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-mag-jup-calibrated",
+                "path": "data/galileo-mag-jup-calibrated/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-mag-jup-raw",
+                "path": "data/galileo-mag-jup-raw/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-mag-prejupiter-calibrated",
+                "path": "data/galileo-mag-prejupiter-calibrated/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-pls-jup-cal",
+                "path": "data/galileo-pls-jup-cal/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-pls-jup-derived",
+                "path": "data/galileo-pls-jup-derived/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-pls-prejup-cal",
+                "path": "data/galileo-pls-prejup-cal/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-ppr-prejup-derived",
+                "path": "data/galileo-ppr-prejup-derived/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-ppr-prejup-raw",
+                "path": "data/galileo-ppr-prejup-raw/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-pws-jup-der",
+                "path": "data/galileo-pws-jup-der/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-rss-jup-der",
+                "path": "data/galileo-rss-jup-der/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-ssd-jup-derived",
+                "path": "data/galileo-ssd-jup-derived/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-traj-jup",
+                "path": "data/galileo-traj-jup/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "galileo-traj-prejup",
+                "path": "data/galileo-traj-prejup/",
+                "pds_hint": "PDS4"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_HPbbkoL5VrxGUFkNrKvbTFJH",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:23.880393+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "data/",
+            "total": 781,
+            "filtered_total": 92,
+            "dirs": [
+              {
+                "name": "GO-A-MAG-3-RDR-GASPRA-HIGH-RES-V1.0",
+                "path": "data/GO-A-MAG-3-RDR-GASPRA-HIGH-RES-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-MAG-3-RDR-IDA-HIGH-RES-V1.0",
+                "path": "data/GO-A-MAG-3-RDR-IDA-HIGH-RES-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-MAG-4-SUMM-GASPRA-SUMMARY-V1.0",
+                "path": "data/GO-A-MAG-4-SUMM-GASPRA-SUMMARY-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-MAG-4-SUMM-IDA-SUMMARY-V1.0",
+                "path": "data/GO-A-MAG-4-SUMM-IDA-SUMMARY-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PLS-4-SUMM-GET-V1.0",
+                "path": "data/GO-A-PLS-4-SUMM-GET-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PLS-4-SUMM-IET-V1.0",
+                "path": "data/GO-A-PLS-4-SUMM-IET-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-POS-6-GASPRA-FLYBY-TRAJ-V1.0",
+                "path": "data/GO-A-POS-6-GASPRA-FLYBY-TRAJ-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-POS-6-IDA-FLYBY-TRAJ-V1.0",
+                "path": "data/GO-A-POS-6-IDA-FLYBY-TRAJ-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PPR-2-EDR-GASPRA-V1.0",
+                "path": "data/GO-A-PPR-2-EDR-GASPRA-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PPR-2-EDR-IDA-V1.0",
+                "path": "data/GO-A-PPR-2-EDR-IDA-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PPR-3-RDR-GASPRA-V1.0",
+                "path": "data/GO-A-PPR-3-RDR-GASPRA-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PPR-3-RDR-IDA-V1.0",
+                "path": "data/GO-A-PPR-3-RDR-IDA-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PWS-2-REFDR-GSAFULL-V1.0",
+                "path": "data/GO-A-PWS-2-REFDR-GSAFULL-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PWS-2-REFDR-ISAFULL-V1.0",
+                "path": "data/GO-A-PWS-2-REFDR-ISAFULL-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PWS-4-SUMM-GSA60S-V1.0",
+                "path": "data/GO-A-PWS-4-SUMM-GSA60S-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-A-PWS-4-SUMM-ISA60S-V1.0",
+                "path": "data/GO-A-PWS-4-SUMM-ISA60S-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-CAL-PPR-2-EDR-EARTH1-CALIBRATION-V1.0",
+                "path": "data/GO-CAL-PPR-2-EDR-EARTH1-CALIBRATION-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-CAL-PPR-2-EDR-EARTH2-CALIBRATION-V1.0",
+                "path": "data/GO-CAL-PPR-2-EDR-EARTH2-CALIBRATION-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-CAL-PPR-2-EDR-VENUS-CALIBRATION-V1.0",
+                "path": "data/GO-CAL-PPR-2-EDR-VENUS-CALIBRATION-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-D-GDDS-5-DUST-V4.1",
+                "path": "data/GO-D-GDDS-5-DUST-V4.1/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-EPD-2-SAMP-EARTH1-PAD-V1.0",
+                "path": "data/GO-E-EPD-2-SAMP-EARTH1-PAD-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-EPD-2-SAMP-EARTH2-PAD-V1.0",
+                "path": "data/GO-E-EPD-2-SAMP-EARTH2-PAD-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-EPD-4-SUMM-EARTH1-15MIN-V1.0",
+                "path": "data/GO-E-EPD-4-SUMM-EARTH1-15MIN-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-EPD-4-SUMM-EARTH2-15MIN-V1.0",
+                "path": "data/GO-E-EPD-4-SUMM-EARTH2-15MIN-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-MAG-3-RDR-EARTH1-HIGHRES-V1.0",
+                "path": "data/GO-E-MAG-3-RDR-EARTH1-HIGHRES-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-MAG-3-RDR-EARTH2-HIGHRES-V1.0",
+                "path": "data/GO-E-MAG-3-RDR-EARTH2-HIGHRES-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-MAG-4-SUMM-E1-GSE_GSM-COORDS-V1.0",
+                "path": "data/GO-E-MAG-4-SUMM-E1-GSE_GSM-COORDS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-MAG-4-SUMM-EARTH1-SUMMARY-V1.0",
+                "path": "data/GO-E-MAG-4-SUMM-EARTH1-SUMMARY-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-MAG-4-SUMM-EARTH2-SUMMARY-V1.0",
+                "path": "data/GO-E-MAG-4-SUMM-EARTH2-SUMMARY-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-PLS-4-SUMM-EARTH1-ET-V1.0",
+                "path": "data/GO-E-PLS-4-SUMM-EARTH1-ET-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-PLS-4-SUMM-EARTH2-ET-V1.0",
+                "path": "data/GO-E-PLS-4-SUMM-EARTH2-ET-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-POS-6-EARTH1-FLYBY-TRAJ-V1.0",
+                "path": "data/GO-E-POS-6-EARTH1-FLYBY-TRAJ-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-POS-6-EARTH2-FLYBY-TRAJ-V1.0",
+                "path": "data/GO-E-POS-6-EARTH2-FLYBY-TRAJ-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-POS-6-SUMM-E1-GSE_GSM-COORDS-V1.0",
+                "path": "data/GO-E-POS-6-SUMM-E1-GSE_GSM-COORDS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-POS-6-SUMM-E2-GSE_GSM-COORDS-V1.0",
+                "path": "data/GO-E-POS-6-SUMM-E2-GSE_GSM-COORDS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-PPR-2-EDR-EARTH1-V1.0",
+                "path": "data/GO-E-PPR-2-EDR-EARTH1-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-PPR-2-EDR-EARTH2-V1.0",
+                "path": "data/GO-E-PPR-2-EDR-EARTH2-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-PWS-2-EDR-E1WFRM-V1.0",
+                "path": "data/GO-E-PWS-2-EDR-E1WFRM-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-PWS-2-EDR-E2WFRM-V1.0",
+                "path": "data/GO-E-PWS-2-EDR-E2WFRM-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-PWS-4-SUMM-EARTH1-SA-60S-V1.0",
+                "path": "data/GO-E-PWS-4-SUMM-EARTH1-SA-60S-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E-PWS-4-SUMM-EARTH2-SA-60S-V1.0",
+                "path": "data/GO-E-PWS-4-SUMM-EARTH2-SA-60S-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E_L_CAL-PPR-3-RDR-EARTH1-V1.0",
+                "path": "data/GO-E_L_CAL-PPR-3-RDR-EARTH1-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-E_L_CAL-PPR-3-RDR-EARTH2-V1.0",
+                "path": "data/GO-E_L_CAL-PPR-3-RDR-EARTH2-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-EPD-2-REDR-HIGHRES-SECTOR-V1.0",
+                "path": "data/GO-J-EPD-2-REDR-HIGHRES-SECTOR-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-EPD-2-REDR-RTS-SCAN-AVG-V1.0",
+                "path": "data/GO-J-EPD-2-REDR-RTS-SCAN-AVG-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-HIC-2-EDR-RAW-V1.0",
+                "path": "data/GO-J-HIC-2-EDR-RAW-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-HIC-3-RDR-HIGHRES-COUNTRATE-V1.0",
+                "path": "data/GO-J-HIC-3-RDR-HIGHRES-COUNTRATE-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-HIC-3-RDR-SURVEY-COUNTRATE-V1.0",
+                "path": "data/GO-J-HIC-3-RDR-SURVEY-COUNTRATE-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-HIC-5-DDR-ENERGETIC-ION-COMP-V1.0",
+                "path": "data/GO-J-HIC-5-DDR-ENERGETIC-ION-COMP-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-MAG-2-REDR-RAW-DATA-V1.0",
+                "path": "data/GO-J-MAG-2-REDR-RAW-DATA-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-MAG-3-RDR-HIGHRES-V1.0",
+                "path": "data/GO-J-MAG-3-RDR-HIGHRES-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0",
+                "path": "data/GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PLS-2-EDR-RAW-TELEM-PACKETS-V1.0",
+                "path": "data/GO-J-PLS-2-EDR-RAW-TELEM-PACKETS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PLS-3-RDR-FULLRES-V1.0",
+                "path": "data/GO-J-PLS-3-RDR-FULLRES-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PLS-4-SUMM-AVG-COUNTS-V1.0",
+                "path": "data/GO-J-PLS-4-SUMM-AVG-COUNTS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PLS-4-SUMM-BROWSE-V1.0",
+                "path": "data/GO-J-PLS-4-SUMM-BROWSE-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PLS-5-RTS-MOMENTS-V1.0",
+                "path": "data/GO-J-PLS-5-RTS-MOMENTS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0",
+                "path": "data/GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-POS-6-REDR-ROTOR-ATTITUDE-V1.0",
+                "path": "data/GO-J-POS-6-REDR-ROTOR-ATTITUDE-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0",
+                "path": "data/GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-POS-6-SC-TRAJ-MOON-COORDS-V1.0",
+                "path": "data/GO-J-POS-6-SC-TRAJ-MOON-COORDS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PWS-2-EDR-WAVEFORM-10KHZ-V1.0",
+                "path": "data/GO-J-PWS-2-EDR-WAVEFORM-10KHZ-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PWS-2-EDR-WAVEFORM-1KHZ-V1.0",
+                "path": "data/GO-J-PWS-2-EDR-WAVEFORM-1KHZ-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PWS-2-EDR-WAVEFORM-80KHZ-V1.0",
+                "path": "data/GO-J-PWS-2-EDR-WAVEFORM-80KHZ-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PWS-2-REDR-LPW-SA-FULL-V1.0",
+                "path": "data/GO-J-PWS-2-REDR-LPW-SA-FULL-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PWS-2-REDR-RTS-SA-FULL-V1.0",
+                "path": "data/GO-J-PWS-2-REDR-RTS-SA-FULL-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PWS-4-SUMM-SA60S-V1.0",
+                "path": "data/GO-J-PWS-4-SUMM-SA60S-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-PWS-5-DDR-PLASMA-DENSITY-FULL-V1.0",
+                "path": "data/GO-J-PWS-5-DDR-PLASMA-DENSITY-FULL-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-RSS-5-ROCC-V1.0",
+                "path": "data/GO-J-RSS-5-ROCC-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J-SSD-5-DDR-STAR-SENSOR-V1.0",
+                "path": "data/GO-J-SSD-5-DDR-STAR-SENSOR-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J_C-PPR-3-RDR-SL9-IMPACT-V1.0",
+                "path": "data/GO-J_C-PPR-3-RDR-SL9-IMPACT-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-J_JSA_X_V_E_A_C-UPL-V1.0",
+                "path": "data/GO-J_JSA_X_V_E_A_C-UPL-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-L-PPR-2-EDR-MOON1-V1.0",
+                "path": "data/GO-L-PPR-2-EDR-MOON1-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-L-PPR-2-EDR-MOON2-V1.0",
+                "path": "data/GO-L-PPR-2-EDR-MOON2-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "go-pls-jup-fitted-parameters",
+                "path": "data/go-pls-jup-fitted-parameters/",
+                "pds_hint": "PDS4"
+              },
+              {
+                "name": "GO-SS-HIC-5-IONFLUXES-OCT89-FLARE-V1.0",
+                "path": "data/GO-SS-HIC-5-IONFLUXES-OCT89-FLARE-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-SS-MAG-2-EDR-CRUISE-V1.0",
+                "path": "data/GO-SS-MAG-2-EDR-CRUISE-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-SS-MAG-4-SUMM-CRUISE-IRC-V1.0",
+                "path": "data/GO-SS-MAG-4-SUMM-CRUISE-IRC-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-SS-MAG-4-SUMM-CRUISE-RTN-V1.0",
+                "path": "data/GO-SS-MAG-4-SUMM-CRUISE-RTN-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-SS-POS-6-SUMM-CRUISE-RTN-V1.0",
+                "path": "data/GO-SS-POS-6-SUMM-CRUISE-RTN-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-V-EPD-2-SAMP-PAD-V1.0",
+                "path": "data/GO-V-EPD-2-SAMP-PAD-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-V-EPD-4-SUMM-5.0MIN-V1.0",
+                "path": "data/GO-V-EPD-4-SUMM-5.0MIN-V1.0/",
+                "pds_hint": null
+              },
+              {
+                "name": "GO-V-MAG-3-RDR-VENUS-HIGH-RES-V1.0",
+                "path": "data/GO-V-MAG-3-RDR-VENUS-HIGH-RES-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-V-MAG-4-SUMM-VENUS-SUMMARY-V1.0",
+                "path": "data/GO-V-MAG-4-SUMM-VENUS-SUMMARY-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-V-PLS-4-SUMM-VET-V1.0",
+                "path": "data/GO-V-PLS-4-SUMM-VET-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-V-POS-6-VENUS-TRAJECTORY-V1.0",
+                "path": "data/GO-V-POS-6-VENUS-TRAJECTORY-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-V-PPR-2-EDR-VENUS-V1.0",
+                "path": "data/GO-V-PPR-2-EDR-VENUS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-V-PPR-3-RDR-VENUS-V1.0",
+                "path": "data/GO-V-PPR-3-RDR-VENUS-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-V-PWS-2-REFDR-VSAFULL-V1.0",
+                "path": "data/GO-V-PWS-2-REFDR-VSAFULL-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-V-PWS-4-SUMM-VSA60S-V1.0",
+                "path": "data/GO-V-PWS-4-SUMM-VSA60S-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-X-PPR-2-EDR-CHECKOUT-V1.0",
+                "path": "data/GO-X-PPR-2-EDR-CHECKOUT-V1.0/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "GO-X-PPR-3-RDR-CHECKOUT-V1.0",
+                "path": "data/GO-X-PPR-3-RDR-CHECKOUT-V1.0/",
+                "pds_hint": "PDS3"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_MqdFLWXsPD8H8oyDMB7ncAA4",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:20.066875+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:16:23.881713+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"node\":\"ppi\",\"paths\":[\"data/JNO-J-3-FGM-CAL-V1.0/\",\"data/JNO-J-JAD-5-MOMENTS-V1.0/\",\"data/JNO-J_SW-JAD-5-CALIBRATED-V1.0/\",\"data/JNO-JED-3-CDR-V1.0/\",\"data/GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0/\",\"data/GO-J-MAG-3-RDR-HIGHRES-V1.0/\",\"data/GO-J-PLS-3-RDR-FULLRES-V1.0/\",\"data/GO-J-PLS-5-RTS-MOMENTS-V1.0/\",\"data/galileo-mag-jup-calibrated/\",\"data/galileo-pls-jup-derived/\",\"data/galileo-traj-jup/\"]}",
+          "tool_call_id": "call_KHmwGEFEQ7Bat5Tasz2b53lq",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 15834,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 7552,
+        "output_tokens": 636,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 422,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:16:31.830864+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:16:24+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqcqI1MhMSqT42Ufko07WchIShQt",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "data/JNO-J-3-FGM-CAL-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "JNO-J-3-FGM-CAL-V1.0",
+                "dataset_ids": [
+                  "JNO-J-3-FGM-CAL-V1.0"
+                ],
+                "title": "JUNO MAGNETOMETER CALIBRATED DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "JUNO MAGNETOMETER CALIBRATED DATA",
+                    "VOLUME_NAME": "JUNO MAGNETOMETER JUPITER ARCHIVE",
+                    "VOLUME_ID": "JNOFGM_1001",
+                    "PUBLICATION_DATE": "2026-05-01",
+                    "DESCRIPTION": "CERTIFIED This volume contains Juno Magntometer (FGM) calibrated data from the Juno Jupiter oribtal phases. These data have completed peer review and have been certified.",
+                    "DATA_SET_ID": "JNO-J-3-FGM-CAL-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/JNO-J-JAD-5-MOMENTS-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "JNO-J-JAD-5-MOMENTS-V1.0",
+                "dataset_ids": [
+                  "JNO-J-JAD-5-MOMENTS-V1.0"
+                ],
+                "title": "JUNO JADE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "JUNO JADE",
+                    "VOLUME_NAME": "JUNO JADE DERIVED MOMENTS SCIENCE DATA",
+                    "VOLUME_ID": "JNOJAD_5002",
+                    "PUBLICATION_DATE": "2026-01-30",
+                    "DESCRIPTION": "CERTIFIED. This volume contains Juno JADE derived moments flight from the Jupiter Orbital Operations phases of the Juno mission. These data have completed PDS peer review and are certified.",
+                    "DATA_SET_ID": "JNO-J-JAD-5-MOMENTS-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/JNO-J_SW-JAD-5-CALIBRATED-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "JNO-J/SW-JAD-5-CALIBRATED-V1.0",
+                "dataset_ids": [
+                  "JNO-J/SW-JAD-5-CALIBRATED-V1.0"
+                ],
+                "title": "JUNO JADE",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "JUNO JADE",
+                    "VOLUME_NAME": "JUNO JADE DERIVED SCIENCE DATA",
+                    "VOLUME_ID": "JNOJAD_5001",
+                    "PUBLICATION_DATE": "2026-01-30",
+                    "DESCRIPTION": "CERTIFIED. This volume contains Juno JADE calibrated data, Juno MAG data, and pitch angles from the entire Juno mission. These data have completed PDS peer review and are certified.",
+                    "DATA_SET_ID": "JNO-J/SW-JAD-5-CALIBRATED-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0",
+                "dataset_ids": [
+                  "GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0"
+                ],
+                "title": "Galileo at Jupiter Fields and Particles Science Data",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "Galileo at Jupiter Fields and Particles Science Data",
+                    "VOLUME_NAME": "Galielo Orbiter Jupiter MAG Survey Magnetic-Field Data",
+                    "VOLUME_ID": "GOMAG_9002",
+                    "PUBLICATION_DATE": "2012-06-19",
+                    "DESCRIPTION": "CERTIFIED This data set contains the Galielo Orbiter Jupiter MAG Survey Magnetic-Field Data. It includes Galileo Magnetometer data and browse plots from the Jovian magnetospheric survey for all orbits and satellite flybys (Io, Europa, Ganymede, Callisto, and Amalthea).",
+                    "DATA_SET_ID": "GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/GO-J-MAG-3-RDR-HIGHRES-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "GO-J-MAG-3-RDR-HIGHRES-V1.0",
+                "dataset_ids": [
+                  "GO-J-MAG-3-RDR-HIGHRES-V1.0"
+                ],
+                "title": "Galileo at Jupiter Fields and Particles Science Data",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "Galileo at Jupiter Fields and Particles Science Data",
+                    "VOLUME_NAME": "Galileo Orbiter Jupiter MAG High-Res. Magnetic-Field Data",
+                    "VOLUME_ID": "GOMAG_9001",
+                    "PUBLICATION_DATE": "2022-08-02",
+                    "DESCRIPTION": "CERTIFIED This data set contains the Galileo Orbiter Jupiter MAG High-Res. Magnetic-Field Data High resolution (1/3 sec) Galileo Magnetometer data and browse plots from the Jovian satellite flybys (Io, Europa, Ganymede, Callisto, and Amalthea) and other points of interest in the magnetosphere.",
+                    "DATA_SET_ID": "GO-J-MAG-3-RDR-HIGHRES-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/GO-J-PLS-3-RDR-FULLRES-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "GO-J-PLS-3-RDR-FULLRES-V1.0",
+                "dataset_ids": [
+                  "GO-J-PLS-3-RDR-FULLRES-V1.0"
+                ],
+                "title": "Galileo at Jupiter Fields and Particles Science Data",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "Galileo at Jupiter Fields and Particles Science Data",
+                    "VOLUME_NAME": "Galileo Orbiter Jupiter PLS Full-Res. Raw Data",
+                    "VOLUME_ID": "GOPLS_9001",
+                    "PUBLICATION_DATE": "2012-06-19",
+                    "DESCRIPTION": "CERTIFIED This data set contains PLS Full-Res. Raw Data from the Plasma Science instrument(PLS) on the Galileo spacecraft for all Jupiter orbits. These data have been reformatted into ASCII tables to facilitate data processing and analysis.",
+                    "DATA_SET_ID": "GO-J-PLS-3-RDR-FULLRES-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/GO-J-PLS-5-RTS-MOMENTS-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "GO-J-PLS-5-RTS-MOMENTS-V1.0",
+                "dataset_ids": [
+                  "GO-J-PLS-5-RTS-MOMENTS-V1.0"
+                ],
+                "title": "GALILEO JUPITER RTS MOMENT DATA V1.0",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "NULL",
+                    "VOLUME_NAME": "GALILEO JUPITER RTS MOMENT DATA V1.0",
+                    "VOLUME_ID": "GOPLS_9003",
+                    "PUBLICATION_DATE": "2012-06-19",
+                    "DESCRIPTION": "CERTIFIED This data set contains PLS moments from 1996-177T17:00:33.400 to 2002-019T14:44:14.000.",
+                    "DATA_SET_ID": "GO-J-PLS-5-RTS-MOMENTS-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated",
+                "dataset_ids": [
+                  "urn:nasa:pds:galileo-mag-jup-calibrated"
+                ],
+                "title": "Galileo Orbiter at Jupiter Magnetometer High Resolution Calibrated Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated",
+                    "version_id": "1.1",
+                    "title": "Galileo Orbiter at Jupiter Magnetometer High Resolution Calibrated Bundle",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n                Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/1gfw-1y75",
+                      "description": "This bundle contains magnetic field vectors acquired by the           \n            Galileo magnetometer (MAG).\n                \n            This data was previously released as PDS3 data in the GO-J-MAG-3-RDR-HIGHRES-V1.0 (https://doi.org/10.17189/1519667) and \n            GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 (https://doi.org/10.17189/1519668) data sets."
+                    }
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/galileo-pls-jup-derived",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:galileo-pls-jup-derived",
+                "dataset_ids": [
+                  "urn:nasa:pds:galileo-pls-jup-derived"
+                ],
+                "title": "Galileo Plasma Science Instrument Jupiter RTS Moments Derived Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-pls-jup-derived",
+                    "version_id": "1.0",
+                    "title": "Galileo Plasma Science Instrument Jupiter RTS Moments Derived Bundle",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Frank, L.A.; Paterson, W.R; Ackerson, K.L.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/jbaw-bm37",
+                      "description": "This bundle contains data from the Plasma Science instrument               \n                (PLS) on the Galileo spacecraft for all Jupiter orbits and Galileo plasma moments."
+                    }
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/galileo-traj-jup",
+                "pds_version": "PDS4",
+                "file_type": "bundle_xml",
+                "dataset_id": "urn:nasa:pds:galileo-traj-jup",
+                "dataset_ids": [
+                  "urn:nasa:pds:galileo-traj-jup"
+                ],
+                "title": "Galileo Trajectory Jupiter Bundle",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-traj-jup",
+                    "version_id": "1.0",
+                    "title": "Galileo Trajectory Jupiter Bundle",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "author_list": "Joy, Steven  P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/m100-p416",
+                      "description": "This bundle contains Galileo spacecraft trajectory data in three           \n                coordinate systems commonly used in the analysis of Jovian magnetospheric \n                data. These include System III (1965.0), Jupiter Solar Equatorial (JSE) and         \n                Jupiter Solar Magnetospheric (JSM) coordinates from the Jupiter Orbital \n                Operations phases of the Galileo Mission."
+                    }
+                  }
+                },
+                "volume_count": 1
+              }
+            ],
+            "errors": [
+              {
+                "path": "data/JNO-JED-3-CDR-V1.0/",
+                "error": "Not found: https://pds-ppi.igpp.ucla.edu/data/JNO-JED-3-CDR-V1.0/"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_KHmwGEFEQ7Bat5Tasz2b53lq",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:34.637013+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:16:34.638370+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"node\": \"ppi\", \"paths\": [\"data/JNO-J-JED-3-CDR-V1.0/\", \"data/juno-waves-electron-density/\"]}",
+          "tool_call_id": "call_FIHX8GtT7qVtsR7M7chYBhzO",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "args": "{\"node\": \"ppi\", \"path\": \"data/galileo-mag-jup-calibrated/\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_6JZ35bGaT4HJ5VS36RkT9QHP",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "args": "{\"node\": \"ppi\", \"path\": \"data/galileo-pls-jup-derived/\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_yAHUeOBB3wBSjHRaZ5E71PSg",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "args": "{\"node\": \"ppi\", \"path\": \"data/galileo-traj-jup/\", \"max_subdirs\": 20}",
+          "tool_call_id": "call_rqWy10vXkSxaZSgcf7MU94LA",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 18552,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 14720,
+        "output_tokens": 618,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 436,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:16:43.478669+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:16:35+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deqd1FSbVSxQr3BataA27WOQtzqLa",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "data/JNO-J-JED-3-CDR-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "JNO-J-JED-3-CDR-V1.0",
+                "dataset_ids": [
+                  "JNO-J-JED-3-CDR-V1.0"
+                ],
+                "title": "JUNO JEDI",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "JUNO JEDI",
+                    "VOLUME_NAME": "JUNO JEDI JUPITER STANDARD CALIBRATED PRODUCTS",
+                    "VOLUME_ID": "JNOJED_3002",
+                    "PUBLICATION_DATE": "2026-05-01",
+                    "DESCRIPTION": "CERTIFIED. This volume contains JUNO JEDI calibrated observations, consisting of energetic particle data collected by the JEDI instruments during the Jupiter Science Orbits phase of the Juno mission. These data have completed PDS peer review and have been certified.",
+                    "DATA_SET_ID": "JNO-J-JED-3-CDR-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/juno-waves-electron-density",
+                "pds_version": "PDS4",
+                "file_type": "bundle_lblx",
+                "dataset_id": "urn:nasa:pds:juno_waves_electron-density",
+                "dataset_ids": [
+                  "urn:nasa:pds:juno_waves_electron-density"
+                ],
+                "title": "Juno Waves Electron Densities from Characteristic Plasma Wave Frequencies",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:juno_waves_electron-density",
+                    "version_id": "1.0",
+                    "title": "Juno Waves Electron Densities from Characteristic Plasma Wave Frequencies",
+                    "information_model_version": "1.22.0.0",
+                    "product_class": "Product_Bundle",
+                    "Citation_Information": {
+                      "publication_year": "2024",
+                      "doi": "10.17189/z95j-dn45",
+                      "keyword": "University of Iowa",
+                      "description": "This bundle contains electron density datasets from Waves team members\n        throughout the Juno Mission. Measurements include, but are not limited\n        to, Fpe, Flhr, Fuh, Fce.",
+                      "List_Author": {
+                        "Person": [
+                          {
+                            "given_name": "William",
+                            "family_name": "Kurth",
+                            "person_orcid": "0000-0002-5471-6202",
+                            "sequence_number": "1",
+                            "Affiliation": {
+                              "organization_name": "The University of Iowa",
+                              "organization_rorid": "https://ror.org/036jqmy94"
+                            }
+                          },
+                          {
+                            "given_name": "Chris",
+                            "family_name": "Piker",
+                            "person_orcid": "0000-0002-0075-4705",
+                            "sequence_number": "2",
+                            "Affiliation": {
+                              "organization_name": "The University of Iowa",
+                              "organization_rorid": "https://ror.org/036jqmy94"
+                            }
+                          },
+                          {
+                            "given_name": "Darrelle",
+                            "family_name": "Wilkinson",
+                            "person_orcid": "0009-0000-9262-8775",
+                            "sequence_number": "3",
+                            "Affiliation": {
+                              "organization_name": "The University of Iowa",
+                              "organization_rorid": "https://ror.org/036jqmy94"
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                },
+                "volume_count": 1
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_FIHX8GtT7qVtsR7M7chYBhzO",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:44.851371+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "data/galileo-mag-jup-calibrated",
+            "collections": [
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-callisto",
+                "title": "Galileo Jupiter Magnetometer High Resolution Callisto PHIO Coordinates Browse Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-callisto",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer High Resolution Callisto PHIO Coordinates Browse Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains Galileo high resolution magnetic-field browse \n            data from the Callisto flyby in satellite centered Phi-Omega coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-22",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-europa",
+                "title": "Galileo Jupiter Magnetometer High Resolution Europa PHIO Coordinates Browse Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-europa",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer High Resolution Europa PHIO Coordinates Browse Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains Galileo high resolution magnetic-field browse \n            data from the Europa flyby in satellite centered Phi-Omega coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-22",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-ganymede",
+                "title": "Galileo Jupiter Magnetometer High Resolution Ganymede PHIO Coordinates Browse Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-ganymede",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer High Resolution Ganymede PHIO Coordinates Browse Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains Galileo high resolution magnetic-field browse \n            data from the Ganymede flyby in satellite centered Phi-Omega coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-17",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-io",
+                "title": "Galileo Jupiter Magnetometer High Resolution Io PHIO Coordinates Browse Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres-io",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer High Resolution Io PHIO Coordinates Browse Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains Galileo high resolution magnetic-field browse \n            data from the Io flyby in satellite centered Phi-Omega coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-17",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres",
+                "title": "Galileo Jupiter Magnetometer High Resolution SYS3 Coordinates Browse Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-highres",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer High Resolution SYS3 Coordinates Browse Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains Galileo high resolution magnetic-field browse \n            data in Jovicentric System III [1965] coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-17",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-callisto",
+                "title": "Galileo Jupiter Magnetometer Magnetospheric Survey Callisto PHIO Coordinates Browse Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-callisto",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Magnetospheric Survey Callisto PHIO Coordinates Browse Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains Galileo Magnetospheric Survey magnetic-field browse \n            data from the Callisto flyby in satellite centered Phi-Omega coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-17",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-europa",
+                "title": "Galileo Jupiter Magnetometer Magnetospheric Survey Europa PHIO Coordinates Browse Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-europa",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Magnetospheric Survey Europa PHIO Coordinates Browse Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains Galileo Magnetospheric Survey magnetic-field browse \n            data from the Europa flyby in satellite centered Phi-Omega coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-23",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-ganymede",
+                "title": "Galileo Jupiter Magnetometer Magnetospheric Survey Ganymede PHIO Coordinates Browse Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey-ganymede",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Magnetospheric Survey Ganymede PHIO Coordinates Browse Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains Galileo Magnetospheric Survey magnetic-field browse \n            data from the Ganymede flyby in satellite centered Phi-Omega coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-23",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey",
+                "title": "Galileo Jupiter Magnetometer Magnetospheric Survey SYS3 Coordinates Browse Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:browse-magspheric-survey",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Magnetospheric Survey SYS3 Coordinates Browse Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains Galileo Magnetospheric Survey magnetic-field browse \n            data in Jovicentric System III [1965] coordinates."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-17",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:calibration",
+                "title": "Galileo Jupiter Magnetometer Calibration Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:calibration",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Calibration Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n        Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "description": "This collection contains a time history of spacecraft and instrument commands \n        and mission events useful in understanding the operation of the Galileo \n        magnetometer during Jupiter approach and continuing throughout Jupiter orbital                   \n        operations. Most entries are taken from  the As-Run Spacecraft Event Files. \n        Perijove, apojove, and solar conjunctions are calculated using SPICE kernels. \n        Solar conjunction is defined as when the three-body (Sun-Earth-spacecraft) angle is less     \n        than 7 degrees."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2025-03-18",
+                        "version_id": "1.1",
+                        "description": "Originally from the PDS3 GO-J-MAG-3-RDR-HIGHRES-V1.0, \n          GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.00 dataset, migrated to PDS4"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-callisto",
+                "title": "Galileo Jupiter Magnetometer Highres Callisto Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-callisto",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Highres Callisto Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/qpm7-p681",
+                      "description": "This data collection contains high time resolution magnetic field vectors        \n            acquired by the Galileo magnetometer (MAG). It includes             \n            satellite flyby Callisto data. These data were acquired in           \n            order to characterize various portions of the Jovian magnetosphere        \n            at high time resolution."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-18",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-europa",
+                "title": "Galileo Jupiter Magnetometer Highres Europa Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-europa",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Highres Europa Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/nyak-9259",
+                      "description": "This data collection contains high time resolution magnetic field vectors        \n            acquired by the Galileo magnetometer (MAG). It includes             \n            satellite flyby Europa data. These data were acquired in           \n            order to characterize various portions of the Jovian magnetosphere        \n            at high time resolution."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-17",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-ganymede",
+                "title": "Galileo Jupiter Magnetometer Highres Ganymede Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-ganymede",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Highres Ganymede Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/gch4-8w75",
+                      "description": "This data collection contains high time resolution magnetic field vectors        \n            acquired by the Galileo magnetometer (MAG). It includes             \n            satellite flyby Ganymede data. These data were acquired in           \n            order to characterize various portions of the Jovian magnetosphere        \n            at high time resolution."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-02-28",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-io",
+                "title": "Galileo Jupiter Magnetometer Highres Io Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-io",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Highres Io Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/cdb0-ny73",
+                      "description": "This data collection contains high time resolution magnetic field vectors        \n            acquired by the Galileo magnetometer (MAG). It includes             \n            satellite flyby Io data. These data were acquired in           \n            order to characterize various portions of the Jovian magnetosphere        \n            at high time resolution."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-02-28",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-magnetosphere",
+                "title": "Galileo Jupiter Magnetometer Highres Magnetosphere Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:data-highres-magnetosphere",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Highres Magnetosphere Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/eq9q-3y30",
+                      "description": "This data collection contains high-resolution magnetic field\n            and trajectory data in spherical Jupiter System III [1965]\n            and Inertial Rotor coordinates (IRC) acquired by the Galileo magnetometer (MAG).\n            It includes satellite flyby data. These data were acquired in           \n            order to characterize various portions of the Jovian magnetosphere        \n            at high time resolution."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-23",
+                        "version_id": "1.1",
+                        "description": "This collection was originally released as part of the PDS3 \n               GO-J-MAG-3-RDR-HIGHRES-V1.0 data set. The metadata have been migrated to PDS4. \n               The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-mag-jup-calibrated",
+                "dataset_id": "urn:nasa:pds:galileo-mag-jup-calibrated:data-magspheric-survey",
+                "title": "Galileo Jupiter Magnetometer Magnetospheric Survey Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-mag-jup-calibrated:data-magspheric-survey",
+                    "version_id": "1.1",
+                    "title": "Galileo Jupiter Magnetometer Magnetospheric Survey Data Collection",
+                    "information_model_version": "1.17.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Kivelson, Margaret G.; Khurana, Krishan K.; Russell,\n            Christopher T.; Walker, Raymond J.; Joy, Steven P.; Mafi, Joseph N.",
+                      "publication_year": "2024",
+                      "doi": "10.17189/fq45-wv97",
+                      "description": "This collection contains Galileo magnetospheric survey magnetic-field \n            data in Jupiter Solar Equatorial, Inertial Rotor, Jupiter Solar Orbital,\n            Jupiter Solar Magnetic and Jovicentric System III [1965] coordinates. \n            The data cover 1995-11-01T00:06 to 2003-09-21T17:33."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2024-04-18",
+                        "version_id": "1.1",
+                        "description": "This product, JUP_APP_IRC.TAB, was originally released \n               as part of the PDS3 GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0 data set.\n               The metadata have been migrated to PDS4. The data themselves are unchanged."
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_6JZ35bGaT4HJ5VS36RkT9QHP",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:45.202249+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "data/galileo-pls-jup-derived",
+            "collections": [
+              {
+                "path": "data/galileo-pls-jup-derived",
+                "dataset_id": "urn:nasa:pds:galileo-pls-jup-derived:data",
+                "title": "Galileo PLS Jupiter RTS Moments Derived Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-pls-jup-derived:data",
+                    "version_id": "1.0",
+                    "title": "Galileo PLS Jupiter RTS Moments Derived Data Collection",
+                    "information_model_version": "1.19.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Frank, L.A.; Paterson, W.R; Ackerson, K.L.",
+                      "publication_year": "2023",
+                      "description": "This collection contains data from the Plasma Science instrument               \n        (PLS) on the Galileo spacecraft for all Jupiter orbits and Galileo plasma moments.\n        These data have been reformatted into ASCII tables to facilitate data                   \n        processing and analysis."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-04-19",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. \n          It was migrated to PDS4 from the PDS3 data set GO-J-PLS-5-RTS-MOMENTS-V1.0."
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_yAHUeOBB3wBSjHRaZ5E71PSg",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:44.694214+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        },
+        {
+          "tool_name": "pds_inspect_collections",
+          "content": {
+            "status": "success",
+            "bundle_path": "data/galileo-traj-jup",
+            "collections": [
+              {
+                "path": "data/galileo-traj-jup",
+                "dataset_id": "urn:nasa:pds:galileo-traj-jup:browse-sc-traj-jup-coords",
+                "title": "Galileo Jupiter Trajectory Centered Coordinates Browse Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-traj-jup:browse-sc-traj-jup-coords",
+                    "version_id": "1.0",
+                    "title": "Galileo Jupiter Trajectory Centered Coordinates Browse Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Joy, Steven  P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "description": "This collection contains browse plots of all 35 Galileo orbits, plus the       \n        trajectories of the other spacecraft to visit Jupiter, projected into the     \n        JSE X-Y plane (equatorial, X positive towards the Sun)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-08-15",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. \n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-traj-jup",
+                "dataset_id": "urn:nasa:pds:galileo-traj-jup:browse-sc-traj-moon-coords",
+                "title": "Galileo Jupiter Trajectory Moon Centered Coordinates Browse Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-traj-jup:browse-sc-traj-moon-coords",
+                    "version_id": "1.0",
+                    "title": "Galileo Jupiter Trajectory Moon Centered Coordinates Browse Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Joy, Steven  P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "description": "This collection contains detailed Galileo plots\n        of all the moon flyby trajectories from orbits."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-06-14",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. \n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-SC-TRAJ-MOON-COORDS-V1.0"
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-traj-jup",
+                "dataset_id": "urn:nasa:pds:galileo-traj-jup:data-moon-traj",
+                "title": "Galileo Jupiter Moon Trajectory Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-traj-jup:data-moon-traj",
+                    "version_id": "1.0",
+                    "title": "Galileo Jupiter Moon Trajectory Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Joy, Steven  P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/mtm2-vb15",
+                      "description": "This collection contains data for System III (1965.0) trajectory and Sun and       \n        Earth phase angles of Galileo and selected Jovian moons when Galileo was      \n        inside 30 Jupiter radii from Jupiter. Trajectories are sampled every 20       \n        seconds."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-08-11",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. \n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-MOON-TRAJ-JUP-CRDS-V1.0."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-traj-jup",
+                "dataset_id": "urn:nasa:pds:galileo-traj-jup:data-rotor-attitude",
+                "title": "Galileo Jupiter Trajectory Rotor Attitude Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-traj-jup:data-rotor-attitude",
+                    "version_id": "1.0",
+                    "title": "Galileo Jupiter Trajectory Rotor Attitude Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Joy, Steven  P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/m2bz-tv64",
+                      "description": "This collection contains the attitude data for the rotor of the Galileo       \n        spacecraft. The data provided are derived from the Attitude and               \n        Articulation Control System (AACS) data downlink as provided by the           \n        Galileo project to the magnetometer team. This collection covers              \n        portions of the Jupiter Approach (JA) and all orbit operation mission         \n        phases (J0-J35)."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-07-27",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. \n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-REDR-ROTOR-ATTITUDE-V1.0."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-traj-jup",
+                "dataset_id": "urn:nasa:pds:galileo-traj-jup:data-sc-traj-jup-coords",
+                "title": "Galileo Trajectory Jupiter Centered Coordinates Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-traj-jup:data-sc-traj-jup-coords",
+                    "version_id": "1.0",
+                    "title": "Galileo Trajectory Jupiter Centered Coordinates Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Joy, Steven  P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/fyk9-zk63",
+                      "description": "This collection contains Galileo trajectory data in various\n        Jupiter centered coordinate systems (System III 1965.0, Jupiter Solar\n        Equatorial, Jupiter Solar Magnetospheric) for all orbit operation mission         \n        phases."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-08-11",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. \n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0."
+                      }
+                    }
+                  }
+                }
+              },
+              {
+                "path": "data/galileo-traj-jup",
+                "dataset_id": "urn:nasa:pds:galileo-traj-jup:data-sc-traj-moon-coords",
+                "title": "Galileo Jupiter Trajectory Moon Centered Coordinates Data Collection",
+                "file_type": "collection_xml",
+                "fields": {
+                  "Identification_Area": {
+                    "logical_identifier": "urn:nasa:pds:galileo-traj-jup:data-sc-traj-moon-coords",
+                    "version_id": "1.0",
+                    "title": "Galileo Jupiter Trajectory Moon Centered Coordinates Data Collection",
+                    "information_model_version": "1.20.0.0",
+                    "product_class": "Product_Collection",
+                    "Citation_Information": {
+                      "author_list": "Joy, Steven  P.; Mafi, Joseph N.",
+                      "publication_year": "2023",
+                      "doi": "10.17189/ze49-v563",
+                      "description": "This collection contains Galileo trajectory data in moon (Amalthea, Io,       \n        Europa, Ganymede, Callisto) centered coordinates for all of the near          \n        satellite encounters. Ephemeris data are provided every two seconds for       \n        approximately one hour about closest approach."
+                    },
+                    "Modification_History": {
+                      "Modification_Detail": {
+                        "modification_date": "2023-07-27",
+                        "version_id": "1.0",
+                        "description": "This is the original version of this collection in PDS4. \n          It was migrated to PDS4 from the PDS3 data set GO-J-POS-6-SC-TRAJ-MOON-COORDS-V1.0."
+                      }
+                    }
+                  }
+                }
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_rqWy10vXkSxaZSgcf7MU94LA",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:16:44.923325+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:16:45.203205+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"node\":\"ppi\",\"paths\":[\"data/GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0/\",\"data/GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0/\"]}",
+          "tool_call_id": "call_geMpJtDTf2c14xyJ62YBJ51W",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 27657,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 17792,
+        "output_tokens": 1085,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1005,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:17:02.201115+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:16:45+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqdBGMqGvgYDrKSI4V56a9CJclKS",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "data/GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0",
+                "dataset_ids": [
+                  "GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0"
+                ],
+                "title": "Galileo at Jupiter Fields and Particles Science Data",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "Galileo at Jupiter Fields and Particles Science Data",
+                    "VOLUME_NAME": "Galileo Orbiter Jupiter SC Traj. Jup.-Centered Coords. Data",
+                    "VOLUME_ID": "GOPOS_9001",
+                    "PUBLICATION_DATE": "2012-06-19",
+                    "DESCRIPTION": "CERTIFIED This data set contains the Galileo Orbiter Jupiter SC Traj. Jup.-Centered Coords. data. It tabulates the Galileo spacecraft emphemeris in System III, Jupiter Solar Equatorial, and Jupiter Solar Magnetospheric coordinates. Data are sampled every minute near Jupiter (less frequently at large distances) for all Jupiter orbits.",
+                    "DATA_SET_ID": "GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "data/GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0",
+                "dataset_ids": [
+                  "GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0"
+                ],
+                "title": "Galileo at Jupiter Fields and Particles Science Data",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "Galileo at Jupiter Fields and Particles Science Data",
+                    "VOLUME_NAME": "Galileo Orbiter Jovian Moon Traj. Jup.-Centered Coords. Data",
+                    "VOLUME_ID": "GOPOS_9003",
+                    "PUBLICATION_DATE": "2012-06-19",
+                    "DESCRIPTION": "CERTIFIED This data set contains the Galileo Orbiter Jovian Moon Traj.Jup.-Centered Coords. data. It includes the System III (1965.0) trajectory and Sun and Earth phase angles of Galileo and selected Jovian moons when Galileo was inside 30 Jupiter radii from Jupiter. Trajectories are sampled every 20 seconds.",
+                    "DATA_SET_ID": "GO-J-POS-6-MOON-TRAJ-JUP-COORDS-V1.0"
+                  }
+                },
+                "volume_count": 1
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_geMpJtDTf2c14xyJ62YBJ51W",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:17:03.265192+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:17:03.266376+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "args": "{\"summary\":\"To assess whether Jupiter\u2019s dawnside magnetodisk is in approximate radial force balance from ~20\u201380 RJ, you typically need (1) magnetic field vectors, (2) plasma moments (density/temperature/flow for pressure and centrifugal terms), and (3) spacecraft trajectory/coordinates to select dawnside local times and the 20\u201380 RJ radial range. On PDS PPI, the closest match is Galileo MAG + PLS moments + trajectory (with both PDS3 and modern PDS4 identifiers available). Juno MAG/JADE can be used as a supplemental comparison dataset.\",\"candidates\":[{\"path\":\"data/galileo-mag-jup-calibrated/\",\"dataset_id\":\"urn:nasa:pds:galileo-mag-jup-calibrated:data-magspheric-survey\",\"title\":\"Galileo Jupiter Magnetometer Magnetospheric Survey Data Collection\",\"pds_version\":\"PDS4\",\"mission\":\"galileo\",\"node\":\"ppi\",\"reasoning\":\"Stage 1: Located the PDS4 Galileo MAG calibrated bundle and its collections. This collection provides calibrated magnetic-field vectors in common Jovian coordinate systems over the Jupiter orbital mission; these are needed to compute magnetic pressure/tension terms in a radial force-balance analysis for the dawnside magnetodisk between 20\u201380 RJ.\"},{\"path\":\"data/GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0/\",\"dataset_id\":\"GO-J-MAG-3-RDR-MAGSPHERIC-SURVEY-V1.0\",\"title\":\"Galileo at Jupiter Fields and Particles Science Data\",\"pds_version\":\"PDS3\",\"mission\":\"galileo\",\"node\":\"ppi\",\"reasoning\":\"Stage 1: Probed the legacy PDS3 Galileo MAG magnetospheric survey RDR. This is the PDS3 dataset commonly cited in papers and contains the Galileo Jupiter magnetospheric survey magnetic-field data used for force-balance studies.\"},{\"path\":\"data/galileo-pls-jup-derived/\",\"dataset_id\":\"urn:nasa:pds:galileo-pls-jup-derived:data\",\"title\":\"Galileo PLS Jupiter RTS Moments Derived Data Collection\",\"pds_version\":\"PDS4\",\"mission\":\"galileo\",\"node\":\"ppi\",\"reasoning\":\"Stage 1: Located the PDS4 Galileo PLS derived (moments) collection. Plasma moments are required to estimate thermal pressure gradients and centrifugal/inertial contributions to radial force balance in the magnetodisk; combine with MAG and trajectory to isolate dawnside intervals at 20\u201380 RJ.\"},{\"path\":\"data/GO-J-PLS-5-RTS-MOMENTS-V1.0/\",\"dataset_id\":\"GO-J-PLS-5-RTS-MOMENTS-V1.0\",\"title\":\"GALILEO JUPITER RTS MOMENT DATA V1.0\",\"pds_version\":\"PDS3\",\"mission\":\"galileo\",\"node\":\"ppi\",\"reasoning\":\"Stage 1: Probed the legacy PDS3 Galileo PLS moments dataset (the PDS3 source for the PDS4 derived bundle). Provides the plasma moments needed for pressure/centrifugal terms in the force-balance calculation.\"},{\"path\":\"data/galileo-traj-jup/\",\"dataset_id\":\"urn:nasa:pds:galileo-traj-jup:data-sc-traj-jup-coords\",\"title\":\"Galileo Trajectory Jupiter Centered Coordinates Data Collection\",\"pds_version\":\"PDS4\",\"mission\":\"galileo\",\"node\":\"ppi\",\"reasoning\":\"Stage 1: Located the PDS4 Galileo trajectory collection (System III, JSE, JSM, etc.). Needed to compute radial distance (RJ) and select dawnside local time sectors, enabling you to filter measurements specifically to 20\u201380 RJ on the dawn flank.\"},{\"path\":\"data/GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0/\",\"dataset_id\":\"GO-J-POS-6-SC-TRAJ-JUP-COORDS-V1.0\",\"title\":\"Galileo at Jupiter Fields and Particles Science Data\",\"pds_version\":\"PDS3\",\"mission\":\"galileo\",\"node\":\"ppi\",\"reasoning\":\"Stage 1: Probed the legacy PDS3 Galileo Jupiter-centered spacecraft ephemeris/trajectory dataset. This is the PDS3 form often used alongside GO-J-MAG-* and GO-J-PLS-* in published Jovian magnetosphere analyses to restrict to dawnside and 20\u201380 RJ.\"},{\"path\":\"data/JNO-J-3-FGM-CAL-V1.0/\",\"dataset_id\":\"JNO-J-3-FGM-CAL-V1.0\",\"title\":\"JUNO MAGNETOMETER CALIBRATED DATA\",\"pds_version\":\"PDS3\",\"mission\":\"juno\",\"node\":\"ppi\",\"reasoning\":\"Stage 1: Probed Juno calibrated magnetometer (FGM) vectors. While Juno\u2019s orbit sampling differs from Galileo\u2019s (often high-latitude), these calibrated B-field data can be used for comparison/extension of force-balance assessments where Juno covers relevant radial distances/local times.\"},{\"path\":\"data/JNO-J-JAD-5-MOMENTS-V1.0/\",\"dataset_id\":\"JNO-J-JAD-5-MOMENTS-V1.0\",\"title\":\"JUNO JADE\",\"pds_version\":\"PDS3\",\"mission\":\"juno\",\"node\":\"ppi\",\"reasoning\":\"Stage 1: Probed Juno JADE derived plasma moments, which can provide density/temperature/flow inputs for force-balance terms when Juno traverses the magnetodisk; best used in tandem with JNO-J-3-FGM-CAL-V1.0 and trajectory/SPICE (outside this node) to isolate dawnside 20\u201380 RJ intervals.\"}]}",
+          "tool_call_id": "call_AA2DF2wqrmQGCv2KAvq4D15w",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 28335,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 27008,
+        "output_tokens": 2229,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 1003,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:17:33.239162+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:17:03+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqdTfSLqHDvgMrL33TaDTss1EERY",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "content": "Final result processed.",
+          "tool_call_id": "call_AA2DF2wqrmQGCv2KAvq4D15w",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:17:33.244123+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:17:33.244144+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e79-e759-7623-b47b-c2c983e946fa",
+      "metadata": null
+    }
+  ],
+  "error": null
+}

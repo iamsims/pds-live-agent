@@ -1,0 +1,1057 @@
+{
+  "row_index": 52,
+  "query": "What do MESSENGER MDIS images show about the relationship between Mercury's north polar low reflectance deposits and permanently shadowed terrain?",
+  "row": {
+    "row_index": 52,
+    "paper": "Chabot, N.L., et al., 2016. Imaging Mercury's polar deposits during MESSENGER's low-altitude campaign. GRL, 43(18), pp.9461-9468. DOI:10.1002/2016GL070403",
+    "query": "What do MESSENGER MDIS images show about the relationship between Mercury's north polar low reflectance deposits and permanently shadowed terrain?",
+    "expected_ids_raw": "urn:nasa:pds:messenger_mdis_1001",
+    "expected_ids": [
+      "urn:nasa:pds:messenger_mdis_1001"
+    ]
+  },
+  "elapsed_s": 71.5,
+  "router_node": "img",
+  "n_candidates": 6,
+  "n_tool_calls": 6,
+  "usage": {
+    "input_tokens": 62990,
+    "output_tokens": 3060,
+    "cache_read_tokens": 48000,
+    "cache_write_tokens": 0,
+    "total_tokens": 66050,
+    "requests": 7
+  },
+  "tool_calls": [
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "img/data/messenger/",
+        "node": "img"
+      },
+      "tool_output": "{'status': 'success', 'path': 'img/data/messenger/', 'total': 26, 'filtered_total': None, 'dirs': [{'name': 'derived', 'path': 'img/data/messenger/derived/', 'pds_hint': None}, {'name': 'MDIS', 'path': 'img/data/messenger/MDIS/', 'pds_hint': None}, {'name': 'MESSDEM_1001', 'path': 'img/data/messenger/MESSDEM_1001/', 'pds_hint': 'PDS3'}, {'name': 'messdem_1001', 'path': 'img/data/messenger/messdem_1001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_1001', 'path': 'img/data/messenger/MSGRMDS_1001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_1001', 'path': 'img/data/messenger/msgrmds_1001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_2001', 'path': 'img/data/messenger/MSGRMDS_2001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_2001', 'path': 'img/data/messenger/msgrmds_2001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_3001', 'path': 'img/data/messenger/MSGRMDS_3001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_3001', 'path': 'img/data/messenger/msgrmds_3001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_4001', 'path': 'img/data/messenger/MSGRMDS_4001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_4001', 'path': 'img/data/messenger/msgrmds_4001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_5001', 'path': 'img/data/messenger/MSGRMDS_5001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_5001', 'path': 'img/data/messenger/msgrmds_5001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_6001', 'path': 'img/data/messenger/MSGRMDS_6001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_6001', 'path': 'img/data/messenger/msgrmds_6001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_7001', 'path': 'img/data/messenger/MSGRMDS_7001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_7001', 'path': 'img/data/messenger/msgrmds_7001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_7101', 'path': 'img/data/messenger/MSGRMDS_7101/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_7101', 'path': 'img/data/messenger/msgrmds_7101/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_7201', 'path': 'img/data/messenger/MSGRMDS_7201/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_7201', 'path': 'img/data/messenger/msgrmds_7201/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_7301', 'path': 'img/data/messenger/MSGRMDS_7301/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_7301', 'path': 'img/data/messenger/msgrmds_7301/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_8001', 'path': 'img/data/messenger/MSGRMDS_8001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_8001', 'path': 'img/data/messenger/msgrmds_8001/', 'pds_hint': 'PDS3'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "img/data/messenger/MDIS/",
+        "node": "img"
+      },
+      "tool_output": "{'status': 'success', 'path': 'img/data/messenger/MDIS/', 'total': 26, 'filtered_total': None, 'dirs': [{'name': 'derived', 'path': 'img/data/messenger/MDIS/derived/', 'pds_hint': None}, {'name': 'MDIS', 'path': 'img/data/messenger/MDIS/MDIS/', 'pds_hint': None}, {'name': 'MESSDEM_1001', 'path': 'img/data/messenger/MDIS/MESSDEM_1001/', 'pds_hint': 'PDS3'}, {'name': 'messdem_1001', 'path': 'img/data/messenger/MDIS/messdem_1001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_1001', 'path': 'img/data/messenger/MDIS/MSGRMDS_1001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_1001', 'path': 'img/data/messenger/MDIS/msgrmds_1001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_2001', 'path': 'img/data/messenger/MDIS/MSGRMDS_2001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_2001', 'path': 'img/data/messenger/MDIS/msgrmds_2001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_3001', 'path': 'img/data/messenger/MDIS/MSGRMDS_3001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_3001', 'path': 'img/data/messenger/MDIS/msgrmds_3001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_4001', 'path': 'img/data/messenger/MDIS/MSGRMDS_4001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_4001', 'path': 'img/data/messenger/MDIS/msgrmds_4001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_5001', 'path': 'img/data/messenger/MDIS/MSGRMDS_5001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_5001', 'path': 'img/data/messenger/MDIS/msgrmds_5001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_6001', 'path': 'img/data/messenger/MDIS/MSGRMDS_6001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_6001', 'path': 'img/data/messenger/MDIS/msgrmds_6001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_7001', 'path': 'img/data/messenger/MDIS/MSGRMDS_7001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_7001', 'path': 'img/data/messenger/MDIS/msgrmds_7001/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_7101', 'path': 'img/data/messenger/MDIS/MSGRMDS_7101/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_7101', 'path': 'img/data/messenger/MDIS/msgrmds_7101/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_7201', 'path': 'img/data/messenger/MDIS/MSGRMDS_7201/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_7201', 'path': 'img/data/messenger/MDIS/msgrmds_7201/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_7301', 'path': 'img/data/messenger/MDIS/MSGRMDS_7301/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_7301', 'path': 'img/data/messenger/MDIS/msgrmds_7301/', 'pds_hint': 'PDS3'}, {'name': 'MSGRMDS_8001', 'path': 'img/data/messenger/MDIS/MSGRMDS_8001/', 'pds_hint': 'PDS3'}, {'name': 'msgrmds_8001', 'path': 'img/data/messenger/MDIS/msgrmds_8001/', 'pds_hint': 'PDS3'}], 'error': None}"
+    },
+    {
+      "tool_name": "pds_resolve_volume",
+      "tool_input": {
+        "volume_set_path": "img/data/messenger/MDIS/",
+        "node": "img",
+        "dataset_id_hint": "MDIS RDR",
+        "sample": 12
+      },
+      "tool_output": "{'status': 'success', 'volume_set_path': 'img/data/messenger/MDIS/', 'total_children': 26, 'sampled': 12, 'children': [{'name': 'MDIS', 'path': 'img/data/messenger/MDIS/MDIS/MESSDEM_1001', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-H-MDIS-5-DEM-ELEVATION-V1.0', 'MESS-E/V/H-MDIS-2-EDR-RAWDATA-V1.0'], 'volume_name': 'MESSENGER MDIS DIGITAL ELEVATION MODEL ARCHIVE'}, {'name': 'MESSDEM_1001', 'path': 'img/data/messenger/MDIS/MESSDEM_1001', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-H-MDIS-5-DEM-ELEVATION-V1.0'], 'volume_name': 'MESSENGER MDIS DIGITAL ELEVATION MODEL ARCHIVE'}, {'name': 'MSGRMDS_1001', 'path': 'img/data/messenger/MDIS/MSGRMDS_1001', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-E/V/H-MDIS-2-EDR-RAWDATA-V1.0'], 'volume_name': 'MESSENGER MDIS UNCALIBRATED DATA ARCHIVE'}, {'name': 'MSGRMDS_2001', 'path': 'img/data/messenger/MDIS/MSGRMDS_2001', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0'], 'volume_name': 'MESSENGER MDIS CALIBRATED DATA ARCHIVE'}, {'name': 'MSGRMDS_3001', 'path': 'img/data/messenger/MDIS/MSGRMDS_3001', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-E/V/H-MDIS-6-DDR-GEOMDATA-V1.0'], 'volume_name': 'MESSENGER MDIS DERIVED DATA ARCHIVE'}, {'name': 'MSGRMDS_4001', 'path': 'img/data/messenger/MDIS/MSGRMDS_4001', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-H-MDIS-5-RDR-BDR-V1.0'], 'volume_name': 'MESSENGER MDIS MAP PROJECTED BASEMAP ARCHIVE'}, {'name': 'MSGRMDS_5001', 'path': 'img/data/messenger/MDIS/MSGRMDS_5001', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-H-MDIS-5-RDR-MDR-V1.0'], 'volume_name': 'MESSENGER MDIS MAP PROJECTED MULTISPECTRAL ARCHIVE'}, {'name': 'MSGRMDS_6001', 'path': 'img/data/messenger/MDIS/MSGRMDS_6001', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-H-MDIS-5-RDR-MD3-V1.0'], 'volume_name': 'MESSENGER MDIS 3-COLOR MAP PROJECTED MULTISPECTRAL ARCHIVE'}, {'name': 'MSGRMDS_7001', 'path': 'img/data/messenger/MDIS/MSGRMDS_7001', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-H-MDIS-5-RDR-HIE-V1.0'], 'volume_name': 'MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST ARCHIVE'}, {'name': 'MSGRMDS_7101', 'path': 'img/data/messenger/MDIS/MSGRMDS_7101', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-H-MDIS-5-RDR-HIW-V1.0'], 'volume_name': 'MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST ARCHIVE'}, {'name': 'MSGRMDS_7201', 'path': 'img/data/messenger/MDIS/MSGRMDS_7201', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-H-MDIS-5-RDR-LOI-V1.0'], 'volume_name': 'MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP ARCHIVE'}, {'name': 'MSGRMDS_7301', 'path': 'img/data/messenger/MDIS/MSGRMDS_7301', 'pds_version': 'PDS3', 'dataset_ids': ['MESS-H-MDIS-5-RDR-MP5-V1.0'], 'volume_name': '5-COLOR MESSENGER MDIS MAP PROJECTED MULTISPECTRAL ARCHIVE'}], 'best_match': None, 'error': None}"
+    },
+    {
+      "tool_name": "pds_probe_datasets",
+      "tool_input": {
+        "paths": [
+          "img/data/messenger/MDIS/MSGRMDS_2001/",
+          "img/data/messenger/MDIS/MSGRMDS_4001/",
+          "img/data/messenger/MDIS/MSGRMDS_5001/",
+          "img/data/messenger/MDIS/MSGRMDS_7001/",
+          "img/data/messenger/MDIS/MSGRMDS_7101/",
+          "img/data/messenger/MDIS/MSGRMDS_7201/"
+        ],
+        "node": "img"
+      },
+      "tool_output": "{'status': 'success', 'results': [{'path': 'img/data/messenger/MDIS/MSGRMDS_2001', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0', 'dataset_ids': ['MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0'], 'title': 'MESSENGER MDIS CALIBRATED DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MESSENGER MDIS CALIBRATED DATA', 'VOLUME_NAME': 'MESSENGER MDIS CALIBRATED DATA ARCHIVE', 'VOLUME_ID': 'MSGRMDS_2001', 'PUBLICATION_DATE': '2016-05-06', 'DESCRIPTION': 'MESSENGER MDIS calibrated data. This volume contains MDIS images taken at Earth, Venus and Mercury over the interval 2004-232 (19-Aug) to 2015-120 (30-Apr).', 'DATA_SET_ID': 'MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0'}}, 'volume_count': 1}, {'path': 'img/data/messenger/MDIS/MSGRMDS_4001', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MESS-H-MDIS-5-RDR-BDR-V1.0', 'dataset_ids': ['MESS-H-MDIS-5-RDR-BDR-V1.0'], 'title': 'MESSENGER MDIS MAP PROJECTED BASEMAP DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MESSENGER MDIS MAP PROJECTED BASEMAP DATA', 'VOLUME_NAME': 'MESSENGER MDIS MAP PROJECTED BASEMAP ARCHIVE', 'VOLUME_ID': 'MSGRMDS_4001', 'PUBLICATION_DATE': '2017-05-12', 'DESCRIPTION': 'MESSENGER MDIS map projected basemap data. This volume contains maps of MDIS Narrow Angle Camera, and Wide Angle Camera images taken at Mercury over the interval 2011-03-29 to 2015-04-30.', 'DATA_SET_ID': 'MESS-H-MDIS-5-RDR-BDR-V1.0'}}, 'volume_count': 1}, {'path': 'img/data/messenger/MDIS/MSGRMDS_5001', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MESS-H-MDIS-5-RDR-MDR-V1.0', 'dataset_ids': ['MESS-H-MDIS-5-RDR-MDR-V1.0'], 'title': 'MESSENGER MDIS MAP PROJECTED MULTISPECTRAL DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MESSENGER MDIS MAP PROJECTED MULTISPECTRAL DATA', 'VOLUME_NAME': 'MESSENGER MDIS MAP PROJECTED MULTISPECTRAL ARCHIVE', 'VOLUME_ID': 'MSGRMDS_5001', 'PUBLICATION_DATE': '2017-05-12', 'DESCRIPTION': 'MESSENGER MDIS map projected multispectral data. This volume contains maps of MDIS Wide Angle Camera images taken at Mercury over the interval 2011-03-29 to 2015-04-30.', 'DATA_SET_ID': 'MESS-H-MDIS-5-RDR-MDR-V1.0'}}, 'volume_count': 1}, {'path': 'img/data/messenger/MDIS/MSGRMDS_7001', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MESS-H-MDIS-5-RDR-HIE-V1.0', 'dataset_ids': ['MESS-H-MDIS-5-RDR-HIE-V1.0'], 'title': 'MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST DATA', 'VOLUME_NAME': 'MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST ARCHIVE', 'VOLUME_ID': 'MSGRMDS_7001', 'PUBLICATION_DATE': '2017-05-12', 'DESCRIPTION': 'High solar incidence angle basemap illuminated from the east reduced data records for the MDIS camera system on MESSENGER.', 'DATA_SET_ID': 'MESS-H-MDIS-5-RDR-HIE-V1.0'}}, 'volume_count': 1}, {'path': 'img/data/messenger/MDIS/MSGRMDS_7101', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MESS-H-MDIS-5-RDR-HIW-V1.0', 'dataset_ids': ['MESS-H-MDIS-5-RDR-HIW-V1.0'], 'title': 'MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST DATA', 'VOLUME_NAME': 'MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST ARCHIVE', 'VOLUME_ID': 'MSGRMDS_7101', 'PUBLICATION_DATE': '2017-05-12', 'DESCRIPTION': 'High solar incidence angle basemap illuminated from the west reduced data records for the MDIS camera system on MESSENGER.', 'DATA_SET_ID': 'MESS-H-MDIS-5-RDR-HIW-V1.0'}}, 'volume_count': 1}, {'path': 'img/data/messenger/MDIS/MSGRMDS_7201', 'pds_version': 'PDS3', 'file_type': 'voldesc.cat', 'dataset_id': 'MESS-H-MDIS-5-RDR-LOI-V1.0', 'dataset_ids': ['MESS-H-MDIS-5-RDR-LOI-V1.0'], 'title': 'MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP DATA', 'fields': {'PDS_VERSION_ID': 'PDS3', 'VOLUME': {'VOLUME_SET_NAME': 'MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP DATA', 'VOLUME_NAME': 'MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP ARCHIVE', 'VOLUME_ID': 'MSGRMDS_7201', 'PUBLICATION_DATE': '2017-05-12', 'DESCRIPTION': 'Low solar incidence angle basemap reduced data records for the MDIS camera system on MESSENGER.', 'DATA_SET_ID': 'MESS-H-MDIS-5-RDR-LOI-V1.0'}}, 'volume_count': 1}], 'errors': [], 'error': None}"
+    },
+    {
+      "tool_name": "pds_list_dataset_dirs",
+      "tool_input": {
+        "path": "img/data/messenger/derived/",
+        "node": "img"
+      },
+      "tool_output": "{'status': 'success', 'path': 'img/data/messenger/derived/', 'total': 0, 'filtered_total': None, 'dirs': [], 'error': None}"
+    },
+    {
+      "tool_name": "final_result",
+      "tool_input": {
+        "summary": "Located MESSENGER MDIS PDS3 archives on the IMG node. For studying north polar low-reflectance deposits (LRD) versus permanently shadowed terrain (PST/PSR), the most directly useful products are the MDIS map-projected basemaps and high-incidence mosaics (to outline shadowed crater interiors) plus multispectral/low-incidence mosaics (to quantify reflectance). IMG appears to host the PDS3 volumes (not the newer PDS4 MDIS archive, which is typically at the Geosciences node).",
+        "candidates": [
+          {
+            "path": "img/data/messenger/MDIS/MSGRMDS_7001/",
+            "dataset_id": "MESS-H-MDIS-5-RDR-HIE-V1.0",
+            "title": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST DATA",
+            "pds_version": "PDS3",
+            "mission": "messenger",
+            "node": "img",
+            "reasoning": "Stage 1 (directory walk + probe): High-incidence (low Sun) polar basemap mosaic illuminated from the east\u2014this is the MDIS product most commonly used to map the boundaries of permanently shadowed terrain and to compare those boundaries with adjacent low-reflectance deposits at Mercury\u2019s north pole."
+          },
+          {
+            "path": "img/data/messenger/MDIS/MSGRMDS_7101/",
+            "dataset_id": "MESS-H-MDIS-5-RDR-HIW-V1.0",
+            "title": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST DATA",
+            "pds_version": "PDS3",
+            "mission": "messenger",
+            "node": "img",
+            "reasoning": "Stage 1: Companion high-incidence polar basemap illuminated from the west. Using both east- and west-lit mosaics helps distinguish true low-reflectance surface materials from illumination effects and better delineate permanently shadowed crater floors/walls."
+          },
+          {
+            "path": "img/data/messenger/MDIS/MSGRMDS_7201/",
+            "dataset_id": "MESS-H-MDIS-5-RDR-LOI-V1.0",
+            "title": "MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP DATA",
+            "pds_version": "PDS3",
+            "mission": "messenger",
+            "node": "img",
+            "reasoning": "Stage 1: Low-incidence (more \u2018normal\u2019 lighting) MDIS basemap mosaic\u2014useful for measuring/confirming the low reflectance of LRD outside of deep shadow and for correlating LRD distribution with mapped PSR locations derived from topography/illumination modeling."
+          },
+          {
+            "path": "img/data/messenger/MDIS/MSGRMDS_5001/",
+            "dataset_id": "MESS-H-MDIS-5-RDR-MDR-V1.0",
+            "title": "MESSENGER MDIS MAP PROJECTED MULTISPECTRAL DATA",
+            "pds_version": "PDS3",
+            "mission": "messenger",
+            "node": "img",
+            "reasoning": "Stage 1: Map-projected MDIS multispectral mosaics enable color/relative reflectance comparisons of LRD versus surrounding terrain, while still being co-registered for comparison to PSR outlines (from shadow maps or DEM-based illumination models)."
+          },
+          {
+            "path": "img/data/messenger/MDIS/MSGRMDS_2001/",
+            "dataset_id": "MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0",
+            "title": "MESSENGER MDIS CALIBRATED DATA",
+            "pds_version": "PDS3",
+            "mission": "messenger",
+            "node": "img",
+            "reasoning": "Stage 1: Calibrated individual MDIS images (CDRs). If you want to reproduce the published LRD\u2013PSR comparisons directly (rather than relying on mosaics), this archive provides the calibrated inputs for custom polar projections, photometric normalization, and reflectance analysis."
+          },
+          {
+            "path": "img/data/messenger/MDIS/MESSDEM_1001/",
+            "dataset_id": "MESS-H-MDIS-5-DEM-ELEVATION-V1.0",
+            "title": "MESSENGER MDIS DIGITAL ELEVATION MODEL ARCHIVE",
+            "pds_version": "PDS3",
+            "mission": "messenger",
+            "node": "img",
+            "reasoning": "Stage 1 (resolve + probe): While not an image mosaic, the MDIS DEM is commonly paired with MDIS imaging to model permanent shadow at the north pole (terrain-controlled illumination) and then compare predicted PSR extent with observed low-reflectance deposits in MDIS basemaps."
+          }
+        ]
+      },
+      "tool_output": "Final result processed."
+    }
+  ],
+  "matched": false,
+  "matched_expected": [],
+  "full_trace": [
+    {
+      "parts": [
+        {
+          "content": "You are a dataset-discovery assistant for the NASA PDS JPL Imaging Node (IMG) node at https://planetarydata.jpl.nasa.gov/\n\nDirectory layout and workflow:\nDirectory layout: img/data/<mission>/[<sub-tree>/]<dataset_or_bundle>/\nTop level under img/data/ is a flat list of mission directories. Many missions nest one or\ntwo more levels before reaching dataset roots (Cassini is the most extreme \u2014 four parallel\nsub-trees). Recurse with list_dataset_dirs rather than guessing paths.\nThere is no holdings/inventory page \u2014 the Apache directory listing is the only index.\nPDS4 coverage at IMG is partial: for some missions the legacy PDS3 volumes are mirrored\nhere but the equivalent urn:nasa:pds:<mission>_<inst>_* PDS4 bundles live at a different\ndiscipline node. If a urn: LID does not turn up after one list+probe, return the closest\nPDS3 DATA_SET_ID you found while probing and note that IMG hosts the PDS3 mirror only.\n\n\nNaming conventions on IMG:\n  Top level: lowercase mission directories (cassini/, galileo/, mariner9/, viking_orbiter/, \u2026).\n  Inside a mission: variable structure. Cassini for example has cassini_orbiter/, opus/, pds4/, and public/ \u2014 all four can contain datasets at different depths.\n  PDS3 dataset names: hyphenated identifiers (e.g. co-s-iss-2-edr-v1.0); PDS4 bundles begin with urn-nasa-pds-.\nSkip these directories at every level when scanning: checksums, document, index, catalog,\nextras, browse, software, errata.\nVolume-numbering convention (many IMG missions follow this pattern):\n  Within a single mission/instrument directory, numbered sibling volumes encode the\n  product level (raw \u2192 calibrated \u2192 derived) in the leading digit(s) of their name.\n  Examples of the pattern (NOT a recipe for any one query):\n    MRO CTX: img/data/mro/ctx/mrox_NNNN/   \u2014 flat EDR series, all the same DATA_SET_ID.\n    MESSENGER MDIS: img/data/messenger/MDIS/MSGRMDS_<lvl><nnn>/  \u2014 leading digit splits\n      product levels (lower digit = lower processing level; higher digit = derived).\n  Use pds_resolve_volume with the relevant level keyword (EDR / CDR / RDR / BDR / MDR /\n  derived / calibrated) as the dataset_id_hint to land on the volume matching the query,\n  rather than probing many sibling volumes individually.\n\n\nPDS3 vs PDS4:\n  - PDS3 directory names are ALL-CAPS-style hyphenated identifiers (e.g. mex-m-hrsc-5-refdr-dtm-v1). Leaf marker: voldesc.cat or voldesc.sfd.\n  - PDS4 bundle directories begin with `urn-nasa-pds-`. Leaf marker: bundle*.xml or bundle*.lblx. Collections live in subdirectories.\n  - Hybrid: some directories have BOTH PDS3 and PDS4 labels.\n\nYOUR TOOLS (5 tools \u2014 always pass node='img'):\n  1. pds_list_missions(node='img') \u2014 returns mission directories with descriptions. No HTTP.\n  2. pds_list_dataset_dirs(path, node='img', filter=...) \u2014 lists sub-directory names under a path. Cheap HTTP, no label parsing.\n  3. pds_probe_datasets(paths, node='img') \u2014 probes specific directories for PDS labels. Accepts a list of paths (max 20).\n  4. pds_inspect_collections(path, node='img') \u2014 scans PDS4 bundle subdirs for collection labels.\n  5. pds_resolve_volume(volume_set_path, node='img', dataset_id_hint=..., sample=8) \u2014 when a parent directory contains many\n     numbered sibling volumes (RMS COISS_2xxx, COUVIS_0xxx, ATM\n     MROM_*, jnomwr_*, cocirs_*, IMG mrox_*, MSGRMDS_*), this probes\n     hint-ranked children in one call and returns per-child\n     dataset_ids plus a `best_match` field. Use it instead of\n     probing volumes one at a time when you know the target id or\n     a discriminating substring of it.\n\nWORKFLOW:\nStep 1: If you know the mission directory from the abbreviation table, skip directly to list_dataset_dirs(path='img/data/<mission>/', node='img'). Otherwise call pds_list_missions(node='img') first to see the mission list.\nStep 2: Call pds_list_dataset_dirs for the mission directory. If results look like another layer of organisational sub-trees (e.g. cassini_orbiter/, opus/, pds4/, public/ for Cassini, or ctx/, hirise/, marci/ for mro), call list_dataset_dirs again on the relevant sub-tree.\nStep 3: Volume-set targets \u2014 when a dataset is split across many numbered volumes inside a\nsingle parent directory, call pds_resolve_volume(volume_set_path='<parent path>/', node='img', dataset_id_hint='<DATA_SET_ID fragment>', sample=8). It returns per-child dataset_ids in one call instead of multiple sequential probes.\nStep 4: If PDS4 bundles are found, call pds_inspect_collections on top 2-3.\nStep 5: COVERAGE-GAP rule. If the target is a urn:nasa:pds: LID and no matching bundle turns up after Steps 1\u20134, OR if listing the mission/instrument directory returns only\nancillary content (EXTRAS/, browse/, document/) with no voldesc.cat in any probed sub-\ndirectory, then IMG most likely does not mirror that archive \u2014 many instruments have\ntheir main archive at a different discipline node (per the mission notes: HiRISE main\nRDR \u2192 GEO, MESSENGER MDIS PDS4 \u2192 PDS-Geosciences, etc.). Return the closest available\nPDS3 DATA_SET_ID (synthesised from the abbreviation table if no probe has succeeded\nyet) and note in `reasoning` that the main archive lives at the other node. Do not\nburn more than 2 extra list/probe calls hunting for the missing form.\nStep 6: Use the `dataset_ids` field on pds_probe_datasets results when a voldesc ships multiple DATA_SET_IDs \u2014 match against the full list, not just the scalar.\n\nCRITICAL RULES:\n  1. EVERY query requires at least one candidate. Never dismiss a query as 'not a dataset request' \u2014 every paper-derived query has at least one\n     supporting PDS dataset somewhere in this node's archive, and your job\n     is to surface the closest match (with `reasoning` explaining the link).\n  2. Prefer CALIBRATED/REDUCED data over raw/EDR for science queries.\n     When a probed voldesc exposes `dataset_ids` with multiple entries,\n     match the question's data need to the PRODUCT-TYPE token inside each\n     id (typically the third or fourth dash-separated token). Common ones:\n         EDR / RAW     = raw observations\n         CDR / CALIB   = generic calibrated data\n         RDR / TRDR / MRDR / MTRDR / BDR / SCVDR = reduced / derived imagery or spectra\n         DDR / LDR     = derived / digital terrain / level-5 products\n         SSB           = solar / stellar occultation (Cassini UVIS)\n         SPEC / CUBE / WAV = spectra / spectral cubes / waveforms\n         QUBE          = VIMS spectral data cube (the VIMS-flavoured \"EDR\")\n     If the query mentions 'occultation' return the SSB id; 'spectra' \u2192\n     SPEC; 'calibrated radiance' \u2192 CALIB/CDR; 'mosaic / map / derived' \u2192\n     DDR/MRDR/MTRDR. When two product types both fit the question (e.g.\n     SPEC + SSB for an occultation spectra query), return both candidates.\n     Do NOT just return the scalar `dataset_id` and drop the rest \u2014 that\n     field is only the first id in the voldesc and is often the wrong\n     product type for a given query.\n  3. For PDS4, use inspect_collections ONLY for top 2-3 bundles. Return COLLECTION-level LID when :data or :calibrated exists.\n  4. When the SAME data is available as both PDS3 and PDS4, return BOTH identifiers \u2014 emit one candidate per identifier. Most published papers cite the PDS3 dataset_id (e.g. MESS-E_V_H_SW-MAG-3-CDR-CALIBRATED-V1.0, LRO-L-LROC-5-RDR-V1.0); the PDS4 collection LID is the modern equivalent. Do NOT silently drop the PDS3 form.\n  5. Stay under 20 tool calls per query. Soft cap: 15. Hard cap: 20.\n  6. Only return paths you've actually probed \u2014 never guess.\n  7. ANTI-THRASHING. Never re-issue a tool call with the same name and the\n     same key arguments (path, paths, filter) that you've already issued in\n     this trace. The result will be identical \u2014 it wastes the budget and\n     blocks progress. If you're tempted to re-probe the same set of paths,\n     either move to a different tool (inspect_collections, resolve_volume)\n     or commit to `final_result` with the best candidate you have so far.\n  8. STOP-AT-LEVEL. The output `path` field should point at a dataset or\n     bundle directory (containing voldesc.cat or bundle*.xml), NOT at a\n     deeper product / DATA / EXTRAS / BROWSE / SHAPEFILE / DTM sub-folder.\n     Feature-level retrieval (a specific image of a specific crater) is\n     out of scope for this finder; return the dataset and explain in\n     `reasoning` how it covers the feature.\n  9. After 15 tool calls without converging, ALWAYS prefer emitting your\n     current best candidate(s) over running another exploratory call.\n     A grounded near-match with a clear reasoning note is more useful\n     than a 20-call trace that times out with no `final_result`.\n\n===========================================================\nSTAGE 2 \u2014 DEEPER NODE-SPECIFIC SEARCH (escalation only)\n===========================================================\n\nEverything above is STAGE 1: the 5 live-HTTP tools (pds_list_missions / pds_list_dataset_dirs / pds_probe_datasets / pds_inspect_collections / pds_resolve_volume), the per-node workflow, and the Critical Rules ALL belong to Stage 1. Stage 1 reaches bundle/collection level by walking the node's directory tree. Stage 2 below is a SECOND set of tools for refining or rescuing Stage 1 \u2014 do NOT call any Stage 2 tool unless one of the escalation triggers below fires.\n\nWHEN TO ESCALATE TO STAGE 2 (any one is enough):\n  (a) The query asks for SPECIFIC observations, granules, or product IDs \u2014 not just a dataset. Example: 'Cassini ISS images of Mimas between 2009 and 2010' needs per-observation filtering.\n  (b) Stage 1 has located the right bundle/collection but you still need to narrow by GEOMETRY, TIME, or a SPATIAL filter (bbox, lat/lon, ring longitude, target body, observation type).\n  (c) Stage 1 produced AMBIGUOUS candidates that a faceted query can disambiguate (e.g. multiple instruments with similar names, multiple processing levels).\n  (d) Stage 1 cannot reach the node's holdings index (e.g. SBN returns HTTP 403, a directory listing is unavailable). Use the Stage 2 API as a fallback path to candidates.\n\nSTAGE 2 TOOLS (this node):\n  - img_search_tool(target=..., instrument=..., mission=..., time_range=..., filters=...): IMG faceted product search.\n  - img_get_facets_tool(field=...): enumerate valid facet values (instruments, missions, targets, product types) for the IMG catalog.\n  - img_get_product_tool(product_id=...): fetch metadata for one IMG product.\n  - img_count_tool(target=..., instrument=..., ...): count matches without pulling rows.\n\nSTAGE 2 RULES:\n  1. When you already have a bundle/collection LID from Stage 1, REUSE it as a filter in the Stage 2 call. Stage 2 is refinement, not a fresh search.\n  2. Spend the MINIMUM number of additional calls. If a single faceted call answers the question, stop.\n  3. If Stage 2 finds nothing or errors out, FALL BACK to the Stage 1 candidates and note in `reasoning` that Stage 2 was attempted and returned no refinement.\n  4. The 20-tool-call budget from Stage 1's Critical Rule 5 is the budget for BOTH stages combined. Do NOT reset the counter when entering Stage 2.\n  5. Every candidate's `reasoning` field must explicitly name which stage produced it (e.g. 'Stage 1: located bundle X by directory walk' or 'Stage 2: narrowed to product Y via ODE_search_products bbox filter').\n",
+          "timestamp": "2026-05-12 23:31:29.303458+00:00",
+          "dynamic_ref": null,
+          "part_kind": "system-prompt"
+        },
+        {
+          "content": "What do MESSENGER MDIS images show about the relationship between Mercury's north polar low reflectance deposits and permanently shadowed terrain?",
+          "timestamp": "2026-05-12 23:31:29.303469+00:00",
+          "part_kind": "user-prompt"
+        }
+      ],
+      "timestamp": "2026-05-12 23:31:29.303715+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"img/data/messenger/\",\"node\":\"img\"}",
+          "tool_call_id": "call_nGXy1qHIA9NvvwJk6kYkE6uz",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 7919,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 0,
+        "output_tokens": 142,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 108,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:31:33.135473+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:31:30+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqrSwkwFRlBloDysbp8aJyOlGAit",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "img/data/messenger/",
+            "total": 26,
+            "filtered_total": null,
+            "dirs": [
+              {
+                "name": "derived",
+                "path": "img/data/messenger/derived/",
+                "pds_hint": null
+              },
+              {
+                "name": "MDIS",
+                "path": "img/data/messenger/MDIS/",
+                "pds_hint": null
+              },
+              {
+                "name": "MESSDEM_1001",
+                "path": "img/data/messenger/MESSDEM_1001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "messdem_1001",
+                "path": "img/data/messenger/messdem_1001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_1001",
+                "path": "img/data/messenger/MSGRMDS_1001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_1001",
+                "path": "img/data/messenger/msgrmds_1001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_2001",
+                "path": "img/data/messenger/MSGRMDS_2001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_2001",
+                "path": "img/data/messenger/msgrmds_2001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_3001",
+                "path": "img/data/messenger/MSGRMDS_3001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_3001",
+                "path": "img/data/messenger/msgrmds_3001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_4001",
+                "path": "img/data/messenger/MSGRMDS_4001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_4001",
+                "path": "img/data/messenger/msgrmds_4001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_5001",
+                "path": "img/data/messenger/MSGRMDS_5001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_5001",
+                "path": "img/data/messenger/msgrmds_5001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_6001",
+                "path": "img/data/messenger/MSGRMDS_6001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_6001",
+                "path": "img/data/messenger/msgrmds_6001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_7001",
+                "path": "img/data/messenger/MSGRMDS_7001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_7001",
+                "path": "img/data/messenger/msgrmds_7001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_7101",
+                "path": "img/data/messenger/MSGRMDS_7101/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_7101",
+                "path": "img/data/messenger/msgrmds_7101/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_7201",
+                "path": "img/data/messenger/MSGRMDS_7201/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_7201",
+                "path": "img/data/messenger/msgrmds_7201/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_7301",
+                "path": "img/data/messenger/MSGRMDS_7301/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_7301",
+                "path": "img/data/messenger/msgrmds_7301/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_8001",
+                "path": "img/data/messenger/MSGRMDS_8001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_8001",
+                "path": "img/data/messenger/msgrmds_8001/",
+                "pds_hint": "PDS3"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_nGXy1qHIA9NvvwJk6kYkE6uz",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:31:34.888424+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:31:34.889675+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"img/data/messenger/MDIS/\",\"node\":\"img\"}",
+          "tool_call_id": "call_qGqYmX9uUWosagmnAKz0asuk",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 8819,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 7552,
+        "output_tokens": 308,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 271,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:31:42.210119+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:31:35+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqrXoRsu7XGpUSF4EmdUPpIf2yio",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "img/data/messenger/MDIS/",
+            "total": 26,
+            "filtered_total": null,
+            "dirs": [
+              {
+                "name": "derived",
+                "path": "img/data/messenger/MDIS/derived/",
+                "pds_hint": null
+              },
+              {
+                "name": "MDIS",
+                "path": "img/data/messenger/MDIS/MDIS/",
+                "pds_hint": null
+              },
+              {
+                "name": "MESSDEM_1001",
+                "path": "img/data/messenger/MDIS/MESSDEM_1001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "messdem_1001",
+                "path": "img/data/messenger/MDIS/messdem_1001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_1001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_1001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_1001",
+                "path": "img/data/messenger/MDIS/msgrmds_1001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_2001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_2001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_2001",
+                "path": "img/data/messenger/MDIS/msgrmds_2001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_3001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_3001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_3001",
+                "path": "img/data/messenger/MDIS/msgrmds_3001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_4001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_4001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_4001",
+                "path": "img/data/messenger/MDIS/msgrmds_4001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_5001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_5001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_5001",
+                "path": "img/data/messenger/MDIS/msgrmds_5001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_6001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_6001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_6001",
+                "path": "img/data/messenger/MDIS/msgrmds_6001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_7001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_7001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_7001",
+                "path": "img/data/messenger/MDIS/msgrmds_7001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_7101",
+                "path": "img/data/messenger/MDIS/MSGRMDS_7101/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_7101",
+                "path": "img/data/messenger/MDIS/msgrmds_7101/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_7201",
+                "path": "img/data/messenger/MDIS/MSGRMDS_7201/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_7201",
+                "path": "img/data/messenger/MDIS/msgrmds_7201/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_7301",
+                "path": "img/data/messenger/MDIS/MSGRMDS_7301/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_7301",
+                "path": "img/data/messenger/MDIS/msgrmds_7301/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "MSGRMDS_8001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_8001/",
+                "pds_hint": "PDS3"
+              },
+              {
+                "name": "msgrmds_8001",
+                "path": "img/data/messenger/MDIS/msgrmds_8001/",
+                "pds_hint": "PDS3"
+              }
+            ],
+            "error": null
+          },
+          "tool_call_id": "call_qGqYmX9uUWosagmnAKz0asuk",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:31:43.068168+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:31:43.069100+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_resolve_volume",
+          "args": "{\"volume_set_path\":\"img/data/messenger/MDIS/\",\"node\":\"img\",\"dataset_id_hint\":\"MDIS RDR\",\"sample\":12}",
+          "tool_call_id": "call_hkeKXf16hSgeq8HAbWRZ3Wgp",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 9803,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 8576,
+        "output_tokens": 369,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 317,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:31:49.826803+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:31:43+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deqrfis8jCOvfIn60SB02F8osHqIm",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_resolve_volume",
+          "content": {
+            "status": "success",
+            "volume_set_path": "img/data/messenger/MDIS/",
+            "total_children": 26,
+            "sampled": 12,
+            "children": [
+              {
+                "name": "MDIS",
+                "path": "img/data/messenger/MDIS/MDIS/MESSDEM_1001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-DEM-ELEVATION-V1.0",
+                  "MESS-E/V/H-MDIS-2-EDR-RAWDATA-V1.0"
+                ],
+                "volume_name": "MESSENGER MDIS DIGITAL ELEVATION MODEL ARCHIVE"
+              },
+              {
+                "name": "MESSDEM_1001",
+                "path": "img/data/messenger/MDIS/MESSDEM_1001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-DEM-ELEVATION-V1.0"
+                ],
+                "volume_name": "MESSENGER MDIS DIGITAL ELEVATION MODEL ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_1001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_1001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-E/V/H-MDIS-2-EDR-RAWDATA-V1.0"
+                ],
+                "volume_name": "MESSENGER MDIS UNCALIBRATED DATA ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_2001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_2001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0"
+                ],
+                "volume_name": "MESSENGER MDIS CALIBRATED DATA ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_3001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_3001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-E/V/H-MDIS-6-DDR-GEOMDATA-V1.0"
+                ],
+                "volume_name": "MESSENGER MDIS DERIVED DATA ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_4001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_4001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-BDR-V1.0"
+                ],
+                "volume_name": "MESSENGER MDIS MAP PROJECTED BASEMAP ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_5001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_5001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-MDR-V1.0"
+                ],
+                "volume_name": "MESSENGER MDIS MAP PROJECTED MULTISPECTRAL ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_6001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_6001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-MD3-V1.0"
+                ],
+                "volume_name": "MESSENGER MDIS 3-COLOR MAP PROJECTED MULTISPECTRAL ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_7001",
+                "path": "img/data/messenger/MDIS/MSGRMDS_7001",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-HIE-V1.0"
+                ],
+                "volume_name": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_7101",
+                "path": "img/data/messenger/MDIS/MSGRMDS_7101",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-HIW-V1.0"
+                ],
+                "volume_name": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_7201",
+                "path": "img/data/messenger/MDIS/MSGRMDS_7201",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-LOI-V1.0"
+                ],
+                "volume_name": "MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP ARCHIVE"
+              },
+              {
+                "name": "MSGRMDS_7301",
+                "path": "img/data/messenger/MDIS/MSGRMDS_7301",
+                "pds_version": "PDS3",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-MP5-V1.0"
+                ],
+                "volume_name": "5-COLOR MESSENGER MDIS MAP PROJECTED MULTISPECTRAL ARCHIVE"
+              }
+            ],
+            "best_match": null,
+            "error": null
+          },
+          "tool_call_id": "call_hkeKXf16hSgeq8HAbWRZ3Wgp",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:31:56.693385+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:31:56.694831+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "args": "{\"paths\":[\"img/data/messenger/MDIS/MSGRMDS_2001/\",\"img/data/messenger/MDIS/MSGRMDS_4001/\",\"img/data/messenger/MDIS/MSGRMDS_5001/\",\"img/data/messenger/MDIS/MSGRMDS_7001/\",\"img/data/messenger/MDIS/MSGRMDS_7101/\",\"img/data/messenger/MDIS/MSGRMDS_7201/\"],\"node\":\"img\"}",
+          "tool_call_id": "call_nK1CVMVKu442ojqm1OrsLAH9",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 10803,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 9600,
+        "output_tokens": 356,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 231,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:32:03.240266+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:31:57+00:00"
+      },
+      "provider_response_id": "chatcmpl-DeqrthgQvvJ8b9VXUon15QiEaQti8",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_probe_datasets",
+          "content": {
+            "status": "success",
+            "results": [
+              {
+                "path": "img/data/messenger/MDIS/MSGRMDS_2001",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0",
+                "dataset_ids": [
+                  "MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0"
+                ],
+                "title": "MESSENGER MDIS CALIBRATED DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MESSENGER MDIS CALIBRATED DATA",
+                    "VOLUME_NAME": "MESSENGER MDIS CALIBRATED DATA ARCHIVE",
+                    "VOLUME_ID": "MSGRMDS_2001",
+                    "PUBLICATION_DATE": "2016-05-06",
+                    "DESCRIPTION": "MESSENGER MDIS calibrated data. This volume contains MDIS images taken at Earth, Venus and Mercury over the interval 2004-232 (19-Aug) to 2015-120 (30-Apr).",
+                    "DATA_SET_ID": "MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "img/data/messenger/MDIS/MSGRMDS_4001",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MESS-H-MDIS-5-RDR-BDR-V1.0",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-BDR-V1.0"
+                ],
+                "title": "MESSENGER MDIS MAP PROJECTED BASEMAP DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MESSENGER MDIS MAP PROJECTED BASEMAP DATA",
+                    "VOLUME_NAME": "MESSENGER MDIS MAP PROJECTED BASEMAP ARCHIVE",
+                    "VOLUME_ID": "MSGRMDS_4001",
+                    "PUBLICATION_DATE": "2017-05-12",
+                    "DESCRIPTION": "MESSENGER MDIS map projected basemap data. This volume contains maps of MDIS Narrow Angle Camera, and Wide Angle Camera images taken at Mercury over the interval 2011-03-29 to 2015-04-30.",
+                    "DATA_SET_ID": "MESS-H-MDIS-5-RDR-BDR-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "img/data/messenger/MDIS/MSGRMDS_5001",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MESS-H-MDIS-5-RDR-MDR-V1.0",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-MDR-V1.0"
+                ],
+                "title": "MESSENGER MDIS MAP PROJECTED MULTISPECTRAL DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MESSENGER MDIS MAP PROJECTED MULTISPECTRAL DATA",
+                    "VOLUME_NAME": "MESSENGER MDIS MAP PROJECTED MULTISPECTRAL ARCHIVE",
+                    "VOLUME_ID": "MSGRMDS_5001",
+                    "PUBLICATION_DATE": "2017-05-12",
+                    "DESCRIPTION": "MESSENGER MDIS map projected multispectral data. This volume contains maps of MDIS Wide Angle Camera images taken at Mercury over the interval 2011-03-29 to 2015-04-30.",
+                    "DATA_SET_ID": "MESS-H-MDIS-5-RDR-MDR-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "img/data/messenger/MDIS/MSGRMDS_7001",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MESS-H-MDIS-5-RDR-HIE-V1.0",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-HIE-V1.0"
+                ],
+                "title": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST DATA",
+                    "VOLUME_NAME": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST ARCHIVE",
+                    "VOLUME_ID": "MSGRMDS_7001",
+                    "PUBLICATION_DATE": "2017-05-12",
+                    "DESCRIPTION": "High solar incidence angle basemap illuminated from the east reduced data records for the MDIS camera system on MESSENGER.",
+                    "DATA_SET_ID": "MESS-H-MDIS-5-RDR-HIE-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "img/data/messenger/MDIS/MSGRMDS_7101",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MESS-H-MDIS-5-RDR-HIW-V1.0",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-HIW-V1.0"
+                ],
+                "title": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST DATA",
+                    "VOLUME_NAME": "MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST ARCHIVE",
+                    "VOLUME_ID": "MSGRMDS_7101",
+                    "PUBLICATION_DATE": "2017-05-12",
+                    "DESCRIPTION": "High solar incidence angle basemap illuminated from the west reduced data records for the MDIS camera system on MESSENGER.",
+                    "DATA_SET_ID": "MESS-H-MDIS-5-RDR-HIW-V1.0"
+                  }
+                },
+                "volume_count": 1
+              },
+              {
+                "path": "img/data/messenger/MDIS/MSGRMDS_7201",
+                "pds_version": "PDS3",
+                "file_type": "voldesc.cat",
+                "dataset_id": "MESS-H-MDIS-5-RDR-LOI-V1.0",
+                "dataset_ids": [
+                  "MESS-H-MDIS-5-RDR-LOI-V1.0"
+                ],
+                "title": "MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP DATA",
+                "fields": {
+                  "PDS_VERSION_ID": "PDS3",
+                  "VOLUME": {
+                    "VOLUME_SET_NAME": "MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP DATA",
+                    "VOLUME_NAME": "MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP ARCHIVE",
+                    "VOLUME_ID": "MSGRMDS_7201",
+                    "PUBLICATION_DATE": "2017-05-12",
+                    "DESCRIPTION": "Low solar incidence angle basemap reduced data records for the MDIS camera system on MESSENGER.",
+                    "DATA_SET_ID": "MESS-H-MDIS-5-RDR-LOI-V1.0"
+                  }
+                },
+                "volume_count": 1
+              }
+            ],
+            "errors": [],
+            "error": null
+          },
+          "tool_call_id": "call_nK1CVMVKu442ojqm1OrsLAH9",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:32:04.999335+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:32:05.000306+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "args": "{\"path\":\"img/data/messenger/derived/\",\"node\":\"img\"}",
+          "tool_call_id": "call_C7p8UVeATwGclZRFS5pqXynj",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12313,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 10624,
+        "output_tokens": 217,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 181,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:32:10.101570+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:32:05+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deqs1znUpkHMFasEAlcMJsC85g9cC",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "pds_list_dataset_dirs",
+          "content": {
+            "status": "success",
+            "path": "img/data/messenger/derived/",
+            "total": 0,
+            "filtered_total": null,
+            "dirs": [],
+            "error": null
+          },
+          "tool_call_id": "call_C7p8UVeATwGclZRFS5pqXynj",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:32:10.863038+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:32:10.864063+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "args": "{\"summary\":\"Located MESSENGER MDIS PDS3 archives on the IMG node. For studying north polar low-reflectance deposits (LRD) versus permanently shadowed terrain (PST/PSR), the most directly useful products are the MDIS map-projected basemaps and high-incidence mosaics (to outline shadowed crater interiors) plus multispectral/low-incidence mosaics (to quantify reflectance). IMG appears to host the PDS3 volumes (not the newer PDS4 MDIS archive, which is typically at the Geosciences node).\",\"candidates\":[{\"path\":\"img/data/messenger/MDIS/MSGRMDS_7001/\",\"dataset_id\":\"MESS-H-MDIS-5-RDR-HIE-V1.0\",\"title\":\"MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM EAST DATA\",\"pds_version\":\"PDS3\",\"mission\":\"messenger\",\"node\":\"img\",\"reasoning\":\"Stage 1 (directory walk + probe): High-incidence (low Sun) polar basemap mosaic illuminated from the east\u2014this is the MDIS product most commonly used to map the boundaries of permanently shadowed terrain and to compare those boundaries with adjacent low-reflectance deposits at Mercury\u2019s north pole.\"},{\"path\":\"img/data/messenger/MDIS/MSGRMDS_7101/\",\"dataset_id\":\"MESS-H-MDIS-5-RDR-HIW-V1.0\",\"title\":\"MESS MDIS HIGH-INCIDENCE BASEMAP ILLUM FROM WEST DATA\",\"pds_version\":\"PDS3\",\"mission\":\"messenger\",\"node\":\"img\",\"reasoning\":\"Stage 1: Companion high-incidence polar basemap illuminated from the west. Using both east- and west-lit mosaics helps distinguish true low-reflectance surface materials from illumination effects and better delineate permanently shadowed crater floors/walls.\"},{\"path\":\"img/data/messenger/MDIS/MSGRMDS_7201/\",\"dataset_id\":\"MESS-H-MDIS-5-RDR-LOI-V1.0\",\"title\":\"MESS MDIS MAP PROJECTED LOW-INCIDENCE ANGLE BASEMAP DATA\",\"pds_version\":\"PDS3\",\"mission\":\"messenger\",\"node\":\"img\",\"reasoning\":\"Stage 1: Low-incidence (more \u2018normal\u2019 lighting) MDIS basemap mosaic\u2014useful for measuring/confirming the low reflectance of LRD outside of deep shadow and for correlating LRD distribution with mapped PSR locations derived from topography/illumination modeling.\"},{\"path\":\"img/data/messenger/MDIS/MSGRMDS_5001/\",\"dataset_id\":\"MESS-H-MDIS-5-RDR-MDR-V1.0\",\"title\":\"MESSENGER MDIS MAP PROJECTED MULTISPECTRAL DATA\",\"pds_version\":\"PDS3\",\"mission\":\"messenger\",\"node\":\"img\",\"reasoning\":\"Stage 1: Map-projected MDIS multispectral mosaics enable color/relative reflectance comparisons of LRD versus surrounding terrain, while still being co-registered for comparison to PSR outlines (from shadow maps or DEM-based illumination models).\"},{\"path\":\"img/data/messenger/MDIS/MSGRMDS_2001/\",\"dataset_id\":\"MESS-E/V/H-MDIS-4-CDR-CALDATA-V1.0\",\"title\":\"MESSENGER MDIS CALIBRATED DATA\",\"pds_version\":\"PDS3\",\"mission\":\"messenger\",\"node\":\"img\",\"reasoning\":\"Stage 1: Calibrated individual MDIS images (CDRs). If you want to reproduce the published LRD\u2013PSR comparisons directly (rather than relying on mosaics), this archive provides the calibrated inputs for custom polar projections, photometric normalization, and reflectance analysis.\"},{\"path\":\"img/data/messenger/MDIS/MESSDEM_1001/\",\"dataset_id\":\"MESS-H-MDIS-5-DEM-ELEVATION-V1.0\",\"title\":\"MESSENGER MDIS DIGITAL ELEVATION MODEL ARCHIVE\",\"pds_version\":\"PDS3\",\"mission\":\"messenger\",\"node\":\"img\",\"reasoning\":\"Stage 1 (resolve + probe): While not an image mosaic, the MDIS DEM is commonly paired with MDIS imaging to model permanent shadow at the north pole (terrain-controlled illumination) and then compare predicted PSR extent with observed low-reflectance deposits in MDIS basemaps.\"}]}",
+          "tool_call_id": "call_RlWHV3ShoMGUOmxRr7kXMPh7",
+          "id": null,
+          "provider_name": null,
+          "provider_details": null,
+          "part_kind": "tool-call"
+        }
+      ],
+      "usage": {
+        "input_tokens": 12388,
+        "cache_write_tokens": 0,
+        "cache_read_tokens": 11648,
+        "output_tokens": 1610,
+        "input_audio_tokens": 0,
+        "cache_audio_read_tokens": 0,
+        "output_audio_tokens": 0,
+        "details": {
+          "accepted_prediction_tokens": 0,
+          "audio_tokens": 0,
+          "reasoning_tokens": 687,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "model_name": "gpt-5.2-2025-12-11",
+      "timestamp": "2026-05-12 23:32:38.773551+00:00",
+      "kind": "response",
+      "provider_name": "openai",
+      "provider_url": "https://api.openai.com/v1/",
+      "provider_details": {
+        "finish_reason": "tool_calls",
+        "timestamp": "2026-05-12 23:32:11+00:00"
+      },
+      "provider_response_id": "chatcmpl-Deqs7GULhJesxsXecVCtOPVLxso2T",
+      "finish_reason": "tool_call",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    },
+    {
+      "parts": [
+        {
+          "tool_name": "final_result",
+          "content": "Final result processed.",
+          "tool_call_id": "call_RlWHV3ShoMGUOmxRr7kXMPh7",
+          "metadata": null,
+          "timestamp": "2026-05-12 23:32:38.775209+00:00",
+          "outcome": "success",
+          "part_kind": "tool-return"
+        }
+      ],
+      "timestamp": "2026-05-12 23:32:38.775236+00:00",
+      "instructions": null,
+      "kind": "request",
+      "run_id": "019e1e87-fd96-7346-b2bb-3e9e8438add4",
+      "metadata": null
+    }
+  ],
+  "error": null
+}

@@ -1,0 +1,82 @@
+{
+  "mode": "layered",
+  "n_queries": 96,
+  "n_matched": 45,
+  "match_rate": 0.469,
+  "n_errored": 0,
+  "warm_elapsed_s": 16.1,
+  "run_elapsed_s": 7526.47,
+  "total_query_elapsed_s": 28424.8,
+  "avg_query_elapsed_s": 296.09,
+  "total_tool_calls": 1555,
+  "avg_tool_calls": 16.2,
+  "total_input_tokens": 22531837,
+  "total_output_tokens": 1647142,
+  "total_tokens": 24178979,
+  "avg_total_tokens": 251864.0,
+  "total_llm_requests": 1412,
+  "tool_call_histogram": {
+    "pds_list_dataset_dirs": 612,
+    "pds_probe_datasets": 377,
+    "pds_inspect_collections": 250,
+    "final_result": 96,
+    "pds_list_missions": 50,
+    "pds_resolve_volume": 35,
+    "pds4search_bundles_tool": 25,
+    "pds4search_products_tool": 23,
+    "ode_list_instruments_tool": 22,
+    "ode_count_products_tool": 20,
+    "ode_search_products_tool": 16,
+    "ode_get_feature_bounds_tool": 10,
+    "pds4search_instruments_tool": 5,
+    "ode_list_feature_classes_tool": 3,
+    "pds4search_targets_tool": 3,
+    "pds4get_product_tool": 3,
+    "opus_get_metadata_tool": 3,
+    "opus_search_tool": 2
+  },
+  "per_node": [
+    {
+      "node": "geo",
+      "n": 35,
+      "matched": 11,
+      "match_rate": 0.314
+    },
+    {
+      "node": "atm",
+      "n": 22,
+      "matched": 10,
+      "match_rate": 0.455
+    },
+    {
+      "node": "sbn",
+      "n": 16,
+      "matched": 14,
+      "match_rate": 0.875
+    },
+    {
+      "node": "ppi",
+      "n": 15,
+      "matched": 7,
+      "match_rate": 0.467
+    },
+    {
+      "node": "rms",
+      "n": 4,
+      "matched": 2,
+      "match_rate": 0.5
+    },
+    {
+      "node": "img",
+      "n": 1,
+      "matched": 0,
+      "match_rate": 0.0
+    },
+    {
+      "node": "lroc",
+      "n": 1,
+      "matched": 1,
+      "match_rate": 1.0
+    }
+  ]
+}
